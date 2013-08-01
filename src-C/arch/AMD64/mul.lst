@@ -1,0 +1,12 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 490FAFC0                imul rax, r8 
+     6 00000004 4D0FAFC1                imul r8,  r9
+     7 00000008 4D0FAFCA                imul r9,  r10 
+     8 0000000C 4D0FAFD3                imul r10, r11
+     9 00000010 4D0FAFDC                imul r11, r12  
+    10 00000014 4D0FAFE5                imul r12, r13 
+    11 00000018 4D0FAFEE                imul r13, r14
+    12                                   

@@ -1,0 +1,48 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 4831D2                  xor  rdx, rdx
+     6 00000003 49F7F8                  idiv r8 
+     7                                  
+     8 00000006 4831D2                  xor  rdx, rdx
+     9 00000009 4989C7                  mov  r15, rax
+    10 0000000C 4C89C0                  mov  rax, r8
+    11 0000000F 49F7F9                  idiv r9
+    12 00000012 4989C0                  mov  r8,  rax
+    13 00000015 4C89F8                  mov  rax, r15
+    14                                  
+    15 00000018 4831D2                  xor  rdx, rdx
+    16 0000001B 4989C7                  mov  r15, rax
+    17 0000001E 4C89C8                  mov  rax, r9
+    18 00000021 49F7FA                  idiv r10
+    19 00000024 4989C1                  mov  r9,  rax
+    20 00000027 4C89F8                  mov  rax, r15
+    21                                  
+    22 0000002A 4831D2                  xor  rdx, rdx
+    23 0000002D 4989C7                  mov  r15, rax
+    24 00000030 4C89D0                  mov  rax, r10
+    25 00000033 49F7FB                  idiv r11
+    26 00000036 4989C2                  mov  r10, rax
+    27 00000039 4C89F8                  mov  rax, r15
+    28                                   
+    29 0000003C 4831D2                  xor  rdx, rdx
+    30 0000003F 4989C7                  mov  r15, rax
+    31 00000042 4C89D8                  mov  rax, r11
+    32 00000045 49F7FC                  idiv r12
+    33 00000048 4989C3                  mov  r11, rax
+    34 0000004B 4C89F8                  mov  rax, r15
+    35                                  
+    36 0000004E 4831D2                  xor  rdx, rdx
+    37 00000051 4989C7                  mov  r15, rax
+    38 00000054 4C89E0                  mov  rax, r12
+    39 00000057 49F7FD                  idiv r13
+    40 0000005A 4989C4                  mov  r12, rax
+    41 0000005D 4C89F8                  mov  rax, r15
+    42                                  
+    43 00000060 4831D2                  xor  rdx, rdx
+    44 00000063 4989C7                  mov  r15, rax
+    45 00000066 4C89E8                  mov  rax, r13
+    46 00000069 49F7FE                  idiv r14
+    47 0000006C 4989C5                  mov  r13, rax
+    48 0000006F 4C89F8                  mov  rax, r15

@@ -1,0 +1,19 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 4488C1                  mov cl,  r8b
+     6 00000003 48D3E0                  shl rax, cl 
+     7 00000006 4488C9                  mov cl,  r9b
+     8 00000009 49D3E0                  shl r8,  cl
+     9 0000000C 4488D1                  mov cl,  r10b
+    10 0000000F 49D3E1                  shl r9,  cl
+    11 00000012 4488D9                  mov cl,  r11b 
+    12 00000015 49D3E2                  shl r10, cl
+    13 00000018 4488E1                  mov cl,  r12b
+    14 0000001B 49D3E3                  shl r11, cl
+    15 0000001E 4488E9                  mov cl,  r13b  
+    16 00000021 49D3E4                  shl r12, cl
+    17 00000024 4488F1                  mov cl,  r14b 
+    18 00000027 49D3E5                  shl r13, cl
+    19                                   

@@ -1,0 +1,12 @@
+section .text
+global _start
+
+_start:
+shl rax, 0xFF
+shl r8,  0xFF
+shl r9,  0xFF
+shl r10, 0xFF
+shl r11, 0xFF
+shl r12, 0xFF
+shl r13, 0xFF
+shl r14, 0xFF
