@@ -140,8 +140,8 @@ void navmFrontendCompCP  (pNavmBackend p)
    designs without dynamic register sheduling
    ------------------------------------------------------------------------- */
 
-void navmFrontendDynScal (pNavmBackend h, uOpcode ins)
-  {uByte i1, i2, i;
+bool navmFrontendDynScal (pNavmBackend h, uOpcode ins)
+  {uByte i1, i2, i; bool ret = false;
    for (i = 0; i < 8; i++)
      {if (notMacroOpcode) 
          {i1 = ins.aOpcodes[i] & 0x0F; i2 = (ins.aOpcodes[i] >> 4) & 0x0F;
@@ -196,10 +196,10 @@ void navmFrontendDynScal (pNavmBackend h, uOpcode ins)
                case opcDRP: {navmBackendCompDRP (h); break;}
                case opcSWP: {navmBackendCompSWP (h); break;}
                case opcROT: {navmBackendCompROT (h); break;}
-               case opcBR:  goto endFunction;
-               case opcBCR: goto endFunction;
-               default:     errorHalt ("[navmFrontendNsCiscPipe]");}}}
-      endFunction: i = i;}
+               case opcBR:  {ret = true; goto endFunction;}
+               case opcBCR: {ret = true; goto endFunction;}
+               default:     errorHalt ("[navmFrontendDynScal]");}}}
+      endFunction: return ret;}
 
 /* -------------------------------------------------------------------------
    INFO: Compiler strategy for out-of-order architectures with dynamic
@@ -207,8 +207,8 @@ void navmFrontendDynScal (pNavmBackend h, uOpcode ins)
    quite well.
    ------------------------------------------------------------------------- */
 
-void navmFrontendDynScalRegShed (pNavmBackend h, uOpcode ins)
-  {uByte i1, i2, i;
+bool navmFrontendDynScalRegShed (pNavmBackend h, uOpcode ins)
+  {uByte i1, i2, i; bool ret = false;
    for (i = 0; i < 8; i++)
      {switch (ins.aOpcodes[i])
         {case opcLiADD: {navmFrontendCompADD (h); break;}
@@ -236,8 +236,8 @@ void navmFrontendDynScalRegShed (pNavmBackend h, uOpcode ins)
          case opcDRP:   {navmBackendCompDRP  (h); break;}
          case opcSWP:   {navmBackendCompSWP  (h); break;}
          case opcROT:   {navmBackendCompROT  (h); break;}
-         case opcBR:    goto endFunction;
-         case opcBCR:   goto endFunction;
+         case opcBR:    {ret = true; goto endFunction;}
+         case opcBCR:   {ret = true; goto endFunction;}
          
          default: {i1 = ins.aOpcodes[i] & 0x0F;
                    i2 = (ins.aOpcodes[i] >> 4) & 0x0F;
@@ -275,10 +275,20 @@ void navmFrontendDynScalRegShed (pNavmBackend h, uOpcode ins)
                        case insDRP: {navmBackendCompDRP (h); break;}
                        case insSWP: {navmBackendCompSWP (h); break;}
                        case insROT: {navmBackendCompROT (h); break;}
-                       default:     errorHalt ("[navmFrontendNsCiscPipe]");}}}}
+                       default:  errorHalt ("[navmFrontendDynScalRegShed]");}}}}
                        
-      endFunction: i = i;}
+      endFunction: return ret;}
 
-void navmFrontendStatScal (pNavmBackend h, uOpcode ins)
-  {uByte i1, i2, i;
-   }
+/* -------------------------------------------------------------------------
+   INFO: This is the compiler frontend for the NAVM level 1 instruction set
+   ------------------------------------------------------------------------- */
+
+void navmCompile (pNavmBackend h, pWord adr)
+  {uOpcode ins; bool finish = false;
+   while (finish != true)
+     {ins.bundle = *adr++; pImm = adr;
+      if (cNavmBackendArchType == navmArchOutOfOrderRegShed)
+           finish = navmFrontendDynScalRegShed (h, ins);
+      else if (cNavmBackendArchType == navmArchOutOfOrder)
+                finish = navmFrontendDynScal (h, ins);
+           else errorHalt ("[navmCompile] cNavmBackendArchType!");}}

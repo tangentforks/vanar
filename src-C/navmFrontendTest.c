@@ -8,8 +8,8 @@ int main (void)
      
      uOpcode testOpcode;
        testOpcode.aOpcodes[0] = 0;   // liLI
-       testOpcode.aOpcodes[1] = 48;  // liADD
-       testOpcode.aOpcodes[2] = 216; // MUL
+       testOpcode.aOpcodes[1] = 214; // ADD
+       testOpcode.aOpcodes[2] = 80;  // liMUL
        testOpcode.aOpcodes[3] = 96;  // liSHL       
        testOpcode.aOpcodes[4] = 209; // BR
      

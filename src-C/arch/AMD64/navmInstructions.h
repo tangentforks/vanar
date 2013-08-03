@@ -162,10 +162,12 @@ const uWord cfNavmBackendImmShrLen = 8;
    all must be defined!
    ------------------------------------------------------------------------- */
 
+enum {navmArchOutOfOrderRegShed, navmArchOutOfOrder};
+
 const uByte  cNavmBackendMinImm   = 1;
 const uByte  cNavmBackendMaxImm   = 4;
 const char  *cNavmBackendCpuType  = "CISC";
-const char  *cNavmBackendArchType = "out-of-order";
+const uByte  cNavmBackendArchType = navmArchOutOfOrderRegShed;
   
 /* -------------------------------------------------------------------------
    INFO: Following functions representing the 16 base instructions of the
