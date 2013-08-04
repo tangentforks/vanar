@@ -14,7 +14,7 @@
                following conditions are met:
 
                1. Redistributions of source code must retain the above
-                  copyright notice, this list of conditions and the   
+                  copyright notice, this list of conditions and the
                   following disclaimer.
 
                2. Redistributions in binary form must reproduce the above
@@ -29,23 +29,23 @@
 
                THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
                CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-               INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF   
+               INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
                MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-               DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR   
+               DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
                CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
                SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
                NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
                LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
                HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
                CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-               OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS  
+               OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
                SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   COMPILER:    GCC V4 ENGINE
   STANDARD:    ANSI C 1989 + POSIX 1
   HISTORY:     7-15-2013: FIRST VERSION
   TO-DO:       NONE AT CURRENT
   ****************************************************************************/
-  
+
 /* -------------------------------------------------------------------------
    INFO: Help routines, macros and declarations.
    ------------------------------------------------------------------------- */
@@ -70,10 +70,10 @@ enum {insLI,  insLD,  insST, insADD, insDIV, insMUL, insSHL, insSHR, insAND,
 
 enum {opcLI  = 76,  opcST  = 102, opcDUP = 119, opcDRP = 136, opcB   = 140,
       opcSWP = 153, opcBC  = 156, opcROT = 170, opcBS  = 172, opcLD  = 187,
-      opcBCS = 208, opcBR  = 209, opcBCR = 211,	opcR   = 212, opcRC  = 213,
-      opcADD = 214, opcDIV = 215, opcMUL = 216,	opcAND = 217, opcGOR = 218,	
+      opcBCS = 208, opcBR  = 209, opcBCR = 211, opcR   = 212, opcRC  = 213,
+      opcADD = 214, opcDIV = 215, opcMUL = 216, opcAND = 217, opcGOR = 218,
       opcCP  = 220, opcXOR = 223, opcSHL = 236, opcSYS = 238, opcSHR = 255,
-      
+
       opcLiLI  = 0,   opcLiLD  = 16,  opcLiST  = 32,  opcLiADD = 48,
       opcLiDIV = 64,  opcLiMUL = 80,  opcLiSHL = 96,  opcLiSHR = 112,
       opcLiAND = 128, opcLiGOR = 144, opcLiXOR = 160, opcLiCP  = 176,
@@ -143,7 +143,7 @@ void navmFrontendCompCP  (pNavmBackend p)
 bool navmFrontendDynScal (pNavmBackend h, uOpcode ins)
   {uByte i1, i2, i; bool ret = false;
    for (i = 0; i < 8; i++)
-     {if (notMacroOpcode) 
+     {if (notMacroOpcode)
          {i1 = ins.aOpcodes[i] & 0x0F; i2 = (ins.aOpcodes[i] >> 4) & 0x0F;
           switch (i1)
             {case insLI:  {navmBackendCompLI  (h, *pImm++); break;}
@@ -238,7 +238,7 @@ bool navmFrontendDynScalRegShed (pNavmBackend h, uOpcode ins)
          case opcROT:   {navmBackendCompROT  (h); break;}
          case opcBR:    {ret = true; goto endFunction;}
          case opcBCR:   {ret = true; goto endFunction;}
-         
+
          default: {i1 = ins.aOpcodes[i] & 0x0F;
                    i2 = (ins.aOpcodes[i] >> 4) & 0x0F;
                    switch (i1)
@@ -276,14 +276,14 @@ bool navmFrontendDynScalRegShed (pNavmBackend h, uOpcode ins)
                        case insSWP: {navmBackendCompSWP (h); break;}
                        case insROT: {navmBackendCompROT (h); break;}
                        default:  errorHalt ("[navmFrontendDynScalRegShed]");}}}}
-                       
+
       endFunction: return ret;}
 
 /* -------------------------------------------------------------------------
    INFO: This is the compiler frontend for the NAVM level 1 instruction set
    ------------------------------------------------------------------------- */
 
-void navmCompile (pNavmBackend h, pWord adr)
+void navmFrontendCompile (pNavmBackend h, pWord adr)
   {uOpcode ins; bool finish = false;
    while (finish != true)
      {ins.bundle = *adr++; pImm = adr;
