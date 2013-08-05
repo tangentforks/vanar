@@ -142,6 +142,7 @@ void navmFrontendCompCP  (pNavmBackend p)
 
 bool navmFrontendDynScal (pNavmBackend h, uOpcode ins)
   {uByte i1, i2, i; bool ret = false;
+   printf ("bundle: %lx | pImm %lx\n", ins.bundle, *pImm);
    for (i = 0; i < 8; i++)
      {if (notMacroOpcode)
          {i1 = ins.aOpcodes[i] & 0x0F; i2 = (ins.aOpcodes[i] >> 4) & 0x0F;
@@ -209,6 +210,7 @@ bool navmFrontendDynScal (pNavmBackend h, uOpcode ins)
 
 bool navmFrontendDynScalRegShed (pNavmBackend h, uOpcode ins)
   {uByte i1, i2, i; bool ret = false;
+   printf ("bundle: %lx | pImm %lx\n", ins.bundle, *pImm);
    for (i = 0; i < 8; i++)
      {switch (ins.aOpcodes[i])
         {case opcLiADD: {navmFrontendCompADD (h); break;}
@@ -283,10 +285,10 @@ bool navmFrontendDynScalRegShed (pNavmBackend h, uOpcode ins)
    INFO: This is the compiler frontend for the NAVM level 1 instruction set
    ------------------------------------------------------------------------- */
 
-void navmFrontendCompile (pNavmBackend h, pWord adr)
+void navmFrontendCompile (pNavmBackend h)
   {uOpcode ins; bool finish = false;
    while (finish != true)
-     {ins.bundle = *adr++; pImm = adr;
+     {ins.bundle = *pImm++;
       if (cNavmBackendArchType == navmArchOutOfOrderRegShed)
            finish = navmFrontendDynScalRegShed (h, ins);
       else if (cNavmBackendArchType == navmArchOutOfOrder)
