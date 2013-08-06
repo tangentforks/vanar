@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="AsciiDoc 8.6.7">
-<title>The Vanar compiler</title>
+<title>The Vanir compiler</title>
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
 
@@ -834,7 +834,7 @@ asciidoc.install(2);
 </head>
 <body class="article">
 <div id="header">
-<h1>The Vanar compiler</h1>
+<h1>The Vanir compiler</h1>
 <span id="author">Matthias Schirm</span><br>
 <span id="email" class="monospaced">&lt;<a href="mailto:matasan@gmx.de">matasan@gmx.de</a>&gt;</span><br>
 <span id="revnumber">version 0.1,</span>
@@ -873,7 +873,7 @@ Gate&#8230;</p></div>
 <div class="sect1">
 <h2 id="_abstract">Abstract</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>Vanar (or Vanir, Wanen) is an AOT compiler that ensured effective compilation
+<div class="paragraph"><p>Vanar (or Vanir, Wane) is an AOT compiler that ensured effective compilation
 with minimal resource consumption by using a MISC-oriented ISA as platform-
 independent intermediate code. The machine code generated generally proves to
 be highly optimized without the need for onerous processor as memory dependent
@@ -937,7 +937,7 @@ of execution are opcode bundles, not single instructions. The AVM ISA and its
 encoding is also very effective implementable for FPGA&#8217;s or ASIC&#8217;s, both in
 terms of needed space as archivable performance. FPGA implementations for
 example can expect to archive 0.5 IPC with branch and interrupt latencies of
-only 1 clock.cycle.</p></div>
+only 1 clock cycle.</p></div>
 <div class="sect2">
 <h3 id="_register_set">2.1. Register set</h3>
 <div class="paragraph"><p>AVM is a dual stack-based architecture following MISC (Minimal Instruction-
@@ -948,40 +948,86 @@ stack-shuffling operators implicitly address the actual first stack element
 therefore not direct accessible:</p></div>
 <table class="tableblock frame-all grid-all"
 style="
-width:60%;
+width:70%;
 ">
 <caption class="title">Table 1. Register set</caption>
-<col style="width:50%;">
-<col style="width:50%;">
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;">
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top" > Register </th>
-<th class="tableblock halign-left valign-top" > Usage</th>
+<th class="tableblock halign-left valign-top" > Usage                      </th>
+<th class="tableblock halign-left valign-top" > Size</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top" ><p class="tableblock">A</p></td>
 <td class="tableblock halign-left valign-top" ><p class="tableblock">Accumulator (TOS)</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">word size</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" ><p class="tableblock">D</p></td>
 <td class="tableblock halign-left valign-top" ><p class="tableblock">Data-stack pointer</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">word size</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" ><p class="tableblock">R</p></td>
 <td class="tableblock halign-left valign-top" ><p class="tableblock">Return-stack pointer</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">address word-size</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" ><p class="tableblock">F</p></td>
 <td class="tableblock halign-left valign-top" ><p class="tableblock">Condition-code register</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">byte</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" ><p class="tableblock">W</p></td>
 <td class="tableblock halign-left valign-top" ><p class="tableblock">internal scratch register</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">word size</p></td>
 </tr>
 </tbody>
 </table>
+<div class="sect3">
+<h4 id="_a_register">2.1.1. A Register</h4>
+<div class="paragraph"><p>This register is an accumulator holding the results of all logic and arithmetic
+operations. It is the destination for most instructions, referencing the first
+data-stack element as second parameter and its actual value as first one. Thus
+register A can also be seen as internal cache for the actual top-of-stack (TOS)
+element, referencing the element register D points to as actual second-of-stack
+(SND) parameter.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_d_register">2.1.2. D Register</h4>
+<div class="paragraph"><p>The data-stack pointer is an offset into a register array of minimal eight
+parameter values. Its value references the second parameter for all arithmetic
+and logic operations. By processing, the D register is automatical decremented
+or incremented dependend of the operation, rising a DSB exception in case of
+out-of-bounce references. If this happens a unconditional branch to address 0
+is taken pusing the content of register D onto the data stack.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_r_register">2.1.3. R Register</h4>
+<div class="paragraph"><p>Accessing the eight level depth address-stack is limited to the BS
+(Branch Subroutine) and BR (Branch Return) instructions. The offset of these
+register is incremented by processing subroutine branches (BS) and decremented
+by processing the assoziated BR instruction. In case of out-of-bounce
+references an RSB exception exception is raised, followed by an unconditional
+branch to address 1 and pusing of its actual register content onto the
+data-stack.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_f_register">2.1.4. F register</h4>
+<div class="paragraph"><p>The flag register hold exactly two states: All bits set in case of a detected
+condition and all bits cleared otherwise. Only the CP instruction affecting
+this register.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_w_register">2.1.5. W register</h4>
+<div class="paragraph"><p>The W (as working) register is an internal scratch buffer needed by some
+instructions.</p></div>
+</div>
 </div>
 </div>
 </div>
@@ -990,7 +1036,7 @@ width:60%;
 <div id="footer">
 <div id="footer-text">
 Version 0.1<br>
-Last updated 2013-08-06 19:38:03 CEST
+Last updated 2013-08-06 22:56:59 CEST
 </div>
 </div>
 </body>
