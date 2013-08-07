@@ -1,0 +1,11 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 8B01                    mov eax, [ecx]
+     6 00000002 8B0A                    mov ecx, [edx]
+     7 00000004 8B13                    mov edx, [ebx]
+     8 00000006 8B1C24                  mov ebx, [esp]
+     9 00000009 8B6500                  mov esp, [ebp]
+    10 0000000C 8B2E                    mov ebp, [esi]
+    11 0000000E 8B37                    mov esi, [edi]

@@ -5,6 +5,41 @@
   AUTHOR:      MATTHIAS SCHIRM
   COPYRIGHT:   (C) 2013 MATTHIAS SCHIRM, ALL RIGHTS RESERVED
   LICENCE:     BSD STYLE, SEE LICENCE.TXT
+
+               Copyright (c) 2013, Matthias Schirm
+               All rights reserved.
+
+               Redistribution and use in source and binary forms, with or
+               without modification, are permitted provided that the
+               following conditions are met:
+
+               1. Redistributions of source code must retain the above
+                  copyright notice, this list of conditions and the   
+                  following disclaimer.
+
+               2. Redistributions in binary form must reproduce the above
+                  copyright notice, this list of conditions and the
+                  following disclaimer in the documentation and/or other
+                  materials provided with the distribution.
+
+               3. Neither the name of the author nor the names of its
+                  contributors may be used to endorse or promote products
+                  derived from this software without specific prior
+                  written permission.
+
+               THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+               CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+               INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF   
+               MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+               DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR   
+               CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+               SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+               NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+               LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+               HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+               CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+               OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS  
+               SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   COMPILER:    GCC V4 ENGINE
   STANDARD:    ANSI C 1989
   HISTORY:     7-15-2013: FIRST VERSION
@@ -109,9 +144,9 @@ const bool cfNavmBackendImmROL = false;
    immediate-direct procedures in bytes.
    ------------------------------------------------------------------------- */
 
-const uWord cfNavmBackendImmLiLen  = 8;
-const uWord cfNavmBackendImmLdLen  = 4;
-const uWord cfNavmBackendImmStLen  = 4;
+const uWord cfNavmBackendImmLiLen  = 64;
+const uWord cfNavmBackendImmLdLen  = 32;
+const uWord cfNavmBackendImmStLen  = 32;
 const uWord cfNavmBackendImmCpLen  = 8;
 const uWord cfNavmBackendImmAddLen = 32;
 const uWord cfNavmBackendImmMulLen = 32;
@@ -127,10 +162,12 @@ const uWord cfNavmBackendImmShrLen = 8;
    all must be defined!
    ------------------------------------------------------------------------- */
 
+enum {navmArchOutOfOrderRegShed, navmArchOutOfOrder};
+
 const uByte  cNavmBackendMinImm   = 1;
 const uByte  cNavmBackendMaxImm   = 4;
 const char  *cNavmBackendCpuType  = "CISC";
-const char  *cNavmBackendArchType = "out-of-order";
+const uByte  cNavmBackendArchType = navmArchOutOfOrderRegShed;
   
 /* -------------------------------------------------------------------------
    INFO: Following functions representing the 16 base instructions of the
@@ -181,33 +218,31 @@ void navmBackendCompLD (pNavmBackend h)
    switch (h->vD)
      {case 1: {compDisAsm (h, "MOV  RAX, [R8]");
                compCode (h, 0x49); compCode (h, 0x8B); compCode (h, 0x00);
-               compIncD (h);
                break;}
       case 2: {compDisAsm (h, "MOV  R8,  [R9]");
                compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x01);
-               compIncD (h);
+               compDecD (h);
                break;}
       case 3: {compDisAsm (h, "MOV  R9,  [R10]");
                compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x0A);
-               compIncD (h);
+               compDecD (h);
                break;}
       case 4: {compDisAsm (h, "MOV  R10, [R11]");
                compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x13);
-               compIncD (h);
+               compDecD (h);
                break;}
       case 5: {compDisAsm (h, "MOV  R11, [R12]");
                compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x1C);
-               compCode (h, 0x24); compDecD (h);
-               compIncD (h);
+               compCode (h, 0x24);
+               compDecD (h);
                break;}
       case 6: {compDisAsm (h, "MOV  R12, [R13]");
                compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x65);
                compCode (h, 0x00); compDecD (h);
-               compIncD (h);
                break;}
       case 7: {compDisAsm (h, "MOV  R13, [R14]");
                compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x2E);
-               compIncD (h);
+               compDecD (h);
                break;}
       default: errorHalt ("[navmBackendCompLD] vD > 7 | vD < 1");}}
 

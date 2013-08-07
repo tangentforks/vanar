@@ -1,7 +1,7 @@
 /*****************************************************************************
   PROJECT:     NAVM AOT COMPILER
   DESCRIPTION: COMPILER FOR THE NAVM LEVEL 1 ISA AS IL REPRESENTATION
-  INFO:        ALL BASIC NAVM LEVEL 1 INSTRUCTIONs FOR AMD64 COMP. PROCESSORS
+  INFO:        ALL BASIC NAVM LEVEL 1 INSTRUCTIONs FOR IA32 COMP. PROCESSORS
   AUTHOR:      MATTHIAS SCHIRM
   COPYRIGHT:   (C) 2013 MATTHIAS SCHIRM, ALL RIGHTS RESERVED
   LICENCE:     BSD STYLE, SEE LICENCE.TXT
@@ -57,19 +57,6 @@ void compCode (pNavmBackend handle, uByte code)
         *(handle->pMem + handle->oMem++) = (uByte) code;
    else errorHalt ("[compByte] oMem > cMemSize");}
 
-void compImm64 (pNavmBackend handle, sWord value)
-  {uImm imm; imm.sImm = value;
-   if (handle->oMem < handle->cMemSize)
-       {*(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[0];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[1];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[2];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[3];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[4];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[5];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[6];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[7];}
-   else errorHalt ("[compImm64] oMem > cMemSize");}
-
 void compImm32 (pNavmBackend handle, int32_t value)
   {uImm32 imm; imm.sImm = value;
    if (handle->oMem < handle->cMemSize)
@@ -84,13 +71,6 @@ void compIncD (pNavmBackend handle) {handle->vD++;}
 void compDecD (pNavmBackend handle)
   {if (handle->vD > 0) handle->vD--;
       else errorHalt ("[compDecD] vD < 1");}
-
-void compDisAsmImm64 (pNavmBackend h, char *m, sWord val)
-  {if (h->fDisAsm != false)
-      {fprintf (stderr, "vD: %li | ",h->vD);
-       fprintf (stderr, "%x:\t", (int) h->oMem);
-       fprintf (stderr, "%s", m);
-       fprintf (stderr, "%lx\n", val);}}
 
 void compDisAsmImm32 (pNavmBackend h, char *m, int32_t val)
   {if (h->fDisAsm != false)
@@ -144,10 +124,10 @@ const bool cfNavmBackendImmROL = false;
    immediate-direct procedures in bytes.
    ------------------------------------------------------------------------- */
 
-const uWord cfNavmBackendImmLiLen  = 64;
+const uWord cfNavmBackendImmLiLen  = 32;
 const uWord cfNavmBackendImmLdLen  = 32;
 const uWord cfNavmBackendImmStLen  = 32;
-const uWord cfNavmBackendImmCpLen  = 8;
+const uWord cfNavmBackendImmCpLen  = 32;
 const uWord cfNavmBackendImmAddLen = 32;
 const uWord cfNavmBackendImmMulLen = 32;
 const uWord cfNavmBackendImmDivLen = 32;
@@ -179,74 +159,63 @@ const uByte  cNavmBackendArchType = navmArchOutOfOrderRegShed;
 
 void navmBackendCompLI (pNavmBackend h, sWord val)
   {switch (h->vD)
-     {case 1: {compDisAsmImm64 (h, "MOV  RAX, ", val);
-               compCode (h, 0x48); compCode (h, 0xB8); compImm64 (h, val);
-               compIncD (h);
+     {case 1: {compDisAsmImm32 (h, "MOV  EAX, ", val);
+               compCode (h, 0xB8); compImm32 (h, val); compIncD (h);
                break;}
-      case 2: {compDisAsmImm64 (h, "MOV  R8,  ", val);
-               compCode (h, 0x49); compCode (h, 0xB8); compImm64 (h, val);
-               compIncD (h);
+      case 2: {compDisAsmImm32 (h, "MOV  ECX, ", val);
+               compCode (h, 0xB9); compImm32 (h, val); compIncD (h);
                break;}
-      case 3: {compDisAsmImm64 (h, "MOV  R9,  ", val);
-               compCode (h, 0x49); compCode (h, 0xB9); compImm64 (h, val);
-               compIncD (h);
+      case 3: {compDisAsmImm32 (h, "MOV  EDX, ", val);
+               compCode (h, 0xBA); compImm32 (h, val); compIncD (h);
                break;}
-      case 4: {compDisAsmImm64 (h, "MOV  R10, ", val);
-               compCode (h, 0x49); compCode (h, 0xBA); compImm64 (h, val);
-               compIncD (h);
+      case 4: {compDisAsmImm32 (h, "MOV  EBX, ", val);
+               compCode (h, 0xBB); compImm32 (h, val); compIncD (h);
                break;}
-      case 5: {compDisAsmImm64 (h, "MOV  R11, ", val);
-               compCode (h, 0x49); compCode (h, 0xBB); compImm64 (h, val);
-               compIncD (h);
+      case 5: {compDisAsmImm32 (h, "MOV  ESP, ", val);
+               compCode (h, 0xBC); compImm32 (h, val); compIncD (h);
                break;}
-      case 6: {compDisAsmImm64 (h, "MOV  R12, ", val);
-               compCode (h, 0x49); compCode (h, 0xBC); compImm64 (h, val);
-               compIncD (h);
+      case 6: {compDisAsmImm32 (h, "MOV  EBP, ", val);
+               compCode (h, 0xBD); compImm32 (h, val); compIncD (h);
                break;}
-      case 7: {compDisAsmImm64 (h, "MOV  R13, ", val);
-               compCode (h, 0x49); compCode (h, 0xBD); compImm64 (h, val);
-               compIncD (h);
+      case 7: {compDisAsmImm32 (h, "MOV  ESI, ", val);
+               compCode (h, 0xBE); compImm32 (h, val); compIncD (h);
                break;}
-      case 8: {compDisAsmImm64 (h, "MOV  R14, ", val);
-               compCode (h, 0x49); compCode (h, 0xBE); compImm64 (h, val);
-               compIncD (h);
+      case 8: {compDisAsmImm32 (h, "MOV  EDI, ", val);
+               compCode (h, 0xBF); compImm32 (h, val); compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompLI] vD > 8 | vD < 1"); }}
 
 void navmBackendCompLD (pNavmBackend h)
   {compDecD (h); compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsm (h, "MOV  RAX, [R8]");
-               compCode (h, 0x49); compCode (h, 0x8B); compCode (h, 0x00);
+     {case 1: {compDisAsm (h, "MOV  EAX, [ECX]");
+               compCode (h, 0x8B); compCode (h, 0x01); compDecD (h);
+               break;}
+      case 2: {compDisAsm (h, "MOV  ECX, [EDX]");
+               compCode (h, 0x8B); compCode (h, 0x0A); compDecD (h);
+               break;}
+      case 3: {compDisAsm (h, "MOV  EDX, [EBX]");
+               compCode (h, 0x8B); compCode (h, 0x13); compDecD (h);
+               break;}
+      case 4: {compDisAsm (h, "MOV  EBX, [ESP]");
+               compCode (h, 0x8B); compCode (h, 0x1C); compCode (h, 0x24);
                compDecD (h);
                break;}
-      case 2: {compDisAsm (h, "MOV  R8,  [R9]");
-               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x01);
+      case 5: {compDisAsm (h, "MOV  ESP, [EBP]");
+               compCode (h, 0x8B); compCode (h, 0x65); compCode (h, 0x00);
                compDecD (h);
                break;}
-      case 3: {compDisAsm (h, "MOV  R9,  [R10]");
-               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x0A);
+      case 6: {compDisAsm (h, "MOV  EBP, [ESI]");
+               compCode (h, 0x8B); compCode (h, 0x2E);
                compDecD (h);
                break;}
-      case 4: {compDisAsm (h, "MOV  R10, [R11]");
-               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x13);
-               compDecD (h);
-               break;}
-      case 5: {compDisAsm (h, "MOV  R11, [R12]");
-               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x1C);
-               compCode (h, 0x24);
-               compDecD (h);
-               break;}
-      case 6: {compDisAsm (h, "MOV  R12, [R13]");
-               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x65);
-               compCode (h, 0x00); compDecD (h);
-               break;}
-      case 7: {compDisAsm (h, "MOV  R13, [R14]");
-               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x2E);
+      case 7: {compDisAsm (h, "MOV  ESI, [EDI]");
+               compCode (h, 0x8B); compCode (h, 0x37);
                compDecD (h);
                break;}
       default: errorHalt ("[navmBackendCompLD] vD > 7 | vD < 1");}}
 
+// ab hier
 void navmBackendCompST (pNavmBackend h)
   {compDecD (h); compDecD (h);
    switch (h->vD)

@@ -1,0 +1,11 @@
+section .text
+global _start
+
+_start:
+mov eax, [ecx]
+mov ecx, [edx]
+mov edx, [ecx]
+mov ecx, [ebx]
+mov ebx, [esp]
+mov esp, [ebp]
+mov esi, [edi]
