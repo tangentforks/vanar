@@ -81,18 +81,19 @@ pByte navmBackendTempAdr;
    ------------------------------------------------------------------------- */
 
 void navmInitBackendHandlerExit (void)
-  {fprintf (stderr, "[navmInitBackendHandler] pMem = NIL!\n");
+  {fprintf (stderr, "[navmInitBackendHandler] pMem = NIL! | erg < 0\n");
    exit (0);}
 
 pNavmBackend navmInitBackendHandler (uWord codeArraySize)
-  {uWord retSize = sizeof (hNavmBackend);
+  {uWord retSize = sizeof (hNavmBackend); int erg;
    pNavmBackend ret = (pNavmBackend) malloc (retSize);
-     ret->pMem     = (pByte) malloc (codeArraySize);
+     ret->pMem     = (pByte) valloc (codeArraySize);
      ret->oMem     = 0;
      ret->cMemSize = codeArraySize;
      ret->vD       = 1;
      ret->vR       = 1;
-     mprotect (ret->pMem, codeArraySize, PROT_READ|PROT_WRITE|PROT_EXEC);
+     erg = mprotect (ret->pMem, codeArraySize, PROT_READ|PROT_WRITE|PROT_EXEC);
+   if (erg < 0)           navmInitBackendHandlerExit ();
    if (ret->pMem == NULL) navmInitBackendHandlerExit ();
    return ret;}
 
