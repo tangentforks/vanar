@@ -2,11 +2,11 @@ section .text
 global _start
 
 _start:
-imul rax, 0x01020304
-imul r8,  0x01020304
-imul r9,  0x01020304
-imul r10, 0x01020304
-imul r11, 0x01020304
-imul r12, 0x01020304
-imul r13, 0x01020304
-imul r14, 0x01020304
+imul eax, 0x01020304
+imul ecx, 0x01020304
+imul edx, 0x01020304
+imul ebx, 0x01020304
+imul esp, 0x01020304
+imul ebp, 0x01020304
+imul esi, 0x01020304
+imul edi, 0x01020304

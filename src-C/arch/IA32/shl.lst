@@ -1,0 +1,29 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 D3E0                    shl  eax, cl     ; eax shl ecx 
+     6                                  
+     7 00000002 87CA                    xchg ecx, edx    ; ecx shl edx
+     8 00000004 D3E2                    shl  edx, cl
+     9 00000006 87CA                    xchg ecx, edx
+    10                                  
+    11 00000008 87CB                    xchg ecx, ebx    ; edx shl ebx
+    12 0000000A D3E2                    shl  edx, cl
+    13 0000000C 87CB                    xchg ecx, ebx
+    14                                  
+    15 0000000E 87CC                    xchg ecx, esp    ; ebx shl esp
+    16 00000010 D3E3                    shl  ebx, cl
+    17 00000012 87CC                    xchg ecx, esp
+    18                                  
+    19 00000014 87CD                    xchg ecx, ebp    ; esp shl ebp
+    20 00000016 D3E4                    shl  esp, cl
+    21 00000018 87CD                    xchg ecx, ebp
+    22                                  
+    23 0000001A 87CE                    xchg ecx, esi    ; ebp shl esi
+    24 0000001C D3E5                    shl  ebp, cl
+    25 0000001E 87CC                    xchg ecx, esp
+    26                                  
+    27 00000020 87CF                    xchg ecx, edi    ; esi shl edi
+    28 00000022 D3E6                    shl  esi, cl
+    29 00000024 87CF                    xchg ecx, edi

@@ -2,11 +2,11 @@ section .text
 global _start
 
 _start:
-or rax, r8 
-or r8,  r9
-or r9,  r10 
-or r10, r11
-or r11, r12  
-or r12, r13 
-or r13, r14
+or eax, ecx 
+or ecx, edx
+or edx, ebx 
+or ebx, esp
+or esp, ebp  
+or ebp, esi 
+or esi, edi
  

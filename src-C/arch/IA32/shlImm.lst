@@ -1,0 +1,12 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 C1E0FF                  shl eax, 0xFF
+     6 00000003 C1E1FF                  shl ecx, 0xFF
+     7 00000006 C1E2FF                  shl edx, 0xFF
+     8 00000009 C1E3FF                  shl ebx, 0xFF
+     9 0000000C C1E4FF                  shl esp, 0xFF
+    10 0000000F C1E5FF                  shl ebp, 0xFF
+    11 00000012 C1E6FF                  shl esi, 0xFF
+    12 00000015 C1E7FF                  shl edi, 0xFF

@@ -1,0 +1,12 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 09C8                    or eax, ecx 
+     6 00000002 09D1                    or ecx, edx
+     7 00000004 09DA                    or edx, ebx 
+     8 00000006 09E3                    or ebx, esp
+     9 00000008 09EC                    or esp, ebp  
+    10 0000000A 09F5                    or ebp, esi 
+    11 0000000C 09FE                    or esi, edi
+    12                                   

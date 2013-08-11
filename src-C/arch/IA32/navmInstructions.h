@@ -189,136 +189,115 @@ void navmBackendCompLD (pNavmBackend h)
   {compDecD (h); compDecD (h);
    switch (h->vD)
      {case 1: {compDisAsm (h, "MOV  EAX, [ECX]");
-               compCode (h, 0x8B); compCode (h, 0x01); compDecD (h);
+               compCode (h, 0x8B); compCode (h, 0x01); compIncD (h);
                break;}
       case 2: {compDisAsm (h, "MOV  ECX, [EDX]");
-               compCode (h, 0x8B); compCode (h, 0x0A); compDecD (h);
+               compCode (h, 0x8B); compCode (h, 0x0A); compIncD (h);
                break;}
       case 3: {compDisAsm (h, "MOV  EDX, [EBX]");
-               compCode (h, 0x8B); compCode (h, 0x13); compDecD (h);
+               compCode (h, 0x8B); compCode (h, 0x13); compIncD (h);
                break;}
       case 4: {compDisAsm (h, "MOV  EBX, [ESP]");
                compCode (h, 0x8B); compCode (h, 0x1C); compCode (h, 0x24);
-               compDecD (h);
+               compIncD (h);
                break;}
       case 5: {compDisAsm (h, "MOV  ESP, [EBP]");
                compCode (h, 0x8B); compCode (h, 0x65); compCode (h, 0x00);
-               compDecD (h);
+               compIncD (h);
                break;}
       case 6: {compDisAsm (h, "MOV  EBP, [ESI]");
                compCode (h, 0x8B); compCode (h, 0x2E);
-               compDecD (h);
+               compIncD (h);
                break;}
       case 7: {compDisAsm (h, "MOV  ESI, [EDI]");
                compCode (h, 0x8B); compCode (h, 0x37);
-               compDecD (h);
+               compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompLD] vD > 7 | vD < 1");}}
 
-// ab hier
 void navmBackendCompST (pNavmBackend h)
   {compDecD (h); compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsm (h, "MOV  [R8],  RAX");
-               compCode (h, 0x49); compCode (h, 0x89); compCode (h, 0x00);
-               compIncD (h);
+     {case 2: {compDisAsm (h, "MOV  [EDX], ECX");
+               compCode (h, 0x89); compCode (h, 0x0A); compDecD (h);
+               compDecD (h);
                break;}
-      case 2: {compDisAsm (h, "MOV  [R9],  R8");
-               compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0x01);
-               compIncD (h);
+      case 3: {compDisAsm (h, "MOV  [EBX], EDX");
+               compCode (h, 0x89); compCode (h, 0x13); compDecD (h);
+               compDecD (h);
                break;}
-      case 3: {compDisAsm (h, "MOV  [R10], R9");
-               compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0x0A);
-               compIncD (h);
+      case 4: {compDisAsm (h, "MOV  [EDX], ESP");
+               compCode (h, 0x89); compCode (h, 0x22); compDecD (h);
+               compDecD (h);
                break;}
-      case 4: {compDisAsm (h, "MOV  [R11], R10");
-               compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0x13);
-               compIncD (h);
+      case 5: {compDisAsm (h, "MOV  [ESP], EBP");
+               compCode (h, 0x89); compCode (h, 0x2C); compCode (h, 0x24);
+               compDecD (h);       compDecD (h);
                break;}
-      case 5: {compDisAsm (h, "MOV  [R12], R11");
-               compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0x1C);
-               compCode (h, 0x24); compDecD (h);
-               compIncD (h);
+      case 6: {compDisAsm (h, "MOV  [EBP], ESI");
+               compCode (h, 0x89); compCode (h, 0x75); compCode (h, 0x00);
+               compDecD (h);       compDecD (h);
                break;}
-      case 6: {compDisAsm (h, "MOV  [R13], R12");
-               compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0x65);
-               compCode (h, 0x00); compDecD (h);
-               compIncD (h);
+      case 7: {compDisAsm (h, "MOV  [ESI], EDI");
+               compCode (h, 0x89); compCode (h, 0x3E); compDecD (h);
+               compDecD (h);
                break;}
-      case 7: {compDisAsm (h, "MOV  [R14], R13");
-               compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0x2E);
-               compIncD (h);
-               break;}
-      default: errorHalt ("[navmBackendCompST] vD > 7 | vD < 1");}}
+      default: errorHalt ("[navmBackendCompST] vD > 7 | vD < 2");}}
 
 void navmBackendCompCP (pNavmBackend h)
   {compDecD (h); compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsm (h, "CMP  RAX, R8");
-               compCode (h, 0x4C); compCode (h, 0x39); compCode (h, 0xC0);
-               compIncD (h);
+     {case 1: {compDisAsm (h, "CMP  EAX, ECX");
+               compCode (h, 0x39); compCode (h, 0xC8); compIncD (h);
                break;}
-      case 2: {compDisAsm (h, "CMP  R8,  R9");
-               compCode (h, 0x4D); compCode (h, 0x39); compCode (h, 0xC8);
-               compIncD (h);
+      case 2: {compDisAsm (h, "CMP  ECX, EDX");
+               compCode (h, 0x39); compCode (h, 0xD1); compIncD (h);
                break;}
-      case 3: {compDisAsm (h, "CMP  R9,  R10");
-               compCode (h, 0x4D); compCode (h, 0x39); compCode (h, 0xD1);
-               compIncD (h);
+      case 3: {compDisAsm (h, "CMP  EDX, EBX");
+               compCode (h, 0x39); compCode (h, 0xDA); compIncD (h);
                break;}
-      case 4: {compDisAsm (h, "CMP  R10, R11");
-               compCode (h, 0x4D); compCode (h, 0x39); compCode (h, 0xDA);
-               compIncD (h);
+      case 4: {compDisAsm (h, "CMP  EBX, ESP");
+               compCode (h, 0x39); compCode (h, 0xE3); compIncD (h);
                break;}
-      case 5: {compDisAsm (h, "CMP  R11, R12");
-               compCode (h, 0x4D); compCode (h, 0x39); compCode (h, 0xE3);
-               compIncD (h);
+      case 5: {compDisAsm (h, "CMP  ESP, EBP");
+               compCode (h, 0x39); compCode (h, 0xEC); compIncD (h);
                break;}
-      case 6: {compDisAsm (h, "CMP  R12, R13");
-               compCode (h, 0x4D); compCode (h, 0x39); compCode (h, 0xED);
-               compIncD (h);
+      case 6: {compDisAsm (h, "CMP  EBP, ESI");
+               compCode (h, 0x39); compCode (h, 0xF5); compIncD (h);
                break;}
-      case 7: {compDisAsm (h, "CMP  R13, R14");
-               compCode (h, 0x4D); compCode (h, 0x39); compCode (h, 0xF5);
-               compIncD (h);
+      case 7: {compDisAsm (h, "CMP  ESI, EDI");
+               compCode (h, 0x39); compCode (h, 0xFE); compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompCP] vD > 7 | vD < 1");}}
 
 void navmBackendCompCpImm (pNavmBackend h, int32_t val)
   {compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsmImm32 (h, "CMP  RAX, ", val);
-               compCode  (h, 0x48); compCode (h, 0x3D); compImm32 (h, val);
+     {case 1: {compDisAsmImm32 (h, "CMP  EAX, ", val);
+               compCode (h, 0x3D); compImm32 (h, val); compIncD (h);
+               break;}
+      case 2: {compDisAsmImm32 (h, "CMP  ECX, ", val);
+               compCode (h, 0x81); compCode (h, 0xF9); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 2: {compDisAsmImm32 (h, "CMP  R8,  ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xF8);
-               compImm64 (h, val);
+      case 3: {compDisAsmImm32 (h, "CMP  EDX, ", val);
+               compCode (h, 0x81); compCode (h, 0xFA); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 3: {compDisAsmImm32 (h, "CMP  R9,  ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xF9);
-               compImm64 (h, val);
+      case 4: {compDisAsmImm32 (h, "CMP  EBX, ", val);
+               compCode (h, 0x81); compCode (h, 0xFB); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 4: {compDisAsmImm32 (h, "CMP  R10, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xFA);
-               compImm64 (h, val);
+      case 5: {compDisAsmImm32 (h, "CMP  ESP, ", val);
+               compCode (h, 0x81); compCode (h, 0xFC); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 5: {compDisAsmImm32 (h, "CMP  R11, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xFB);
-               compImm64 (h, val);
+      case 6: {compDisAsmImm32 (h, "CMP  EBP, ", val);
+               compCode (h, 0x81); compCode (h, 0xFD); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 6: {compDisAsmImm32 (h, "CMP  R12, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xFC);
-               compImm64 (h, val);
-               compIncD (h);
-               break;}
-      case 7: {compDisAsmImm32 (h, "CMP  R13, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xFD);
-               compImm64 (h, val);
+      case 7: {compDisAsmImm32 (h, "CMP  ESI, ", val);
+               compCode (h, 0x81); compCode (h, 0xFE); compImm32 (h, val);
                compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompCpImm] vD > 7 | vD < 1");}}
@@ -326,71 +305,57 @@ void navmBackendCompCpImm (pNavmBackend h, int32_t val)
 void navmBackendCompADD (pNavmBackend h)
   {compDecD (h); compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsm (h, "ADD  RAX, R8");
-               compCode (h, 0x4C); compCode (h, 0x01); compCode (h, 0xC0);
-               compIncD (h);
+     {case 1: {compDisAsm (h, "ADD  EAX, ECX");
+               compCode (h, 0x01); compCode (h, 0xC8); compIncD (h);
                break;}
-      case 2: {compDisAsm (h, "ADD  R8,  R9");
-               compCode (h, 0x4D); compCode (h, 0x01); compCode (h, 0xC8);
-               compIncD (h);
+      case 2: {compDisAsm (h, "ADD  ECX, EDX");
+               compCode (h, 0x01); compCode (h, 0xD1); compIncD (h);
                break;}
-      case 3: {compDisAsm (h, "ADD  R9,  R10");
-               compCode (h, 0x4D); compCode (h, 0x01); compCode (h, 0xD1);
-               compIncD (h);
+      case 3: {compDisAsm (h, "ADD  EDX, EBX");
+               compCode (h, 0x01); compCode (h, 0xDA); compIncD (h);
                break;}
-      case 4: {compDisAsm (h, "ADD  R10, R11");
-               compCode (h, 0x4D); compCode (h, 0x01); compCode (h, 0xDA);
-               compIncD (h);
+      case 4: {compDisAsm (h, "ADD  EBX, ESP");
+               compCode (h, 0x01); compCode (h, 0xE3); compIncD (h);
                break;}
-      case 5: {compDisAsm (h, "ADD  R11, R12");
-               compCode (h, 0x4D); compCode (h, 0x01); compCode (h, 0xE3);
-               compIncD (h);
+      case 5: {compDisAsm (h, "ADD  ESP, EBP");
+               compCode (h, 0x01); compCode (h, 0xEC); compIncD (h);
                break;}
-      case 6: {compDisAsm (h, "ADD  R12, R13");
-               compCode (h, 0x4D); compCode (h, 0x01); compCode (h, 0xEC);
-               compIncD (h);
+      case 6: {compDisAsm (h, "ADD  EBP, ESI");
+               compCode (h, 0x01); compCode (h, 0xF5); compIncD (h);
                break;}
-      case 7: {compDisAsm (h, "ADD  R13, R14");
-               compCode (h, 0x4D); compCode (h, 0x01); compCode (h, 0xF5);
-               compIncD (h);
+      case 7: {compDisAsm (h, "ADD  ESI, EDI");
+               compCode (h, 0x01); compCode (h, 0xFE); compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompADD] vD > 7 | vD < 1");}}
 
 void navmBackendCompAddImm (pNavmBackend h, int32_t val)
   {compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsmImm32 (h, "ADD  RAX, ", val);
-               compCode  (h, 0x48); compCode (h, 0x05); compImm32 (h, val);
+     {case 1: {compDisAsmImm32 (h, "ADD  EAX, ", val);
+               compCode (h, 0x05); compImm32 (h, val); compIncD (h);
+               break;}
+      case 2: {compDisAsmImm32 (h, "ADD  ECX, ", val);
+               compCode (h, 0x81); compCode (h, 0xC1); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 2: {compDisAsmImm32 (h, "ADD  R8,  ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xC0);
-               compImm32 (h, val);
+      case 3: {compDisAsmImm32 (h, "ADD  EDX, ", val);
+               compCode (h, 0x81); compCode (h, 0xC2); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 3: {compDisAsmImm32 (h, "ADD  R9,  ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xC1);
-               compImm32 (h, val);
+      case 4: {compDisAsmImm32 (h, "ADD  EBX, ", val);
+               compCode (h, 0x81); compCode (h, 0xC3); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 4: {compDisAsmImm32 (h, "ADD  R10, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xC2);
-               compImm32 (h, val);
+      case 5: {compDisAsmImm32 (h, "ADD  ESP, ", val);
+               compCode (h, 0x81); compCode (h, 0xC4); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 5: {compDisAsmImm32 (h, "ADD  R11, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xC3);
-               compImm32 (h, val);
+      case 6: {compDisAsmImm32 (h, "ADD  EBP, ", val);
+               compCode (h, 0x81); compCode (h, 0xC5); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 6: {compDisAsmImm32 (h, "ADD  R12, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xC4);
-               compImm32 (h, val);
-               compIncD (h);
-               break;}
-      case 7: {compDisAsmImm32 (h, "ADD  R13, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xC5);
-               compImm32 (h, val);
+      case 7: {compDisAsmImm32 (h, "ADD  ESI, ", val);
+               compCode (h, 0x81); compCode (h, 0xC6; compImm32 (h, val);
                compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompAddImm] vD > 7 | vD < 1");}}
@@ -398,72 +363,80 @@ void navmBackendCompAddImm (pNavmBackend h, int32_t val)
 void navmBackendCompDIV (pNavmBackend h)
   {compDecD (h); compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsm (h, "XOR  RDX, RDX|IDIV R8");
-               compCode (h, 0x48); compCode (h, 0x31); compCode (h, 0xD2);
-               compCode (h, 0x49); compCode (h, 0xF7); compCode (h, 0xF8);
+     {case 1: {compDisAsm (h, "MOVD MM0, EDX|XOR EDX, EDX|IDIV ECX|MOVD EAX, MM0");
+               compCode (h, 0x0F); compCode (h, 0x6E); compCode (h, 0xC2);
+               compCode (h, 0x31); compCode (h, 0xD2);
+               compCode (h, 0xF7); compCode (h, 0xF9);
+               compCode (h, 0x0F); compCode (h, 0x7E); compCode (h, 0xC2);
                compIncD (h);
                break;}
-      case 2: {compDisAsm (h, "XOR  RDX, RDX|MOV R15, RAX|MOV RAX,  R8|IDIV R9");
-               compDisAsm (h, "MOV  R8,  RAX|MOV RAX, R15");
-               compCode (h, 0x48); compCode (h, 0x31); compCode (h, 0xD2);
-               compCode (h, 0x49); compCode (h, 0x89); compCode (h, 0xC7);
-               compCode (h, 0x4C); compCode (h, 0x89); compCode (h, 0xC0);
-               compCode (h, 0x49); compCode (h, 0xF7); compCode (h, 0xF9);
-               compCode (h, 0x49); compCode (h, 0x89); compCode (h, 0xC0);
-               compCode (h, 0x4C); compCode (h, 0x89); compCode (h, 0xF8);
+      case 2: {compDisAsm (h, "MOVD MM0, EDX|MOVD MM1, EAX|MOVD MM2, EBX|MOV EAX, EBX");
+               compDisAsm (h, "MOV  EBX, EDX|XOR  EDX, EDX|IDIV EBX     |MOV ECX, EAX");
+               compDisAsm (h, "MOVD EBX, MM2|MOVD EAX, MM1|MOVD EDX, MM0");               
+               compCode (h, 0x0F); compCode (h, 0x6E); compCode (h, 0xC2);
+               compCode (h, 0x0F); compCode (h, 0x6E); compCode (h, 0xC8);
+               compCode (h, 0x0F); compCode (h, 0x6E); compCode (h, 0xD3);
+               compCode (h, 0x89); compCode (h, 0xC8);
+               compCode (h, 0x89); compCode (h, 0xD3);
+               compCode (h, 0x31); compCode (h, 0xD2);
+               compCode (h, 0xF7); compCode (h, 0xFB);
+               compCode (h, 0x89); compCode (h, 0xC1);
+               compCode (h, 0x0F); compCode (h, 0x7E); compCode (h, 0xD3);
+               compCode (h, 0x0F); compCode (h, 0x7E); compCode (h, 0xC8);
+               compCode (h, 0x0F); compCode (h, 0x7E); compCode (h, 0xC2);               
                compIncD (h);
                break;}
-      case 3: {compDisAsm (h, "XOR  RDX, RDX|MOV R15, RAX|MOV RAX,  R9|IDIV R10");
-               compDisAsm (h, "MOV  R9,  RAX|MOV RAX, R15");
-               compCode (h, 0x48); compCode (h, 0x31); compCode (h, 0xD2);
-               compCode (h, 0x49); compCode (h, 0x89); compCode (h, 0xC7);
-               compCode (h, 0x4C); compCode (h, 0x89); compCode (h, 0xC8);
-               compCode (h, 0x49); compCode (h, 0xF7); compCode (h, 0xFA);
-               compCode (h, 0x49); compCode (h, 0x89); compCode (h, 0xC1);
-               compCode (h, 0x4C); compCode (h, 0x89); compCode (h, 0xF8);
+      case 3: {compDisAsm (h, "MOVD MM0, EAX|MOV  EAX, EDX|XOR EDX, EDX|IDIV EBX");
+               compDisAsm (h, "MOV  EDX, EAX|MOVD EAX, MM0");
+               compCode (h, 0x0F); compCode (h, 0x6E); compCode (h, 0xC0);
+               compCode (h, 0x89); compCode (h, 0xD0);
+               compCode (h, 0x31); compCode (h, 0xD2);
+               compCode (h, 0xF7); compCode (h, 0xFB);
+               compCode (h, 0x89); compCode (h, 0xC2);
+               compCode (h, 0x0F); compCode (h, 0x7E); compCode (h, 0xC0);
                compIncD (h);
                break;}
-      case 4: {compDisAsm (h, "XOR  RDX, RDX|MOV R15, RAX|MOV RAX, R10|IDIV R11");
-               compDisAsm (h, "MOV  R10, RAX|MOV RAX, R15");
-               compCode (h, 0x48); compCode (h, 0x31); compCode (h, 0xD2);
-               compCode (h, 0x49); compCode (h, 0x89); compCode (h, 0xC7);
-               compCode (h, 0x4C); compCode (h, 0x89); compCode (h, 0xD0);
-               compCode (h, 0x49); compCode (h, 0xF7); compCode (h, 0xFB);
-               compCode (h, 0x49); compCode (h, 0x89); compCode (h, 0xC2);
-               compCode (h, 0x4C); compCode (h, 0x89); compCode (h, 0xF8);
+      case 4: {compDisAsm (h, "MOVD MM0, EAX|MOV  EAX, EBX|XOR EDX, EDX|IDIV ESP");
+               compDisAsm (h, "MOV  EBX, EAX|MOVD EAX, MM0");
+               compCode (h, 0x0F); compCode (h, 0x6E); compCode (h, 0xC0);
+               compCode (h, 0x89); compCode (h, 0xD8);
+               compCode (h, 0x31); compCode (h, 0xD2);
+               compCode (h, 0xF7); compCode (h, 0xFC);
+               compCode (h, 0x89); compCode (h, 0xC3);
+               compCode (h, 0x0F); compCode (h, 0x7E); compCode (h, 0xC0);
                compIncD (h);
                break;}
-      case 5: {compDisAsm (h, "XOR  RDX, RDX|MOV R15, RAX|MOV RAX, R11|IDIV R12");
-               compDisAsm (h, "MOV  R11, RAX|MOV RAX, R15");
-               compCode (h, 0x48); compCode (h, 0x31); compCode (h, 0xD2);
-               compCode (h, 0x49); compCode (h, 0x89); compCode (h, 0xC7);
-               compCode (h, 0x4C); compCode (h, 0x89); compCode (h, 0xD8);
-               compCode (h, 0x49); compCode (h, 0xF7); compCode (h, 0xFC);
-               compCode (h, 0x49); compCode (h, 0x89); compCode (h, 0xC3);
-               compCode (h, 0x4C); compCode (h, 0x89); compCode (h, 0xF8);
+      case 5: {compDisAsm (h, "MOVD MM0, EAX|MOV  EAX, ESP|XOR EDX, EDX|IDIV EBP");
+               compDisAsm (h, "MOV  ESP, EAX|MOVD EAX, MM0");
+               compCode (h, 0x0F); compCode (h, 0x6E); compCode (h, 0xC0);
+               compCode (h, 0x89); compCode (h, 0xE0);
+               compCode (h, 0x31); compCode (h, 0xD2);
+               compCode (h, 0xF7); compCode (h, 0xFD);
+               compCode (h, 0x89); compCode (h, 0xC4);
+               compCode (h, 0x0F); compCode (h, 0x7E); compCode (h, 0xC0);
                compIncD (h);
                break;}
-      case 6: {compDisAsm (h, "XOR  RDX, RDX|MOV R15, RAX|MOV RAX, R12|IDIV R13");
-               compDisAsm (h, "MOV  R12, RAX|MOV RAX, R15");
-               compCode (h, 0x48); compCode (h, 0x31); compCode (h, 0xD2);
-               compCode (h, 0x49); compCode (h, 0x89); compCode (h, 0xC7);
-               compCode (h, 0x4C); compCode (h, 0x89); compCode (h, 0xE0);
-               compCode (h, 0x49); compCode (h, 0xF7); compCode (h, 0xFD);
-               compCode (h, 0x49); compCode (h, 0x89); compCode (h, 0xC4);
-               compCode (h, 0x4C); compCode (h, 0x89); compCode (h, 0xF8);
+      case 6: {compDisAsm (h, "MOVD MM0, EAX|MOV  EAX, EBP|XOR EDX, EDX|IDIV ESI");
+               compDisAsm (h, "MOV  EBP, EAX|MOVD EAX, MM0");
+               compCode (h, 0x0F); compCode (h, 0x6E); compCode (h, 0xC0);
+               compCode (h, 0x89); compCode (h, 0xE8);
+               compCode (h, 0x31); compCode (h, 0xD2);
+               compCode (h, 0xF7); compCode (h, 0xFE);
+               compCode (h, 0x89); compCode (h, 0xC5);
+               compCode (h, 0x0F); compCode (h, 0x7E); compCode (h, 0xC0);
                compIncD (h);
                break;}
-      case 7: {compDisAsm (h, "XOR  RDX, RDX|MOV R15, RAX|MOV RAX, R13|IDIV R14");
-               compDisAsm (h, "MOV  R13, RAX|MOV RAX, R15");
-               compCode (h, 0x48); compCode (h, 0x31); compCode (h, 0xD2);
-               compCode (h, 0x49); compCode (h, 0x89); compCode (h, 0xC7);
-               compCode (h, 0x4C); compCode (h, 0x89); compCode (h, 0xE8);
-               compCode (h, 0x49); compCode (h, 0xF7); compCode (h, 0xFE);
-               compCode (h, 0x49); compCode (h, 0x89); compCode (h, 0xC5);
-               compCode (h, 0x4C); compCode (h, 0x89); compCode (h, 0xF8);
+      case 7: {compDisAsm (h, "MOVD MM0, EAX|MOV  EAX, ESI|XOR EDX, EDX|IDIV EDI");
+               compDisAsm (h, "MOV  ESI, EAX|MOVD EAX, MM0");
+               compCode (h, 0x0F); compCode (h, 0x6E); compCode (h, 0xC0);
+               compCode (h, 0x89); compCode (h, 0xF0);
+               compCode (h, 0x31); compCode (h, 0xD2);
+               compCode (h, 0xF7); compCode (h, 0xFF);
+               compCode (h, 0x89); compCode (h, 0xC6);
+               compCode (h, 0x0F); compCode (h, 0x7E); compCode (h, 0xC0);
                compIncD (h);
                break;}
-      default: errorHalt ("[navmBackendCompAddImm] vD > 7 | vD < 1");}}
+      default: errorHalt ("[navmBackendCompDIV] vD > 7 | vD < 1");}}
 
 void navmBackendCompDivImm (pNavmBackend h, sWord val)
   {errorHalt ("[navmBackendCompDivImm] !");}
@@ -471,72 +444,65 @@ void navmBackendCompDivImm (pNavmBackend h, sWord val)
 void navmBackendCompMUL (pNavmBackend h)
   {compDecD (h); compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsm (h, "IMUL RAX, R8");
-               compCode (h, 0x49); compCode (h, 0x0F); compCode (h, 0xAF);
-               compCode (h, 0xC0); compIncD (h);
+     {case 1: {compDisAsm (h, "IMUL EAX, ECX");
+               compCode (h, 0x0F); compCode (h, 0xAF); compCode (h, 0xC1);
+               compIncD (h);
                break;}
-      case 2: {compDisAsm (h, "IMUL R8,  R9");
-               compCode (h, 0x4D); compCode (h, 0x0F); compCode (h, 0xAF);
-               compCode (h, 0xC1); compIncD (h);
+      case 2: {compDisAsm (h, "IMUL ECX, EDX");
+               compCode (h, 0x0F); compCode (h, 0xAF); compCode (h, 0xCA);
+               compIncD (h);
                break;}
-      case 3: {compDisAsm (h, "IMUL R9,  R10");
-               compCode (h, 0x4D); compCode (h, 0x0F); compCode (h, 0xAF);
-               compCode (h, 0xCA); compIncD (h);
+      case 3: {compDisAsm (h, "IMUL EDX, EBX");
+               compCode (h, 0x0F); compCode (h, 0xAF); compCode (h, 0xD3);
+               compIncD (h);
                break;}
-      case 4: {compDisAsm (h, "IMUL R10, R11");
-               compCode (h, 0x4D); compCode (h, 0x0F); compCode (h, 0xAF);
-               compCode (h, 0xD3); compIncD (h);
+      case 4: {compDisAsm (h, "IMUL EBX, ESP");
+               compCode (h, 0x0F); compCode (h, 0xAF); compCode (h, 0xDC);
+               compIncD (h);
                break;}
-      case 5: {compDisAsm (h, "IMUL R11, R12");
-               compCode (h, 0x4D); compCode (h, 0x0F); compCode (h, 0xAF);
-               compCode (h, 0xDC); compIncD (h);
+      case 5: {compDisAsm (h, "IMUL ESP, EBP");
+               compCode (h, 0x0F); compCode (h, 0xAF); compCode (h, 0xE5);
+               compIncD (h);
                break;}
-      case 6: {compDisAsm (h, "IMUL R12, R13");
-               compCode (h, 0x4D); compCode (h, 0x0F); compCode (h, 0xAF);
-               compCode (h, 0xE5); compIncD (h);
+      case 6: {compDisAsm (h, "IMUL EBP, ESI");
+               compCode (h, 0x0F); compCode (h, 0xAF); compCode (h, 0xEE);
+               compIncD (h);
                break;}
-      case 7: {compDisAsm (h, "IMUL R13, R14");
-               compCode (h, 0x4D); compCode (h, 0x0F); compCode (h, 0xAF);
-               compCode (h, 0xEE); compIncD (h);
+      case 7: {compDisAsm (h, "IMUL ESI, EDI");
+               compCode (h, 0x0F); compCode (h, 0xAF); compCode (h, 0xF7);
+               compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompMUL] vD > 7 | vD < 1");}}
                                      
 void navmBackendCompMulImm (pNavmBackend h, int32_t val)
   {compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsmImm32 (h, "IMUL RAX, ", val);
-               compCode  (h, 0x48); compCode (h, 0x69); compCode (h, 0xC0);
-               compImm32 (h, val);
+     {case 1: {compDisAsmImm32 (h, "IMUL EAX, ", val);
+               compCode  (h, 0x69); compCode (h, 0xC0); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 2: {compDisAsmImm32 (h, "IMUL R8,  ", val);
-               compCode  (h, 0x4D); compCode (h, 0x69); compCode (h, 0xC0);
-               compImm32 (h, val);
+      case 2: {compDisAsmImm32 (h, "IMUL ECX, ", val);
+               compCode  (h, 0x69); compCode (h, 0xC9); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 3: {compDisAsmImm32 (h, "IMUL R9,  ", val);
-               compCode  (h, 0x4D); compCode (h, 0x69); compCode (h, 0xC9);
-               compImm32 (h, val);
+      case 3: {compDisAsmImm32 (h, "IMUL EDX, ", val);
+               compCode  (h, 0x69); compCode (h, 0xD2); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 4: {compDisAsmImm32 (h, "IMUL R10, ", val);
-               compCode  (h, 0x4D); compCode (h, 0x69); compCode (h, 0xD2);
-               compImm32 (h, val);
+      case 4: {compDisAsmImm32 (h, "IMUL EBX, ", val);
+               compCode  (h, 0x69); compCode (h, 0xDB); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 5: {compDisAsmImm32 (h, "IMUL R11, ", val);
-               compCode  (h, 0x4D); compCode (h, 0x69); compCode (h, 0xDB);
-               compImm32 (h, val);
+      case 5: {compDisAsmImm32 (h, "IMUL ESP, ", val);
+               compCode  (h, 0x69); compCode (h, 0xE4); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 6: {compDisAsmImm32 (h, "IMUL R12, ", val);
-               compCode  (h, 0x4D); compCode (h, 0x69); compCode (h, 0xE4);
-               compImm32 (h, val);
+      case 6: {compDisAsmImm32 (h, "IMUL EBP, ", val);
+               compCode  (h, 0x69); compCode (h, 0xED); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 7: {compDisAsmImm32 (h, "IMUL R13, ", val);
-               compCode  (h, 0x4D); compCode (h, 0x69); compCode (h, 0xED);
-               compImm32 (h, val);
+      case 7: {compDisAsmImm32 (h, "IMUL ESI, ", val);
+               compCode  (h, 0x69); compCode (h, 0xF6); compImm32 (h, val);
                compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompMulImm] vD > 7 | vD < 1");}}
@@ -544,71 +510,57 @@ void navmBackendCompMulImm (pNavmBackend h, int32_t val)
 void navmBackendCompAND (pNavmBackend h)
   {compDecD (h); compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsm (h, "AND  RAX, R8");
-               compCode (h, 0x4C); compCode (h, 0x21); compCode (h, 0xC0);
-               compIncD (h);
+     {case 1: {compDisAsm (h, "AND  EAX, ECX");
+               compCode (h, 0x21); compCode (h, 0xC8); compIncD (h);
                break;}
-      case 2: {compDisAsm (h, "AND  R8,  R9");
-               compCode (h, 0x4D); compCode (h, 0x21); compCode (h, 0xC8);
-               compIncD (h);
+      case 2: {compDisAsm (h, "AND  ECX, EDX");
+               compCode (h, 0x21); compCode (h, 0xD1); compIncD (h);
                break;}
-      case 3: {compDisAsm (h, "AND  R9,  R10");
-               compCode (h, 0x4D); compCode (h, 0x21); compCode (h, 0xD1);
-               compIncD (h);
+      case 3: {compDisAsm (h, "AND  EDX, EBX");
+               compCode (h, 0x21); compCode (h, 0xDA); compIncD (h);
                break;}
-      case 4: {compDisAsm (h, "AND  R10, R11");
-               compCode (h, 0x4D); compCode (h, 0x21); compCode (h, 0xDA);
-               compIncD (h);
+      case 4: {compDisAsm (h, "AND  EBX, ESP");
+               compCode (h, 0x21); compCode (h, 0xE3); compIncD (h);
                break;}
-      case 5: {compDisAsm (h, "AND  R11, R12");
-               compCode (h, 0x4D); compCode (h, 0x21); compCode (h, 0xE3);
-               compIncD (h);
+      case 5: {compDisAsm (h, "AND  ESP, EBP");
+               compCode (h, 0x21); compCode (h, 0xEC); compIncD (h);
                break;}
-      case 6: {compDisAsm (h, "AND  R12, R13");
-               compCode (h, 0x4D); compCode (h, 0x21); compCode (h, 0xEC);
-               compIncD (h);
+      case 6: {compDisAsm (h, "AND  EBP, ESI");
+               compCode (h, 0x21); compCode (h, 0xF5); compIncD (h);
                break;}
-      case 7: {compDisAsm (h, "AND  R13, R14");
-               compCode (h, 0x4D); compCode (h, 0x21); compCode (h, 0xF5);
-               compIncD (h);
+      case 7: {compDisAsm (h, "AND  ESI, EDI");
+               compCode (h, 0x21); compCode (h, 0xFE); compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompAND] vD > 7 | vD < 1");}}
 
 void navmBackendCompAndImm (pNavmBackend h, int32_t val)
   {compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsmImm32 (h, "AND  RAX, ", val);
-               compCode  (h, 0x48); compCode (h, 0x25); compImm32 (h, val);
+     {case 1: {compDisAsmImm32 (h, "AND  EAX, ", val);
+               compCode (h, 0x25); compImm32 (h, val);  compIncD (h);
+               break;}
+      case 2: {compDisAsmImm32 (h, "AND  ECX, ", val);
+               compCode  (h, 0x81); compCode (h, 0xE1); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 2: {compDisAsmImm32 (h, "AND  R8,  ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xE0);
-               compImm32 (h, val);
+      case 3: {compDisAsmImm32 (h, "AND  EDX,  ", val);
+               compCode  (h, 0x81); compCode (h, 0xE2); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 3: {compDisAsmImm32 (h, "AND  R9,  ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xE1);
-               compImm32 (h, val);
+      case 4: {compDisAsmImm32 (h, "AND  EBX, ", val);
+               compCode  (h, 0x81); compCode (h, 0xE3); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 4: {compDisAsmImm32 (h, "AND  R10, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xE2);
-               compImm32 (h, val);
+      case 5: {compDisAsmImm32 (h, "AND  ESP, ", val);
+               compCode  (h, 0x81); compCode (h, 0xE4); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 5: {compDisAsmImm32 (h, "AND  R11, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xE3);
-               compImm32 (h, val);
+      case 6: {compDisAsmImm32 (h, "AND  EBP, ", val);
+               compCode  (h, 0x81); compCode (h, 0xE5); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 6: {compDisAsmImm32 (h, "AND  R12, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xE4);
-               compImm32 (h, val);
-               compIncD (h);
-               break;}
-      case 7: {compDisAsmImm32 (h, "AND  R13, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xE5);
-               compImm32 (h, val);
+      case 7: {compDisAsmImm32 (h, "AND  ESI, ", val);
+               compCode  (h, 0x81); compCode (h, 0xE6); compImm32 (h, val);
                compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompAndImm] vD > 7 | vD < 1");}}
@@ -616,143 +568,115 @@ void navmBackendCompAndImm (pNavmBackend h, int32_t val)
 void navmBackendCompGOR (pNavmBackend h)
   {compDecD (h); compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsm (h, "OR   RAX, R8");
-               compCode (h, 0x4C); compCode (h, 0x09); compCode (h, 0xC0);
-               compIncD (h);
+     {case 1: {compDisAsm (h, "OR   EAX, ECX");
+               compCode (h, 0x09); compCode (h, 0xC8); compIncD (h);
                break;}
-      case 2: {compDisAsm (h, "OR   R8,  R9");
-               compCode (h, 0x4D); compCode (h, 0x09); compCode (h, 0xC8);
-               compIncD (h);
+      case 2: {compDisAsm (h, "OR   ECX, EDX");
+               compCode (h, 0x09); compCode (h, 0xD1); compIncD (h);
                break;}
-      case 3: {compDisAsm (h, "OR   R9,  R10");
-               compCode (h, 0x4D); compCode (h, 0x09); compCode (h, 0xD1);
-               compIncD (h);
+      case 3: {compDisAsm (h, "OR   EDX, EBX");
+               compCode (h, 0x09); compCode (h, 0xDA); compIncD (h);
                break;}
-      case 4: {compDisAsm (h, "OR   R10, R11");
-               compCode (h, 0x4D); compCode (h, 0x09); compCode (h, 0xDA);
-               compIncD (h);
+      case 4: {compDisAsm (h, "OR   EBX, ESP");
+               compCode (h, 0x09); compCode (h, 0xE3); compIncD (h);
                break;}
-      case 5: {compDisAsm (h, "OR   R11, R12");
-               compCode (h, 0x4D); compCode (h, 0x09); compCode (h, 0xE3);
-               compIncD (h);
+      case 5: {compDisAsm (h, "OR   ESP, EBP");
+               compCode (h, 0x09); compCode (h, 0xEC); compIncD (h);
                break;}
-      case 6: {compDisAsm (h, "OR   R12, R13");
-               compCode (h, 0x4D); compCode (h, 0x09); compCode (h, 0xEC);
-               compIncD (h);
+      case 6: {compDisAsm (h, "OR   EBP, ESI");
+               compCode (h, 0x09); compCode (h, 0xF5); compIncD (h);
                break;}
-      case 7: {compDisAsm (h, "OR   R13, R14");
-               compCode (h, 0x4D); compCode (h, 0x09); compCode (h, 0xF5);
-               compIncD (h);
+      case 7: {compDisAsm (h, "OR   ESI, EDI");
+               compCode (h, 0x09); compCode (h, 0xFE); compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompGOR] vD > 7 | vD < 1");}}
 
 void navmBackendCompGorImm (pNavmBackend h, int32_t val)
   {compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsmImm32 (h, "OR   RAX, ", val);
-               compCode (h, 0x48); compCode (h, 0x0D); compImm32 (h, val);
+     {case 1: {compDisAsmImm32 (h, "OR   EAX, ", val);
+               compCode (h, 0x0D); compImm32 (h, val);  compIncD (h);
+               break;}
+      case 2: {compDisAsmImm32 (h, "OR   ECX, ", val);
+               compCode  (h, 0x81); compCode (h, 0xC9); compImm32 (h, val);
                compIncD (h);
                break;}
-      case 2: {compDisAsmImm32 (h, "OR   R8,  ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xC8);
-               compImm32 (h, val);
-               compIncD  (h);
+      case 3: {compDisAsmImm32 (h, "OR   EDX,  ", val);
+               compCode  (h, 0x81); compCode (h, 0xCA); compImm32 (h, val);
+               compIncD (h);
                break;}
-      case 3: {compDisAsmImm32 (h, "OR   R9,  ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xC9);
-               compImm32 (h, val);
-               compIncD  (h);
+      case 4: {compDisAsmImm32 (h, "OR   EBX, ", val);
+               compCode  (h, 0x81); compCode (h, 0xCB); compImm32 (h, val);
+               compIncD (h);
                break;}
-      case 4: {compDisAsmImm32 (h, "OR   R10, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xCA);
-               compImm32 (h, val);
-               compIncD  (h);
+      case 5: {compDisAsmImm32 (h, "OR   ESP, ", val);
+               compCode  (h, 0x81); compCode (h, 0xCC); compImm32 (h, val);
+               compIncD (h);
                break;}
-      case 5: {compDisAsmImm32 (h, "OR   R11, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xCB);
-               compImm32 (h, val);
-               compIncD  (h);
+      case 6: {compDisAsmImm32 (h, "OR   EBP, ", val);
+               compCode  (h, 0x81); compCode (h, 0xCD); compImm32 (h, val);
+               compIncD (h);
                break;}
-      case 6: {compDisAsmImm32 (h, "OR   R12, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xCC);
-               compImm32 (h, val);
-               compIncD  (h);
+      case 7: {compDisAsmImm32 (h, "OR   ESI, ", val);
+               compCode  (h, 0x81); compCode (h, 0xCE); compImm32 (h, val);
+               compIncD (h);
                break;}
-      case 7: {compDisAsmImm32 (h, "OR   R13, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xCD);
-               compImm32 (h, val);
-               compIncD  (h);
-               break;}
-      default: errorHalt ("[navmBackendCompGorImm] vD > 7 | vD < 1");}}
-
+      default: errorHalt ("[navmBackendCompAndImm] vD > 7 | vD < 1");}}
+                                                                                                                                                                                                                                                                                                                                                                
 void navmBackendCompXOR (pNavmBackend h)
   {compDecD (h); compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsm (h, "XOR  RAX, R8");
-               compCode (h, 0x4C); compCode (h, 0x31); compCode (h, 0xC0);
-               compIncD (h);
+     {case 1: {compDisAsm (h, "XOR  EAX, ECX");
+               compCode (h, 0x31); compCode (h, 0xC8); compIncD (h);
                break;}
-      case 2: {compDisAsm (h, "XOR  R8,  R9");
-               compCode (h, 0x4D); compCode (h, 0x31); compCode (h, 0xC8);
-               compIncD (h);
+      case 2: {compDisAsm (h, "XOR  ECX, EDX");
+               compCode (h, 0x31); compCode (h, 0xD1); compIncD (h);
                break;}
-      case 3: {compDisAsm (h, "XOR  R9,  R10");
-               compCode (h, 0x4D); compCode (h, 0x31); compCode (h, 0xD1);
-               compIncD (h);
+      case 3: {compDisAsm (h, "XOR  EDX, EBX");
+               compCode (h, 0x31); compCode (h, 0xDA); compIncD (h);
                break;}
-      case 4: {compDisAsm (h, "XOR  R10, R11");
-               compCode (h, 0x4D); compCode (h, 0x31); compCode (h, 0xDA);
-               compIncD (h);
+      case 4: {compDisAsm (h, "XOR  EBX, ESP");
+               compCode (h, 0x31); compCode (h, 0xE3); compIncD (h);
                break;}
-      case 5: {compDisAsm (h, "XOR  R11, R12");
-               compCode (h, 0x4D); compCode (h, 0x31); compCode (h, 0xE3);
-               compIncD (h);
+      case 5: {compDisAsm (h, "XOR  ESP, EBP");
+               compCode (h, 0x31); compCode (h, 0xEC); compIncD (h);
                break;}
-      case 6: {compDisAsm (h, "XOR  R12, R13");
-               compCode (h, 0x4D); compCode (h, 0x31); compCode (h, 0xEC);
-               compIncD (h);
+      case 6: {compDisAsm (h, "XOR  EBP, ESI");
+               compCode (h, 0x31); compCode (h, 0xF5); compIncD (h);
                break;}
-      case 7: {compDisAsm (h, "XOR  R13, R14");
-               compCode (h, 0x4D); compCode (h, 0x31); compCode (h, 0xF5);
-               compIncD (h);
+      case 7: {compDisAsm (h, "XOR  ESI, EDI");
+               compCode (h, 0x31); compCode (h, 0xFE); compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompXOR] vD > 7 | vD < 1");}}
 
 void navmBackendCompXorImm (pNavmBackend h, int32_t val)
   {compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsmImm32 (h, "XOR  RAX, ", val);
-               compCode (h, 0x48); compCode (h, 0x35); compImm32 (h, val);
-               compIncD (h);
+     {case 1: {compDisAsmImm32 (h, "XOR  EAX, ", val);
+               compCode (h, 0x35); compImm32 (h, val); compIncD (h);
                break;}
-      case 2: {compDisAsmImm32 (h, "XOR  R8,  ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xF0);
-               compImm32 (h, val);
+      case 2: {compDisAsmImm32 (h, "XOR  ECX, ", val);
+               compCode (h, 0x81); compCode (h, 0xF1); compImm32 (h, val);
                compIncD  (h);
                break;}
-      case 3: {compDisAsmImm32 (h, "XOR  R9,  ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xF1);
-               compImm32 (h, val);
+      case 3: {compDisAsmImm32 (h, "XOR  EDX, ", val);
+               compCode (h, 0x81); compCode (h, 0xF2); compImm32 (h, val);
                compIncD  (h);
                break;}
-      case 4: {compDisAsmImm32 (h, "XOR  R10, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xF2);
-               compImm32 (h, val);
+      case 4: {compDisAsmImm32 (h, "XOR  EBX, ", val);
+               compCode (h, 0x81); compCode (h, 0xF3); compImm32 (h, val);
                compIncD  (h);
                break;}
-      case 5: {compDisAsmImm32 (h, "XOR  R11, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xF3);
-               compImm32 (h, val);
+      case 5: {compDisAsmImm32 (h, "XOR  ESP, ", val);
+               compCode (h, 0x81); compCode (h, 0xF4); compImm32 (h, val);
                compIncD  (h);
                break;}
-      case 6: {compDisAsmImm32 (h, "XOR  R12, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xF4);
-               compImm32 (h, val);
+      case 6: {compDisAsmImm32 (h, "XOR  EBP, ", val);
+               compCode (h, 0x81); compCode (h, 0xF5); compImm32 (h, val);
                compIncD  (h);
                break;}
-      case 7: {compDisAsmImm32 (h, "XOR  R13, ", val);
-               compCode  (h, 0x49); compCode (h, 0x81); compCode (h, 0xF5);
-               compImm32 (h, val);
+      case 7: {compDisAsmImm32 (h, "XOR  ESI, ", val);
+               compCode (h, 0x81); compCode (h, 0xF6); compImm32 (h, val);
                compIncD  (h);
                break;}
       default: errorHalt ("[navmBackendCompXorImm] vD > 7 | vD < 1");}}
@@ -760,39 +684,43 @@ void navmBackendCompXorImm (pNavmBackend h, int32_t val)
 void navmBackendCompSHL (pNavmBackend h)
   {compDecD (h); compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsm (h, "MOV  CL,  R8B|SHL RAX, CL");
-               compCode (h, 0x44); compCode (h, 0x88); compCode (h, 0xC1);
-               compCode (h, 0x48); compCode (h, 0xD3); compCode (h, 0xE0);
+     {case 1: {compDisAsm (h, "SHL EAX, CL");
+               compCode (h, 0xD3); compCode (h, 0xE0); compIncD (h);
+               break;}
+      case 2: {compDisAsm (h, "XCHG ECX, EDX|SHL  EDX, CL|XCHG ECX, EDX");
+               compCode (h, 0x87); compCode (h, 0xCA); 
+               compCode (h, 0xD3); compCode (h, 0xE2);
+               compCode (h, 0x87); compCode (h, 0xCA);
                compIncD (h);
                break;}
-      case 2: {compDisAsm (h, "MOV  CL,  R9B|SHL R8, CL");
-               compCode (h, 0x44); compCode (h, 0x88); compCode (h, 0xC9);
-               compCode (h, 0x49); compCode (h, 0xD3); compCode (h, 0xE0);
+      case 3: {compDisAsm (h, "XCHG ECX, EBX|SHL  EDX, CL|XCHG ECX, EBX");
+               compCode (h, 0x87); compCode (h, 0xCB);
+               compCode (h, 0xD3); compCode (h, 0xE2);
+               compCode (h, 0x87); compCode (h, 0xCB);
                compIncD (h);
                break;}
-      case 3: {compDisAsm (h, "MOV  CL,  R10B|SHL R9, CL");
-               compCode (h, 0x44); compCode (h, 0x88); compCode (h, 0xD1);
-               compCode (h, 0x49); compCode (h, 0xD3); compCode (h, 0xE1);
+      case 4: {compDisAsm (h, "XCHG ECX, ESP|SHL  EBX, CL|XCHG ECX, ESP");
+               compCode (h, 0x87); compCode (h, 0xCC);
+               compCode (h, 0xD3); compCode (h, 0xE3);
+               compCode (h, 0x87); compCode (h, 0xCC);
                compIncD (h);
                break;}
-      case 4: {compDisAsm (h, "MOV  CL,  R11B|SHL R10, CL");
-               compCode (h, 0x44); compCode (h, 0x88); compCode (h, 0xD9);
-               compCode (h, 0x49); compCode (h, 0xD3); compCode (h, 0xE2);
+      case 5: {compDisAsm (h, "XCHG ECX, EBP|SHL  ESP, CL|XCHG ECX, EBP");
+               compCode (h, 0x87); compCode (h, 0xCD);
+               compCode (h, 0xD3); compCode (h, 0xE4);
+               compCode (h, 0x87); compCode (h, 0xCD);
                compIncD (h);
                break;}
-      case 5: {compDisAsm (h, "MOV  CL,  R12B|SHL R11, CL");
-               compCode (h, 0x44); compCode (h, 0x88); compCode (h, 0xE1);
-               compCode (h, 0x49); compCode (h, 0xD3); compCode (h, 0xE3);
+      case 6: {compDisAsm (h, "XCHG ECX, ESI|SHL  EBX, CL|XCHG ECX, ESI");
+               compCode (h, 0x87); compCode (h, 0xCE);
+               compCode (h, 0xD3); compCode (h, 0xE5);
+               compCode (h, 0x87); compCode (h, 0xCE);
                compIncD (h);
                break;}
-      case 6: {compDisAsm (h, "MOV  CL,  R13B|SHL R12, CL");
-               compCode (h, 0x44); compCode (h, 0x88); compCode (h, 0xE9);
-               compCode (h, 0x49); compCode (h, 0xD3); compCode (h, 0xE4);
-               compIncD (h);
-               break;}
-      case 7: {compDisAsm (h, "MOV  CL,  R14B|SHL R13, CL");
-               compCode (h, 0x44); compCode (h, 0x88); compCode (h, 0xF1);
-               compCode (h, 0x49); compCode (h, 0xD3); compCode (h, 0xE5);
+      case 7: {compDisAsm (h, "XCHG ECX, EDI|SHL  ESI, CL|XCHG ECX, EDI");
+               compCode (h, 0x87); compCode (h, 0xCF);
+               compCode (h, 0xD3); compCode (h, 0xE6);
+               compCode (h, 0x87); compCode (h, 0xCF);
                compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompSHL] vD > 7 | vD < 1");}}
@@ -800,39 +728,32 @@ void navmBackendCompSHL (pNavmBackend h)
 void navmBackendCompShlImm (pNavmBackend h, uint8_t val)
   {compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsmImm8 (h, "SHL  RAX, ", val);
-               compCode (h, 0x48); compCode (h, 0xC1); compCode (h, 0xE0);
-               compCode (h, val);
+     {case 1: {compDisAsmImm8 (h, "SHL  EAX, ", val);
+               compCode (h, 0xC1); compCode (h, 0xE0); compCode (h, val);
                compIncD (h);
                break;}
-      case 2: {compDisAsmImm8 (h, "SHL  R8,  ", val);
-               compCode (h, 0x49); compCode (h, 0xC1); compCode (h, 0xE0);
-               compCode (h, val);
+      case 2: {compDisAsmImm8 (h, "SHL  ECX, ", val);
+               compCode (h, 0xC1); compCode (h, 0xE1); compCode (h, val);
                compIncD (h);
                break;}
-      case 3: {compDisAsmImm8 (h, "SHL  R9,  ", val);
-               compCode (h, 0x49); compCode (h, 0xC1); compCode (h, 0xE1);
-               compCode (h, val);
+      case 3: {compDisAsmImm8 (h, "SHL  EDX, ", val);
+               compCode (h, 0xC1); compCode (h, 0xE2); compCode (h, val);
                compIncD (h);
                break;}
-      case 4: {compDisAsmImm8 (h, "SHL  R10, ", val);
-               compCode (h, 0x49); compCode (h, 0xC1); compCode (h, 0xE2);
-               compCode (h, val);
+      case 4: {compDisAsmImm8 (h, "SHL  EBX, ", val);
+               compCode (h, 0xC1); compCode (h, 0xE3); compCode (h, val);
                compIncD (h);
                break;}
-      case 5: {compDisAsmImm8 (h, "SHL  R11, ", val);
-               compCode (h, 0x49); compCode (h, 0xC1); compCode (h, 0xE3);
-               compCode (h, val);
+      case 5: {compDisAsmImm8 (h, "SHL  ESP, ", val);
+               compCode (h, 0xC1); compCode (h, 0xE4); compCode (h, val);
                compIncD (h);
                break;}
-      case 6: {compDisAsmImm8 (h, "SHL  R12, ", val);
-               compCode (h, 0x49); compCode (h, 0xC1); compCode (h, 0xE4);
-               compCode (h, val);
+      case 6: {compDisAsmImm8 (h, "SHL  EBP, ", val);
+               compCode (h, 0xC1); compCode (h, 0xE5); compCode (h, val);
                compIncD (h);
                break;}
-      case 7: {compDisAsmImm8 (h, "SHL  R13, ", val);
-               compCode (h, 0x49); compCode (h, 0xC1); compCode (h, 0xE5);
-               compCode (h, val);
+      case 7: {compDisAsmImm8 (h, "SHL  ESI, ", val);
+               compCode (h, 0xC1); compCode (h, 0xE6); compCode (h, val);
                compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompShlImm] vD > 7 | vD < 1");}}
@@ -840,112 +761,102 @@ void navmBackendCompShlImm (pNavmBackend h, uint8_t val)
 void navmBackendCompSHR (pNavmBackend h)
   {compDecD (h); compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsm (h, "MOV  CL,  R8B|SHR RAX, CL");
-               compCode (h, 0x44); compCode (h, 0x88); compCode (h, 0xC1);
-               compCode (h, 0x48); compCode (h, 0xD3); compCode (h, 0xE8);
+     {case 1: {compDisAsm (h, "SHR EAX, CL");
+               compCode (h, 0xD3); compCode (h, 0xE8); compIncD (h);
+               break;}
+      case 2: {compDisAsm (h, "XCHG ECX, EDX|SHR  EDX, CL|XCHG ECX, EDX");
+               compCode (h, 0x87); compCode (h, 0xCA); 
+               compCode (h, 0xD3); compCode (h, 0xEA);
+               compCode (h, 0x87); compCode (h, 0xCA);
                compIncD (h);
                break;}
-      case 2: {compDisAsm (h, "MOV  CL,  R9B|SHR R8, CL");
-               compCode (h, 0x44); compCode (h, 0x88); compCode (h, 0xC9);
-               compCode (h, 0x49); compCode (h, 0xD3); compCode (h, 0xE8);
+      case 3: {compDisAsm (h, "XCHG ECX, EBX|SHR  EDX, CL|XCHG ECX, EBX");
+               compCode (h, 0x87); compCode (h, 0xCB);
+               compCode (h, 0xD3); compCode (h, 0xEA);
+               compCode (h, 0x87); compCode (h, 0xCB);
                compIncD (h);
                break;}
-      case 3: {compDisAsm (h, "MOV  CL,  R10B|SHR R9, CL");
-               compCode (h, 0x44); compCode (h, 0x88); compCode (h, 0xD1);
-               compCode (h, 0x49); compCode (h, 0xD3); compCode (h, 0xE9);
+      case 4: {compDisAsm (h, "XCHG ECX, ESP|SHR  EBX, CL|XCHG ECX, ESP");
+               compCode (h, 0x87); compCode (h, 0xCC);
+               compCode (h, 0xD3); compCode (h, 0xEB);
+               compCode (h, 0x87); compCode (h, 0xCC);
                compIncD (h);
                break;}
-      case 4: {compDisAsm (h, "MOV  CL,  R11B|SHR R10, CL");
-               compCode (h, 0x44); compCode (h, 0x88); compCode (h, 0xD9);
-               compCode (h, 0x49); compCode (h, 0xD3); compCode (h, 0xEA);
+      case 5: {compDisAsm (h, "XCHG ECX, EBP|SHR  ESP, CL|XCHG ECX, EBP");
+               compCode (h, 0x87); compCode (h, 0xCD);
+               compCode (h, 0xD3); compCode (h, 0xEC);
+               compCode (h, 0x87); compCode (h, 0xCD);
                compIncD (h);
                break;}
-      case 5: {compDisAsm (h, "MOV  CL,  R12B|SHR R11, CL");
-               compCode (h, 0x44); compCode (h, 0x88); compCode (h, 0xE1);
-               compCode (h, 0x49); compCode (h, 0xD3); compCode (h, 0xEB);
+      case 6: {compDisAsm (h, "XCHG ECX, ESI|SHR  EBX, CL|XCHG ECX, ESI");
+               compCode (h, 0x87); compCode (h, 0xCE);
+               compCode (h, 0xD3); compCode (h, 0xED);
+               compCode (h, 0x87); compCode (h, 0xCE);
                compIncD (h);
                break;}
-      case 6: {compDisAsm (h, "MOV  CL,  R13B|SHR R12, CL");
-               compCode (h, 0x44); compCode (h, 0x88); compCode (h, 0xE9);
-               compCode (h, 0x49); compCode (h, 0xD3); compCode (h, 0xEC);
+      case 7: {compDisAsm (h, "XCHG ECX, EDI|SHR  ESI, CL|XCHG ECX, EDI");
+               compCode (h, 0x87); compCode (h, 0xCF);
+               compCode (h, 0xD3); compCode (h, 0xEE);
+               compCode (h, 0x87); compCode (h, 0xCF);
                compIncD (h);
                break;}
-      case 7: {compDisAsm (h, "MOV  CL,  R14B|SHR R13, CL");
-               compCode (h, 0x44); compCode (h, 0x88); compCode (h, 0xF1);
-               compCode (h, 0x49); compCode (h, 0xD3); compCode (h, 0xED);
-               compIncD (h);
-               break;}
-      default: errorHalt ("[navmBackendCompSHR] vD > 7 | vD < 1");}}
+      default: errorHalt ("[navmBackendCompSHL] vD > 7 | vD < 1");}}
 
 void navmBackendCompShrImm (pNavmBackend h, uint8_t val)
   {compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsmImm8 (h, "SHR  RAX, ", val);
-               compCode (h, 0x48); compCode (h, 0xC1); compCode (h, 0xE8);
-               compCode (h, val);
+     {case 1: {compDisAsmImm8 (h, "SHR  EAX, ", val);
+               compCode (h, 0xC1); compCode (h, 0xE8); compCode (h, val);
                compIncD (h);
                break;}
-      case 2: {compDisAsmImm8 (h, "SHR  R8,  ", val);
-               compCode (h, 0x49); compCode (h, 0xC1); compCode (h, 0xE8);
-               compCode (h, val);
+      case 2: {compDisAsmImm8 (h, "SHR  ECX, ", val);
+               compCode (h, 0xC1); compCode (h, 0xE9); compCode (h, val);
                compIncD (h);
                break;}
-      case 3: {compDisAsmImm8 (h, "SHR  R9,  ", val);
-               compCode (h, 0x49); compCode (h, 0xC1); compCode (h, 0xE9);
-               compCode (h, val);
+      case 3: {compDisAsmImm8 (h, "SHR  EDX, ", val);
+               compCode (h, 0xC1); compCode (h, 0xEA); compCode (h, val);
                compIncD (h);
                break;}
-      case 4: {compDisAsmImm8 (h, "SHR  R10, ", val);
-               compCode (h, 0x49); compCode (h, 0xC1); compCode (h, 0xEA);
-               compCode (h, val);
+      case 4: {compDisAsmImm8 (h, "SHR  EBX, ", val);
+               compCode (h, 0xC1); compCode (h, 0xEB); compCode (h, val);
                compIncD (h);
                break;}
-      case 5: {compDisAsmImm8 (h, "SHR  R11, ", val);
-               compCode (h, 0x49); compCode (h, 0xC1); compCode (h, 0xEB);
-               compCode (h, val);
+      case 5: {compDisAsmImm8 (h, "SHR  ESP, ", val);
+               compCode (h, 0xC1); compCode (h, 0xEC); compCode (h, val);
                compIncD (h);
                break;}
-      case 6: {compDisAsmImm8 (h, "SHR  R12, ", val);
-               compCode (h, 0x49); compCode (h, 0xC1); compCode (h, 0xEC);
-               compCode (h, val);
+      case 6: {compDisAsmImm8 (h, "SHR  EBP, ", val);
+               compCode (h, 0xC1); compCode (h, 0xED); compCode (h, val);
                compIncD (h);
                break;}
-      case 7: {compDisAsmImm8 (h, "SHR  R13, ", val);
-               compCode (h, 0x49); compCode (h, 0xC1); compCode (h, 0xED);
-               compCode (h, val);
+      case 7: {compDisAsmImm8 (h, "SHR  ESI, ", val);
+               compCode (h, 0xC1); compCode (h, 0xEE); compCode (h, val);
                compIncD (h);
                break;}
-      default: errorHalt ("[navmBackendCompShrImm] vD > 7 | vD < 1");}}
+      default: errorHalt ("[navmBackendCompShlImm] vD > 7 | vD < 1");}}
 
 void navmBackendCompDUP (pNavmBackend h)
   {switch (h->vD)
-     {case 1: {compDisAsm (h, "MOV  R8,  RAX");
-               compCode (h, 0x49); compCode (h, 0x89); compCode (h, 0xC0);
-               compIncD (h);
+     {case 1: {compDisAsm (h, "MOV  ECX, EAX");
+               compCode (h, 0x89); compCode (h, 0xC1); compIncD (h);
                break;}
-      case 2: {compDisAsm (h, "MOV  R9,  R8");
-               compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0xC1);
-               compIncD (h);
+      case 2: {compDisAsm (h, "MOV  EDX, ECX");
+               compCode (h, 0x89); compCode (h, 0xCA); compIncD (h);
                break;}
-      case 3: {compDisAsm (h, "MOV  R10, R9");
-               compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0xCA);
-               compIncD (h);
+      case 3: {compDisAsm (h, "MOV  EBX, EDX");
+               compCode (h, 0x89); compCode (h, 0xD3); compIncD (h);
                break;}
-      case 4: {compDisAsm (h, "MOV  R11, R10");
-               compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0xD3);
-               compIncD (h);
+      case 4: {compDisAsm (h, "MOV  ESP, EBX");
+               compCode (h, 0x89); compCode (h, 0xDC); compIncD (h);
                break;}
-      case 5: {compDisAsm (h, "MOV  R12, R11");
-               compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0xDC);
-               compIncD (h);
+      case 5: {compDisAsm (h, "MOV  EBP, ESP");
+               compCode (h, 0x89); compCode (h, 0xE5); compIncD (h);
                break;}
-      case 6: {compDisAsm (h, "MOV  R13, R12");
-               compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0xE5);
-               compIncD (h);
+      case 6: {compDisAsm (h, "MOV  ESI, EBP");
+               compCode (h, 0x89); compCode (h, 0xF4); compIncD (h);
                break;}
-      case 7: {compDisAsm (h, "MOV  R14, R13");
-               compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0xEE);
-               compIncD (h);
+      case 7: {compDisAsm (h, "MOV  EDI, ESI");
+               compCode (h, 0x89); compCode (h, 0xFE); compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompDUP] vD > 7 | vD < 1");}}
 
@@ -953,26 +864,26 @@ void navmBackendCompDRP (pNavmBackend h) {compDecD (h);}
 
 void navmBackendCompSWP (pNavmBackend h)
   {switch (h->vD)
-     {case 1: {compDisAsm (h, "XCHG RAX, R8");
-               compCode (h, 0x49); compCode (h, 0x90);
+     {case 1: {compDisAsm (h, "XCHG ECX, EAX");
+               compCode (h, 0x91);
                break;}
-      case 2: {compDisAsm (h, "XCHG R8,  R9");
-               compCode (h, 0x4D); compCode (h, 0x87); compCode (h, 0xC8);
+      case 2: {compDisAsm (h, "XCHG EDX, ECX");
+               compCode (h, 0x87); compCode (h, 0xD1);
                break;}
-      case 3: {compDisAsm (h, "XCHG R9,  R10");
-               compCode (h, 0x4D); compCode (h, 0x87); compCode (h, 0xD1);
+      case 3: {compDisAsm (h, "XCHG EBX, EDX");
+               compCode (h, 0x87); compCode (h, 0xDA);
                break;}
-      case 4: {compDisAsm (h, "XCHG R10, R11");
-               compCode (h, 0x4D); compCode (h, 0x87); compCode (h, 0xDA);
+      case 4: {compDisAsm (h, "XCHG EBX, EDX");
+               compCode (h, 0x87); compCode (h, 0xE3);
                break;}
-      case 5: {compDisAsm (h, "XCHG R11, R12");
-               compCode (h, 0x4D); compCode (h, 0x87); compCode (h, 0xE3);
+      case 5: {compDisAsm (h, "XCHG ESP, EBX");
+               compCode (h, 0x87); compCode (h, 0xEC);
                break;}
-      case 6: {compDisAsm (h, "XCHG R12, R13");
-               compCode (h, 0x4D); compCode (h, 0x87); compCode (h, 0xEC);
+      case 6: {compDisAsm (h, "XCHG ESI, ESP");
+               compCode (h, 0x87); compCode (h, 0xF5);
                break;}
-      case 7: {compDisAsm (h, "XCHG R13, R14");
-               compCode (h, 0x4D); compCode (h, 0x87); compCode (h, 0xF5);
+      case 7: {compDisAsm (h, "XCHG EDI, ESI");
+               compCode (h, 0x87); compCode (h, 0xFE);
                break;}
       default: errorHalt ("[navmBackendCompSWP] vD > 7 | vD < 1");}}
 

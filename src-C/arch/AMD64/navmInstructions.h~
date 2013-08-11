@@ -218,6 +218,7 @@ void navmBackendCompLD (pNavmBackend h)
    switch (h->vD)
      {case 1: {compDisAsm (h, "MOV  RAX, [R8]");
                compCode (h, 0x49); compCode (h, 0x8B); compCode (h, 0x00);
+               compDecD (h);
                break;}
       case 2: {compDisAsm (h, "MOV  R8,  [R9]");
                compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x01);

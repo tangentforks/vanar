@@ -216,71 +216,67 @@ void navmBackendCompLI (pNavmBackend h, sWord val)
 void navmBackendCompLD (pNavmBackend h)
   {compDecD (h); compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsm (h, "MOV  RAX, [R8]");
-               compCode (h, 0x49); compCode (h, 0x8B); compCode (h, 0x00);
-               compDecD (h);
+     {case 1: {compDisAsm (h, "MOV  RAX, [RAX]");
+               compCode (h, 0x48); compCode (h, 0x8B); compCode (h, 0x00);
+               compIncD (h);
                break;}
-      case 2: {compDisAsm (h, "MOV  R8,  [R9]");
-               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x01);
-               compDecD (h);
+      case 2: {compDisAsm (h, "MOV  R8,  [R8]");
+               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x00);
+               compIncD (h);
                break;}
-      case 3: {compDisAsm (h, "MOV  R9,  [R10]");
-               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x0A);
-               compDecD (h);
+      case 3: {compDisAsm (h, "MOV  R9,  [R9]");
+               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x09);
+               compIncD (h);
                break;}
-      case 4: {compDisAsm (h, "MOV  R10, [R11]");
-               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x13);
-               compDecD (h);
+      case 4: {compDisAsm (h, "MOV  R10, [R10]");
+               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x12);
+               compIncD (h);
                break;}
-      case 5: {compDisAsm (h, "MOV  R11, [R12]");
-               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x1C);
+      case 5: {compDisAsm (h, "MOV  R11, [R11]");
+               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x1B);
                compCode (h, 0x24);
-               compDecD (h);
+               compIncD (h);
                break;}
-      case 6: {compDisAsm (h, "MOV  R12, [R13]");
-               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x65);
-               compCode (h, 0x00); compDecD (h);
+      case 6: {compDisAsm (h, "MOV  R12, [R12]");
+               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x24);
+               compCode (h, 0x24); compIncD (h);
                break;}
-      case 7: {compDisAsm (h, "MOV  R13, [R14]");
-               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x2E);
-               compDecD (h);
+      case 7: {compDisAsm (h, "MOV  R13, [R13]");
+               compCode (h, 0x4D); compCode (h, 0x8B); compCode (h, 0x6D);
+               compCode (h, 0x00); compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompLD] vD > 7 | vD < 1");}}
 
 void navmBackendCompST (pNavmBackend h)
   {compDecD (h); compDecD (h);
    switch (h->vD)
-     {case 1: {compDisAsm (h, "MOV  [R8],  RAX");
-               compCode (h, 0x49); compCode (h, 0x89); compCode (h, 0x00);
-               compIncD (h);
-               break;}
-      case 2: {compDisAsm (h, "MOV  [R9],  R8");
+     {case 2: {compDisAsm (h, "MOV  [R9],  R8");
                compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0x01);
-               compIncD (h);
+               compDecD (h);       compDecD (h);
                break;}
       case 3: {compDisAsm (h, "MOV  [R10], R9");
                compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0x0A);
-               compIncD (h);
+               compDecD (h);       compDecD (h);
                break;}
       case 4: {compDisAsm (h, "MOV  [R11], R10");
                compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0x13);
-               compIncD (h);
+               compDecD (h);       compDecD (h);
                break;}
       case 5: {compDisAsm (h, "MOV  [R12], R11");
                compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0x1C);
                compCode (h, 0x24); compDecD (h);
-               compIncD (h);
+               compDecD (h);       compDecD (h);
                break;}
       case 6: {compDisAsm (h, "MOV  [R13], R12");
                compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0x65);
                compCode (h, 0x00); compDecD (h);
-               compIncD (h);
+               compDecD (h);       compDecD (h);
                break;}
       case 7: {compDisAsm (h, "MOV  [R14], R13");
                compCode (h, 0x4D); compCode (h, 0x89); compCode (h, 0x2E);
-               compIncD (h);
+               compDecD (h);       compDecD (h);
                break;}
-      default: errorHalt ("[navmBackendCompST] vD > 7 | vD < 1");}}
+      default: errorHalt ("[navmBackendCompST] vD > 7 | vD < 2");}}
 
 void navmBackendCompCP (pNavmBackend h)
   {compDecD (h); compDecD (h);

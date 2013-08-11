@@ -1,0 +1,56 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5                                  
+     6 00000000 0F6EC2                  movd mm0, edx
+     7 00000003 31D2                    xor  edx, edx
+     8 00000005 F7F9                    idiv ecx
+     9 00000007 0F7EC2                  movd edx, mm0
+    10                                  
+    11 0000000A 0F6EC2                  movd mm0, edx
+    12 0000000D 0F6EC8                  movd mm1, eax
+    13 00000010 0F6ED3                  movd mm2, ebx
+    14 00000013 89C8                    mov  eax, ecx
+    15 00000015 89D3                    mov  ebx, edx
+    16 00000017 31D2                    xor  edx, edx
+    17 00000019 F7FB                    idiv ebx
+    18 0000001B 89C1                    mov  ecx, eax
+    19 0000001D 0F7ED3                  movd ebx, mm2
+    20 00000020 0F7EC8                  movd eax, mm1
+    21 00000023 0F7EC2                  movd edx, mm0
+    22                                  
+    23 00000026 0F6EC0                  movd mm0, eax
+    24 00000029 89D0                    mov  eax, edx
+    25 0000002B 31D2                    xor  edx, edx
+    26 0000002D F7FB                    idiv ebx
+    27 0000002F 89C2                    mov  edx, eax
+    28 00000031 0F7EC0                  movd eax, mm0
+    29                                  
+    30 00000034 0F6EC0                  movd mm0, eax
+    31 00000037 89D8                    mov  eax, ebx
+    32 00000039 31D2                    xor  edx, edx
+    33 0000003B F7FC                    idiv esp
+    34 0000003D 89C3                    mov  ebx, eax
+    35 0000003F 0F7EC0                  movd eax, mm0
+    36                                  
+    37 00000042 0F6EC0                  movd mm0, eax
+    38 00000045 89E0                    mov  eax, esp
+    39 00000047 31D2                    xor  edx, edx
+    40 00000049 F7FD                    idiv ebp
+    41 0000004B 89C4                    mov  esp, eax
+    42 0000004D 0F7EC0                  movd eax, mm0
+    43                                  
+    44 00000050 0F6EC0                  movd mm0, eax
+    45 00000053 89E8                    mov  eax, ebp
+    46 00000055 31D2                    xor  edx, edx
+    47 00000057 F7FE                    idiv esi
+    48 00000059 89C5                    mov  ebp, eax
+    49 0000005B 0F7EC0                  movd eax, mm0
+    50                                  
+    51 0000005E 0F6EC0                  movd mm0, eax
+    52 00000061 89F0                    mov  eax, esi
+    53 00000063 31D2                    xor  edx, edx
+    54 00000065 F7FF                    idiv edi
+    55 00000067 89C6                    mov  esi, eax
+    56 00000069 0F7EC0                  movd eax, mm0

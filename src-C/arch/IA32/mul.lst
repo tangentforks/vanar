@@ -1,0 +1,12 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 0FAFC1                  imul eax, ecx 
+     6 00000003 0FAFCA                  imul ecx, edx
+     7 00000006 0FAFD3                  imul edx, ebx 
+     8 00000009 0FAFDC                  imul ebx, esp
+     9 0000000C 0FAFE5                  imul esp, ebp  
+    10 0000000F 0FAFEE                  imul ebp, esi 
+    11 00000012 0FAFF7                  imul esi, edi
+    12                                   

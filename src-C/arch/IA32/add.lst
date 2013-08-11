@@ -1,0 +1,12 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 01C8                    add eax, ecx 
+     6 00000002 01D1                    add ecx, edx
+     7 00000004 01DA                    add edx, ebx 
+     8 00000006 01E3                    add ebx, esp
+     9 00000008 01EC                    add esp, ebp  
+    10 0000000A 01F5                    add ebp, esi 
+    11 0000000C 01FE                    add esi, edi
+    12                                   

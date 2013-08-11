@@ -1,0 +1,11 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 91                      xchg ecx, eax
+     6 00000001 87D1                    xchg edx, ecx
+     7 00000003 87DA                    xchg ebx, edx
+     8 00000005 87E3                    xchg esp, ebx
+     9 00000007 87EC                    xchg ebp, esp
+    10 00000009 87F5                    xchg esi, ebp
+    11 0000000B 87FE                    xchg edi, esi
