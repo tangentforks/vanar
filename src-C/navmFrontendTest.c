@@ -34,5 +34,7 @@ int main (void)
      //navmFrontendDynScalRegShed (test, testOpcode);
      //navmFrontendDynScal        (test, testOpcode);
 
+     navmBackendExecute (test, 0);
+
    navmFreeBackendHandler (test);
    return 0;}

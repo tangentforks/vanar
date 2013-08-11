@@ -1,0 +1,42 @@
+[file_prefs]
+final_new_line=true
+ensure_convert_new_lines=false
+strip_trailing_spaces=false
+replace_tabs=false
+
+[indentation]
+indent_width=4
+indent_type=0
+indent_hard_tab_width=8
+detect_indent=false
+detect_indent_width=false
+indent_mode=2
+
+[project]
+name=navm
+base_path=/home/claude/Projekte/navm
+description=
+file_patterns=
+
+[long line marker]
+long_line_behaviour=1
+long_line_column=80
+
+[files]
+current_page=2
+FILE_NAME_0=0;C;0;16;0;1;0;%2Fhome%2Fclaude%2FProjekte%2Fnavm%2Fsrc-C%2FnavmTypes64.h;0;4
+FILE_NAME_1=4791;C;0;16;0;1;0;%2Fhome%2Fclaude%2FProjekte%2Fnavm%2Fsrc-C%2Farch%2FAMD64%2FnavmInstructions.h;0;4
+FILE_NAME_2=15204;C;0;16;0;1;0;%2Fhome%2Fclaude%2FProjekte%2Fnavm%2Fsrc-C%2FnavmFrontend.h;0;4
+FILE_NAME_3=557;C;0;16;0;1;0;%2Fhome%2Fclaude%2FProjekte%2Fnavm%2Fsrc-C%2FnavmFrontendTest.c;0;4
+
+[VTE]
+last_dir=/home/claude
+
+[build-menu]
+CFT_01_LB=_Erstellen
+CFT_01_CM=gcc -Wall -O2 -o "%e" "%f"
+CFT_01_WD=
+filetypes=C;
+CFT_00_LB=_Kompilieren
+CFT_00_CM=gcc -Wall -O2 -c "%f"
+CFT_00_WD=

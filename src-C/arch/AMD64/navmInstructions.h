@@ -14,7 +14,7 @@
                following conditions are met:
 
                1. Redistributions of source code must retain the above
-                  copyright notice, this list of conditions and the   
+                  copyright notice, this list of conditions and the
                   following disclaimer.
 
                2. Redistributions in binary form must reproduce the above
@@ -29,16 +29,16 @@
 
                THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
                CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-               INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF   
+               INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
                MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-               DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR   
+               DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
                CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
                SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
                NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
                LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
                HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
                CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-               OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS  
+               OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
                SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   COMPILER:    GCC V4 ENGINE
   STANDARD:    ANSI C 1989
@@ -51,32 +51,32 @@
 
 void errorHalt (char *msg)
   {fprintf (stderr, "%s\n", msg); exit (0);}
-   
+
 void compCode (pNavmBackend handle, uByte code)
   {if (handle->oMem < handle->cMemSize)
-        *(handle->pMem + handle->oMem++) = (uByte) code;
+        handle->pMem[handle->oMem++] = (uByte) code;
    else errorHalt ("[compByte] oMem > cMemSize");}
 
 void compImm64 (pNavmBackend handle, sWord value)
   {uImm imm; imm.sImm = value;
    if (handle->oMem < handle->cMemSize)
-       {*(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[0];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[1];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[2];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[3];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[4];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[5];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[6];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[7];}
+       {handle->pMem[handle->oMem++] = (uByte) imm.aSlices[0];
+        handle->pMem[handle->oMem++] = (uByte) imm.aSlices[1];
+        handle->pMem[handle->oMem++] = (uByte) imm.aSlices[2];
+        handle->pMem[handle->oMem++] = (uByte) imm.aSlices[3];
+        handle->pMem[handle->oMem++] = (uByte) imm.aSlices[4];
+        handle->pMem[handle->oMem++] = (uByte) imm.aSlices[5];
+        handle->pMem[handle->oMem++] = (uByte) imm.aSlices[6];
+        handle->pMem[handle->oMem++] = (uByte) imm.aSlices[7];}
    else errorHalt ("[compImm64] oMem > cMemSize");}
 
 void compImm32 (pNavmBackend handle, int32_t value)
   {uImm32 imm; imm.sImm = value;
    if (handle->oMem < handle->cMemSize)
-       {*(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[0];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[1];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[2];
-        *(handle->pMem + handle->oMem++) = (uByte) imm.aSlices[3];}
+       {handle->pMem[handle->oMem++] = (uByte) imm.aSlices[0];
+        handle->pMem[handle->oMem++] = (uByte) imm.aSlices[1];
+        handle->pMem[handle->oMem++] = (uByte) imm.aSlices[2];
+        handle->pMem[handle->oMem++] = (uByte) imm.aSlices[3];}
    else errorHalt ("[compImm32] oMem > cMemSize");}
 
 void compIncD (pNavmBackend handle) {handle->vD++;}
@@ -168,7 +168,7 @@ const uByte  cNavmBackendMinImm   = 1;
 const uByte  cNavmBackendMaxImm   = 4;
 const char  *cNavmBackendCpuType  = "CISC";
 const uByte  cNavmBackendArchType = navmArchOutOfOrderRegShed;
-  
+
 /* -------------------------------------------------------------------------
    INFO: Following functions representing the 16 base instructions of the
    NAVM Level 1 instruction set. All declarations are fixed and must exist
@@ -494,7 +494,7 @@ void navmBackendCompDIV (pNavmBackend h)
 
 void navmBackendCompDivImm (pNavmBackend h, sWord val)
   {errorHalt ("[navmBackendCompDivImm] !");}
-  
+
 void navmBackendCompMUL (pNavmBackend h)
   {compDecD (h); compDecD (h);
    switch (h->vD)
@@ -527,7 +527,7 @@ void navmBackendCompMUL (pNavmBackend h)
                compCode (h, 0xEE); compIncD (h);
                break;}
       default: errorHalt ("[navmBackendCompMUL] vD > 7 | vD < 1");}}
-                                     
+
 void navmBackendCompMulImm (pNavmBackend h, int32_t val)
   {compDecD (h);
    switch (h->vD)
@@ -1005,3 +1005,33 @@ void navmBackendCompSWP (pNavmBackend h)
 
 void navmBackendCompROT (pNavmBackend h)
   {}
+
+void  navmBackendExecute (pNavmBackend h, uWord ofs)
+  {navmBackendTempAdr = h->pMem + ofs;
+
+   asm volatile (".byte 0xCC");
+
+   asm volatile ("push %rcx");
+   asm volatile ("push %rdx");
+   asm volatile ("push %r8");
+   asm volatile ("push %r9");
+   asm volatile ("push %r10");
+   asm volatile ("push %r11");
+   asm volatile ("push %r12");
+   asm volatile ("push %r13");
+   asm volatile ("push %r14");
+   asm volatile ("push %r15");
+
+   asm volatile ("mov  navmBackendTempAdr, %rax");
+   asm volatile ("call *%rax");
+
+   asm volatile ("pop  %r15");
+   asm volatile ("pop  %r14");
+   asm volatile ("pop  %r13");
+   asm volatile ("pop  %r12");
+   asm volatile ("pop  %r11");
+   asm volatile ("pop  %r10");
+   asm volatile ("pop  %r9");
+   asm volatile ("pop  %r8");
+   asm volatile ("pop  %rdx");
+   asm volatile ("pop  %rcx");}

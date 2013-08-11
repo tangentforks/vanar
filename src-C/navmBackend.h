@@ -51,7 +51,7 @@
    INFO: This is the handler structure for each specific backend. It holds
          the whole state for the single-pass backend compiler. Please note
          that all optimizations are handled by the frontend interface.
-         
+
    STATE VARIABLES: pMem     - pointer into machine-code array
                     oMem     - offset into first free address of mcode array
                     cMemSize - size of machine-code array [byte]
@@ -61,19 +61,21 @@
                     vLI      - number of following LI instructions
                                (needed for code-optimization)
    ------------------------------------------------------------------------- */
-                    
+
 typedef struct
-  {pWord pMem; uWord oMem; uWord cMemSize; uWord vD; uWord vR; bool fDisAsm;
+  {pByte pMem; uWord oMem; uWord cMemSize; uWord vD; uWord vR; bool fDisAsm;
    uByte vLI;} hNavmBackend;
 
 typedef hNavmBackend *pNavmBackend;
-  
+
+pByte navmBackendTempAdr;
+
 /* -------------------------------------------------------------------------
    INFO: Function for initialising a new hNavmBackend handler
-   
+
    PARAMETERS: codeArraySize - size of the machine-code array to allocate
    RETURN:     pNavmBackend  - pointer to new initialisated handler
-   
+
    INTERNAL VARIABLES: retSize - size of the handler structure to be created
                        ret     - pointer to newly created handler structure
    ------------------------------------------------------------------------- */
@@ -81,16 +83,16 @@ typedef hNavmBackend *pNavmBackend;
 void navmInitBackendHandlerExit (void)
   {fprintf (stderr, "[navmInitBackendHandler] pMem = NIL!\n");
    exit (0);}
-   
+
 pNavmBackend navmInitBackendHandler (uWord codeArraySize)
   {uWord retSize = sizeof (hNavmBackend);
    pNavmBackend ret = (pNavmBackend) malloc (retSize);
-     ret->pMem     = (pWord) malloc (codeArraySize);
+     ret->pMem     = (pByte) malloc (codeArraySize);
      ret->oMem     = 0;
      ret->cMemSize = codeArraySize;
      ret->vD       = 1;
      ret->vR       = 1;
-     mprotect (ret, codeArraySize, PROT_READ|PROT_WRITE|PROT_EXEC);
+     mprotect (ret->pMem, codeArraySize, PROT_READ|PROT_WRITE|PROT_EXEC);
    if (ret->pMem == NULL) navmInitBackendHandlerExit ();
    return ret;}
 
