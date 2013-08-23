@@ -1,0 +1,11 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 4C31C0                  xor rax, r8
+     6 00000003 4D31C8                  xor r8,  r9
+     7 00000006 4D31D1                  xor r9,  r10
+     8 00000009 4D31DA                  xor r10, r11
+     9 0000000C 4D31E3                  xor r11, r12
+    10 0000000F 4D31EC                  xor r12, r13
+    11 00000012 4D31F5                  xor r13, r14

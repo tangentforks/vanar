@@ -1,0 +1,12 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 FFD0                    call rax
+     6 00000002 41FFD0                  call r8
+     7 00000005 41FFD1                  call r9
+     8 00000008 41FFD2                  call r10
+     9 0000000B 41FFD3                  call r11
+    10 0000000E 41FFD4                  call r12
+    11 00000011 41FFD5                  call r13
+    12 00000014 41FFD6                  call r14

@@ -1,0 +1,10 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 4989C1                  mov r9,  rax
+     6 00000003 4D89C2                  mov r10, r8
+     7 00000006 4D89CB                  mov r11, r9
+     8 00000009 4D89D4                  mov r12, r10
+     9 0000000C 4D89DD                  mov r13, r11
+    10 0000000F 4D89E6                  mov r14, r12

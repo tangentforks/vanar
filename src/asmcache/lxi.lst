@@ -1,0 +1,20 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 488B03                  mov rax, [rbx]
+     6 00000003 48FFC3                  inc rbx
+     7 00000006 4C8B03                  mov r8,  [rbx]
+     8 00000009 48FFC3                  inc rbx
+     9 0000000C 4C8B0B                  mov r9,  [rbx]
+    10 0000000F 48FFC3                  inc rbx
+    11 00000012 4C8B13                  mov r10, [rbx]
+    12 00000015 48FFC3                  inc rbx
+    13 00000018 4C8B1B                  mov r11, [rbx]
+    14 0000001B 48FFC3                  inc rbx
+    15 0000001E 4C8B23                  mov r12, [rbx]
+    16 00000021 48FFC3                  inc rbx
+    17 00000024 4C8B2B                  mov r13, [rbx]
+    18 00000027 48FFC3                  inc rbx
+    19 0000002A 4C8B33                  mov r14, [rbx]
+    20 0000002D 48FFC3                  inc rbx
