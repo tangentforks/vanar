@@ -1,5 +1,6 @@
 # -----------------------------------------------------------------------------
 # PROJECT:     navm
+#
 # DESCRIPTION: NAVM is an interpreter for the AVM Level 2 ISA. It is a MISC
 #              oriented instruction-set architecture specially designed for
 #              efficient interpretation with minimal ressource usage. AVM
@@ -8,24 +9,188 @@
 #              way. It also featuring a very fast interpretation engine in
 #              combination with a higly effective AOT compiler, generating
 #              optimizated machine-code for common CPU architectures.  
+#
 # AUTHOR:      Matthias Schirm
 # COPYRIGHT:   (C) 2103 Matthias Schirm
-# LICENCE:     BSD, see licence.txt
-# MODULE:      Frontend interface of the compiler
+#
+# LICENCE:     BSD STYLE, SEE LICENCE.TXT
+#
+#              Copyright (c) 2013, Matthias Schirm
+#              All rights reserved.
+#
+#              Redistribution and use in source and binary forms, with or
+#              without modification, are permitted provided that the
+#              following conditions are met:
+#
+#              1. Redistributions of source code must retain the above
+#                 copyright notice, this list of conditions and the
+#                 following disclaimer.
+#
+#              2. Redistributions in binary form must reproduce the above
+#                 copyright notice, this list of conditions and the
+#                 following disclaimer in the documentation and/or other
+#                 materials provided with the distribution.
+#
+#              3. Neither the name of the author nor the names of its
+#                 contributors may be used to endorse or promote products
+#                 derived from this software without specific prior
+#                 written permission.
+#
+#              THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+#              CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#              INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#              MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#              DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+#              CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#              SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+#              NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+#              LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+#              HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+#              CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+#              OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+#              SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+# MODULE:      Platform independent interface of the compiler and its
+#              optimization routines
+#
+# HISTORY:     [2013.8 .8 ] first version
+#              [2013.8 .12] bug fixes and testing
+#              [2013.8. 25] further versions of Nimrod shall handle space
+#                           delimitered parameter lists as tuples, reformatted
+#                           the source code as preparation for further compiler
+#                           versions
+#
+# TO-DO:       More error-checking and testing
+#              Better documentation
 # -----------------------------------------------------------------------------
 
 import navmBackend, navmInstructions, unsigned, strUtils
 
-# encoding for all basic AVM Level 2 instructions
+# ---------------------------------------------------------------tNavmFrontend-
+# DESCRIPTION: The frontend object encapsulate all state variables for the
+#              code optimization routines. Please note that these compiler is
+#              part of an interpretive runtime envirionment for the AVM Level
+#              2 ISA and integrated into it though the CI and I instructions
+#              which handle instruction (re)compilation. One reason therefor
+#              is, that this way the dynamic state of the interpretive
+#              environment is reusable for code-generation and optimization.
+#              Other reasons are FFI seperation which minimize code complexity
+#              and better ressource usage
+#
+# BUGS:        [2013.8 .23] none found
+#
+# TO-DO:       Implement better exception handling
+#              implement alternative to addIns which uses a variadic record
+#              as higher-level abstraction of the encoding scheme
+# -----------------------------------------------------------------------------
+# VARIABLES:
+#
+#      fDisAsm - This flag is setted true if code-generation should output
+#                a disassembly beside compilation to stdout
+#           vA - A variable for storing the actual top-of-stack value at
+#                compilation. Because AVM code grant constant behaviour for
+#                most values, the compiler can benefit from dynamic-folding
+#                as optimization to large extend. For this, the actual top-
+#                of-stack value is simply calculated at compile-time so
+#                instead of compiling code-sequences to calculate constant
+#                values these are replaced with there precalculated result
+#       sVmMem - AVM code ist stored as sequence of word-sized integers
+#                (tNavmSCell) to avoid manual memory managment
+#       oVmMem - Offset into sVmCode as marker for the actually compiled
+#                opcode-bundle
+#
+# INTERFACE:
+#
+#   eNavmIn* {.pure.} = enum
+#     enumeration of all 32 basic AVM instructions for easier assemblation
+#   eNavmOp* {.pure.} = enum
+#     enumeration of all 1024 opcodes (2x instruction bundling). Please note
+#     these opcodes are unit of execution, not single instructions! The
+#     interpreter execute up to 12 opcodes, each consisting of two fused
+#     instructions (software pipeline, max. 24 instructions per dispatch).
+#     From these all valid instruction combinations (which are not special
+#     macro instructions using two slots) can be compiled with exception of
+#     PCK and B
+#   proc setup
+#     (ob: var tNavmFrontend, disAsm: bool, codeSize: int)
+#       object constructor. A destructor is not needed because of GC and
+#       tNavmBackend.release is sufficient
+#   proc setTraceOfs
+#     (ob: var tNavmFrontend, ofs: int)
+#       set the start offset into sVmMem for compilation. This way
+#       code modification and recompilation is possible
+#   proc getTraceOfs
+#     (ob: var tNavmFrontend): int
+#       get the actual trace offset (is used for compiling the R instructions)
+#   proc setDisAsmFlag
+#     (ob: var tNavmFrontend, flag: bool)
+#       set disassembly flag (fDisAsm)
+#   proc getDisAsmFlag
+#     (ob: var tNavmFrontend): bool
+#       get furrent disassembly flag setting
+#   proc addIns
+#     (ob: var tNavmFrontend, bundle: var tNavmUCell, ins: eNavmIn)
+#       assemble single instruction to opcode-bundle 'bundle' by right shifting
+#       its slots. The functionality of these procedure is equivalent to a
+#       bit-slicing register and as thus, addition of instructions up the max.
+#       slot number resulting in following instruction loss of priour assembled
+#       instructions (it's not a bug, it's a feature) !
+#  proc pokeBundle
+#    (ob: var tNavmFrontend, bundle: tNavmUCell)
+#       compile opcode-bundle at actual offset into machine-code array
+#  proc peekBundle
+#    (ob: tNavmFrontend, ofs: int): tNavmUCell
+#       get opcode-bundle at ofs from machine-code array
+#  proc pokeImm
+#    (ob: var tNavmFrontend, imm: tNavmSCell)
+#       compile immediate value at actual offset into machine-code array
+#  proc peekImm
+#    (ob: tNavmFrontend, ofs:int): tNavmSCell =
+#       get immediate value at ofs out of machine-code array
+#
+#  the following routines compile a single AVM opcode-bundle, each for a
+#  specific optimization. These are: Direct-register mapping (DRM), immediate-
+#  transformation (IT) and dynamic folding (DF). These three optimizations are
+#  sufficient for generating highly optimizated machine-code because the AVM
+#  ISA is specially designed for efficient compilation (and interpretation),
+#  featuring an encoding which can be seen as a uncommon CPS form. This form
+#  already solve most SSA based optimizations implicitly and as result, the
+#  compiler can be implemented with minimal complexity, moreover generating
+#  efficient machine-code with minimal ressource usage. That's the trick
+#  (beside the possibility to generate new or recompile existant instructions
+#  at runtime for efficient interpretation)!
+#
+#  proc compBundleDRM
+#    (ob: var tNavmFrontend)
+#      compiles a single opcode-bundle with DRM optimization. The result is
+#      efficient native-code for most out-of-order architectures except in-
+#      order designs (such as Intel ATOM). These CPU class will need a simple
+#      additional optimization: Static exchanging of instructions slots
+#      (alias instruction-sheduling) which an application can apply without
+#      problems at demand so there is no need for a special interface routine
+#      (please note, that optimization is only easy applicable because the
+#      AVM ISA specify a process-effect free, bundled encoding. You will get
+#      in trouble with this for all JIT compiler I know of because there IL
+#      definations either do not serialize state assignments [all register
+#      based designs] or uses folded SSA forms which both are more or less
+#      insufficient for instruction shuffling) 
+# -----------------------------------------------------------------------------
 
-type eNavmIn {.pure.} = enum
+type
+  tNavmFrontend* = object of tNavmBackend
+                     fDisAsm: bool
+                     vA:      tNavmSCell
+                     sVmMem:  seq[tNavmSCell]
+                     oVmMem:  int
+
+  tNavmIns = range [0..31]
+
+  eNavmIn* {.pure.} = enum
        sys, li,  lx,  ld,  st,  lxi, sxi, lxd, sxd, add, adc, sub, sbc, slb,
        srb, anb, gor, xob, dup, drp, swp, ovr, pck, rot, b,   bs,  br,  r,
        eq,  gr,  le,  zr
 
-# all 1024 opcode combinations (2 instructions-per-iteration)
-
-type eNavmOp {.pure.} = enum
+  eNavmOp* {.pure.} = enum
        FETCH,liSYS,lixSYS,ldSYS,stSYS,lxiSYS,sxiSYS,lxdSYS,sxdSYS,addSYS,
        adcSYS,subSYS,sbcSYS,slbSYS,srbSYS,anbSYS,gorSYS,xobSYS,dupSYS,drpSYS,
        swpSYS,ovrSYS,pckSYS,rotSYS,B,BS,BR,R,eqSYS,eqGR,eqLE,egZR,sysLI,liLI,
@@ -116,40 +281,24 @@ type eNavmOp {.pure.} = enum
        subZR,sbcZR,slbZR,srbZR,anbZR,gorZR,xobZR,dupZR,drpZR,swpZR,ovrZR,pckZR,
        rotZR,CI,EI,DI,BRK,eqZR,grZR,leZR,ROT
 
-# the frontend object:
-#   vA     = virtual TOS for constant-folding optimization
-#   oVmMem = offset into start of instruction-memory (for the R' instructions)
-
-type
-  tNavmFrontend* = object of tNavmBackend
-                     fDisAsm: bool
-                     vA:      tNavmSCell
-                     sVmMem:  seq[tNavmSCell]
-                     oVmMem:  int
-                     oTrace:  int
-
-  tNavmIns       = range [0..31]
-
 # object handling routines
 
 proc errorAssert =
   system.writeLN (stderr, "[navmFrontend] ob.fInit[ofs] != true")
   quit ()
 
-proc setup* (ob: var tNavmFrontend, disAsm: bool, codeSize: int) =
+proc setup* (ob: var tNavmFrontend,disAsm: bool,codeSize: int) =
   ob.fDisAsm = disAsm
   ob.vA      = 0
   ob.oVmMem  = 0
-  ob.oTrace  = 0
 
   ob.sVmMem = @[]
   ob.init (codeSize)
 
-proc setTraceOfs* (ob: var tNavmFrontend, ofs: int) =
+proc setTraceOfs* (ob: var tNavmFrontend,ofs: int) =
   assert (ob.fInit != false)
 
   try:
-    ob.oTrace = ofs
     ob.oVmMem = ofs
   except EAssertionFailed:
     errorAssert ()
@@ -157,10 +306,10 @@ proc setTraceOfs* (ob: var tNavmFrontend, ofs: int) =
 proc getTraceOfs* (ob: var tNavmFrontend): int =
   assert (ob.fInit != false)
 
-  try:   result = ob.oTrace
+  try:   result = ob.oVmMem
   except EAssertionFailed: errorAssert ()
 
-proc setDisAsmFlag* (ob: var tNavmFrontend, flag: bool) =
+proc setDisAsmFlag* (ob: var tNavmFrontend,flag: bool) =
   assert (ob.fInit != false)
 
   try:   ob.fDisAsm = flag
@@ -172,7 +321,7 @@ proc getDisAsmFlag* (ob: var tNavmFrontend): bool =
   try:   result = ob.fDisAsm
   except EAssertionFailed: errorAssert ()
 
-proc addIns* (ob: var tNavmFrontend, bundle: var tNavmUCell, ins: eNavmIn) =
+proc addIns* (ob: var tNavmFrontend,bundle: var tNavmUCell,ins: eNavmIn) =
   assert (ob.fInit != false)
   var bgSlot: tNavmIns = ord (ins)
 
@@ -182,7 +331,7 @@ proc addIns* (ob: var tNavmFrontend, bundle: var tNavmUCell, ins: eNavmIn) =
   except EAssertionFailed:
     errorAssert ()
   
-proc pokeBundle* (ob: var tNavmFrontend, bundle: tNavmUCell) =
+proc pokeBundle* (ob: var tNavmFrontend,bundle: tNavmUCell) =
   assert (ob.fInit != false)
 
   try:
@@ -191,49 +340,39 @@ proc pokeBundle* (ob: var tNavmFrontend, bundle: tNavmUCell) =
   except EAssertionFailed:
     errorAssert ()
 
-proc pokeImm* (ob: var tNavmFrontend, imm: tNavmSCell) =
+proc pokeImm* (ob: var tNavmFrontend,imm: tNavmSCell) =
   assert (ob.fInit != false)
 
   try:   ob.sVmMem.add (imm)
   except EAssertionFailed: errorAssert ()
 
-proc peekBundle* (ob: tNavmFrontend, ofs: int): tNavmUCell =
+proc peekBundle* (ob: tNavmFrontend,ofs: int): tNavmUCell =
   assert (ob.fInit != false)
 
   proc error =
-    system.writeLN (stderr, "[peekBundle] ob.sVmMem[ofs] = NIL")
+    system.writeLN (stderr,"[peekBundle] ob.sVmMem[ofs] = NIL")
     quit ()
 
   try:    result = cast[tNavmUCell](ob.sVmMem[ofs])
   except  EAssertionFailed: errorAssert ()
   except: error ()
 
-proc peekImm* (ob: tNavmFrontend, ofs:int): tNavmSCell =
+proc peekImm* (ob: tNavmFrontend,ofs:int): tNavmSCell =
   assert (ob.fInit != false)
 
   proc error =
-    system.writeLN (stderr, "[peekImm] ob.sVmMem[ofs] = NIL")
+    system.writeLN (stderr,"[peekImm] ob.sVmMem[ofs] = NIL")
     quit ()
   
   try:    result = ob.sVmMem[ofs]
   except  EAssertionFailed: errorAssert ()
   except: error ()
 
-# these routines compile a single AVM opcode-bundle, each for a specific
-# optimization. These are: Direct-register mapping, immediate-transformation
-# and folding. These three optimizations are sufficient for generating highly
-# optimizated machine-code because the AVM ISA is specially designed for
-# efficient compilation (and interpretation) featuring a special encoding which
-# can be seen as a uncommon SSA form. This form already solve most SSA based
-# optimizations implicitly as result of its encoding. The compiler can therefor
-# implemented with minimal complexity, moreover generating efficient machine-
-# code with minimal ressource usage. That's the trick!
-
 proc error (msg: string) =
   system.writeLN (stderr, msg)
   quit ()
 
-proc compBundleDRM (ob: var tNavmFrontend) =
+proc compBundleDRM* (ob: var tNavmFrontend) =
   var
     vBndl: tNavmUCell = cast[tNavmUCell](ob.sVmMem[ob.oVmMem])
     vInsA: int8 = 0
@@ -262,7 +401,7 @@ proc compBundleDRM (ob: var tNavmFrontend) =
 
         case vInsA
           of ord (eNavmIn.li):
-               ob.liImm (ob.sVmMem[ob.oVmMem], ob.fDisAsm)
+               ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
                ob.oVmMem = ob.oVmMem + 1
           of ord (eNavmIn.br):
                ob.br (ob.fDisAsm)
@@ -328,24 +467,24 @@ when isMainModule:
 
   trace = test.getTraceOfs ()
 
-  test.addIns (bundle, eNavmIn.br)
-  test.addIns (bundle, eNavmIn.add)
-  test.addIns (bundle, eNavmIn.li)
-  test.addIns (bundle, eNavmIn.sub)
-  test.addIns (bundle, eNavmIn.li)
-  test.addIns (bundle, eNavmIn.li)
-  echo ("bundle: ", toHex (cast[biggestInt](bundle), 16))
+  test.addIns (bundle,eNavmIn.br)
+  test.addIns (bundle,eNavmIn.add)
+  test.addIns (bundle,eNavmIn.li)
+  test.addIns (bundle,eNavmIn.sub)
+  test.addIns (bundle,eNavmIn.li)
+  test.addIns (bundle,eNavmIn.li)
+  echo ("bundle: ",toHex (cast[biggestInt](bundle), 16))
 
   test.pokeBundle (bundle)
   test.pokeImm    (100'i64)
   test.pokeImm    (200'i64)
   test.pokeImm    (300'i64)
-  echo ("sVmMem[0]: ", toHex (cast[biggestInt](test.sVmMem[0]), 16))
-  echo ("sVmMem[1]: ", test.sVmMem[1])
-  echo ("sVmMem[2]: ", test.sVmMem[2])
-  echo ("sVmMem[3]: ", test.sVmMem[2])
+  echo ("sVmMem[0]: ",toHex (cast[biggestInt](test.sVmMem[0]), 16))
+  echo ("sVmMem[1]: ",test.sVmMem[1])
+  echo ("sVmMem[2]: ",test.sVmMem[2])
+  echo ("sVmMem[3]: ",test.sVmMem[2])
 
-  echo ("first instruction: ", bundle and 0x1F)
+  echo ("first instruction: ",bundle and 0x1F)
 
   test.CompBundleDRM ()
 
