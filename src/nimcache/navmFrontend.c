@@ -281,6 +281,25 @@ N_NIMCALL(void, swp_96030)(tnavmbackend91004* ob, NIM_BOOL dis);
 N_NIMCALL(void, ovr_96063)(tnavmbackend91004* ob, NIM_BOOL dis);
 N_NIMCALL(void, rot_96094)(tnavmbackend91004* ob, NIM_BOOL dis);
 N_NIMCALL(void, r_96578)(tnavmbackend91004* ob, NIM_BOOL dis);
+N_NIMCALL(void, compbundleit_100370)(tnavmfrontend97004* ob);
+N_NIMCALL(NIM_BOOL, inrange_100374)(NI64 val, NI r);
+N_NIMCALL(NI, mulInt)(NI a, NI b);
+N_NIMCALL(void, lximm_94352)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis);
+N_NIMCALL(void, ldimm_94389)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis);
+N_NIMCALL(void, stimm_94422)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis);
+N_NIMCALL(void, lxiimm_94469)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis);
+N_NIMCALL(void, lxdimm_94516)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis);
+N_NIMCALL(void, sxiimm_94563)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis);
+N_NIMCALL(void, sxdimm_94610)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis);
+N_NIMCALL(void, addimm_94653)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
+N_NIMCALL(void, adcimm_94818)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
+N_NIMCALL(void, subimm_94966)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
+N_NIMCALL(void, sbcimm_95114)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
+N_NIMCALL(void, slbimm_95262)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
+N_NIMCALL(void, srbimm_95429)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
+N_NIMCALL(void, anbimm_95579)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
+N_NIMCALL(void, gorimm_95727)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
+N_NIMCALL(void, xobimm_95875)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
 N_NIMCALL(void, objectInit)(void* dest, TNimType* typ);
 N_NIMCALL(NimStringDesc*, nsuToHex)(NI64 x, NI len);
 N_NIMCALL(NimStringDesc*, nimInt64ToStr)(NI64 x);
@@ -314,18 +333,18 @@ STRING_LITERAL(TMP811, "[navmFrontend] ob.fInit[ofs] != true", 36);
 STRING_LITERAL(TMP813, "not ob.fInit == false ", 22);
 STRING_LITERAL(TMP821, "[peekBundle] ob.sVmMem[ofs] = NIL", 33);
 STRING_LITERAL(TMP823, "[peekImm] ob.sVmMem[ofs] = NIL", 30);
-STRING_LITERAL(TMP832, "[compBundleDRM] sys", 19);
-STRING_LITERAL(TMP833, "[compBundleDRM] b", 17);
-STRING_LITERAL(TMP834, "[compBundleDRM] bs", 18);
-STRING_LITERAL(TMP835, "[compBundleDRM] pck", 19);
-STRING_LITERAL(TMP836, "[compBundleDRM] unexpected error", 32);
-STRING_LITERAL(TMP840, "bundle: ", 8);
-STRING_LITERAL(TMP841, "sVmMem[0]: ", 11);
-STRING_LITERAL(TMP842, "sVmMem[1]: ", 11);
-STRING_LITERAL(TMP843, "sVmMem[2]: ", 11);
-STRING_LITERAL(TMP844, "sVmMem[3]: ", 11);
-STRING_LITERAL(TMP845, "first instruction: ", 19);
-STRING_LITERAL(TMP846, "\012", 1);
+STRING_LITERAL(TMP827, "[compBundleDRM] sys", 19);
+STRING_LITERAL(TMP828, "[compBundleDRM] b", 17);
+STRING_LITERAL(TMP829, "[compBundleDRM] bs", 18);
+STRING_LITERAL(TMP830, "[compBundleDRM] pck", 19);
+STRING_LITERAL(TMP831, "[compBundleDRM] unexpected error", 32);
+STRING_LITERAL(TMP871, "bundle: ", 8);
+STRING_LITERAL(TMP872, "sVmMem[0]: ", 11);
+STRING_LITERAL(TMP873, "sVmMem[1]: ", 11);
+STRING_LITERAL(TMP874, "sVmMem[2]: ", 11);
+STRING_LITERAL(TMP875, "sVmMem[3]: ", 11);
+STRING_LITERAL(TMP876, "first instruction: ", 19);
+STRING_LITERAL(TMP877, "\012", 1);
 extern TFrame* frameptr_11625;
 extern TNimType NTI94008; /* tNavmSCell */
 TNimType NTI97013; /* seq[tNavmSCell] */
@@ -342,14 +361,15 @@ extern TNimType NTI1049; /* EAssertionFailed */
 extern TNimType NTI1049; /* EAssertionFailed */
 extern TNimType NTI1049; /* EAssertionFailed */
 extern TNimType NTI1049; /* EAssertionFailed */
-tnavmfrontend97004 test_100561;
+extern TNimType NTI1049; /* EAssertionFailed */
+tnavmfrontend97004 test_101312;
 extern TNimType NTI91004; /* tNavmBackend */
 TNimType NTI97004; /* tNavmFrontend */
 extern TNimType NTI132; /* bool */
 extern TNimType NTI94008; /* tNavmSCell */
 extern TNimType NTI105; /* int */
-NU64 bundle_100562;
-NI trace_100563;
+NU64 bundle_101313;
+NI trace_101314;
 
 static N_INLINE(void, nimFrame)(TFrame* s) {
 	(*s).prev = frameptr_11625;
@@ -363,12 +383,12 @@ static N_INLINE(void, popFrame)(void) {
 N_NIMCALL(void, errorassert_98074)(void) {
 	TY94095 LOC1;
 	nimfr("errorAssert", "navmFrontend.nim")
-	nimln(289, "navmFrontend.nim");
+	nimln(287, "navmFrontend.nim");
 	memset((void*)LOC1, 0, sizeof(LOC1));
-	nimln(289, "navmFrontend.nim");
+	nimln(287, "navmFrontend.nim");
 	LOC1[0] = copyString(((NimStringDesc*) &TMP811));
 	writeln_91224(stderr, LOC1, 1);
-	nimln(290, "navmFrontend.nim");
+	nimln(288, "navmFrontend.nim");
 	exit(0);
 	popFrame();
 }
@@ -382,15 +402,15 @@ N_NIMCALL(void, TMP812)(void* p, NI op) {
 
 N_NIMCALL(void, setup_98089)(tnavmfrontend97004* ob, NIM_BOOL disasm, NI codesize) {
 	nimfr("setup", "navmFrontend.nim")
-	nimln(293, "navmFrontend.nim");
+	nimln(291, "navmFrontend.nim");
 	(*ob).Fdisasm = disasm;
-	nimln(294, "navmFrontend.nim");
+	nimln(292, "navmFrontend.nim");
 	(*ob).Va = 0;
-	nimln(295, "navmFrontend.nim");
+	nimln(293, "navmFrontend.nim");
 	(*ob).Ovmmem = 0;
-	nimln(297, "navmFrontend.nim");
+	nimln(295, "navmFrontend.nim");
 	unsureAsgnRef((void**) &(*ob).Svmmem, (TY97013*) newSeq((&NTI97013), 0));
-	nimln(298, "navmFrontend.nim");
+	nimln(296, "navmFrontend.nim");
 	init_91029(&ob->Sup, codesize);
 	popFrame();
 }
@@ -484,21 +504,21 @@ static N_INLINE(void, popCurrentException)(void) {
 N_NIMCALL(void, settraceofs_98116)(tnavmfrontend97004* ob, NI ofs) {
 	TSafePoint TMP814;
 	nimfr("setTraceOfs", "navmFrontend.nim")
-	nimln(301, "navmFrontend.nim");
-	nimln(301, "navmFrontend.nim");
-	nimln(301, "navmFrontend.nim");
-	nimln(301, "navmFrontend.nim");
+	nimln(299, "navmFrontend.nim");
+	nimln(299, "navmFrontend.nim");
+	nimln(299, "navmFrontend.nim");
+	nimln(299, "navmFrontend.nim");
 	if (!!(!(((*ob).Sup.Finit == NIM_FALSE)))) goto LA2;
 	{
-		nimln(301, "navmFrontend.nim");
+		nimln(299, "navmFrontend.nim");
 		hiddenraiseassert_71220(((NimStringDesc*) &TMP813));
 	}
 	LA2: ;
-	nimln(303, "navmFrontend.nim");
+	nimln(301, "navmFrontend.nim");
 	pushSafePoint(&TMP814);
 	TMP814.status = setjmp(TMP814.context);
 	if (TMP814.status == 0) {
-		nimln(304, "navmFrontend.nim");
+		nimln(302, "navmFrontend.nim");
 		(*ob).Ovmmem = ofs;
 		popSafePoint();
 	}
@@ -507,7 +527,7 @@ N_NIMCALL(void, settraceofs_98116)(tnavmfrontend97004* ob, NI ofs) {
 		setFrame((TFrame*)&F);
 		if (isObj(getCurrentException()->Sup.m_type, (&NTI1049))) {
 			TMP814.status = 0;
-			nimln(306, "navmFrontend.nim");
+			nimln(304, "navmFrontend.nim");
 			errorassert_98074();
 			popCurrentException();
 		}
@@ -521,21 +541,21 @@ N_NIMCALL(NI, gettraceofs_98208)(tnavmfrontend97004* ob) {
 	TSafePoint TMP815;
 	nimfr("getTraceOfs", "navmFrontend.nim")
 	result = 0;
-	nimln(309, "navmFrontend.nim");
-	nimln(309, "navmFrontend.nim");
-	nimln(309, "navmFrontend.nim");
-	nimln(309, "navmFrontend.nim");
+	nimln(307, "navmFrontend.nim");
+	nimln(307, "navmFrontend.nim");
+	nimln(307, "navmFrontend.nim");
+	nimln(307, "navmFrontend.nim");
 	if (!!(!(((*ob).Sup.Finit == NIM_FALSE)))) goto LA2;
 	{
-		nimln(309, "navmFrontend.nim");
+		nimln(307, "navmFrontend.nim");
 		hiddenraiseassert_71220(((NimStringDesc*) &TMP813));
 	}
 	LA2: ;
-	nimln(311, "navmFrontend.nim");
+	nimln(309, "navmFrontend.nim");
 	pushSafePoint(&TMP815);
 	TMP815.status = setjmp(TMP815.context);
 	if (TMP815.status == 0) {
-		nimln(311, "navmFrontend.nim");
+		nimln(309, "navmFrontend.nim");
 		result = (*ob).Ovmmem;
 		popSafePoint();
 	}
@@ -544,7 +564,7 @@ N_NIMCALL(NI, gettraceofs_98208)(tnavmfrontend97004* ob) {
 		setFrame((TFrame*)&F);
 		if (isObj(getCurrentException()->Sup.m_type, (&NTI1049))) {
 			TMP815.status = 0;
-			nimln(312, "navmFrontend.nim");
+			nimln(310, "navmFrontend.nim");
 			errorassert_98074();
 			popCurrentException();
 		}
@@ -557,21 +577,21 @@ N_NIMCALL(NI, gettraceofs_98208)(tnavmfrontend97004* ob) {
 N_NIMCALL(void, setdisasmflag_98408)(tnavmfrontend97004* ob, NIM_BOOL flag) {
 	TSafePoint TMP816;
 	nimfr("setDisAsmFlag", "navmFrontend.nim")
-	nimln(315, "navmFrontend.nim");
-	nimln(315, "navmFrontend.nim");
-	nimln(315, "navmFrontend.nim");
-	nimln(315, "navmFrontend.nim");
+	nimln(313, "navmFrontend.nim");
+	nimln(313, "navmFrontend.nim");
+	nimln(313, "navmFrontend.nim");
+	nimln(313, "navmFrontend.nim");
 	if (!!(!(((*ob).Sup.Finit == NIM_FALSE)))) goto LA2;
 	{
-		nimln(315, "navmFrontend.nim");
+		nimln(313, "navmFrontend.nim");
 		hiddenraiseassert_71220(((NimStringDesc*) &TMP813));
 	}
 	LA2: ;
-	nimln(317, "navmFrontend.nim");
+	nimln(315, "navmFrontend.nim");
 	pushSafePoint(&TMP816);
 	TMP816.status = setjmp(TMP816.context);
 	if (TMP816.status == 0) {
-		nimln(317, "navmFrontend.nim");
+		nimln(315, "navmFrontend.nim");
 		(*ob).Fdisasm = flag;
 		popSafePoint();
 	}
@@ -580,7 +600,7 @@ N_NIMCALL(void, setdisasmflag_98408)(tnavmfrontend97004* ob, NIM_BOOL flag) {
 		setFrame((TFrame*)&F);
 		if (isObj(getCurrentException()->Sup.m_type, (&NTI1049))) {
 			TMP816.status = 0;
-			nimln(318, "navmFrontend.nim");
+			nimln(316, "navmFrontend.nim");
 			errorassert_98074();
 			popCurrentException();
 		}
@@ -594,21 +614,21 @@ N_NIMCALL(NIM_BOOL, getdisasmflag_98608)(tnavmfrontend97004* ob) {
 	TSafePoint TMP817;
 	nimfr("getDisAsmFlag", "navmFrontend.nim")
 	result = 0;
-	nimln(321, "navmFrontend.nim");
-	nimln(321, "navmFrontend.nim");
-	nimln(321, "navmFrontend.nim");
-	nimln(321, "navmFrontend.nim");
+	nimln(319, "navmFrontend.nim");
+	nimln(319, "navmFrontend.nim");
+	nimln(319, "navmFrontend.nim");
+	nimln(319, "navmFrontend.nim");
 	if (!!(!(((*ob).Sup.Finit == NIM_FALSE)))) goto LA2;
 	{
-		nimln(321, "navmFrontend.nim");
+		nimln(319, "navmFrontend.nim");
 		hiddenraiseassert_71220(((NimStringDesc*) &TMP813));
 	}
 	LA2: ;
-	nimln(323, "navmFrontend.nim");
+	nimln(321, "navmFrontend.nim");
 	pushSafePoint(&TMP817);
 	TMP817.status = setjmp(TMP817.context);
 	if (TMP817.status == 0) {
-		nimln(323, "navmFrontend.nim");
+		nimln(321, "navmFrontend.nim");
 		result = (*ob).Fdisasm;
 		popSafePoint();
 	}
@@ -617,7 +637,7 @@ N_NIMCALL(NIM_BOOL, getdisasmflag_98608)(tnavmfrontend97004* ob) {
 		setFrame((TFrame*)&F);
 		if (isObj(getCurrentException()->Sup.m_type, (&NTI1049))) {
 			TMP817.status = 0;
-			nimln(324, "navmFrontend.nim");
+			nimln(322, "navmFrontend.nim");
 			errorassert_98074();
 			popCurrentException();
 		}
@@ -631,28 +651,28 @@ N_NIMCALL(void, addins_98808)(tnavmfrontend97004* ob, NU64* bundle, NU8 ins) {
 	NI bgslot;
 	TSafePoint TMP818;
 	nimfr("addIns", "navmFrontend.nim")
-	nimln(327, "navmFrontend.nim");
-	nimln(327, "navmFrontend.nim");
-	nimln(327, "navmFrontend.nim");
-	nimln(327, "navmFrontend.nim");
+	nimln(325, "navmFrontend.nim");
+	nimln(325, "navmFrontend.nim");
+	nimln(325, "navmFrontend.nim");
+	nimln(325, "navmFrontend.nim");
 	if (!!(!(((*ob).Sup.Finit == NIM_FALSE)))) goto LA2;
 	{
-		nimln(327, "navmFrontend.nim");
+		nimln(325, "navmFrontend.nim");
 		hiddenraiseassert_71220(((NimStringDesc*) &TMP813));
 	}
 	LA2: ;
-	nimln(328, "navmFrontend.nim");
-	nimln(328, "navmFrontend.nim");
+	nimln(326, "navmFrontend.nim");
+	nimln(326, "navmFrontend.nim");
 	bgslot = ins;
-	nimln(330, "navmFrontend.nim");
+	nimln(328, "navmFrontend.nim");
 	pushSafePoint(&TMP818);
 	TMP818.status = setjmp(TMP818.context);
 	if (TMP818.status == 0) {
-		nimln(331, "navmFrontend.nim");
-		nimln(331, "navmFrontend.nim");
+		nimln(329, "navmFrontend.nim");
+		nimln(329, "navmFrontend.nim");
 		(*bundle) = (NU64)((NU64)((*bundle)) << (NU64)(((NU64) 5)));
-		nimln(332, "navmFrontend.nim");
-		nimln(332, "navmFrontend.nim");
+		nimln(330, "navmFrontend.nim");
+		nimln(330, "navmFrontend.nim");
 		(*bundle) = (NU64)((NU64)((*bundle)) + (NU64)(((NU64) (bgslot))));
 		popSafePoint();
 	}
@@ -661,7 +681,7 @@ N_NIMCALL(void, addins_98808)(tnavmfrontend97004* ob, NU64* bundle, NU8 ins) {
 		setFrame((TFrame*)&F);
 		if (isObj(getCurrentException()->Sup.m_type, (&NTI1049))) {
 			TMP818.status = 0;
-			nimln(334, "navmFrontend.nim");
+			nimln(332, "navmFrontend.nim");
 			errorassert_98074();
 			popCurrentException();
 		}
@@ -673,24 +693,24 @@ N_NIMCALL(void, addins_98808)(tnavmfrontend97004* ob, NU64* bundle, NU8 ins) {
 N_NIMCALL(void, pokebundle_99029)(tnavmfrontend97004* ob, NU64 bundle) {
 	TSafePoint TMP819;
 	nimfr("pokeBundle", "navmFrontend.nim")
-	nimln(337, "navmFrontend.nim");
-	nimln(337, "navmFrontend.nim");
-	nimln(337, "navmFrontend.nim");
-	nimln(337, "navmFrontend.nim");
+	nimln(335, "navmFrontend.nim");
+	nimln(335, "navmFrontend.nim");
+	nimln(335, "navmFrontend.nim");
+	nimln(335, "navmFrontend.nim");
 	if (!!(!(((*ob).Sup.Finit == NIM_FALSE)))) goto LA2;
 	{
-		nimln(337, "navmFrontend.nim");
+		nimln(335, "navmFrontend.nim");
 		hiddenraiseassert_71220(((NimStringDesc*) &TMP813));
 	}
 	LA2: ;
-	nimln(339, "navmFrontend.nim");
+	nimln(337, "navmFrontend.nim");
 	pushSafePoint(&TMP819);
 	TMP819.status = setjmp(TMP819.context);
 	if (TMP819.status == 0) {
 		NI64 volatile b;
-		nimln(340, "navmFrontend.nim");
+		nimln(338, "navmFrontend.nim");
 		b = ((NI64) (bundle));
-		nimln(341, "navmFrontend.nim");
+		nimln(339, "navmFrontend.nim");
 		(*ob).Svmmem = (TY97013*) incrSeq(&((*ob).Svmmem)->Sup, sizeof(NI64));
 		(*ob).Svmmem->data[(*ob).Svmmem->Sup.len-1] = b;
 		popSafePoint();
@@ -700,7 +720,7 @@ N_NIMCALL(void, pokebundle_99029)(tnavmfrontend97004* ob, NU64 bundle) {
 		setFrame((TFrame*)&F);
 		if (isObj(getCurrentException()->Sup.m_type, (&NTI1049))) {
 			TMP819.status = 0;
-			nimln(343, "navmFrontend.nim");
+			nimln(341, "navmFrontend.nim");
 			errorassert_98074();
 			popCurrentException();
 		}
@@ -712,21 +732,21 @@ N_NIMCALL(void, pokebundle_99029)(tnavmfrontend97004* ob, NU64 bundle) {
 N_NIMCALL(void, pokeimm_99227)(tnavmfrontend97004* ob, NI64 imm) {
 	TSafePoint TMP820;
 	nimfr("pokeImm", "navmFrontend.nim")
-	nimln(346, "navmFrontend.nim");
-	nimln(346, "navmFrontend.nim");
-	nimln(346, "navmFrontend.nim");
-	nimln(346, "navmFrontend.nim");
+	nimln(344, "navmFrontend.nim");
+	nimln(344, "navmFrontend.nim");
+	nimln(344, "navmFrontend.nim");
+	nimln(344, "navmFrontend.nim");
 	if (!!(!(((*ob).Sup.Finit == NIM_FALSE)))) goto LA2;
 	{
-		nimln(346, "navmFrontend.nim");
+		nimln(344, "navmFrontend.nim");
 		hiddenraiseassert_71220(((NimStringDesc*) &TMP813));
 	}
 	LA2: ;
-	nimln(348, "navmFrontend.nim");
+	nimln(346, "navmFrontend.nim");
 	pushSafePoint(&TMP820);
 	TMP820.status = setjmp(TMP820.context);
 	if (TMP820.status == 0) {
-		nimln(348, "navmFrontend.nim");
+		nimln(346, "navmFrontend.nim");
 		(*ob).Svmmem = (TY97013*) incrSeq(&((*ob).Svmmem)->Sup, sizeof(NI64));
 		(*ob).Svmmem->data[(*ob).Svmmem->Sup.len-1] = imm;
 		popSafePoint();
@@ -736,7 +756,7 @@ N_NIMCALL(void, pokeimm_99227)(tnavmfrontend97004* ob, NI64 imm) {
 		setFrame((TFrame*)&F);
 		if (isObj(getCurrentException()->Sup.m_type, (&NTI1049))) {
 			TMP820.status = 0;
-			nimln(349, "navmFrontend.nim");
+			nimln(347, "navmFrontend.nim");
 			errorassert_98074();
 			popCurrentException();
 		}
@@ -748,12 +768,12 @@ N_NIMCALL(void, pokeimm_99227)(tnavmfrontend97004* ob, NI64 imm) {
 N_NIMCALL(void, error_99606)(void) {
 	TY94095 LOC1;
 	nimfr("error", "navmFrontend.nim")
-	nimln(355, "navmFrontend.nim");
+	nimln(353, "navmFrontend.nim");
 	memset((void*)LOC1, 0, sizeof(LOC1));
-	nimln(355, "navmFrontend.nim");
+	nimln(353, "navmFrontend.nim");
 	LOC1[0] = copyString(((NimStringDesc*) &TMP821));
 	writeln_91224(stderr, LOC1, 1);
-	nimln(356, "navmFrontend.nim");
+	nimln(354, "navmFrontend.nim");
 	exit(0);
 	popFrame();
 }
@@ -763,21 +783,21 @@ N_NIMCALL(NU64, peekbundle_99424)(tnavmfrontend97004* ob, NI ofs) {
 	TSafePoint TMP822;
 	nimfr("peekBundle", "navmFrontend.nim")
 	result = 0;
-	nimln(352, "navmFrontend.nim");
-	nimln(352, "navmFrontend.nim");
-	nimln(352, "navmFrontend.nim");
-	nimln(352, "navmFrontend.nim");
+	nimln(350, "navmFrontend.nim");
+	nimln(350, "navmFrontend.nim");
+	nimln(350, "navmFrontend.nim");
+	nimln(350, "navmFrontend.nim");
 	if (!!(!(((*ob).Sup.Finit == NIM_FALSE)))) goto LA2;
 	{
-		nimln(352, "navmFrontend.nim");
+		nimln(350, "navmFrontend.nim");
 		hiddenraiseassert_71220(((NimStringDesc*) &TMP813));
 	}
 	LA2: ;
-	nimln(358, "navmFrontend.nim");
+	nimln(356, "navmFrontend.nim");
 	pushSafePoint(&TMP822);
 	TMP822.status = setjmp(TMP822.context);
 	if (TMP822.status == 0) {
-		nimln(358, "navmFrontend.nim");
+		nimln(356, "navmFrontend.nim");
 		if ((NU)(ofs) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
 		result = ((NU64) ((*ob).Svmmem->data[ofs]));
 		popSafePoint();
@@ -787,13 +807,13 @@ N_NIMCALL(NU64, peekbundle_99424)(tnavmfrontend97004* ob, NI ofs) {
 		setFrame((TFrame*)&F);
 		if (isObj(getCurrentException()->Sup.m_type, (&NTI1049))) {
 			TMP822.status = 0;
-			nimln(359, "navmFrontend.nim");
+			nimln(357, "navmFrontend.nim");
 			errorassert_98074();
 			popCurrentException();
 		}
 		else		{
 			TMP822.status = 0;
-			nimln(360, "navmFrontend.nim");
+			nimln(358, "navmFrontend.nim");
 			error_99606();
 			popCurrentException();
 		}
@@ -806,12 +826,12 @@ N_NIMCALL(NU64, peekbundle_99424)(tnavmfrontend97004* ob, NI ofs) {
 N_NIMCALL(void, error_99806)(void) {
 	TY94095 LOC1;
 	nimfr("error", "navmFrontend.nim")
-	nimln(366, "navmFrontend.nim");
+	nimln(364, "navmFrontend.nim");
 	memset((void*)LOC1, 0, sizeof(LOC1));
-	nimln(366, "navmFrontend.nim");
+	nimln(364, "navmFrontend.nim");
 	LOC1[0] = copyString(((NimStringDesc*) &TMP823));
 	writeln_91224(stderr, LOC1, 1);
-	nimln(367, "navmFrontend.nim");
+	nimln(365, "navmFrontend.nim");
 	exit(0);
 	popFrame();
 }
@@ -821,21 +841,21 @@ N_NIMCALL(NI64, peekimm_99623)(tnavmfrontend97004* ob, NI ofs) {
 	TSafePoint TMP824;
 	nimfr("peekImm", "navmFrontend.nim")
 	result = 0;
-	nimln(363, "navmFrontend.nim");
-	nimln(363, "navmFrontend.nim");
-	nimln(363, "navmFrontend.nim");
-	nimln(363, "navmFrontend.nim");
+	nimln(361, "navmFrontend.nim");
+	nimln(361, "navmFrontend.nim");
+	nimln(361, "navmFrontend.nim");
+	nimln(361, "navmFrontend.nim");
 	if (!!(!(((*ob).Sup.Finit == NIM_FALSE)))) goto LA2;
 	{
-		nimln(363, "navmFrontend.nim");
+		nimln(361, "navmFrontend.nim");
 		hiddenraiseassert_71220(((NimStringDesc*) &TMP813));
 	}
 	LA2: ;
-	nimln(369, "navmFrontend.nim");
+	nimln(367, "navmFrontend.nim");
 	pushSafePoint(&TMP824);
 	TMP824.status = setjmp(TMP824.context);
 	if (TMP824.status == 0) {
-		nimln(369, "navmFrontend.nim");
+		nimln(367, "navmFrontend.nim");
 		if ((NU)(ofs) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
 		result = (*ob).Svmmem->data[ofs];
 		popSafePoint();
@@ -845,13 +865,13 @@ N_NIMCALL(NI64, peekimm_99623)(tnavmfrontend97004* ob, NI ofs) {
 		setFrame((TFrame*)&F);
 		if (isObj(getCurrentException()->Sup.m_type, (&NTI1049))) {
 			TMP824.status = 0;
-			nimln(370, "navmFrontend.nim");
+			nimln(368, "navmFrontend.nim");
 			errorassert_98074();
 			popCurrentException();
 		}
 		else		{
 			TMP824.status = 0;
-			nimln(371, "navmFrontend.nim");
+			nimln(369, "navmFrontend.nim");
 			error_99806();
 			popCurrentException();
 		}
@@ -864,12 +884,12 @@ N_NIMCALL(NI64, peekimm_99623)(tnavmfrontend97004* ob, NI ofs) {
 N_NIMCALL(void, error_99822)(NimStringDesc* msg) {
 	TY94095 LOC1;
 	nimfr("error", "navmFrontend.nim")
-	nimln(374, "navmFrontend.nim");
+	nimln(372, "navmFrontend.nim");
 	memset((void*)LOC1, 0, sizeof(LOC1));
-	nimln(374, "navmFrontend.nim");
+	nimln(372, "navmFrontend.nim");
 	LOC1[0] = copyString(msg);
 	writeln_91224(stderr, LOC1, 1);
-	nimln(375, "navmFrontend.nim");
+	nimln(373, "navmFrontend.nim");
 	exit(0);
 	popFrame();
 }
@@ -897,81 +917,74 @@ N_NIMCALL(void, compbundledrm_99838)(tnavmfrontend97004* ob) {
 	NU64 vbndl;
 	NI8 vinsa;
 	NI8 vinsb;
-	NI i;
 	TSafePoint TMP825;
 	nimfr("compBundleDRM", "navmFrontend.nim")
-	nimln(379, "navmFrontend.nim");
+	nimln(377, "navmFrontend.nim");
 	if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
 	vbndl = ((NU64) ((*ob).Svmmem->data[(*ob).Ovmmem]));
-	nimln(380, "navmFrontend.nim");
+	nimln(378, "navmFrontend.nim");
 	vinsa = ((NI8) 0);
-	nimln(381, "navmFrontend.nim");
+	nimln(379, "navmFrontend.nim");
 	vinsb = ((NI8) 0);
-	nimln(382, "navmFrontend.nim");
-	i = 1;
-	nimln(384, "navmFrontend.nim");
-	nimln(384, "navmFrontend.nim");
-	nimln(384, "navmFrontend.nim");
-	nimln(384, "navmFrontend.nim");
+	nimln(381, "navmFrontend.nim");
+	nimln(381, "navmFrontend.nim");
+	nimln(381, "navmFrontend.nim");
+	nimln(381, "navmFrontend.nim");
 	if (!!(!(((*ob).Sup.Finit == NIM_FALSE)))) goto LA2;
 	{
-		nimln(384, "navmFrontend.nim");
+		nimln(381, "navmFrontend.nim");
 		hiddenraiseassert_71220(((NimStringDesc*) &TMP813));
 	}
 	LA2: ;
-	nimln(386, "navmFrontend.nim");
+	nimln(383, "navmFrontend.nim");
 	pushSafePoint(&TMP825);
 	TMP825.status = setjmp(TMP825.context);
 	if (TMP825.status == 0) {
 		NI TMP826;
-		nimln(387, "navmFrontend.nim");
-		nimln(387, "navmFrontend.nim");
+		nimln(384, "navmFrontend.nim");
+		nimln(384, "navmFrontend.nim");
 		TMP826 = addInt((*ob).Ovmmem, 1);
 		(*ob).Ovmmem = (NI64)(TMP826);
 		{
-			nimln(399, "navmFrontend.nim");
+			nimln(387, "navmFrontend.nim");
 			while (1) {
-				nimln(399, "navmFrontend.nim");
-				if (!(i <= 12)) goto LA7;
-				nimln(400, "navmFrontend.nim");
-				nimln(400, "navmFrontend.nim");
+				nimln(696, "system.nim");
+				nimln(696, "system.nim");
+				if (!!((vbndl == ((NU64) 0)))) goto LA7;
+				nimln(388, "navmFrontend.nim");
+				nimln(388, "navmFrontend.nim");
 				vinsa = ((NI8) ((NU64)(vbndl & ((NU64) 31))));
-				nimln(401, "navmFrontend.nim");
-				nimln(401, "navmFrontend.nim");
-				nimln(401, "navmFrontend.nim");
+				nimln(389, "navmFrontend.nim");
+				nimln(389, "navmFrontend.nim");
+				nimln(389, "navmFrontend.nim");
 				vinsb = ((NI8) ((NU64)((NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5))) & ((NU64) 31))));
-				nimln(402, "navmFrontend.nim");
-				nimln(402, "navmFrontend.nim");
+				nimln(390, "navmFrontend.nim");
+				nimln(390, "navmFrontend.nim");
 				vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
-				nimln(404, "navmFrontend.nim");
+				nimln(392, "navmFrontend.nim");
 				switch (vinsa) {
 				case ((NI8) 1):
 				{
-					NI TMP827;
-					nimln(406, "navmFrontend.nim");
+					nimln(394, "navmFrontend.nim");
 					if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
 					liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
-					nimln(407, "navmFrontend.nim");
-					nimln(407, "navmFrontend.nim");
-					TMP827 = addInt((*ob).Ovmmem, 1);
-					(*ob).Ovmmem = (NI64)(TMP827);
 				}
 				break;
 				case ((NI8) 26):
 				{
-					nimln(409, "navmFrontend.nim");
+					nimln(396, "navmFrontend.nim");
 					br_96529(&ob->Sup, (*ob).Fdisasm);
-					nimln(410, "navmFrontend.nim");
+					nimln(397, "navmFrontend.nim");
 					goto LA6;
 				}
 				break;
 				case ((NI8) 28):
 				{
 					NIM_BOOL LOC12;
-					nimln(412, "navmFrontend.nim");
+					nimln(399, "navmFrontend.nim");
 					eq_96668(&ob->Sup, (*ob).Fdisasm);
-					nimln(413, "navmFrontend.nim");
-					nimln(413, "navmFrontend.nim");
+					nimln(400, "navmFrontend.nim");
+					nimln(400, "navmFrontend.nim");
 					LOC12 = NIM_TRUE;
 					if (!(LOC12)) goto LA13;
 					nimln(704, "system.nim");
@@ -979,14 +992,9 @@ N_NIMCALL(void, compbundledrm_99838)(tnavmfrontend97004* ob) {
 					LA13: ;
 					if (!LOC12) goto LA14;
 					{
-						NI TMP828;
-						nimln(414, "navmFrontend.nim");
-						nimln(414, "navmFrontend.nim");
+						nimln(401, "navmFrontend.nim");
+						nimln(401, "navmFrontend.nim");
 						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
-						nimln(415, "navmFrontend.nim");
-						nimln(415, "navmFrontend.nim");
-						TMP828 = addInt(i, 1);
-						i = (NI64)(TMP828);
 					}
 					LA14: ;
 				}
@@ -994,10 +1002,10 @@ N_NIMCALL(void, compbundledrm_99838)(tnavmfrontend97004* ob) {
 				case ((NI8) 29):
 				{
 					NIM_BOOL LOC19;
-					nimln(417, "navmFrontend.nim");
+					nimln(403, "navmFrontend.nim");
 					gr_96703(&ob->Sup, (*ob).Fdisasm);
-					nimln(418, "navmFrontend.nim");
-					nimln(418, "navmFrontend.nim");
+					nimln(404, "navmFrontend.nim");
+					nimln(404, "navmFrontend.nim");
 					LOC19 = NIM_TRUE;
 					if (!(LOC19)) goto LA20;
 					nimln(704, "system.nim");
@@ -1005,14 +1013,9 @@ N_NIMCALL(void, compbundledrm_99838)(tnavmfrontend97004* ob) {
 					LA20: ;
 					if (!LOC19) goto LA21;
 					{
-						NI TMP829;
-						nimln(419, "navmFrontend.nim");
-						nimln(419, "navmFrontend.nim");
+						nimln(405, "navmFrontend.nim");
+						nimln(405, "navmFrontend.nim");
 						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
-						nimln(420, "navmFrontend.nim");
-						nimln(420, "navmFrontend.nim");
-						TMP829 = addInt(i, 1);
-						i = (NI64)(TMP829);
 					}
 					LA21: ;
 				}
@@ -1020,10 +1023,10 @@ N_NIMCALL(void, compbundledrm_99838)(tnavmfrontend97004* ob) {
 				case ((NI8) 30):
 				{
 					NIM_BOOL LOC26;
-					nimln(422, "navmFrontend.nim");
+					nimln(407, "navmFrontend.nim");
 					le_96710(&ob->Sup, (*ob).Fdisasm);
-					nimln(423, "navmFrontend.nim");
-					nimln(423, "navmFrontend.nim");
+					nimln(408, "navmFrontend.nim");
+					nimln(408, "navmFrontend.nim");
 					LOC26 = NIM_TRUE;
 					if (!(LOC26)) goto LA27;
 					nimln(704, "system.nim");
@@ -1031,14 +1034,9 @@ N_NIMCALL(void, compbundledrm_99838)(tnavmfrontend97004* ob) {
 					LA27: ;
 					if (!LOC26) goto LA28;
 					{
-						NI TMP830;
-						nimln(424, "navmFrontend.nim");
-						nimln(424, "navmFrontend.nim");
+						nimln(409, "navmFrontend.nim");
+						nimln(409, "navmFrontend.nim");
 						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
-						nimln(425, "navmFrontend.nim");
-						nimln(425, "navmFrontend.nim");
-						TMP830 = addInt(i, 1);
-						i = (NI64)(TMP830);
 					}
 					LA28: ;
 				}
@@ -1046,10 +1044,10 @@ N_NIMCALL(void, compbundledrm_99838)(tnavmfrontend97004* ob) {
 				case ((NI8) 31):
 				{
 					NIM_BOOL LOC33;
-					nimln(427, "navmFrontend.nim");
+					nimln(411, "navmFrontend.nim");
 					zr_96717(&ob->Sup, (*ob).Fdisasm);
-					nimln(428, "navmFrontend.nim");
-					nimln(428, "navmFrontend.nim");
+					nimln(412, "navmFrontend.nim");
+					nimln(412, "navmFrontend.nim");
 					LOC33 = NIM_TRUE;
 					if (!(LOC33)) goto LA34;
 					nimln(704, "system.nim");
@@ -1057,178 +1055,173 @@ N_NIMCALL(void, compbundledrm_99838)(tnavmfrontend97004* ob) {
 					LA34: ;
 					if (!LOC33) goto LA35;
 					{
-						NI TMP831;
-						nimln(429, "navmFrontend.nim");
-						nimln(429, "navmFrontend.nim");
+						nimln(413, "navmFrontend.nim");
+						nimln(413, "navmFrontend.nim");
 						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
-						nimln(430, "navmFrontend.nim");
-						nimln(430, "navmFrontend.nim");
-						TMP831 = addInt(i, 1);
-						i = (NI64)(TMP831);
 					}
 					LA35: ;
 				}
 				break;
-				case ((NI8) 0):
-				{
-					nimln(431, "navmFrontend.nim");
-					error_99822(((NimStringDesc*) &TMP832));
-				}
-				break;
-				case ((NI8) 24):
-				{
-					nimln(432, "navmFrontend.nim");
-					error_99822(((NimStringDesc*) &TMP833));
-				}
-				break;
-				case ((NI8) 25):
-				{
-					nimln(433, "navmFrontend.nim");
-					error_99822(((NimStringDesc*) &TMP834));
-				}
-				break;
-				case ((NI8) 22):
-				{
-					nimln(434, "navmFrontend.nim");
-					error_99822(((NimStringDesc*) &TMP835));
-				}
-				break;
 				case ((NI8) 2):
 				{
-					nimln(435, "navmFrontend.nim");
+					nimln(414, "navmFrontend.nim");
 					lx_94313(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 3):
 				{
-					nimln(436, "navmFrontend.nim");
+					nimln(415, "navmFrontend.nim");
 					ld_94360(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 4):
 				{
-					nimln(437, "navmFrontend.nim");
+					nimln(416, "navmFrontend.nim");
 					st_94397(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 5):
 				{
-					nimln(438, "navmFrontend.nim");
+					nimln(417, "navmFrontend.nim");
 					lxi_94430(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 6):
 				{
-					nimln(439, "navmFrontend.nim");
+					nimln(418, "navmFrontend.nim");
 					sxi_94524(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 7):
 				{
-					nimln(440, "navmFrontend.nim");
+					nimln(419, "navmFrontend.nim");
 					lxd_94477(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 8):
 				{
-					nimln(441, "navmFrontend.nim");
+					nimln(420, "navmFrontend.nim");
 					sxd_94571(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 9):
 				{
-					nimln(442, "navmFrontend.nim");
+					nimln(421, "navmFrontend.nim");
 					add_94618(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 10):
 				{
-					nimln(443, "navmFrontend.nim");
+					nimln(422, "navmFrontend.nim");
 					adc_94783(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 11):
 				{
-					nimln(444, "navmFrontend.nim");
+					nimln(423, "navmFrontend.nim");
 					sub_94931(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 12):
 				{
-					nimln(445, "navmFrontend.nim");
+					nimln(424, "navmFrontend.nim");
 					sbc_95079(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 13):
 				{
-					nimln(446, "navmFrontend.nim");
+					nimln(425, "navmFrontend.nim");
 					slb_95227(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 14):
 				{
-					nimln(447, "navmFrontend.nim");
+					nimln(426, "navmFrontend.nim");
 					srb_95394(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 15):
 				{
-					nimln(448, "navmFrontend.nim");
+					nimln(427, "navmFrontend.nim");
 					anb_95544(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 16):
 				{
-					nimln(449, "navmFrontend.nim");
+					nimln(428, "navmFrontend.nim");
 					gor_95692(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 17):
 				{
-					nimln(450, "navmFrontend.nim");
+					nimln(429, "navmFrontend.nim");
 					xob_95840(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 18):
 				{
-					nimln(451, "navmFrontend.nim");
+					nimln(430, "navmFrontend.nim");
 					dup_95988(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 20):
 				{
-					nimln(452, "navmFrontend.nim");
+					nimln(431, "navmFrontend.nim");
 					swp_96030(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 21):
 				{
-					nimln(453, "navmFrontend.nim");
+					nimln(432, "navmFrontend.nim");
 					ovr_96063(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 23):
 				{
-					nimln(454, "navmFrontend.nim");
+					nimln(433, "navmFrontend.nim");
 					rot_96094(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 27):
 				{
-					nimln(455, "navmFrontend.nim");
+					nimln(434, "navmFrontend.nim");
 					r_96578(&ob->Sup, (*ob).Fdisasm);
 				}
 				break;
 				case ((NI8) 19):
 				{
-					nimln(456, "navmFrontend.nim");
-					i = i;
+					nimln(435, "navmFrontend.nim");
+					vbndl = vbndl;
+				}
+				break;
+				case ((NI8) 0):
+				{
+					nimln(436, "navmFrontend.nim");
+					error_99822(((NimStringDesc*) &TMP827));
+				}
+				break;
+				case ((NI8) 24):
+				{
+					nimln(437, "navmFrontend.nim");
+					error_99822(((NimStringDesc*) &TMP828));
+				}
+				break;
+				case ((NI8) 25):
+				{
+					nimln(438, "navmFrontend.nim");
+					error_99822(((NimStringDesc*) &TMP829));
+				}
+				break;
+				case ((NI8) 22):
+				{
+					nimln(439, "navmFrontend.nim");
+					error_99822(((NimStringDesc*) &TMP830));
 				}
 				break;
 				default:
 				{
-					nimln(457, "navmFrontend.nim");
-					error_99822(((NimStringDesc*) &TMP836));
+					nimln(440, "navmFrontend.nim");
+					error_99822(((NimStringDesc*) &TMP831));
 				}
 				break;
 				}
@@ -1241,12 +1234,1232 @@ N_NIMCALL(void, compbundledrm_99838)(tnavmfrontend97004* ob) {
 		setFrame((TFrame*)&F);
 		if (isObj(getCurrentException()->Sup.m_type, (&NTI1049))) {
 			TMP825.status = 0;
-			nimln(459, "navmFrontend.nim");
+			nimln(442, "navmFrontend.nim");
 			errorassert_98074();
 			popCurrentException();
 		}
 	}
 	if (TMP825.status != 0) reraiseException();
+	popFrame();
+}
+
+N_NIMCALL(NIM_BOOL, inrange_100374)(NI64 val, NI r) {
+	NIM_BOOL result;
+	NI64 nval;
+	NI TMP832;
+	nimfr("inRange", "navmFrontend.nim")
+	result = 0;
+	nimln(446, "navmFrontend.nim");
+	nimln(446, "navmFrontend.nim");
+	nimln(446, "navmFrontend.nim");
+	TMP832 = mulInt(r, 8);
+	nval = (NI64)((NU64)(val) >> (NU64)(((NI64) ((NI64)(TMP832)))));
+	nimln(447, "navmFrontend.nim");
+	nimln(704, "system.nim");
+	if (!(0 < nval)) goto LA2;
+	{
+		nimln(447, "navmFrontend.nim");
+		result = NIM_FALSE;
+	}
+	goto LA1;
+	LA2: ;
+	{
+		nimln(447, "navmFrontend.nim");
+		result = NIM_TRUE;
+	}
+	LA1: ;
+	popFrame();
+	return result;
+}
+
+N_NIMCALL(void, compbundleit_100370)(tnavmfrontend97004* ob) {
+	NU64 vbndl;
+	NI8 vinsa;
+	NI8 vinsb;
+	NI16 vopca;
+	TSafePoint TMP833;
+	nimfr("compBundleIT", "navmFrontend.nim")
+	nimln(450, "navmFrontend.nim");
+	if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+	vbndl = ((NU64) ((*ob).Svmmem->data[(*ob).Ovmmem]));
+	nimln(451, "navmFrontend.nim");
+	vinsa = ((NI8) 0);
+	nimln(452, "navmFrontend.nim");
+	vinsb = ((NI8) 0);
+	nimln(453, "navmFrontend.nim");
+	vopca = ((NI16) 0);
+	nimln(455, "navmFrontend.nim");
+	nimln(455, "navmFrontend.nim");
+	nimln(455, "navmFrontend.nim");
+	nimln(455, "navmFrontend.nim");
+	if (!!(!(((*ob).Sup.Finit == NIM_FALSE)))) goto LA2;
+	{
+		nimln(455, "navmFrontend.nim");
+		hiddenraiseassert_71220(((NimStringDesc*) &TMP813));
+	}
+	LA2: ;
+	nimln(457, "navmFrontend.nim");
+	pushSafePoint(&TMP833);
+	TMP833.status = setjmp(TMP833.context);
+	if (TMP833.status == 0) {
+		NI TMP834;
+		nimln(458, "navmFrontend.nim");
+		nimln(458, "navmFrontend.nim");
+		TMP834 = addInt((*ob).Ovmmem, 1);
+		(*ob).Ovmmem = (NI64)(TMP834);
+		{
+			nimln(460, "navmFrontend.nim");
+			while (1) {
+				nimln(696, "system.nim");
+				nimln(696, "system.nim");
+				if (!!((vbndl == ((NU64) 0)))) goto LA7;
+				nimln(461, "navmFrontend.nim");
+				nimln(461, "navmFrontend.nim");
+				vinsa = ((NI8) ((NU64)(vbndl & ((NU64) 31))));
+				nimln(462, "navmFrontend.nim");
+				nimln(462, "navmFrontend.nim");
+				nimln(462, "navmFrontend.nim");
+				vinsb = ((NI8) ((NU64)((NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5))) & ((NU64) 31))));
+				nimln(463, "navmFrontend.nim");
+				nimln(463, "navmFrontend.nim");
+				vopca = ((NI16) ((NU64)(vbndl & ((NU64) 1023))));
+				nimln(465, "navmFrontend.nim");
+				switch (vopca) {
+				case ((NI16) 65):
+				{
+					nimln(467, "navmFrontend.nim");
+					if (!NIM_FALSE) goto LA10;
+					{
+						NIM_BOOL LOC14;
+						nimln(468, "navmFrontend.nim");
+						nimln(696, "system.nim");
+						nimln(696, "system.nim");
+						nimln(468, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						LOC14 = inrange_100374((*ob).Svmmem->data[(*ob).Ovmmem], 0);
+						if (!!((LOC14 == NIM_FALSE))) goto LA15;
+						{
+							NI TMP835;
+							nimln(469, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							lximm_94352(&ob->Sup, ((NU64) ((*ob).Svmmem->data[(*ob).Ovmmem])), (*ob).Fdisasm);
+							nimln(470, "navmFrontend.nim");
+							nimln(470, "navmFrontend.nim");
+							TMP835 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP835);
+							nimln(471, "navmFrontend.nim");
+							nimln(471, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						goto LA13;
+						LA15: ;
+						{
+							NI TMP836;
+							nimln(473, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(474, "navmFrontend.nim");
+							lx_94313(&ob->Sup, (*ob).Fdisasm);
+							nimln(475, "navmFrontend.nim");
+							nimln(475, "navmFrontend.nim");
+							TMP836 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP836);
+							nimln(476, "navmFrontend.nim");
+							nimln(476, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						LA13: ;
+					}
+					LA10: ;
+				}
+				break;
+				case ((NI16) 97):
+				{
+					nimln(478, "navmFrontend.nim");
+					if (!NIM_FALSE) goto LA21;
+					{
+						NIM_BOOL LOC25;
+						nimln(479, "navmFrontend.nim");
+						nimln(696, "system.nim");
+						nimln(696, "system.nim");
+						nimln(479, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						LOC25 = inrange_100374((*ob).Svmmem->data[(*ob).Ovmmem], 0);
+						if (!!((LOC25 == NIM_FALSE))) goto LA26;
+						{
+							NI TMP837;
+							nimln(480, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							ldimm_94389(&ob->Sup, ((NU64) ((*ob).Svmmem->data[(*ob).Ovmmem])), (*ob).Fdisasm);
+							nimln(481, "navmFrontend.nim");
+							nimln(481, "navmFrontend.nim");
+							TMP837 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP837);
+							nimln(482, "navmFrontend.nim");
+							nimln(482, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						goto LA24;
+						LA26: ;
+						{
+							NI TMP838;
+							nimln(484, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(485, "navmFrontend.nim");
+							ld_94360(&ob->Sup, (*ob).Fdisasm);
+							nimln(486, "navmFrontend.nim");
+							nimln(486, "navmFrontend.nim");
+							TMP838 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP838);
+							nimln(487, "navmFrontend.nim");
+							nimln(487, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						LA24: ;
+					}
+					LA21: ;
+				}
+				break;
+				case ((NI16) 129):
+				{
+					nimln(489, "navmFrontend.nim");
+					if (!NIM_FALSE) goto LA32;
+					{
+						NIM_BOOL LOC36;
+						nimln(490, "navmFrontend.nim");
+						nimln(696, "system.nim");
+						nimln(696, "system.nim");
+						nimln(490, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						LOC36 = inrange_100374((*ob).Svmmem->data[(*ob).Ovmmem], 0);
+						if (!!((LOC36 == NIM_FALSE))) goto LA37;
+						{
+							NI TMP839;
+							nimln(491, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							stimm_94422(&ob->Sup, ((NU64) ((*ob).Svmmem->data[(*ob).Ovmmem])), (*ob).Fdisasm);
+							nimln(492, "navmFrontend.nim");
+							nimln(492, "navmFrontend.nim");
+							TMP839 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP839);
+							nimln(493, "navmFrontend.nim");
+							nimln(493, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						goto LA35;
+						LA37: ;
+						{
+							NI TMP840;
+							nimln(495, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(496, "navmFrontend.nim");
+							st_94397(&ob->Sup, (*ob).Fdisasm);
+							nimln(497, "navmFrontend.nim");
+							nimln(497, "navmFrontend.nim");
+							TMP840 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP840);
+							nimln(498, "navmFrontend.nim");
+							nimln(498, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						LA35: ;
+					}
+					LA32: ;
+				}
+				break;
+				case ((NI16) 161):
+				{
+					nimln(500, "navmFrontend.nim");
+					if (!NIM_FALSE) goto LA43;
+					{
+						NIM_BOOL LOC47;
+						nimln(501, "navmFrontend.nim");
+						nimln(696, "system.nim");
+						nimln(696, "system.nim");
+						nimln(501, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						LOC47 = inrange_100374((*ob).Svmmem->data[(*ob).Ovmmem], 0);
+						if (!!((LOC47 == NIM_FALSE))) goto LA48;
+						{
+							NI TMP841;
+							nimln(502, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							lxiimm_94469(&ob->Sup, ((NU64) ((*ob).Svmmem->data[(*ob).Ovmmem])), (*ob).Fdisasm);
+							nimln(503, "navmFrontend.nim");
+							nimln(503, "navmFrontend.nim");
+							TMP841 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP841);
+							nimln(504, "navmFrontend.nim");
+							nimln(504, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						goto LA46;
+						LA48: ;
+						{
+							NI TMP842;
+							nimln(506, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(507, "navmFrontend.nim");
+							lxi_94430(&ob->Sup, (*ob).Fdisasm);
+							nimln(508, "navmFrontend.nim");
+							nimln(508, "navmFrontend.nim");
+							TMP842 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP842);
+							nimln(509, "navmFrontend.nim");
+							nimln(509, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						LA46: ;
+					}
+					LA43: ;
+				}
+				break;
+				case ((NI16) 225):
+				{
+					nimln(511, "navmFrontend.nim");
+					if (!NIM_FALSE) goto LA54;
+					{
+						NIM_BOOL LOC58;
+						nimln(512, "navmFrontend.nim");
+						nimln(696, "system.nim");
+						nimln(696, "system.nim");
+						nimln(512, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						LOC58 = inrange_100374((*ob).Svmmem->data[(*ob).Ovmmem], 0);
+						if (!!((LOC58 == NIM_FALSE))) goto LA59;
+						{
+							NI TMP843;
+							nimln(513, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							lxdimm_94516(&ob->Sup, ((NU64) ((*ob).Svmmem->data[(*ob).Ovmmem])), (*ob).Fdisasm);
+							nimln(514, "navmFrontend.nim");
+							nimln(514, "navmFrontend.nim");
+							TMP843 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP843);
+							nimln(515, "navmFrontend.nim");
+							nimln(515, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						goto LA57;
+						LA59: ;
+						{
+							NI TMP844;
+							nimln(517, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(518, "navmFrontend.nim");
+							lxd_94477(&ob->Sup, (*ob).Fdisasm);
+							nimln(519, "navmFrontend.nim");
+							nimln(519, "navmFrontend.nim");
+							TMP844 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP844);
+							nimln(520, "navmFrontend.nim");
+							nimln(520, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						LA57: ;
+					}
+					LA54: ;
+				}
+				break;
+				case ((NI16) 193):
+				{
+					nimln(522, "navmFrontend.nim");
+					if (!NIM_FALSE) goto LA65;
+					{
+						NIM_BOOL LOC69;
+						nimln(523, "navmFrontend.nim");
+						nimln(696, "system.nim");
+						nimln(696, "system.nim");
+						nimln(523, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						LOC69 = inrange_100374((*ob).Svmmem->data[(*ob).Ovmmem], 0);
+						if (!!((LOC69 == NIM_FALSE))) goto LA70;
+						{
+							NI TMP845;
+							nimln(524, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							sxiimm_94563(&ob->Sup, ((NU64) ((*ob).Svmmem->data[(*ob).Ovmmem])), (*ob).Fdisasm);
+							nimln(525, "navmFrontend.nim");
+							nimln(525, "navmFrontend.nim");
+							TMP845 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP845);
+							nimln(526, "navmFrontend.nim");
+							nimln(526, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						goto LA68;
+						LA70: ;
+						{
+							NI TMP846;
+							nimln(528, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(529, "navmFrontend.nim");
+							sxi_94524(&ob->Sup, (*ob).Fdisasm);
+							nimln(530, "navmFrontend.nim");
+							nimln(530, "navmFrontend.nim");
+							TMP846 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP846);
+							nimln(531, "navmFrontend.nim");
+							nimln(531, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						LA68: ;
+					}
+					LA65: ;
+				}
+				break;
+				case ((NI16) 257):
+				{
+					nimln(533, "navmFrontend.nim");
+					if (!NIM_FALSE) goto LA76;
+					{
+						NIM_BOOL LOC80;
+						nimln(534, "navmFrontend.nim");
+						nimln(696, "system.nim");
+						nimln(696, "system.nim");
+						nimln(534, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						LOC80 = inrange_100374((*ob).Svmmem->data[(*ob).Ovmmem], 0);
+						if (!!((LOC80 == NIM_FALSE))) goto LA81;
+						{
+							NI TMP847;
+							nimln(535, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							sxdimm_94610(&ob->Sup, ((NU64) ((*ob).Svmmem->data[(*ob).Ovmmem])), (*ob).Fdisasm);
+							nimln(536, "navmFrontend.nim");
+							nimln(536, "navmFrontend.nim");
+							TMP847 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP847);
+							nimln(537, "navmFrontend.nim");
+							nimln(537, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						goto LA79;
+						LA81: ;
+						{
+							NI TMP848;
+							nimln(539, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(540, "navmFrontend.nim");
+							lxd_94477(&ob->Sup, (*ob).Fdisasm);
+							nimln(541, "navmFrontend.nim");
+							nimln(541, "navmFrontend.nim");
+							TMP848 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP848);
+							nimln(542, "navmFrontend.nim");
+							nimln(542, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						LA79: ;
+					}
+					LA76: ;
+				}
+				break;
+				case ((NI16) 289):
+				{
+					nimln(544, "navmFrontend.nim");
+					if (!NIM_TRUE) goto LA87;
+					{
+						NIM_BOOL LOC91;
+						nimln(545, "navmFrontend.nim");
+						nimln(696, "system.nim");
+						nimln(696, "system.nim");
+						nimln(545, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						LOC91 = inrange_100374((*ob).Svmmem->data[(*ob).Ovmmem], 4);
+						if (!!((LOC91 == NIM_FALSE))) goto LA92;
+						{
+							NI TMP849;
+							nimln(546, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							addimm_94653(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(547, "navmFrontend.nim");
+							nimln(547, "navmFrontend.nim");
+							TMP849 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP849);
+							nimln(548, "navmFrontend.nim");
+							nimln(548, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						goto LA90;
+						LA92: ;
+						{
+							NI TMP850;
+							nimln(550, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(551, "navmFrontend.nim");
+							add_94618(&ob->Sup, (*ob).Fdisasm);
+							nimln(552, "navmFrontend.nim");
+							nimln(552, "navmFrontend.nim");
+							TMP850 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP850);
+							nimln(553, "navmFrontend.nim");
+							nimln(553, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						LA90: ;
+					}
+					LA87: ;
+				}
+				break;
+				case ((NI16) 321):
+				{
+					nimln(555, "navmFrontend.nim");
+					if (!NIM_TRUE) goto LA98;
+					{
+						NIM_BOOL LOC102;
+						nimln(556, "navmFrontend.nim");
+						nimln(696, "system.nim");
+						nimln(696, "system.nim");
+						nimln(556, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						LOC102 = inrange_100374((*ob).Svmmem->data[(*ob).Ovmmem], 4);
+						if (!!((LOC102 == NIM_FALSE))) goto LA103;
+						{
+							NI TMP851;
+							nimln(557, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							adcimm_94818(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(558, "navmFrontend.nim");
+							nimln(558, "navmFrontend.nim");
+							TMP851 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP851);
+							nimln(559, "navmFrontend.nim");
+							nimln(559, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						goto LA101;
+						LA103: ;
+						{
+							NI TMP852;
+							nimln(561, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(562, "navmFrontend.nim");
+							adc_94783(&ob->Sup, (*ob).Fdisasm);
+							nimln(563, "navmFrontend.nim");
+							nimln(563, "navmFrontend.nim");
+							TMP852 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP852);
+							nimln(564, "navmFrontend.nim");
+							nimln(564, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						LA101: ;
+					}
+					LA98: ;
+				}
+				break;
+				case ((NI16) 353):
+				{
+					nimln(566, "navmFrontend.nim");
+					if (!NIM_TRUE) goto LA109;
+					{
+						NIM_BOOL LOC113;
+						nimln(567, "navmFrontend.nim");
+						nimln(696, "system.nim");
+						nimln(696, "system.nim");
+						nimln(567, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						LOC113 = inrange_100374((*ob).Svmmem->data[(*ob).Ovmmem], 4);
+						if (!!((LOC113 == NIM_FALSE))) goto LA114;
+						{
+							NI TMP853;
+							nimln(568, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							subimm_94966(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(569, "navmFrontend.nim");
+							nimln(569, "navmFrontend.nim");
+							TMP853 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP853);
+							nimln(570, "navmFrontend.nim");
+							nimln(570, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						goto LA112;
+						LA114: ;
+						{
+							NI TMP854;
+							nimln(572, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(573, "navmFrontend.nim");
+							sub_94931(&ob->Sup, (*ob).Fdisasm);
+							nimln(574, "navmFrontend.nim");
+							nimln(574, "navmFrontend.nim");
+							TMP854 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP854);
+							nimln(575, "navmFrontend.nim");
+							nimln(575, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						LA112: ;
+					}
+					LA109: ;
+				}
+				break;
+				case ((NI16) 385):
+				{
+					nimln(577, "navmFrontend.nim");
+					if (!NIM_TRUE) goto LA120;
+					{
+						NIM_BOOL LOC124;
+						nimln(578, "navmFrontend.nim");
+						nimln(696, "system.nim");
+						nimln(696, "system.nim");
+						nimln(578, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						LOC124 = inrange_100374((*ob).Svmmem->data[(*ob).Ovmmem], 4);
+						if (!!((LOC124 == NIM_FALSE))) goto LA125;
+						{
+							NI TMP855;
+							nimln(579, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							sbcimm_95114(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(580, "navmFrontend.nim");
+							nimln(580, "navmFrontend.nim");
+							TMP855 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP855);
+							nimln(581, "navmFrontend.nim");
+							nimln(581, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						goto LA123;
+						LA125: ;
+						{
+							NI TMP856;
+							nimln(583, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(584, "navmFrontend.nim");
+							sbc_95079(&ob->Sup, (*ob).Fdisasm);
+							nimln(585, "navmFrontend.nim");
+							nimln(585, "navmFrontend.nim");
+							TMP856 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP856);
+							nimln(586, "navmFrontend.nim");
+							nimln(586, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						LA123: ;
+					}
+					LA120: ;
+				}
+				break;
+				case ((NI16) 417):
+				{
+					nimln(588, "navmFrontend.nim");
+					if (!NIM_TRUE) goto LA131;
+					{
+						NIM_BOOL LOC135;
+						nimln(589, "navmFrontend.nim");
+						nimln(696, "system.nim");
+						nimln(696, "system.nim");
+						nimln(589, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						LOC135 = inrange_100374((*ob).Svmmem->data[(*ob).Ovmmem], 1);
+						if (!!((LOC135 == NIM_FALSE))) goto LA136;
+						{
+							NI TMP857;
+							nimln(590, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							slbimm_95262(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(591, "navmFrontend.nim");
+							nimln(591, "navmFrontend.nim");
+							TMP857 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP857);
+							nimln(592, "navmFrontend.nim");
+							nimln(592, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						goto LA134;
+						LA136: ;
+						{
+							NI TMP858;
+							nimln(594, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(595, "navmFrontend.nim");
+							slb_95227(&ob->Sup, (*ob).Fdisasm);
+							nimln(596, "navmFrontend.nim");
+							nimln(596, "navmFrontend.nim");
+							TMP858 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP858);
+							nimln(597, "navmFrontend.nim");
+							nimln(597, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						LA134: ;
+					}
+					LA131: ;
+				}
+				break;
+				case ((NI16) 449):
+				{
+					nimln(599, "navmFrontend.nim");
+					if (!NIM_TRUE) goto LA142;
+					{
+						NIM_BOOL LOC146;
+						nimln(600, "navmFrontend.nim");
+						nimln(696, "system.nim");
+						nimln(696, "system.nim");
+						nimln(600, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						LOC146 = inrange_100374((*ob).Svmmem->data[(*ob).Ovmmem], 1);
+						if (!!((LOC146 == NIM_FALSE))) goto LA147;
+						{
+							NI TMP859;
+							nimln(601, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							srbimm_95429(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(602, "navmFrontend.nim");
+							nimln(602, "navmFrontend.nim");
+							TMP859 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP859);
+							nimln(603, "navmFrontend.nim");
+							nimln(603, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						goto LA145;
+						LA147: ;
+						{
+							NI TMP860;
+							nimln(605, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(606, "navmFrontend.nim");
+							srb_95394(&ob->Sup, (*ob).Fdisasm);
+							nimln(607, "navmFrontend.nim");
+							nimln(607, "navmFrontend.nim");
+							TMP860 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP860);
+							nimln(608, "navmFrontend.nim");
+							nimln(608, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						LA145: ;
+					}
+					LA142: ;
+				}
+				break;
+				case ((NI16) 481):
+				{
+					nimln(610, "navmFrontend.nim");
+					if (!NIM_TRUE) goto LA153;
+					{
+						NIM_BOOL LOC157;
+						nimln(611, "navmFrontend.nim");
+						nimln(696, "system.nim");
+						nimln(696, "system.nim");
+						nimln(611, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						LOC157 = inrange_100374((*ob).Svmmem->data[(*ob).Ovmmem], 4);
+						if (!!((LOC157 == NIM_FALSE))) goto LA158;
+						{
+							NI TMP861;
+							nimln(612, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							anbimm_95579(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(613, "navmFrontend.nim");
+							nimln(613, "navmFrontend.nim");
+							TMP861 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP861);
+							nimln(614, "navmFrontend.nim");
+							nimln(614, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						goto LA156;
+						LA158: ;
+						{
+							NI TMP862;
+							nimln(616, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(617, "navmFrontend.nim");
+							anb_95544(&ob->Sup, (*ob).Fdisasm);
+							nimln(618, "navmFrontend.nim");
+							nimln(618, "navmFrontend.nim");
+							TMP862 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP862);
+							nimln(619, "navmFrontend.nim");
+							nimln(619, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						LA156: ;
+					}
+					LA153: ;
+				}
+				break;
+				case ((NI16) 513):
+				{
+					nimln(621, "navmFrontend.nim");
+					if (!NIM_TRUE) goto LA164;
+					{
+						NIM_BOOL LOC168;
+						nimln(622, "navmFrontend.nim");
+						nimln(696, "system.nim");
+						nimln(696, "system.nim");
+						nimln(622, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						LOC168 = inrange_100374((*ob).Svmmem->data[(*ob).Ovmmem], 4);
+						if (!!((LOC168 == NIM_FALSE))) goto LA169;
+						{
+							NI TMP863;
+							nimln(623, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							gorimm_95727(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(624, "navmFrontend.nim");
+							nimln(624, "navmFrontend.nim");
+							TMP863 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP863);
+							nimln(625, "navmFrontend.nim");
+							nimln(625, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						goto LA167;
+						LA169: ;
+						{
+							NI TMP864;
+							nimln(627, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(628, "navmFrontend.nim");
+							gor_95692(&ob->Sup, (*ob).Fdisasm);
+							nimln(629, "navmFrontend.nim");
+							nimln(629, "navmFrontend.nim");
+							TMP864 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP864);
+							nimln(630, "navmFrontend.nim");
+							nimln(630, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						LA167: ;
+					}
+					LA164: ;
+				}
+				break;
+				case ((NI16) 545):
+				{
+					nimln(632, "navmFrontend.nim");
+					if (!NIM_TRUE) goto LA175;
+					{
+						NIM_BOOL LOC179;
+						nimln(633, "navmFrontend.nim");
+						nimln(696, "system.nim");
+						nimln(696, "system.nim");
+						nimln(633, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						LOC179 = inrange_100374((*ob).Svmmem->data[(*ob).Ovmmem], 4);
+						if (!!((LOC179 == NIM_FALSE))) goto LA180;
+						{
+							NI TMP865;
+							nimln(634, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							xobimm_95875(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(635, "navmFrontend.nim");
+							nimln(635, "navmFrontend.nim");
+							TMP865 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP865);
+							nimln(636, "navmFrontend.nim");
+							nimln(636, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						goto LA178;
+						LA180: ;
+						{
+							NI TMP866;
+							nimln(638, "navmFrontend.nim");
+							if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+							liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+							nimln(639, "navmFrontend.nim");
+							xob_95840(&ob->Sup, (*ob).Fdisasm);
+							nimln(640, "navmFrontend.nim");
+							nimln(640, "navmFrontend.nim");
+							TMP866 = addInt((*ob).Ovmmem, 1);
+							(*ob).Ovmmem = (NI64)(TMP866);
+							nimln(641, "navmFrontend.nim");
+							nimln(641, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 10)));
+						}
+						LA178: ;
+					}
+					LA175: ;
+				}
+				break;
+				default:
+				{
+					nimln(643, "navmFrontend.nim");
+					switch (vinsa) {
+					case ((NI8) 1):
+					{
+						NI TMP867;
+						nimln(645, "navmFrontend.nim");
+						if ((NU)((*ob).Ovmmem) >= (NU)((*ob).Svmmem->Sup.len)) raiseIndexError();
+						liimm_94197(&ob->Sup, (*ob).Svmmem->data[(*ob).Ovmmem], (*ob).Fdisasm);
+						nimln(646, "navmFrontend.nim");
+						nimln(646, "navmFrontend.nim");
+						TMP867 = addInt((*ob).Ovmmem, 1);
+						(*ob).Ovmmem = (NI64)(TMP867);
+						nimln(647, "navmFrontend.nim");
+						nimln(647, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 26):
+					{
+						nimln(649, "navmFrontend.nim");
+						br_96529(&ob->Sup, (*ob).Fdisasm);
+						nimln(650, "navmFrontend.nim");
+						goto LA6;
+					}
+					break;
+					case ((NI8) 28):
+					{
+						NIM_BOOL LOC189;
+						nimln(652, "navmFrontend.nim");
+						eq_96668(&ob->Sup, (*ob).Fdisasm);
+						nimln(653, "navmFrontend.nim");
+						nimln(653, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+						nimln(654, "navmFrontend.nim");
+						nimln(654, "navmFrontend.nim");
+						LOC189 = NIM_TRUE;
+						if (!(LOC189)) goto LA190;
+						nimln(704, "system.nim");
+						LOC189 = (((NI8) 27) < vinsb);
+						LA190: ;
+						if (!LOC189) goto LA191;
+						{
+							nimln(655, "navmFrontend.nim");
+							nimln(655, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+						}
+						LA191: ;
+					}
+					break;
+					case ((NI8) 29):
+					{
+						NIM_BOOL LOC196;
+						nimln(657, "navmFrontend.nim");
+						gr_96703(&ob->Sup, (*ob).Fdisasm);
+						nimln(658, "navmFrontend.nim");
+						nimln(658, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+						nimln(659, "navmFrontend.nim");
+						nimln(659, "navmFrontend.nim");
+						LOC196 = NIM_TRUE;
+						if (!(LOC196)) goto LA197;
+						nimln(704, "system.nim");
+						LOC196 = (((NI8) 27) < vinsb);
+						LA197: ;
+						if (!LOC196) goto LA198;
+						{
+							nimln(660, "navmFrontend.nim");
+							nimln(660, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+						}
+						LA198: ;
+					}
+					break;
+					case ((NI8) 30):
+					{
+						NIM_BOOL LOC203;
+						nimln(662, "navmFrontend.nim");
+						le_96710(&ob->Sup, (*ob).Fdisasm);
+						nimln(663, "navmFrontend.nim");
+						nimln(663, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+						nimln(664, "navmFrontend.nim");
+						nimln(664, "navmFrontend.nim");
+						LOC203 = NIM_TRUE;
+						if (!(LOC203)) goto LA204;
+						nimln(704, "system.nim");
+						LOC203 = (((NI8) 27) < vinsb);
+						LA204: ;
+						if (!LOC203) goto LA205;
+						{
+							nimln(665, "navmFrontend.nim");
+							nimln(665, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+						}
+						LA205: ;
+					}
+					break;
+					case ((NI8) 31):
+					{
+						NIM_BOOL LOC210;
+						nimln(667, "navmFrontend.nim");
+						zr_96717(&ob->Sup, (*ob).Fdisasm);
+						nimln(668, "navmFrontend.nim");
+						nimln(668, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+						nimln(669, "navmFrontend.nim");
+						nimln(669, "navmFrontend.nim");
+						LOC210 = NIM_TRUE;
+						if (!(LOC210)) goto LA211;
+						nimln(704, "system.nim");
+						LOC210 = (((NI8) 27) < vinsb);
+						LA211: ;
+						if (!LOC210) goto LA212;
+						{
+							nimln(670, "navmFrontend.nim");
+							nimln(670, "navmFrontend.nim");
+							vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+						}
+						LA212: ;
+					}
+					break;
+					case ((NI8) 2):
+					{
+						nimln(672, "navmFrontend.nim");
+						lx_94313(&ob->Sup, (*ob).Fdisasm);
+						nimln(673, "navmFrontend.nim");
+						nimln(673, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 3):
+					{
+						nimln(675, "navmFrontend.nim");
+						ld_94360(&ob->Sup, (*ob).Fdisasm);
+						nimln(676, "navmFrontend.nim");
+						nimln(676, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 4):
+					{
+						nimln(678, "navmFrontend.nim");
+						st_94397(&ob->Sup, (*ob).Fdisasm);
+						nimln(679, "navmFrontend.nim");
+						nimln(679, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 5):
+					{
+						nimln(681, "navmFrontend.nim");
+						lxi_94430(&ob->Sup, (*ob).Fdisasm);
+						nimln(682, "navmFrontend.nim");
+						nimln(682, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 6):
+					{
+						nimln(684, "navmFrontend.nim");
+						sxi_94524(&ob->Sup, (*ob).Fdisasm);
+						nimln(685, "navmFrontend.nim");
+						nimln(685, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 7):
+					{
+						nimln(687, "navmFrontend.nim");
+						lxd_94477(&ob->Sup, (*ob).Fdisasm);
+						nimln(688, "navmFrontend.nim");
+						nimln(688, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 8):
+					{
+						nimln(690, "navmFrontend.nim");
+						sxd_94571(&ob->Sup, (*ob).Fdisasm);
+						nimln(691, "navmFrontend.nim");
+						nimln(691, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 9):
+					{
+						nimln(693, "navmFrontend.nim");
+						add_94618(&ob->Sup, (*ob).Fdisasm);
+						nimln(694, "navmFrontend.nim");
+						nimln(694, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 10):
+					{
+						nimln(696, "navmFrontend.nim");
+						adc_94783(&ob->Sup, (*ob).Fdisasm);
+						nimln(697, "navmFrontend.nim");
+						nimln(697, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 11):
+					{
+						nimln(699, "navmFrontend.nim");
+						sub_94931(&ob->Sup, (*ob).Fdisasm);
+						nimln(700, "navmFrontend.nim");
+						nimln(700, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 12):
+					{
+						nimln(702, "navmFrontend.nim");
+						sbc_95079(&ob->Sup, (*ob).Fdisasm);
+						nimln(703, "navmFrontend.nim");
+						nimln(703, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 13):
+					{
+						nimln(705, "navmFrontend.nim");
+						slb_95227(&ob->Sup, (*ob).Fdisasm);
+						nimln(706, "navmFrontend.nim");
+						nimln(706, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 14):
+					{
+						nimln(708, "navmFrontend.nim");
+						srb_95394(&ob->Sup, (*ob).Fdisasm);
+						nimln(709, "navmFrontend.nim");
+						nimln(709, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 15):
+					{
+						nimln(711, "navmFrontend.nim");
+						anb_95544(&ob->Sup, (*ob).Fdisasm);
+						nimln(712, "navmFrontend.nim");
+						nimln(712, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 16):
+					{
+						nimln(714, "navmFrontend.nim");
+						gor_95692(&ob->Sup, (*ob).Fdisasm);
+						nimln(715, "navmFrontend.nim");
+						nimln(715, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 17):
+					{
+						nimln(717, "navmFrontend.nim");
+						xob_95840(&ob->Sup, (*ob).Fdisasm);
+						nimln(718, "navmFrontend.nim");
+						nimln(718, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 18):
+					{
+						nimln(720, "navmFrontend.nim");
+						dup_95988(&ob->Sup, (*ob).Fdisasm);
+						nimln(721, "navmFrontend.nim");
+						nimln(721, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 20):
+					{
+						nimln(723, "navmFrontend.nim");
+						swp_96030(&ob->Sup, (*ob).Fdisasm);
+						nimln(724, "navmFrontend.nim");
+						nimln(724, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 21):
+					{
+						nimln(726, "navmFrontend.nim");
+						ovr_96063(&ob->Sup, (*ob).Fdisasm);
+						nimln(727, "navmFrontend.nim");
+						nimln(727, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 23):
+					{
+						nimln(729, "navmFrontend.nim");
+						rot_96094(&ob->Sup, (*ob).Fdisasm);
+						nimln(730, "navmFrontend.nim");
+						nimln(730, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 27):
+					{
+						nimln(732, "navmFrontend.nim");
+						r_96578(&ob->Sup, (*ob).Fdisasm);
+						nimln(733, "navmFrontend.nim");
+						nimln(733, "navmFrontend.nim");
+						vbndl = (NU64)((NU64)(vbndl) >> (NU64)(((NU64) 5)));
+					}
+					break;
+					case ((NI8) 19):
+					{
+						nimln(735, "navmFrontend.nim");
+						vbndl = vbndl;
+					}
+					break;
+					case ((NI8) 0):
+					{
+						nimln(737, "navmFrontend.nim");
+						error_99822(((NimStringDesc*) &TMP827));
+					}
+					break;
+					case ((NI8) 24):
+					{
+						nimln(739, "navmFrontend.nim");
+						error_99822(((NimStringDesc*) &TMP828));
+					}
+					break;
+					case ((NI8) 25):
+					{
+						nimln(741, "navmFrontend.nim");
+						error_99822(((NimStringDesc*) &TMP829));
+					}
+					break;
+					case ((NI8) 22):
+					{
+						nimln(743, "navmFrontend.nim");
+						error_99822(((NimStringDesc*) &TMP830));
+					}
+					break;
+					default:
+					{
+						nimln(744, "navmFrontend.nim");
+						error_99822(((NimStringDesc*) &TMP831));
+					}
+					break;
+					}
+				}
+				break;
+				}
+			} LA7: ;
+		} LA6: ;
+		popSafePoint();
+	}
+	else {
+		popSafePoint();
+		setFrame((TFrame*)&F);
+		if (isObj(getCurrentException()->Sup.m_type, (&NTI1049))) {
+			TMP833.status = 0;
+			nimln(746, "navmFrontend.nim");
+			errorassert_98074();
+			popCurrentException();
+		}
+	}
+	if (TMP833.status != 0) reraiseException();
 	popFrame();
 }
 
@@ -1310,7 +2523,7 @@ static N_INLINE(void, writeln_91224)(FILE* f, NimStringDesc** x, NI xLen0) {
 		i_91240 += 1;
 	} LA1: ;
 	nimln(160, "sysio.nim");
-	write_8862(f, ((NimStringDesc*) &TMP846));
+	write_8862(f, ((NimStringDesc*) &TMP877));
 	popFrame();
 }
 N_NOINLINE(void, navmFrontendInit)(void) {
@@ -1321,75 +2534,75 @@ N_NOINLINE(void, navmFrontendInit)(void) {
 	NimStringDesc* LOC5;
 	NimStringDesc* LOC6;
 	nimfr("navmFrontend", "navmFrontend.nim")
-	objectInit(&test_100561, (&NTI97004));
-	nimln(468, "navmFrontend.nim");
-	setup_98089(&test_100561, NIM_TRUE, 65535);
-	nimln(470, "navmFrontend.nim");
-	trace_100563 = gettraceofs_98208(&test_100561);
-	nimln(472, "navmFrontend.nim");
-	addins_98808(&test_100561, &bundle_100562, ((NU8) 26));
-	nimln(473, "navmFrontend.nim");
-	addins_98808(&test_100561, &bundle_100562, ((NU8) 9));
-	nimln(474, "navmFrontend.nim");
-	addins_98808(&test_100561, &bundle_100562, ((NU8) 1));
-	nimln(475, "navmFrontend.nim");
-	addins_98808(&test_100561, &bundle_100562, ((NU8) 11));
-	nimln(476, "navmFrontend.nim");
-	addins_98808(&test_100561, &bundle_100562, ((NU8) 1));
-	nimln(477, "navmFrontend.nim");
-	addins_98808(&test_100561, &bundle_100562, ((NU8) 1));
-	nimln(478, "navmFrontend.nim");
-	nimln(478, "navmFrontend.nim");
+	objectInit(&test_101312, (&NTI97004));
+	nimln(756, "navmFrontend.nim");
+	setup_98089(&test_101312, NIM_TRUE, 65535);
+	nimln(758, "navmFrontend.nim");
+	trace_101314 = gettraceofs_98208(&test_101312);
+	nimln(760, "navmFrontend.nim");
+	addins_98808(&test_101312, &bundle_101313, ((NU8) 26));
+	nimln(761, "navmFrontend.nim");
+	addins_98808(&test_101312, &bundle_101313, ((NU8) 9));
+	nimln(762, "navmFrontend.nim");
+	addins_98808(&test_101312, &bundle_101313, ((NU8) 1));
+	nimln(763, "navmFrontend.nim");
+	addins_98808(&test_101312, &bundle_101313, ((NU8) 11));
+	nimln(764, "navmFrontend.nim");
+	addins_98808(&test_101312, &bundle_101313, ((NU8) 1));
+	nimln(765, "navmFrontend.nim");
+	addins_98808(&test_101312, &bundle_101313, ((NU8) 1));
+	nimln(766, "navmFrontend.nim");
+	nimln(766, "navmFrontend.nim");
 	LOC1 = 0;
-	LOC1 = nsuToHex(((NI64) (bundle_100562)), 16);
-	printf("%s%s\012", (((NimStringDesc*) &TMP840))->data, (LOC1)->data);
-	nimln(480, "navmFrontend.nim");
-	pokebundle_99029(&test_100561, bundle_100562);
-	nimln(481, "navmFrontend.nim");
-	pokeimm_99227(&test_100561, 100);
-	nimln(482, "navmFrontend.nim");
-	pokeimm_99227(&test_100561, 200);
-	nimln(483, "navmFrontend.nim");
-	pokeimm_99227(&test_100561, 300);
-	nimln(484, "navmFrontend.nim");
-	nimln(484, "navmFrontend.nim");
-	if ((NU)(0) >= (NU)(test_100561.Svmmem->Sup.len)) raiseIndexError();
+	LOC1 = nsuToHex(((NI64) (bundle_101313)), 16);
+	printf("%s%s\012", (((NimStringDesc*) &TMP871))->data, (LOC1)->data);
+	nimln(768, "navmFrontend.nim");
+	pokebundle_99029(&test_101312, bundle_101313);
+	nimln(769, "navmFrontend.nim");
+	pokeimm_99227(&test_101312, 100);
+	nimln(770, "navmFrontend.nim");
+	pokeimm_99227(&test_101312, 200);
+	nimln(771, "navmFrontend.nim");
+	pokeimm_99227(&test_101312, 300);
+	nimln(772, "navmFrontend.nim");
+	nimln(772, "navmFrontend.nim");
+	if ((NU)(0) >= (NU)(test_101312.Svmmem->Sup.len)) raiseIndexError();
 	LOC2 = 0;
-	LOC2 = nsuToHex(((NI64) (test_100561.Svmmem->data[0])), 16);
-	printf("%s%s\012", (((NimStringDesc*) &TMP841))->data, (LOC2)->data);
-	nimln(485, "navmFrontend.nim");
-	nimln(485, "navmFrontend.nim");
-	if ((NU)(1) >= (NU)(test_100561.Svmmem->Sup.len)) raiseIndexError();
+	LOC2 = nsuToHex(((NI64) (test_101312.Svmmem->data[0])), 16);
+	printf("%s%s\012", (((NimStringDesc*) &TMP872))->data, (LOC2)->data);
+	nimln(773, "navmFrontend.nim");
+	nimln(773, "navmFrontend.nim");
+	if ((NU)(1) >= (NU)(test_101312.Svmmem->Sup.len)) raiseIndexError();
 	LOC3 = 0;
-	LOC3 = nimInt64ToStr(test_100561.Svmmem->data[1]);
-	printf("%s%s\012", (((NimStringDesc*) &TMP842))->data, (LOC3)->data);
-	nimln(486, "navmFrontend.nim");
-	nimln(486, "navmFrontend.nim");
-	if ((NU)(2) >= (NU)(test_100561.Svmmem->Sup.len)) raiseIndexError();
+	LOC3 = nimInt64ToStr(test_101312.Svmmem->data[1]);
+	printf("%s%s\012", (((NimStringDesc*) &TMP873))->data, (LOC3)->data);
+	nimln(774, "navmFrontend.nim");
+	nimln(774, "navmFrontend.nim");
+	if ((NU)(2) >= (NU)(test_101312.Svmmem->Sup.len)) raiseIndexError();
 	LOC4 = 0;
-	LOC4 = nimInt64ToStr(test_100561.Svmmem->data[2]);
-	printf("%s%s\012", (((NimStringDesc*) &TMP843))->data, (LOC4)->data);
-	nimln(487, "navmFrontend.nim");
-	nimln(487, "navmFrontend.nim");
-	if ((NU)(2) >= (NU)(test_100561.Svmmem->Sup.len)) raiseIndexError();
+	LOC4 = nimInt64ToStr(test_101312.Svmmem->data[2]);
+	printf("%s%s\012", (((NimStringDesc*) &TMP874))->data, (LOC4)->data);
+	nimln(775, "navmFrontend.nim");
+	nimln(775, "navmFrontend.nim");
+	if ((NU)(2) >= (NU)(test_101312.Svmmem->Sup.len)) raiseIndexError();
 	LOC5 = 0;
-	LOC5 = nimInt64ToStr(test_100561.Svmmem->data[2]);
-	printf("%s%s\012", (((NimStringDesc*) &TMP844))->data, (LOC5)->data);
-	nimln(489, "navmFrontend.nim");
-	nimln(489, "navmFrontend.nim");
-	nimln(489, "navmFrontend.nim");
+	LOC5 = nimInt64ToStr(test_101312.Svmmem->data[2]);
+	printf("%s%s\012", (((NimStringDesc*) &TMP875))->data, (LOC5)->data);
+	nimln(777, "navmFrontend.nim");
+	nimln(777, "navmFrontend.nim");
+	nimln(777, "navmFrontend.nim");
 	LOC6 = 0;
-	LOC6 = HEX24_4201(((NU64) ((NU64)(bundle_100562 & ((NU64) 31)))));
-	printf("%s%s\012", (((NimStringDesc*) &TMP845))->data, (LOC6)->data);
-	nimln(491, "navmFrontend.nim");
-	compbundledrm_99838(&test_100561);
-	nimln(493, "navmFrontend.nim");
-	release_91253(&test_100561.Sup);
+	LOC6 = HEX24_4201(((NU64) ((NU64)(bundle_101313 & ((NU64) 31)))));
+	printf("%s%s\012", (((NimStringDesc*) &TMP876))->data, (LOC6)->data);
+	nimln(779, "navmFrontend.nim");
+	compbundleit_100370(&test_101312);
+	nimln(781, "navmFrontend.nim");
+	release_91253(&test_101312.Sup);
 	popFrame();
 }
 
 N_NOINLINE(void, navmFrontendDatInit)(void) {
-static TNimNode* TMP839[4];
+static TNimNode* TMP870[4];
 static TNimNode TMP119[5];
 NTI97013.size = sizeof(TY97013*);
 NTI97013.kind = 24;
@@ -1400,27 +2613,27 @@ NTI97004.size = sizeof(tnavmfrontend97004);
 NTI97004.kind = 17;
 NTI97004.base = (&NTI91004);
 NTI97004.flags = 2;
-TMP839[0] = &TMP119[1];
+TMP870[0] = &TMP119[1];
 TMP119[1].kind = 1;
 TMP119[1].offset = offsetof(tnavmfrontend97004, Fdisasm);
 TMP119[1].typ = (&NTI132);
 TMP119[1].name = "fDisAsm";
-TMP839[1] = &TMP119[2];
+TMP870[1] = &TMP119[2];
 TMP119[2].kind = 1;
 TMP119[2].offset = offsetof(tnavmfrontend97004, Va);
 TMP119[2].typ = (&NTI94008);
 TMP119[2].name = "vA";
-TMP839[2] = &TMP119[3];
+TMP870[2] = &TMP119[3];
 TMP119[3].kind = 1;
 TMP119[3].offset = offsetof(tnavmfrontend97004, Svmmem);
 TMP119[3].typ = (&NTI97013);
 TMP119[3].name = "sVmMem";
-TMP839[3] = &TMP119[4];
+TMP870[3] = &TMP119[4];
 TMP119[4].kind = 1;
 TMP119[4].offset = offsetof(tnavmfrontend97004, Ovmmem);
 TMP119[4].typ = (&NTI105);
 TMP119[4].name = "oVmMem";
-TMP119[0].len = 4; TMP119[0].kind = 2; TMP119[0].sons = &TMP839[0];
+TMP119[0].len = 4; TMP119[0].kind = 2; TMP119[0].sons = &TMP870[0];
 NTI97004.node = &TMP119[0];
 }
 

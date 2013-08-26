@@ -97,23 +97,23 @@ N_NIMCALL(void, sxiimm_94563)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis);
 N_NIMCALL(void, sxd_94571)(tnavmbackend91004* ob, NIM_BOOL dis);
 N_NIMCALL(void, sxdimm_94610)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis);
 N_NIMCALL(void, add_94618)(tnavmbackend91004* ob, NIM_BOOL dis);
-N_NIMCALL(void, addimm_94653)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis);
+N_NIMCALL(void, addimm_94653)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
 N_NIMCALL(void, adc_94783)(tnavmbackend91004* ob, NIM_BOOL dis);
-N_NIMCALL(void, adcimm_94818)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis);
+N_NIMCALL(void, adcimm_94818)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
 N_NIMCALL(void, sub_94931)(tnavmbackend91004* ob, NIM_BOOL dis);
-N_NIMCALL(void, subimm_94966)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis);
+N_NIMCALL(void, subimm_94966)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
 N_NIMCALL(void, sbc_95079)(tnavmbackend91004* ob, NIM_BOOL dis);
-N_NIMCALL(void, sbcimm_95114)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis);
+N_NIMCALL(void, sbcimm_95114)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
 N_NIMCALL(void, slb_95227)(tnavmbackend91004* ob, NIM_BOOL dis);
-N_NIMCALL(void, slbimm_95262)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis);
+N_NIMCALL(void, slbimm_95262)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
 N_NIMCALL(void, srb_95394)(tnavmbackend91004* ob, NIM_BOOL dis);
-N_NIMCALL(void, srbimm_95429)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis);
+N_NIMCALL(void, srbimm_95429)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
 N_NIMCALL(void, anb_95544)(tnavmbackend91004* ob, NIM_BOOL dis);
-N_NIMCALL(void, anbimm_95579)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis);
+N_NIMCALL(void, anbimm_95579)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
 N_NIMCALL(void, gor_95692)(tnavmbackend91004* ob, NIM_BOOL dis);
-N_NIMCALL(void, gorimm_95727)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis);
+N_NIMCALL(void, gorimm_95727)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
 N_NIMCALL(void, xob_95840)(tnavmbackend91004* ob, NIM_BOOL dis);
-N_NIMCALL(void, xobimm_95875)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis);
+N_NIMCALL(void, xobimm_95875)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis);
 N_NIMCALL(void, dup_95988)(tnavmbackend91004* ob, NIM_BOOL dis);
 N_NIMCALL(void, drp_96023)(tnavmbackend91004* ob, NIM_BOOL dis);
 N_NIMCALL(void, swp_96030)(tnavmbackend91004* ob, NIM_BOOL dis);
@@ -442,7 +442,7 @@ STRING_LITERAL(TMP807, "CMP  R10, R11", 13);
 STRING_LITERAL(TMP808, "CMP  R11, R12", 13);
 STRING_LITERAL(TMP809, "CMP  R12, R13", 13);
 STRING_LITERAL(TMP810, "CMP  R13, R14", 13);
-STRING_LITERAL(TMP851, "\012", 1);
+STRING_LITERAL(TMP882, "\012", 1);
 extern TFrame* frameptr_11625;
 TNimType NTI94008; /* tNavmSCell */
 
@@ -458,12 +458,12 @@ static N_INLINE(void, popFrame)(void) {
 N_NIMCALL(void, errorofd_94084)(void) {
 	TY94095 LOC1;
 	nimfr("errorOFD", "navmInstructions.nim")
-	nimln(121, "navmInstructions.nim");
+	nimln(169, "navmInstructions.nim");
 	memset((void*)LOC1, 0, sizeof(LOC1));
-	nimln(121, "navmInstructions.nim");
+	nimln(169, "navmInstructions.nim");
 	LOC1[0] = copyString(((NimStringDesc*) &TMP282));
 	writeln_91224(stderr, LOC1, 1);
-	nimln(122, "navmInstructions.nim");
+	nimln(170, "navmInstructions.nim");
 	exit(0);
 	popFrame();
 }
@@ -471,12 +471,12 @@ N_NIMCALL(void, errorofd_94084)(void) {
 N_NIMCALL(void, errorufd_94099)(void) {
 	TY94095 LOC1;
 	nimfr("errorUFD", "navmInstructions.nim")
-	nimln(125, "navmInstructions.nim");
+	nimln(173, "navmInstructions.nim");
 	memset((void*)LOC1, 0, sizeof(LOC1));
-	nimln(125, "navmInstructions.nim");
+	nimln(173, "navmInstructions.nim");
 	LOC1[0] = copyString(((NimStringDesc*) &TMP283));
 	writeln_91224(stderr, LOC1, 1);
-	nimln(126, "navmInstructions.nim");
+	nimln(174, "navmInstructions.nim");
 	exit(0);
 	popFrame();
 }
@@ -484,12 +484,12 @@ N_NIMCALL(void, errorufd_94099)(void) {
 N_NIMCALL(void, errorimm_94114)(void) {
 	TY94095 LOC1;
 	nimfr("errorIMM", "navmInstructions.nim")
-	nimln(129, "navmInstructions.nim");
+	nimln(177, "navmInstructions.nim");
 	memset((void*)LOC1, 0, sizeof(LOC1));
-	nimln(129, "navmInstructions.nim");
+	nimln(177, "navmInstructions.nim");
 	LOC1[0] = copyString(((NimStringDesc*) &TMP284));
 	writeln_91224(stderr, LOC1, 1);
-	nimln(130, "navmInstructions.nim");
+	nimln(178, "navmInstructions.nim");
 	exit(0);
 	popFrame();
 }
@@ -497,40 +497,40 @@ N_NIMCALL(void, errorimm_94114)(void) {
 N_NIMCALL(void, errorreg_94129)(void) {
 	TY94095 LOC1;
 	nimfr("errorREG", "navmInstructions.nim")
-	nimln(133, "navmInstructions.nim");
+	nimln(181, "navmInstructions.nim");
 	memset((void*)LOC1, 0, sizeof(LOC1));
-	nimln(133, "navmInstructions.nim");
+	nimln(181, "navmInstructions.nim");
 	LOC1[0] = copyString(((NimStringDesc*) &TMP285));
 	writeln_91224(stderr, LOC1, 1);
-	nimln(134, "navmInstructions.nim");
+	nimln(182, "navmInstructions.nim");
 	exit(0);
 	popFrame();
 }
 
 N_NIMCALL(void, disasm_94144)(tnavmbackend91004* ob, NimStringDesc* text, NIM_BOOL dis) {
 	nimfr("disAsm", "navmInstructions.nim")
-	nimln(137, "navmInstructions.nim");
+	nimln(185, "navmInstructions.nim");
 	nimln(696, "system.nim");
 	nimln(696, "system.nim");
 	if (!!((dis == NIM_FALSE))) goto LA2;
 	{
 		NimStringDesc* s;
 		TY94095 LOC5;
-		nimln(138, "navmInstructions.nim");
+		nimln(186, "navmInstructions.nim");
 		s = nsuToHex(((NI64) ((*ob).Ocodemem)), 8);
-		nimln(139, "navmInstructions.nim");
+		nimln(187, "navmInstructions.nim");
 		write_8862(stderr, ((NimStringDesc*) &TMP289));
-		nimln(140, "navmInstructions.nim");
+		nimln(188, "navmInstructions.nim");
 		write_8850(stderr, ((NI) ((*ob).Vd)));
-		nimln(141, "navmInstructions.nim");
+		nimln(189, "navmInstructions.nim");
 		write_8862(stderr, ((NimStringDesc*) &TMP290));
-		nimln(142, "navmInstructions.nim");
+		nimln(190, "navmInstructions.nim");
 		write_8862(stderr, s);
-		nimln(143, "navmInstructions.nim");
+		nimln(191, "navmInstructions.nim");
 		write_8862(stderr, ((NimStringDesc*) &TMP291));
-		nimln(144, "navmInstructions.nim");
+		nimln(192, "navmInstructions.nim");
 		memset((void*)LOC5, 0, sizeof(LOC5));
-		nimln(144, "navmInstructions.nim");
+		nimln(192, "navmInstructions.nim");
 		LOC5[0] = copyString(text);
 		writeln_91224(stderr, LOC5, 1);
 	}
@@ -540,7 +540,7 @@ N_NIMCALL(void, disasm_94144)(tnavmbackend91004* ob, NimStringDesc* text, NIM_BO
 
 N_NIMCALL(void, li_94190)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("li", "navmInstructions.nim")
-	nimln(170, "navmInstructions.nim");
+	nimln(218, "navmInstructions.nim");
 	errorreg_94129();
 	popFrame();
 }
@@ -567,27 +567,27 @@ static N_INLINE(NI, addInt)(NI a, NI b) {
 N_NIMCALL(void, liimm_94197)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	NU64 uval;
 	nimfr("liImm", "navmInstructions.nim")
-	nimln(173, "navmInstructions.nim");
+	nimln(221, "navmInstructions.nim");
 	uval = ((NU64) (val));
-	nimln(175, "navmInstructions.nim");
+	nimln(223, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(177, "navmInstructions.nim");
+		nimln(225, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP293;
-		nimln(179, "navmInstructions.nim");
+		nimln(227, "navmInstructions.nim");
 		disasmimm_94205(ob, ((NimStringDesc*) &TMP292), val, dis);
-		nimln(180, "navmInstructions.nim");
+		nimln(228, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18616), NIM_FALSE);
-		nimln(181, "navmInstructions.nim");
+		nimln(229, "navmInstructions.nim");
 		compile8_92620(ob, uval, NIM_FALSE);
-		nimln(182, "navmInstructions.nim");
-		nimln(182, "navmInstructions.nim");
+		nimln(230, "navmInstructions.nim");
+		nimln(230, "navmInstructions.nim");
 		TMP293 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP293 < -128 || TMP293 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP293);
@@ -596,14 +596,14 @@ N_NIMCALL(void, liimm_94197)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP295;
-		nimln(184, "navmInstructions.nim");
+		nimln(232, "navmInstructions.nim");
 		disasmimm_94205(ob, ((NimStringDesc*) &TMP294), val, dis);
-		nimln(185, "navmInstructions.nim");
+		nimln(233, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18872), NIM_FALSE);
-		nimln(186, "navmInstructions.nim");
+		nimln(234, "navmInstructions.nim");
 		compile8_92620(ob, uval, NIM_FALSE);
-		nimln(187, "navmInstructions.nim");
-		nimln(187, "navmInstructions.nim");
+		nimln(235, "navmInstructions.nim");
+		nimln(235, "navmInstructions.nim");
 		TMP295 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP295 < -128 || TMP295 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP295);
@@ -612,14 +612,14 @@ N_NIMCALL(void, liimm_94197)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP297;
-		nimln(189, "navmInstructions.nim");
+		nimln(237, "navmInstructions.nim");
 		disasmimm_94205(ob, ((NimStringDesc*) &TMP296), val, dis);
-		nimln(190, "navmInstructions.nim");
+		nimln(238, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18873), NIM_FALSE);
-		nimln(191, "navmInstructions.nim");
+		nimln(239, "navmInstructions.nim");
 		compile8_92620(ob, uval, NIM_FALSE);
-		nimln(192, "navmInstructions.nim");
-		nimln(192, "navmInstructions.nim");
+		nimln(240, "navmInstructions.nim");
+		nimln(240, "navmInstructions.nim");
 		TMP297 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP297 < -128 || TMP297 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP297);
@@ -628,14 +628,14 @@ N_NIMCALL(void, liimm_94197)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP299;
-		nimln(194, "navmInstructions.nim");
+		nimln(242, "navmInstructions.nim");
 		disasmimm_94205(ob, ((NimStringDesc*) &TMP298), val, dis);
-		nimln(195, "navmInstructions.nim");
+		nimln(243, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18874), NIM_FALSE);
-		nimln(196, "navmInstructions.nim");
+		nimln(244, "navmInstructions.nim");
 		compile8_92620(ob, uval, NIM_FALSE);
-		nimln(197, "navmInstructions.nim");
-		nimln(197, "navmInstructions.nim");
+		nimln(245, "navmInstructions.nim");
+		nimln(245, "navmInstructions.nim");
 		TMP299 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP299 < -128 || TMP299 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP299);
@@ -644,14 +644,14 @@ N_NIMCALL(void, liimm_94197)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP301;
-		nimln(199, "navmInstructions.nim");
+		nimln(247, "navmInstructions.nim");
 		disasmimm_94205(ob, ((NimStringDesc*) &TMP300), val, dis);
-		nimln(200, "navmInstructions.nim");
+		nimln(248, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18875), NIM_FALSE);
-		nimln(201, "navmInstructions.nim");
+		nimln(249, "navmInstructions.nim");
 		compile8_92620(ob, uval, NIM_FALSE);
-		nimln(202, "navmInstructions.nim");
-		nimln(202, "navmInstructions.nim");
+		nimln(250, "navmInstructions.nim");
+		nimln(250, "navmInstructions.nim");
 		TMP301 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP301 < -128 || TMP301 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP301);
@@ -660,14 +660,14 @@ N_NIMCALL(void, liimm_94197)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP303;
-		nimln(204, "navmInstructions.nim");
+		nimln(252, "navmInstructions.nim");
 		disasmimm_94205(ob, ((NimStringDesc*) &TMP302), val, dis);
-		nimln(205, "navmInstructions.nim");
+		nimln(253, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18876), NIM_FALSE);
-		nimln(206, "navmInstructions.nim");
+		nimln(254, "navmInstructions.nim");
 		compile8_92620(ob, uval, NIM_FALSE);
-		nimln(207, "navmInstructions.nim");
-		nimln(207, "navmInstructions.nim");
+		nimln(255, "navmInstructions.nim");
+		nimln(255, "navmInstructions.nim");
 		TMP303 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP303 < -128 || TMP303 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP303);
@@ -676,14 +676,14 @@ N_NIMCALL(void, liimm_94197)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP305;
-		nimln(209, "navmInstructions.nim");
+		nimln(257, "navmInstructions.nim");
 		disasmimm_94205(ob, ((NimStringDesc*) &TMP304), val, dis);
-		nimln(210, "navmInstructions.nim");
+		nimln(258, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18877), NIM_FALSE);
-		nimln(211, "navmInstructions.nim");
+		nimln(259, "navmInstructions.nim");
 		compile8_92620(ob, uval, NIM_FALSE);
-		nimln(212, "navmInstructions.nim");
-		nimln(212, "navmInstructions.nim");
+		nimln(260, "navmInstructions.nim");
+		nimln(260, "navmInstructions.nim");
 		TMP305 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP305 < -128 || TMP305 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP305);
@@ -692,14 +692,14 @@ N_NIMCALL(void, liimm_94197)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	case ((NI8) 8):
 	{
 		NI TMP307;
-		nimln(214, "navmInstructions.nim");
+		nimln(262, "navmInstructions.nim");
 		disasmimm_94205(ob, ((NimStringDesc*) &TMP306), val, dis);
-		nimln(215, "navmInstructions.nim");
+		nimln(263, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18878), NIM_FALSE);
-		nimln(216, "navmInstructions.nim");
+		nimln(264, "navmInstructions.nim");
 		compile8_92620(ob, uval, NIM_FALSE);
-		nimln(217, "navmInstructions.nim");
-		nimln(217, "navmInstructions.nim");
+		nimln(265, "navmInstructions.nim");
+		nimln(265, "navmInstructions.nim");
 		TMP307 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP307 < -128 || TMP307 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP307);
@@ -707,7 +707,7 @@ N_NIMCALL(void, liimm_94197)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(219, "navmInstructions.nim");
+		nimln(267, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -737,30 +737,30 @@ static N_INLINE(NI, subInt)(NI a, NI b) {
 N_NIMCALL(void, lx_94313)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	NI TMP308;
 	nimfr("lx", "navmInstructions.nim")
-	nimln(222, "navmInstructions.nim");
-	nimln(222, "navmInstructions.nim");
+	nimln(270, "navmInstructions.nim");
+	nimln(270, "navmInstructions.nim");
 	TMP308 = subInt((*ob).Vd, ((NI8) 1));
 	if (TMP308 < -128 || TMP308 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP308);
-	nimln(223, "navmInstructions.nim");
+	nimln(271, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(225, "navmInstructions.nim");
+		nimln(273, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP310;
-		nimln(227, "navmInstructions.nim");
+		nimln(275, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP309), dis);
-		nimln(228, "navmInstructions.nim");
+		nimln(276, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18569), NIM_FALSE);
-		nimln(229, "navmInstructions.nim");
+		nimln(277, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 195));
-		nimln(230, "navmInstructions.nim");
-		nimln(230, "navmInstructions.nim");
+		nimln(278, "navmInstructions.nim");
+		nimln(278, "navmInstructions.nim");
 		TMP310 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP310 < -128 || TMP310 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP310);
@@ -769,14 +769,14 @@ N_NIMCALL(void, lx_94313)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP312;
-		nimln(232, "navmInstructions.nim");
+		nimln(280, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP311), dis);
-		nimln(233, "navmInstructions.nim");
+		nimln(281, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19593), NIM_FALSE);
-		nimln(234, "navmInstructions.nim");
+		nimln(282, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 195));
-		nimln(235, "navmInstructions.nim");
-		nimln(235, "navmInstructions.nim");
+		nimln(283, "navmInstructions.nim");
+		nimln(283, "navmInstructions.nim");
 		TMP312 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP312 < -128 || TMP312 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP312);
@@ -785,14 +785,14 @@ N_NIMCALL(void, lx_94313)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP314;
-		nimln(237, "navmInstructions.nim");
+		nimln(285, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP313), dis);
-		nimln(238, "navmInstructions.nim");
+		nimln(286, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19593), NIM_FALSE);
-		nimln(239, "navmInstructions.nim");
+		nimln(287, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 203));
-		nimln(240, "navmInstructions.nim");
-		nimln(240, "navmInstructions.nim");
+		nimln(288, "navmInstructions.nim");
+		nimln(288, "navmInstructions.nim");
 		TMP314 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP314 < -128 || TMP314 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP314);
@@ -801,14 +801,14 @@ N_NIMCALL(void, lx_94313)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP316;
-		nimln(242, "navmInstructions.nim");
+		nimln(290, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP315), dis);
-		nimln(243, "navmInstructions.nim");
+		nimln(291, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19593), NIM_FALSE);
-		nimln(244, "navmInstructions.nim");
+		nimln(292, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 211));
-		nimln(245, "navmInstructions.nim");
-		nimln(245, "navmInstructions.nim");
+		nimln(293, "navmInstructions.nim");
+		nimln(293, "navmInstructions.nim");
 		TMP316 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP316 < -128 || TMP316 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP316);
@@ -817,14 +817,14 @@ N_NIMCALL(void, lx_94313)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP318;
-		nimln(247, "navmInstructions.nim");
+		nimln(295, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP317), dis);
-		nimln(248, "navmInstructions.nim");
+		nimln(296, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19593), NIM_FALSE);
-		nimln(249, "navmInstructions.nim");
+		nimln(297, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 219));
-		nimln(250, "navmInstructions.nim");
-		nimln(250, "navmInstructions.nim");
+		nimln(298, "navmInstructions.nim");
+		nimln(298, "navmInstructions.nim");
 		TMP318 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP318 < -128 || TMP318 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP318);
@@ -833,14 +833,14 @@ N_NIMCALL(void, lx_94313)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP320;
-		nimln(252, "navmInstructions.nim");
+		nimln(300, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP319), dis);
-		nimln(253, "navmInstructions.nim");
+		nimln(301, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19593), NIM_FALSE);
-		nimln(254, "navmInstructions.nim");
+		nimln(302, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 227));
-		nimln(255, "navmInstructions.nim");
-		nimln(255, "navmInstructions.nim");
+		nimln(303, "navmInstructions.nim");
+		nimln(303, "navmInstructions.nim");
 		TMP320 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP320 < -128 || TMP320 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP320);
@@ -849,14 +849,14 @@ N_NIMCALL(void, lx_94313)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP322;
-		nimln(257, "navmInstructions.nim");
+		nimln(305, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP321), dis);
-		nimln(258, "navmInstructions.nim");
+		nimln(306, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19593), NIM_FALSE);
-		nimln(259, "navmInstructions.nim");
+		nimln(307, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 235));
-		nimln(260, "navmInstructions.nim");
-		nimln(260, "navmInstructions.nim");
+		nimln(308, "navmInstructions.nim");
+		nimln(308, "navmInstructions.nim");
 		TMP322 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP322 < -128 || TMP322 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP322);
@@ -865,174 +865,17 @@ N_NIMCALL(void, lx_94313)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 8):
 	{
 		NI TMP324;
-		nimln(262, "navmInstructions.nim");
+		nimln(310, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP323), dis);
-		nimln(263, "navmInstructions.nim");
+		nimln(311, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19593), NIM_FALSE);
-		nimln(264, "navmInstructions.nim");
+		nimln(312, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 243));
-		nimln(265, "navmInstructions.nim");
-		nimln(265, "navmInstructions.nim");
+		nimln(313, "navmInstructions.nim");
+		nimln(313, "navmInstructions.nim");
 		TMP324 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP324 < -128 || TMP324 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP324);
-	}
-	break;
-	default:
-	{
-		nimln(267, "navmInstructions.nim");
-		errorofd_94084();
-	}
-	break;
-	}
-	popFrame();
-}
-
-N_NIMCALL(void, lximm_94352)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis) {
-	nimfr("lxImm", "navmInstructions.nim")
-	nimln(269, "navmInstructions.nim");
-	errorimm_94114();
-	popFrame();
-}
-
-N_NIMCALL(void, ld_94360)(tnavmbackend91004* ob, NIM_BOOL dis) {
-	NI TMP325;
-	nimfr("ld", "navmInstructions.nim")
-	nimln(272, "navmInstructions.nim");
-	nimln(272, "navmInstructions.nim");
-	TMP325 = subInt((*ob).Vd, ((NI8) 1));
-	if (TMP325 < -128 || TMP325 > 127) raiseOverflow();
-	(*ob).Vd = (NI8)(TMP325);
-	nimln(273, "navmInstructions.nim");
-	switch ((*ob).Vd) {
-	case ((NI8) 0):
-	{
-		nimln(275, "navmInstructions.nim");
-		errorufd_94099();
-	}
-	break;
-	case ((NI8) 1):
-	{
-		NI TMP327;
-		nimln(277, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP326), dis);
-		nimln(278, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 18571), NIM_FALSE);
-		nimln(279, "navmInstructions.nim");
-		compile_91628(ob, ((NU8) 0));
-		nimln(280, "navmInstructions.nim");
-		nimln(280, "navmInstructions.nim");
-		TMP327 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP327 < -128 || TMP327 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP327);
-	}
-	break;
-	case ((NI8) 2):
-	{
-		NI TMP329;
-		nimln(282, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP328), dis);
-		nimln(283, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 19851), NIM_FALSE);
-		nimln(284, "navmInstructions.nim");
-		compile_91628(ob, ((NU8) 0));
-		nimln(285, "navmInstructions.nim");
-		nimln(285, "navmInstructions.nim");
-		TMP329 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP329 < -128 || TMP329 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP329);
-	}
-	break;
-	case ((NI8) 3):
-	{
-		NI TMP331;
-		nimln(287, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP330), dis);
-		nimln(288, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 19851), NIM_FALSE);
-		nimln(289, "navmInstructions.nim");
-		compile_91628(ob, ((NU8) 9));
-		nimln(290, "navmInstructions.nim");
-		nimln(290, "navmInstructions.nim");
-		TMP331 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP331 < -128 || TMP331 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP331);
-	}
-	break;
-	case ((NI8) 4):
-	{
-		NI TMP333;
-		nimln(292, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP332), dis);
-		nimln(293, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 19851), NIM_FALSE);
-		nimln(294, "navmInstructions.nim");
-		compile_91628(ob, ((NU8) 18));
-		nimln(295, "navmInstructions.nim");
-		nimln(295, "navmInstructions.nim");
-		TMP333 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP333 < -128 || TMP333 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP333);
-	}
-	break;
-	case ((NI8) 5):
-	{
-		NI TMP335;
-		nimln(297, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP334), dis);
-		nimln(298, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 19851), NIM_FALSE);
-		nimln(299, "navmInstructions.nim");
-		compile_91628(ob, ((NU8) 27));
-		nimln(300, "navmInstructions.nim");
-		nimln(300, "navmInstructions.nim");
-		TMP335 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP335 < -128 || TMP335 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP335);
-	}
-	break;
-	case ((NI8) 6):
-	{
-		NI TMP337;
-		nimln(302, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP336), dis);
-		nimln(303, "navmInstructions.nim");
-		compile4_92308(ob, ((NU32) 1300964388), NIM_FALSE);
-		nimln(304, "navmInstructions.nim");
-		nimln(304, "navmInstructions.nim");
-		TMP337 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP337 < -128 || TMP337 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP337);
-	}
-	break;
-	case ((NI8) 7):
-	{
-		NI TMP339;
-		nimln(306, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP338), dis);
-		nimln(307, "navmInstructions.nim");
-		compile4_92308(ob, ((NU32) 1300983040), NIM_FALSE);
-		nimln(308, "navmInstructions.nim");
-		nimln(308, "navmInstructions.nim");
-		TMP339 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP339 < -128 || TMP339 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP339);
-	}
-	break;
-	case ((NI8) 8):
-	{
-		NI TMP341;
-		nimln(310, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP340), dis);
-		nimln(311, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 19851), NIM_FALSE);
-		nimln(312, "navmInstructions.nim");
-		compile_91628(ob, ((NU8) 54));
-		nimln(313, "navmInstructions.nim");
-		nimln(313, "navmInstructions.nim");
-		TMP341 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP341 < -128 || TMP341 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP341);
 	}
 	break;
 	default:
@@ -1045,21 +888,21 @@ N_NIMCALL(void, ld_94360)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	popFrame();
 }
 
-N_NIMCALL(void, ldimm_94389)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis) {
-	nimfr("ldImm", "navmInstructions.nim")
+N_NIMCALL(void, lximm_94352)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis) {
+	nimfr("lxImm", "navmInstructions.nim")
 	nimln(317, "navmInstructions.nim");
 	errorimm_94114();
 	popFrame();
 }
 
-N_NIMCALL(void, st_94397)(tnavmbackend91004* ob, NIM_BOOL dis) {
-	NI TMP342;
-	nimfr("st", "navmInstructions.nim")
+N_NIMCALL(void, ld_94360)(tnavmbackend91004* ob, NIM_BOOL dis) {
+	NI TMP325;
+	nimfr("ld", "navmInstructions.nim")
 	nimln(320, "navmInstructions.nim");
 	nimln(320, "navmInstructions.nim");
-	TMP342 = subInt((*ob).Vd, ((NI8) 2));
-	if (TMP342 < -128 || TMP342 > 127) raiseOverflow();
-	(*ob).Vd = (NI8)(TMP342);
+	TMP325 = subInt((*ob).Vd, ((NI8) 1));
+	if (TMP325 < -128 || TMP325 > 127) raiseOverflow();
+	(*ob).Vd = (NI8)(TMP325);
 	nimln(321, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
@@ -1070,15 +913,172 @@ N_NIMCALL(void, st_94397)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	break;
 	case ((NI8) 1):
 	{
-		NI TMP344;
+		NI TMP327;
 		nimln(325, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP343), dis);
+		disasm_94144(ob, ((NimStringDesc*) &TMP326), dis);
 		nimln(326, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 18825), NIM_FALSE);
+		compile2_92028(ob, ((NU16) 18571), NIM_FALSE);
 		nimln(327, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 0));
 		nimln(328, "navmInstructions.nim");
 		nimln(328, "navmInstructions.nim");
+		TMP327 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP327 < -128 || TMP327 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP327);
+	}
+	break;
+	case ((NI8) 2):
+	{
+		NI TMP329;
+		nimln(330, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP328), dis);
+		nimln(331, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 19851), NIM_FALSE);
+		nimln(332, "navmInstructions.nim");
+		compile_91628(ob, ((NU8) 0));
+		nimln(333, "navmInstructions.nim");
+		nimln(333, "navmInstructions.nim");
+		TMP329 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP329 < -128 || TMP329 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP329);
+	}
+	break;
+	case ((NI8) 3):
+	{
+		NI TMP331;
+		nimln(335, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP330), dis);
+		nimln(336, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 19851), NIM_FALSE);
+		nimln(337, "navmInstructions.nim");
+		compile_91628(ob, ((NU8) 9));
+		nimln(338, "navmInstructions.nim");
+		nimln(338, "navmInstructions.nim");
+		TMP331 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP331 < -128 || TMP331 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP331);
+	}
+	break;
+	case ((NI8) 4):
+	{
+		NI TMP333;
+		nimln(340, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP332), dis);
+		nimln(341, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 19851), NIM_FALSE);
+		nimln(342, "navmInstructions.nim");
+		compile_91628(ob, ((NU8) 18));
+		nimln(343, "navmInstructions.nim");
+		nimln(343, "navmInstructions.nim");
+		TMP333 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP333 < -128 || TMP333 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP333);
+	}
+	break;
+	case ((NI8) 5):
+	{
+		NI TMP335;
+		nimln(345, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP334), dis);
+		nimln(346, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 19851), NIM_FALSE);
+		nimln(347, "navmInstructions.nim");
+		compile_91628(ob, ((NU8) 27));
+		nimln(348, "navmInstructions.nim");
+		nimln(348, "navmInstructions.nim");
+		TMP335 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP335 < -128 || TMP335 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP335);
+	}
+	break;
+	case ((NI8) 6):
+	{
+		NI TMP337;
+		nimln(350, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP336), dis);
+		nimln(351, "navmInstructions.nim");
+		compile4_92308(ob, ((NU32) 1300964388), NIM_FALSE);
+		nimln(352, "navmInstructions.nim");
+		nimln(352, "navmInstructions.nim");
+		TMP337 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP337 < -128 || TMP337 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP337);
+	}
+	break;
+	case ((NI8) 7):
+	{
+		NI TMP339;
+		nimln(354, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP338), dis);
+		nimln(355, "navmInstructions.nim");
+		compile4_92308(ob, ((NU32) 1300983040), NIM_FALSE);
+		nimln(356, "navmInstructions.nim");
+		nimln(356, "navmInstructions.nim");
+		TMP339 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP339 < -128 || TMP339 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP339);
+	}
+	break;
+	case ((NI8) 8):
+	{
+		NI TMP341;
+		nimln(358, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP340), dis);
+		nimln(359, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 19851), NIM_FALSE);
+		nimln(360, "navmInstructions.nim");
+		compile_91628(ob, ((NU8) 54));
+		nimln(361, "navmInstructions.nim");
+		nimln(361, "navmInstructions.nim");
+		TMP341 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP341 < -128 || TMP341 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP341);
+	}
+	break;
+	default:
+	{
+		nimln(363, "navmInstructions.nim");
+		errorofd_94084();
+	}
+	break;
+	}
+	popFrame();
+}
+
+N_NIMCALL(void, ldimm_94389)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis) {
+	nimfr("ldImm", "navmInstructions.nim")
+	nimln(365, "navmInstructions.nim");
+	errorimm_94114();
+	popFrame();
+}
+
+N_NIMCALL(void, st_94397)(tnavmbackend91004* ob, NIM_BOOL dis) {
+	NI TMP342;
+	nimfr("st", "navmInstructions.nim")
+	nimln(368, "navmInstructions.nim");
+	nimln(368, "navmInstructions.nim");
+	TMP342 = subInt((*ob).Vd, ((NI8) 2));
+	if (TMP342 < -128 || TMP342 > 127) raiseOverflow();
+	(*ob).Vd = (NI8)(TMP342);
+	nimln(369, "navmInstructions.nim");
+	switch ((*ob).Vd) {
+	case ((NI8) 0):
+	{
+		nimln(371, "navmInstructions.nim");
+		errorufd_94099();
+	}
+	break;
+	case ((NI8) 1):
+	{
+		NI TMP344;
+		nimln(373, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP343), dis);
+		nimln(374, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 18825), NIM_FALSE);
+		nimln(375, "navmInstructions.nim");
+		compile_91628(ob, ((NU8) 0));
+		nimln(376, "navmInstructions.nim");
+		nimln(376, "navmInstructions.nim");
 		TMP344 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP344 < -128 || TMP344 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP344);
@@ -1087,14 +1087,14 @@ N_NIMCALL(void, st_94397)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP346;
-		nimln(330, "navmInstructions.nim");
+		nimln(378, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP345), dis);
-		nimln(331, "navmInstructions.nim");
+		nimln(379, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19849), NIM_FALSE);
-		nimln(332, "navmInstructions.nim");
+		nimln(380, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 1));
-		nimln(333, "navmInstructions.nim");
-		nimln(333, "navmInstructions.nim");
+		nimln(381, "navmInstructions.nim");
+		nimln(381, "navmInstructions.nim");
 		TMP346 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP346 < -128 || TMP346 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP346);
@@ -1103,14 +1103,14 @@ N_NIMCALL(void, st_94397)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP348;
-		nimln(335, "navmInstructions.nim");
+		nimln(383, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP347), dis);
-		nimln(336, "navmInstructions.nim");
+		nimln(384, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19849), NIM_FALSE);
-		nimln(337, "navmInstructions.nim");
+		nimln(385, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 10));
-		nimln(338, "navmInstructions.nim");
-		nimln(338, "navmInstructions.nim");
+		nimln(386, "navmInstructions.nim");
+		nimln(386, "navmInstructions.nim");
 		TMP348 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP348 < -128 || TMP348 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP348);
@@ -1119,14 +1119,14 @@ N_NIMCALL(void, st_94397)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP350;
-		nimln(340, "navmInstructions.nim");
+		nimln(388, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP349), dis);
-		nimln(341, "navmInstructions.nim");
+		nimln(389, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19849), NIM_FALSE);
-		nimln(342, "navmInstructions.nim");
+		nimln(390, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 19));
-		nimln(343, "navmInstructions.nim");
-		nimln(343, "navmInstructions.nim");
+		nimln(391, "navmInstructions.nim");
+		nimln(391, "navmInstructions.nim");
 		TMP350 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP350 < -128 || TMP350 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP350);
@@ -1135,12 +1135,12 @@ N_NIMCALL(void, st_94397)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP352;
-		nimln(345, "navmInstructions.nim");
+		nimln(393, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP351), dis);
-		nimln(346, "navmInstructions.nim");
+		nimln(394, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1300831268), NIM_FALSE);
-		nimln(347, "navmInstructions.nim");
-		nimln(347, "navmInstructions.nim");
+		nimln(395, "navmInstructions.nim");
+		nimln(395, "navmInstructions.nim");
 		TMP352 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP352 < -128 || TMP352 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP352);
@@ -1149,12 +1149,12 @@ N_NIMCALL(void, st_94397)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP354;
-		nimln(349, "navmInstructions.nim");
+		nimln(397, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP353), dis);
-		nimln(350, "navmInstructions.nim");
+		nimln(398, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1300849920), NIM_FALSE);
-		nimln(351, "navmInstructions.nim");
-		nimln(351, "navmInstructions.nim");
+		nimln(399, "navmInstructions.nim");
+		nimln(399, "navmInstructions.nim");
 		TMP354 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP354 < -128 || TMP354 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP354);
@@ -1163,166 +1163,17 @@ N_NIMCALL(void, st_94397)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP356;
-		nimln(353, "navmInstructions.nim");
+		nimln(401, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP355), dis);
-		nimln(354, "navmInstructions.nim");
+		nimln(402, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19849), NIM_FALSE);
-		nimln(355, "navmInstructions.nim");
+		nimln(403, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 46));
-		nimln(356, "navmInstructions.nim");
-		nimln(356, "navmInstructions.nim");
+		nimln(404, "navmInstructions.nim");
+		nimln(404, "navmInstructions.nim");
 		TMP356 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP356 < -128 || TMP356 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP356);
-	}
-	break;
-	default:
-	{
-		nimln(358, "navmInstructions.nim");
-		errorofd_94084();
-	}
-	break;
-	}
-	popFrame();
-}
-
-N_NIMCALL(void, stimm_94422)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis) {
-	nimfr("stImm", "navmInstructions.nim")
-	nimln(360, "navmInstructions.nim");
-	errorimm_94114();
-	popFrame();
-}
-
-N_NIMCALL(void, lxi_94430)(tnavmbackend91004* ob, NIM_BOOL dis) {
-	nimfr("lxi", "navmInstructions.nim")
-	nimln(363, "navmInstructions.nim");
-	switch ((*ob).Vd) {
-	case ((NI8) 0):
-	{
-		nimln(365, "navmInstructions.nim");
-		errorufd_94099();
-	}
-	break;
-	case ((NI8) 1):
-	{
-		NI TMP358;
-		nimln(367, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP357), dis);
-		nimln(368, "navmInstructions.nim");
-		compile4_92308(ob, ((NU32) 1217069896), NIM_FALSE);
-		nimln(369, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
-		nimln(370, "navmInstructions.nim");
-		nimln(370, "navmInstructions.nim");
-		TMP358 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP358 < -128 || TMP358 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP358);
-	}
-	break;
-	case ((NI8) 2):
-	{
-		NI TMP360;
-		nimln(372, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP359), dis);
-		nimln(373, "navmInstructions.nim");
-		compile4_92308(ob, ((NU32) 1284178760), NIM_FALSE);
-		nimln(374, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
-		nimln(375, "navmInstructions.nim");
-		nimln(375, "navmInstructions.nim");
-		TMP360 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP360 < -128 || TMP360 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP360);
-	}
-	break;
-	case ((NI8) 3):
-	{
-		NI TMP362;
-		nimln(377, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP361), dis);
-		nimln(378, "navmInstructions.nim");
-		compile4_92308(ob, ((NU32) 1284180808), NIM_FALSE);
-		nimln(379, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
-		nimln(380, "navmInstructions.nim");
-		nimln(380, "navmInstructions.nim");
-		TMP362 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP362 < -128 || TMP362 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP362);
-	}
-	break;
-	case ((NI8) 4):
-	{
-		NI TMP364;
-		nimln(382, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP363), dis);
-		nimln(383, "navmInstructions.nim");
-		compile4_92308(ob, ((NU32) 1284182856), NIM_FALSE);
-		nimln(384, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
-		nimln(385, "navmInstructions.nim");
-		nimln(385, "navmInstructions.nim");
-		TMP364 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP364 < -128 || TMP364 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP364);
-	}
-	break;
-	case ((NI8) 5):
-	{
-		NI TMP366;
-		nimln(387, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP365), dis);
-		nimln(388, "navmInstructions.nim");
-		compile4_92308(ob, ((NU32) 1284184904), NIM_FALSE);
-		nimln(389, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
-		nimln(390, "navmInstructions.nim");
-		nimln(390, "navmInstructions.nim");
-		TMP366 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP366 < -128 || TMP366 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP366);
-	}
-	break;
-	case ((NI8) 6):
-	{
-		NI TMP368;
-		nimln(392, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP367), dis);
-		nimln(393, "navmInstructions.nim");
-		compile4_92308(ob, ((NU32) 1284186952), NIM_FALSE);
-		nimln(394, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
-		nimln(395, "navmInstructions.nim");
-		nimln(395, "navmInstructions.nim");
-		TMP368 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP368 < -128 || TMP368 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP368);
-	}
-	break;
-	case ((NI8) 7):
-	{
-		NI TMP370;
-		nimln(397, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP369), dis);
-		nimln(398, "navmInstructions.nim");
-		compile4_92308(ob, ((NU32) 1284189000), NIM_FALSE);
-		nimln(399, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
-		nimln(400, "navmInstructions.nim");
-		nimln(400, "navmInstructions.nim");
-		TMP370 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP370 < -128 || TMP370 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP370);
-	}
-	break;
-	case ((NI8) 8):
-	{
-		nimln(402, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP371), dis);
-		nimln(403, "navmInstructions.nim");
-		compile4_92308(ob, ((NU32) 1284191048), NIM_FALSE);
-		nimln(404, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
 	}
 	break;
 	default:
@@ -1335,15 +1186,15 @@ N_NIMCALL(void, lxi_94430)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	popFrame();
 }
 
-N_NIMCALL(void, lxiimm_94469)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis) {
-	nimfr("lxiImm", "navmInstructions.nim")
+N_NIMCALL(void, stimm_94422)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis) {
+	nimfr("stImm", "navmInstructions.nim")
 	nimln(408, "navmInstructions.nim");
 	errorimm_94114();
 	popFrame();
 }
 
-N_NIMCALL(void, lxd_94477)(tnavmbackend91004* ob, NIM_BOOL dis) {
-	nimfr("lxd", "navmInstructions.nim")
+N_NIMCALL(void, lxi_94430)(tnavmbackend91004* ob, NIM_BOOL dis) {
+	nimfr("lxi", "navmInstructions.nim")
 	nimln(411, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
@@ -1354,124 +1205,124 @@ N_NIMCALL(void, lxd_94477)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	break;
 	case ((NI8) 1):
 	{
-		NI TMP373;
+		NI TMP358;
 		nimln(415, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP372), dis);
+		disasm_94144(ob, ((NimStringDesc*) &TMP357), dis);
 		nimln(416, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1217069896), NIM_FALSE);
 		nimln(417, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
+		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
 		nimln(418, "navmInstructions.nim");
 		nimln(418, "navmInstructions.nim");
-		TMP373 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP373 < -128 || TMP373 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP373);
+		TMP358 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP358 < -128 || TMP358 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP358);
 	}
 	break;
 	case ((NI8) 2):
 	{
-		NI TMP375;
+		NI TMP360;
 		nimln(420, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP374), dis);
+		disasm_94144(ob, ((NimStringDesc*) &TMP359), dis);
 		nimln(421, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284178760), NIM_FALSE);
 		nimln(422, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
+		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
 		nimln(423, "navmInstructions.nim");
 		nimln(423, "navmInstructions.nim");
-		TMP375 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP375 < -128 || TMP375 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP375);
+		TMP360 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP360 < -128 || TMP360 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP360);
 	}
 	break;
 	case ((NI8) 3):
 	{
-		NI TMP377;
+		NI TMP362;
 		nimln(425, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP376), dis);
+		disasm_94144(ob, ((NimStringDesc*) &TMP361), dis);
 		nimln(426, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284180808), NIM_FALSE);
 		nimln(427, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
+		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
 		nimln(428, "navmInstructions.nim");
 		nimln(428, "navmInstructions.nim");
-		TMP377 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP377 < -128 || TMP377 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP377);
+		TMP362 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP362 < -128 || TMP362 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP362);
 	}
 	break;
 	case ((NI8) 4):
 	{
-		NI TMP379;
+		NI TMP364;
 		nimln(430, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP378), dis);
+		disasm_94144(ob, ((NimStringDesc*) &TMP363), dis);
 		nimln(431, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284182856), NIM_FALSE);
 		nimln(432, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
+		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
 		nimln(433, "navmInstructions.nim");
 		nimln(433, "navmInstructions.nim");
-		TMP379 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP379 < -128 || TMP379 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP379);
+		TMP364 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP364 < -128 || TMP364 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP364);
 	}
 	break;
 	case ((NI8) 5):
 	{
-		NI TMP381;
+		NI TMP366;
 		nimln(435, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP380), dis);
+		disasm_94144(ob, ((NimStringDesc*) &TMP365), dis);
 		nimln(436, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284184904), NIM_FALSE);
 		nimln(437, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
+		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
 		nimln(438, "navmInstructions.nim");
 		nimln(438, "navmInstructions.nim");
-		TMP381 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP381 < -128 || TMP381 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP381);
+		TMP366 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP366 < -128 || TMP366 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP366);
 	}
 	break;
 	case ((NI8) 6):
 	{
-		NI TMP383;
+		NI TMP368;
 		nimln(440, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP382), dis);
+		disasm_94144(ob, ((NimStringDesc*) &TMP367), dis);
 		nimln(441, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284186952), NIM_FALSE);
 		nimln(442, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
+		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
 		nimln(443, "navmInstructions.nim");
 		nimln(443, "navmInstructions.nim");
-		TMP383 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP383 < -128 || TMP383 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP383);
+		TMP368 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP368 < -128 || TMP368 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP368);
 	}
 	break;
 	case ((NI8) 7):
 	{
-		NI TMP385;
+		NI TMP370;
 		nimln(445, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP384), dis);
+		disasm_94144(ob, ((NimStringDesc*) &TMP369), dis);
 		nimln(446, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284189000), NIM_FALSE);
 		nimln(447, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
+		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
 		nimln(448, "navmInstructions.nim");
 		nimln(448, "navmInstructions.nim");
-		TMP385 = addInt((*ob).Vd, ((NI8) 1));
-		if (TMP385 < -128 || TMP385 > 127) raiseOverflow();
-		(*ob).Vd = (NI8)(TMP385);
+		TMP370 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP370 < -128 || TMP370 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP370);
 	}
 	break;
 	case ((NI8) 8):
 	{
 		nimln(450, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP386), dis);
+		disasm_94144(ob, ((NimStringDesc*) &TMP371), dis);
 		nimln(451, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284191048), NIM_FALSE);
 		nimln(452, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
+		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
 	}
 	break;
 	default:
@@ -1484,15 +1335,15 @@ N_NIMCALL(void, lxd_94477)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	popFrame();
 }
 
-N_NIMCALL(void, lxdimm_94516)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis) {
-	nimfr("lxdImm", "navmInstructions.nim")
+N_NIMCALL(void, lxiimm_94469)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis) {
+	nimfr("lxiImm", "navmInstructions.nim")
 	nimln(456, "navmInstructions.nim");
 	errorimm_94114();
 	popFrame();
 }
 
-N_NIMCALL(void, sxi_94524)(tnavmbackend91004* ob, NIM_BOOL dis) {
-	nimfr("sxi", "navmInstructions.nim")
+N_NIMCALL(void, lxd_94477)(tnavmbackend91004* ob, NIM_BOOL dis) {
+	nimfr("lxd", "navmInstructions.nim")
 	nimln(459, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
@@ -1503,15 +1354,164 @@ N_NIMCALL(void, sxi_94524)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	break;
 	case ((NI8) 1):
 	{
-		NI TMP388;
+		NI TMP373;
 		nimln(463, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP387), dis);
+		disasm_94144(ob, ((NimStringDesc*) &TMP372), dis);
 		nimln(464, "navmInstructions.nim");
-		compile4_92308(ob, ((NU32) 1216938824), NIM_FALSE);
+		compile4_92308(ob, ((NU32) 1217069896), NIM_FALSE);
 		nimln(465, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
+		nimln(466, "navmInstructions.nim");
+		nimln(466, "navmInstructions.nim");
+		TMP373 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP373 < -128 || TMP373 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP373);
+	}
+	break;
+	case ((NI8) 2):
+	{
+		NI TMP375;
+		nimln(468, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP374), dis);
+		nimln(469, "navmInstructions.nim");
+		compile4_92308(ob, ((NU32) 1284178760), NIM_FALSE);
+		nimln(470, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
+		nimln(471, "navmInstructions.nim");
+		nimln(471, "navmInstructions.nim");
+		TMP375 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP375 < -128 || TMP375 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP375);
+	}
+	break;
+	case ((NI8) 3):
+	{
+		NI TMP377;
+		nimln(473, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP376), dis);
+		nimln(474, "navmInstructions.nim");
+		compile4_92308(ob, ((NU32) 1284180808), NIM_FALSE);
+		nimln(475, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
+		nimln(476, "navmInstructions.nim");
+		nimln(476, "navmInstructions.nim");
+		TMP377 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP377 < -128 || TMP377 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP377);
+	}
+	break;
+	case ((NI8) 4):
+	{
+		NI TMP379;
+		nimln(478, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP378), dis);
+		nimln(479, "navmInstructions.nim");
+		compile4_92308(ob, ((NU32) 1284182856), NIM_FALSE);
+		nimln(480, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
+		nimln(481, "navmInstructions.nim");
+		nimln(481, "navmInstructions.nim");
+		TMP379 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP379 < -128 || TMP379 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP379);
+	}
+	break;
+	case ((NI8) 5):
+	{
+		NI TMP381;
+		nimln(483, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP380), dis);
+		nimln(484, "navmInstructions.nim");
+		compile4_92308(ob, ((NU32) 1284184904), NIM_FALSE);
+		nimln(485, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
+		nimln(486, "navmInstructions.nim");
+		nimln(486, "navmInstructions.nim");
+		TMP381 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP381 < -128 || TMP381 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP381);
+	}
+	break;
+	case ((NI8) 6):
+	{
+		NI TMP383;
+		nimln(488, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP382), dis);
+		nimln(489, "navmInstructions.nim");
+		compile4_92308(ob, ((NU32) 1284186952), NIM_FALSE);
+		nimln(490, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
+		nimln(491, "navmInstructions.nim");
+		nimln(491, "navmInstructions.nim");
+		TMP383 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP383 < -128 || TMP383 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP383);
+	}
+	break;
+	case ((NI8) 7):
+	{
+		NI TMP385;
+		nimln(493, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP384), dis);
+		nimln(494, "navmInstructions.nim");
+		compile4_92308(ob, ((NU32) 1284189000), NIM_FALSE);
+		nimln(495, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
+		nimln(496, "navmInstructions.nim");
+		nimln(496, "navmInstructions.nim");
+		TMP385 = addInt((*ob).Vd, ((NI8) 1));
+		if (TMP385 < -128 || TMP385 > 127) raiseOverflow();
+		(*ob).Vd = (NI8)(TMP385);
+	}
+	break;
+	case ((NI8) 8):
+	{
+		nimln(498, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP386), dis);
+		nimln(499, "navmInstructions.nim");
+		compile4_92308(ob, ((NU32) 1284191048), NIM_FALSE);
+		nimln(500, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
+	}
+	break;
+	default:
+	{
+		nimln(502, "navmInstructions.nim");
+		errorofd_94084();
+	}
+	break;
+	}
+	popFrame();
+}
+
+N_NIMCALL(void, lxdimm_94516)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis) {
+	nimfr("lxdImm", "navmInstructions.nim")
+	nimln(504, "navmInstructions.nim");
+	errorimm_94114();
+	popFrame();
+}
+
+N_NIMCALL(void, sxi_94524)(tnavmbackend91004* ob, NIM_BOOL dis) {
+	nimfr("sxi", "navmInstructions.nim")
+	nimln(507, "navmInstructions.nim");
+	switch ((*ob).Vd) {
+	case ((NI8) 0):
+	{
+		nimln(509, "navmInstructions.nim");
+		errorufd_94099();
+	}
+	break;
+	case ((NI8) 1):
+	{
+		NI TMP388;
+		nimln(511, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP387), dis);
+		nimln(512, "navmInstructions.nim");
+		compile4_92308(ob, ((NU32) 1216938824), NIM_FALSE);
+		nimln(513, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
-		nimln(466, "navmInstructions.nim");
-		nimln(466, "navmInstructions.nim");
+		nimln(514, "navmInstructions.nim");
+		nimln(514, "navmInstructions.nim");
 		TMP388 = subInt((*ob).Vd, ((NI8) 1));
 		if (TMP388 < -128 || TMP388 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP388);
@@ -1520,14 +1520,14 @@ N_NIMCALL(void, sxi_94524)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP390;
-		nimln(468, "navmInstructions.nim");
+		nimln(516, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP389), dis);
-		nimln(469, "navmInstructions.nim");
+		nimln(517, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284047688), NIM_FALSE);
-		nimln(470, "navmInstructions.nim");
+		nimln(518, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
-		nimln(471, "navmInstructions.nim");
-		nimln(471, "navmInstructions.nim");
+		nimln(519, "navmInstructions.nim");
+		nimln(519, "navmInstructions.nim");
 		TMP390 = subInt((*ob).Vd, ((NI8) 1));
 		if (TMP390 < -128 || TMP390 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP390);
@@ -1536,14 +1536,14 @@ N_NIMCALL(void, sxi_94524)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP392;
-		nimln(473, "navmInstructions.nim");
+		nimln(521, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP391), dis);
-		nimln(474, "navmInstructions.nim");
+		nimln(522, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284049736), NIM_FALSE);
-		nimln(475, "navmInstructions.nim");
+		nimln(523, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
-		nimln(476, "navmInstructions.nim");
-		nimln(476, "navmInstructions.nim");
+		nimln(524, "navmInstructions.nim");
+		nimln(524, "navmInstructions.nim");
 		TMP392 = subInt((*ob).Vd, ((NI8) 1));
 		if (TMP392 < -128 || TMP392 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP392);
@@ -1552,14 +1552,14 @@ N_NIMCALL(void, sxi_94524)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP394;
-		nimln(478, "navmInstructions.nim");
+		nimln(526, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP393), dis);
-		nimln(479, "navmInstructions.nim");
+		nimln(527, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284051784), NIM_FALSE);
-		nimln(480, "navmInstructions.nim");
+		nimln(528, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
-		nimln(481, "navmInstructions.nim");
-		nimln(481, "navmInstructions.nim");
+		nimln(529, "navmInstructions.nim");
+		nimln(529, "navmInstructions.nim");
 		TMP394 = subInt((*ob).Vd, ((NI8) 1));
 		if (TMP394 < -128 || TMP394 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP394);
@@ -1568,14 +1568,14 @@ N_NIMCALL(void, sxi_94524)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP396;
-		nimln(483, "navmInstructions.nim");
+		nimln(531, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP395), dis);
-		nimln(484, "navmInstructions.nim");
+		nimln(532, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284053832), NIM_FALSE);
-		nimln(485, "navmInstructions.nim");
+		nimln(533, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
-		nimln(486, "navmInstructions.nim");
-		nimln(486, "navmInstructions.nim");
+		nimln(534, "navmInstructions.nim");
+		nimln(534, "navmInstructions.nim");
 		TMP396 = subInt((*ob).Vd, ((NI8) 1));
 		if (TMP396 < -128 || TMP396 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP396);
@@ -1584,14 +1584,14 @@ N_NIMCALL(void, sxi_94524)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP398;
-		nimln(488, "navmInstructions.nim");
+		nimln(536, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP397), dis);
-		nimln(489, "navmInstructions.nim");
+		nimln(537, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284055880), NIM_FALSE);
-		nimln(490, "navmInstructions.nim");
+		nimln(538, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
-		nimln(491, "navmInstructions.nim");
-		nimln(491, "navmInstructions.nim");
+		nimln(539, "navmInstructions.nim");
+		nimln(539, "navmInstructions.nim");
 		TMP398 = subInt((*ob).Vd, ((NI8) 1));
 		if (TMP398 < -128 || TMP398 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP398);
@@ -1600,14 +1600,14 @@ N_NIMCALL(void, sxi_94524)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP400;
-		nimln(493, "navmInstructions.nim");
+		nimln(541, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP399), dis);
-		nimln(494, "navmInstructions.nim");
+		nimln(542, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284057928), NIM_FALSE);
-		nimln(495, "navmInstructions.nim");
+		nimln(543, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
-		nimln(496, "navmInstructions.nim");
-		nimln(496, "navmInstructions.nim");
+		nimln(544, "navmInstructions.nim");
+		nimln(544, "navmInstructions.nim");
 		TMP400 = subInt((*ob).Vd, ((NI8) 1));
 		if (TMP400 < -128 || TMP400 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP400);
@@ -1616,14 +1616,14 @@ N_NIMCALL(void, sxi_94524)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 8):
 	{
 		NI TMP402;
-		nimln(498, "navmInstructions.nim");
+		nimln(546, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP401), dis);
-		nimln(499, "navmInstructions.nim");
+		nimln(547, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284059976), NIM_FALSE);
-		nimln(500, "navmInstructions.nim");
+		nimln(548, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65475), NIM_FALSE);
-		nimln(501, "navmInstructions.nim");
-		nimln(501, "navmInstructions.nim");
+		nimln(549, "navmInstructions.nim");
+		nimln(549, "navmInstructions.nim");
 		TMP402 = subInt((*ob).Vd, ((NI8) 1));
 		if (TMP402 < -128 || TMP402 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP402);
@@ -1631,7 +1631,7 @@ N_NIMCALL(void, sxi_94524)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(503, "navmInstructions.nim");
+		nimln(551, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -1641,32 +1641,32 @@ N_NIMCALL(void, sxi_94524)(tnavmbackend91004* ob, NIM_BOOL dis) {
 
 N_NIMCALL(void, sxiimm_94563)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis) {
 	nimfr("sxiImm", "navmInstructions.nim")
-	nimln(505, "navmInstructions.nim");
+	nimln(553, "navmInstructions.nim");
 	errorimm_94114();
 	popFrame();
 }
 
 N_NIMCALL(void, sxd_94571)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("sxd", "navmInstructions.nim")
-	nimln(508, "navmInstructions.nim");
+	nimln(556, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(510, "navmInstructions.nim");
+		nimln(558, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP404;
-		nimln(512, "navmInstructions.nim");
+		nimln(560, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP403), dis);
-		nimln(513, "navmInstructions.nim");
+		nimln(561, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1216938824), NIM_FALSE);
-		nimln(514, "navmInstructions.nim");
+		nimln(562, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
-		nimln(515, "navmInstructions.nim");
-		nimln(515, "navmInstructions.nim");
+		nimln(563, "navmInstructions.nim");
+		nimln(563, "navmInstructions.nim");
 		TMP404 = subInt((*ob).Vd, ((NI8) 1));
 		if (TMP404 < -128 || TMP404 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP404);
@@ -1675,14 +1675,14 @@ N_NIMCALL(void, sxd_94571)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP406;
-		nimln(517, "navmInstructions.nim");
+		nimln(565, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP405), dis);
-		nimln(518, "navmInstructions.nim");
+		nimln(566, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284047688), NIM_FALSE);
-		nimln(519, "navmInstructions.nim");
+		nimln(567, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
-		nimln(520, "navmInstructions.nim");
-		nimln(520, "navmInstructions.nim");
+		nimln(568, "navmInstructions.nim");
+		nimln(568, "navmInstructions.nim");
 		TMP406 = subInt((*ob).Vd, ((NI8) 1));
 		if (TMP406 < -128 || TMP406 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP406);
@@ -1691,14 +1691,14 @@ N_NIMCALL(void, sxd_94571)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP408;
-		nimln(522, "navmInstructions.nim");
+		nimln(570, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP407), dis);
-		nimln(523, "navmInstructions.nim");
+		nimln(571, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284049736), NIM_FALSE);
-		nimln(524, "navmInstructions.nim");
+		nimln(572, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
-		nimln(525, "navmInstructions.nim");
-		nimln(525, "navmInstructions.nim");
+		nimln(573, "navmInstructions.nim");
+		nimln(573, "navmInstructions.nim");
 		TMP408 = subInt((*ob).Vd, ((NI8) 1));
 		if (TMP408 < -128 || TMP408 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP408);
@@ -1707,14 +1707,14 @@ N_NIMCALL(void, sxd_94571)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP410;
-		nimln(527, "navmInstructions.nim");
+		nimln(575, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP409), dis);
-		nimln(528, "navmInstructions.nim");
+		nimln(576, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284051784), NIM_FALSE);
-		nimln(529, "navmInstructions.nim");
+		nimln(577, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
-		nimln(530, "navmInstructions.nim");
-		nimln(530, "navmInstructions.nim");
+		nimln(578, "navmInstructions.nim");
+		nimln(578, "navmInstructions.nim");
 		TMP410 = subInt((*ob).Vd, ((NI8) 1));
 		if (TMP410 < -128 || TMP410 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP410);
@@ -1723,14 +1723,14 @@ N_NIMCALL(void, sxd_94571)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP412;
-		nimln(532, "navmInstructions.nim");
+		nimln(580, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP411), dis);
-		nimln(533, "navmInstructions.nim");
+		nimln(581, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284053832), NIM_FALSE);
-		nimln(534, "navmInstructions.nim");
+		nimln(582, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
-		nimln(535, "navmInstructions.nim");
-		nimln(535, "navmInstructions.nim");
+		nimln(583, "navmInstructions.nim");
+		nimln(583, "navmInstructions.nim");
 		TMP412 = subInt((*ob).Vd, ((NI8) 1));
 		if (TMP412 < -128 || TMP412 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP412);
@@ -1739,14 +1739,14 @@ N_NIMCALL(void, sxd_94571)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP414;
-		nimln(537, "navmInstructions.nim");
+		nimln(585, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP413), dis);
-		nimln(538, "navmInstructions.nim");
+		nimln(586, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284055880), NIM_FALSE);
-		nimln(539, "navmInstructions.nim");
+		nimln(587, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
-		nimln(540, "navmInstructions.nim");
-		nimln(540, "navmInstructions.nim");
+		nimln(588, "navmInstructions.nim");
+		nimln(588, "navmInstructions.nim");
 		TMP414 = subInt((*ob).Vd, ((NI8) 1));
 		if (TMP414 < -128 || TMP414 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP414);
@@ -1755,14 +1755,14 @@ N_NIMCALL(void, sxd_94571)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP416;
-		nimln(542, "navmInstructions.nim");
+		nimln(590, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP415), dis);
-		nimln(543, "navmInstructions.nim");
+		nimln(591, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284057928), NIM_FALSE);
-		nimln(544, "navmInstructions.nim");
+		nimln(592, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
-		nimln(545, "navmInstructions.nim");
-		nimln(545, "navmInstructions.nim");
+		nimln(593, "navmInstructions.nim");
+		nimln(593, "navmInstructions.nim");
 		TMP416 = subInt((*ob).Vd, ((NI8) 1));
 		if (TMP416 < -128 || TMP416 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP416);
@@ -1771,14 +1771,14 @@ N_NIMCALL(void, sxd_94571)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 8):
 	{
 		NI TMP418;
-		nimln(547, "navmInstructions.nim");
+		nimln(595, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP417), dis);
-		nimln(548, "navmInstructions.nim");
+		nimln(596, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1284059976), NIM_FALSE);
-		nimln(549, "navmInstructions.nim");
+		nimln(597, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65483), NIM_FALSE);
-		nimln(550, "navmInstructions.nim");
-		nimln(550, "navmInstructions.nim");
+		nimln(598, "navmInstructions.nim");
+		nimln(598, "navmInstructions.nim");
 		TMP418 = subInt((*ob).Vd, ((NI8) 1));
 		if (TMP418 < -128 || TMP418 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP418);
@@ -1786,7 +1786,7 @@ N_NIMCALL(void, sxd_94571)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(552, "navmInstructions.nim");
+		nimln(600, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -1796,7 +1796,7 @@ N_NIMCALL(void, sxd_94571)(tnavmbackend91004* ob, NIM_BOOL dis) {
 
 N_NIMCALL(void, sxdimm_94610)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis) {
 	nimfr("sxdImm", "navmInstructions.nim")
-	nimln(554, "navmInstructions.nim");
+	nimln(602, "navmInstructions.nim");
 	errorimm_94114();
 	popFrame();
 }
@@ -1804,30 +1804,30 @@ N_NIMCALL(void, sxdimm_94610)(tnavmbackend91004* ob, NU64 val, NIM_BOOL dis) {
 N_NIMCALL(void, add_94618)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	NI TMP419;
 	nimfr("add", "navmInstructions.nim")
-	nimln(557, "navmInstructions.nim");
-	nimln(557, "navmInstructions.nim");
+	nimln(605, "navmInstructions.nim");
+	nimln(605, "navmInstructions.nim");
 	TMP419 = subInt((*ob).Vd, ((NI8) 2));
 	if (TMP419 < -128 || TMP419 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP419);
-	nimln(558, "navmInstructions.nim");
+	nimln(606, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(560, "navmInstructions.nim");
+		nimln(608, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP421;
-		nimln(562, "navmInstructions.nim");
+		nimln(610, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP420), dis);
-		nimln(563, "navmInstructions.nim");
+		nimln(611, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19457), NIM_FALSE);
-		nimln(564, "navmInstructions.nim");
+		nimln(612, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 192));
-		nimln(565, "navmInstructions.nim");
-		nimln(565, "navmInstructions.nim");
+		nimln(613, "navmInstructions.nim");
+		nimln(613, "navmInstructions.nim");
 		TMP421 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP421 < -128 || TMP421 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP421);
@@ -1836,14 +1836,14 @@ N_NIMCALL(void, add_94618)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP423;
-		nimln(567, "navmInstructions.nim");
+		nimln(615, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP422), dis);
-		nimln(568, "navmInstructions.nim");
+		nimln(616, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19713), NIM_FALSE);
-		nimln(569, "navmInstructions.nim");
+		nimln(617, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 200));
-		nimln(570, "navmInstructions.nim");
-		nimln(570, "navmInstructions.nim");
+		nimln(618, "navmInstructions.nim");
+		nimln(618, "navmInstructions.nim");
 		TMP423 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP423 < -128 || TMP423 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP423);
@@ -1852,14 +1852,14 @@ N_NIMCALL(void, add_94618)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP425;
-		nimln(572, "navmInstructions.nim");
+		nimln(620, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP424), dis);
-		nimln(573, "navmInstructions.nim");
+		nimln(621, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19713), NIM_FALSE);
-		nimln(574, "navmInstructions.nim");
+		nimln(622, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 209));
-		nimln(575, "navmInstructions.nim");
-		nimln(575, "navmInstructions.nim");
+		nimln(623, "navmInstructions.nim");
+		nimln(623, "navmInstructions.nim");
 		TMP425 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP425 < -128 || TMP425 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP425);
@@ -1868,14 +1868,14 @@ N_NIMCALL(void, add_94618)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP427;
-		nimln(577, "navmInstructions.nim");
+		nimln(625, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP426), dis);
-		nimln(578, "navmInstructions.nim");
+		nimln(626, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19713), NIM_FALSE);
-		nimln(579, "navmInstructions.nim");
+		nimln(627, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 218));
-		nimln(580, "navmInstructions.nim");
-		nimln(580, "navmInstructions.nim");
+		nimln(628, "navmInstructions.nim");
+		nimln(628, "navmInstructions.nim");
 		TMP427 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP427 < -128 || TMP427 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP427);
@@ -1884,14 +1884,14 @@ N_NIMCALL(void, add_94618)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP429;
-		nimln(582, "navmInstructions.nim");
+		nimln(630, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP428), dis);
-		nimln(583, "navmInstructions.nim");
+		nimln(631, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19713), NIM_FALSE);
-		nimln(584, "navmInstructions.nim");
+		nimln(632, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 227));
-		nimln(585, "navmInstructions.nim");
-		nimln(585, "navmInstructions.nim");
+		nimln(633, "navmInstructions.nim");
+		nimln(633, "navmInstructions.nim");
 		TMP429 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP429 < -128 || TMP429 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP429);
@@ -1900,14 +1900,14 @@ N_NIMCALL(void, add_94618)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP431;
-		nimln(587, "navmInstructions.nim");
+		nimln(635, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP430), dis);
-		nimln(588, "navmInstructions.nim");
+		nimln(636, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19713), NIM_FALSE);
-		nimln(589, "navmInstructions.nim");
+		nimln(637, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 236));
-		nimln(590, "navmInstructions.nim");
-		nimln(590, "navmInstructions.nim");
+		nimln(638, "navmInstructions.nim");
+		nimln(638, "navmInstructions.nim");
 		TMP431 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP431 < -128 || TMP431 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP431);
@@ -1916,14 +1916,14 @@ N_NIMCALL(void, add_94618)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP433;
-		nimln(592, "navmInstructions.nim");
+		nimln(640, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP432), dis);
-		nimln(593, "navmInstructions.nim");
+		nimln(641, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19713), NIM_FALSE);
-		nimln(594, "navmInstructions.nim");
+		nimln(642, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 245));
-		nimln(595, "navmInstructions.nim");
-		nimln(595, "navmInstructions.nim");
+		nimln(643, "navmInstructions.nim");
+		nimln(643, "navmInstructions.nim");
 		TMP433 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP433 < -128 || TMP433 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP433);
@@ -1931,7 +1931,7 @@ N_NIMCALL(void, add_94618)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(597, "navmInstructions.nim");
+		nimln(645, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -1939,36 +1939,36 @@ N_NIMCALL(void, add_94618)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	popFrame();
 }
 
-N_NIMCALL(void, addimm_94653)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
+N_NIMCALL(void, addimm_94653)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	NU32 uval;
 	NI TMP434;
 	nimfr("addImm", "navmInstructions.nim")
-	nimln(600, "navmInstructions.nim");
+	nimln(648, "navmInstructions.nim");
 	uval = ((NU32) (val));
-	nimln(601, "navmInstructions.nim");
-	nimln(601, "navmInstructions.nim");
+	nimln(649, "navmInstructions.nim");
+	nimln(649, "navmInstructions.nim");
 	TMP434 = subInt((*ob).Vd, ((NI8) 1));
 	if (TMP434 < -128 || TMP434 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP434);
-	nimln(603, "navmInstructions.nim");
+	nimln(651, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(605, "navmInstructions.nim");
+		nimln(653, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP436;
-		nimln(607, "navmInstructions.nim");
+		nimln(655, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP435), uval, dis);
-		nimln(608, "navmInstructions.nim");
+		nimln(656, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18437), NIM_FALSE);
-		nimln(609, "navmInstructions.nim");
+		nimln(657, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(610, "navmInstructions.nim");
-		nimln(610, "navmInstructions.nim");
+		nimln(658, "navmInstructions.nim");
+		nimln(658, "navmInstructions.nim");
 		TMP436 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP436 < -128 || TMP436 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP436);
@@ -1977,16 +1977,16 @@ N_NIMCALL(void, addimm_94653)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP438;
-		nimln(612, "navmInstructions.nim");
+		nimln(660, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP437), uval, dis);
-		nimln(613, "navmInstructions.nim");
+		nimln(661, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(614, "navmInstructions.nim");
+		nimln(662, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 192));
-		nimln(615, "navmInstructions.nim");
+		nimln(663, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(616, "navmInstructions.nim");
-		nimln(616, "navmInstructions.nim");
+		nimln(664, "navmInstructions.nim");
+		nimln(664, "navmInstructions.nim");
 		TMP438 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP438 < -128 || TMP438 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP438);
@@ -1995,16 +1995,16 @@ N_NIMCALL(void, addimm_94653)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP440;
-		nimln(618, "navmInstructions.nim");
+		nimln(666, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP439), uval, dis);
-		nimln(619, "navmInstructions.nim");
+		nimln(667, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(620, "navmInstructions.nim");
+		nimln(668, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 193));
-		nimln(621, "navmInstructions.nim");
+		nimln(669, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(622, "navmInstructions.nim");
-		nimln(622, "navmInstructions.nim");
+		nimln(670, "navmInstructions.nim");
+		nimln(670, "navmInstructions.nim");
 		TMP440 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP440 < -128 || TMP440 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP440);
@@ -2013,16 +2013,16 @@ N_NIMCALL(void, addimm_94653)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP442;
-		nimln(624, "navmInstructions.nim");
+		nimln(672, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP441), uval, dis);
-		nimln(625, "navmInstructions.nim");
+		nimln(673, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(626, "navmInstructions.nim");
+		nimln(674, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 194));
-		nimln(627, "navmInstructions.nim");
+		nimln(675, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(628, "navmInstructions.nim");
-		nimln(628, "navmInstructions.nim");
+		nimln(676, "navmInstructions.nim");
+		nimln(676, "navmInstructions.nim");
 		TMP442 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP442 < -128 || TMP442 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP442);
@@ -2031,16 +2031,16 @@ N_NIMCALL(void, addimm_94653)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP444;
-		nimln(630, "navmInstructions.nim");
+		nimln(678, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP443), uval, dis);
-		nimln(631, "navmInstructions.nim");
+		nimln(679, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(632, "navmInstructions.nim");
+		nimln(680, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 195));
-		nimln(633, "navmInstructions.nim");
+		nimln(681, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(634, "navmInstructions.nim");
-		nimln(634, "navmInstructions.nim");
+		nimln(682, "navmInstructions.nim");
+		nimln(682, "navmInstructions.nim");
 		TMP444 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP444 < -128 || TMP444 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP444);
@@ -2049,16 +2049,16 @@ N_NIMCALL(void, addimm_94653)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP446;
-		nimln(636, "navmInstructions.nim");
+		nimln(684, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP445), uval, dis);
-		nimln(637, "navmInstructions.nim");
+		nimln(685, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(638, "navmInstructions.nim");
+		nimln(686, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 196));
-		nimln(639, "navmInstructions.nim");
+		nimln(687, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(640, "navmInstructions.nim");
-		nimln(640, "navmInstructions.nim");
+		nimln(688, "navmInstructions.nim");
+		nimln(688, "navmInstructions.nim");
 		TMP446 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP446 < -128 || TMP446 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP446);
@@ -2067,16 +2067,16 @@ N_NIMCALL(void, addimm_94653)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP448;
-		nimln(642, "navmInstructions.nim");
+		nimln(690, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP447), uval, dis);
-		nimln(643, "navmInstructions.nim");
+		nimln(691, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(644, "navmInstructions.nim");
+		nimln(692, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 197));
-		nimln(645, "navmInstructions.nim");
+		nimln(693, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(646, "navmInstructions.nim");
-		nimln(646, "navmInstructions.nim");
+		nimln(694, "navmInstructions.nim");
+		nimln(694, "navmInstructions.nim");
 		TMP448 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP448 < -128 || TMP448 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP448);
@@ -2085,16 +2085,16 @@ N_NIMCALL(void, addimm_94653)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 8):
 	{
 		NI TMP450;
-		nimln(648, "navmInstructions.nim");
+		nimln(696, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP449), uval, dis);
-		nimln(649, "navmInstructions.nim");
+		nimln(697, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(650, "navmInstructions.nim");
+		nimln(698, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 198));
-		nimln(651, "navmInstructions.nim");
+		nimln(699, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(652, "navmInstructions.nim");
-		nimln(652, "navmInstructions.nim");
+		nimln(700, "navmInstructions.nim");
+		nimln(700, "navmInstructions.nim");
 		TMP450 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP450 < -128 || TMP450 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP450);
@@ -2102,7 +2102,7 @@ N_NIMCALL(void, addimm_94653)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(654, "navmInstructions.nim");
+		nimln(702, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -2113,30 +2113,30 @@ N_NIMCALL(void, addimm_94653)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 N_NIMCALL(void, adc_94783)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	NI TMP451;
 	nimfr("adc", "navmInstructions.nim")
-	nimln(657, "navmInstructions.nim");
-	nimln(657, "navmInstructions.nim");
+	nimln(705, "navmInstructions.nim");
+	nimln(705, "navmInstructions.nim");
 	TMP451 = subInt((*ob).Vd, ((NI8) 2));
 	if (TMP451 < -128 || TMP451 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP451);
-	nimln(658, "navmInstructions.nim");
+	nimln(706, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(660, "navmInstructions.nim");
+		nimln(708, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP453;
-		nimln(662, "navmInstructions.nim");
+		nimln(710, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP452), dis);
-		nimln(663, "navmInstructions.nim");
+		nimln(711, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19473), NIM_FALSE);
-		nimln(664, "navmInstructions.nim");
+		nimln(712, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 192));
-		nimln(665, "navmInstructions.nim");
-		nimln(665, "navmInstructions.nim");
+		nimln(713, "navmInstructions.nim");
+		nimln(713, "navmInstructions.nim");
 		TMP453 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP453 < -128 || TMP453 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP453);
@@ -2145,14 +2145,14 @@ N_NIMCALL(void, adc_94783)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP455;
-		nimln(667, "navmInstructions.nim");
+		nimln(715, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP454), dis);
-		nimln(668, "navmInstructions.nim");
+		nimln(716, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19729), NIM_FALSE);
-		nimln(669, "navmInstructions.nim");
+		nimln(717, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 200));
-		nimln(670, "navmInstructions.nim");
-		nimln(670, "navmInstructions.nim");
+		nimln(718, "navmInstructions.nim");
+		nimln(718, "navmInstructions.nim");
 		TMP455 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP455 < -128 || TMP455 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP455);
@@ -2161,14 +2161,14 @@ N_NIMCALL(void, adc_94783)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP457;
-		nimln(672, "navmInstructions.nim");
+		nimln(720, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP456), dis);
-		nimln(673, "navmInstructions.nim");
+		nimln(721, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19729), NIM_FALSE);
-		nimln(674, "navmInstructions.nim");
+		nimln(722, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 209));
-		nimln(675, "navmInstructions.nim");
-		nimln(675, "navmInstructions.nim");
+		nimln(723, "navmInstructions.nim");
+		nimln(723, "navmInstructions.nim");
 		TMP457 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP457 < -128 || TMP457 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP457);
@@ -2177,14 +2177,14 @@ N_NIMCALL(void, adc_94783)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP459;
-		nimln(677, "navmInstructions.nim");
+		nimln(725, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP458), dis);
-		nimln(678, "navmInstructions.nim");
+		nimln(726, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19729), NIM_FALSE);
-		nimln(679, "navmInstructions.nim");
+		nimln(727, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 218));
-		nimln(680, "navmInstructions.nim");
-		nimln(680, "navmInstructions.nim");
+		nimln(728, "navmInstructions.nim");
+		nimln(728, "navmInstructions.nim");
 		TMP459 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP459 < -128 || TMP459 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP459);
@@ -2193,14 +2193,14 @@ N_NIMCALL(void, adc_94783)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP461;
-		nimln(682, "navmInstructions.nim");
+		nimln(730, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP460), dis);
-		nimln(683, "navmInstructions.nim");
+		nimln(731, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19729), NIM_FALSE);
-		nimln(684, "navmInstructions.nim");
+		nimln(732, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 227));
-		nimln(685, "navmInstructions.nim");
-		nimln(685, "navmInstructions.nim");
+		nimln(733, "navmInstructions.nim");
+		nimln(733, "navmInstructions.nim");
 		TMP461 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP461 < -128 || TMP461 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP461);
@@ -2209,14 +2209,14 @@ N_NIMCALL(void, adc_94783)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP463;
-		nimln(687, "navmInstructions.nim");
+		nimln(735, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP462), dis);
-		nimln(688, "navmInstructions.nim");
+		nimln(736, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19729), NIM_FALSE);
-		nimln(689, "navmInstructions.nim");
+		nimln(737, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 236));
-		nimln(690, "navmInstructions.nim");
-		nimln(690, "navmInstructions.nim");
+		nimln(738, "navmInstructions.nim");
+		nimln(738, "navmInstructions.nim");
 		TMP463 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP463 < -128 || TMP463 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP463);
@@ -2225,14 +2225,14 @@ N_NIMCALL(void, adc_94783)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP465;
-		nimln(692, "navmInstructions.nim");
+		nimln(740, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP464), dis);
-		nimln(693, "navmInstructions.nim");
+		nimln(741, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19729), NIM_FALSE);
-		nimln(694, "navmInstructions.nim");
+		nimln(742, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 245));
-		nimln(695, "navmInstructions.nim");
-		nimln(695, "navmInstructions.nim");
+		nimln(743, "navmInstructions.nim");
+		nimln(743, "navmInstructions.nim");
 		TMP465 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP465 < -128 || TMP465 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP465);
@@ -2240,7 +2240,7 @@ N_NIMCALL(void, adc_94783)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(697, "navmInstructions.nim");
+		nimln(745, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -2248,36 +2248,36 @@ N_NIMCALL(void, adc_94783)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	popFrame();
 }
 
-N_NIMCALL(void, adcimm_94818)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
+N_NIMCALL(void, adcimm_94818)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	NU32 uval;
 	NI TMP466;
 	nimfr("adcImm", "navmInstructions.nim")
-	nimln(700, "navmInstructions.nim");
+	nimln(748, "navmInstructions.nim");
 	uval = ((NU32) (val));
-	nimln(701, "navmInstructions.nim");
-	nimln(701, "navmInstructions.nim");
+	nimln(749, "navmInstructions.nim");
+	nimln(749, "navmInstructions.nim");
 	TMP466 = subInt((*ob).Vd, ((NI8) 1));
 	if (TMP466 < -128 || TMP466 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP466);
-	nimln(703, "navmInstructions.nim");
+	nimln(751, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(705, "navmInstructions.nim");
+		nimln(753, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP467;
-		nimln(707, "navmInstructions.nim");
+		nimln(755, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP435), uval, dis);
-		nimln(708, "navmInstructions.nim");
+		nimln(756, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18453), NIM_FALSE);
-		nimln(709, "navmInstructions.nim");
+		nimln(757, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(710, "navmInstructions.nim");
-		nimln(710, "navmInstructions.nim");
+		nimln(758, "navmInstructions.nim");
+		nimln(758, "navmInstructions.nim");
 		TMP467 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP467 < -128 || TMP467 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP467);
@@ -2286,16 +2286,16 @@ N_NIMCALL(void, adcimm_94818)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP468;
-		nimln(712, "navmInstructions.nim");
+		nimln(760, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP437), uval, dis);
-		nimln(713, "navmInstructions.nim");
+		nimln(761, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(714, "navmInstructions.nim");
+		nimln(762, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 208));
-		nimln(715, "navmInstructions.nim");
+		nimln(763, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(716, "navmInstructions.nim");
-		nimln(716, "navmInstructions.nim");
+		nimln(764, "navmInstructions.nim");
+		nimln(764, "navmInstructions.nim");
 		TMP468 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP468 < -128 || TMP468 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP468);
@@ -2304,16 +2304,16 @@ N_NIMCALL(void, adcimm_94818)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP469;
-		nimln(718, "navmInstructions.nim");
+		nimln(766, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP439), uval, dis);
-		nimln(719, "navmInstructions.nim");
+		nimln(767, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(720, "navmInstructions.nim");
+		nimln(768, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 209));
-		nimln(721, "navmInstructions.nim");
+		nimln(769, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(722, "navmInstructions.nim");
-		nimln(722, "navmInstructions.nim");
+		nimln(770, "navmInstructions.nim");
+		nimln(770, "navmInstructions.nim");
 		TMP469 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP469 < -128 || TMP469 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP469);
@@ -2322,16 +2322,16 @@ N_NIMCALL(void, adcimm_94818)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP470;
-		nimln(724, "navmInstructions.nim");
+		nimln(772, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP441), uval, dis);
-		nimln(725, "navmInstructions.nim");
+		nimln(773, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(726, "navmInstructions.nim");
+		nimln(774, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 210));
-		nimln(727, "navmInstructions.nim");
+		nimln(775, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(728, "navmInstructions.nim");
-		nimln(728, "navmInstructions.nim");
+		nimln(776, "navmInstructions.nim");
+		nimln(776, "navmInstructions.nim");
 		TMP470 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP470 < -128 || TMP470 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP470);
@@ -2340,16 +2340,16 @@ N_NIMCALL(void, adcimm_94818)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP471;
-		nimln(730, "navmInstructions.nim");
+		nimln(778, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP443), uval, dis);
-		nimln(731, "navmInstructions.nim");
+		nimln(779, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(732, "navmInstructions.nim");
+		nimln(780, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 211));
-		nimln(733, "navmInstructions.nim");
+		nimln(781, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(734, "navmInstructions.nim");
-		nimln(734, "navmInstructions.nim");
+		nimln(782, "navmInstructions.nim");
+		nimln(782, "navmInstructions.nim");
 		TMP471 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP471 < -128 || TMP471 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP471);
@@ -2358,16 +2358,16 @@ N_NIMCALL(void, adcimm_94818)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP472;
-		nimln(736, "navmInstructions.nim");
+		nimln(784, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP445), uval, dis);
-		nimln(737, "navmInstructions.nim");
+		nimln(785, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(738, "navmInstructions.nim");
+		nimln(786, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 212));
-		nimln(739, "navmInstructions.nim");
+		nimln(787, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(740, "navmInstructions.nim");
-		nimln(740, "navmInstructions.nim");
+		nimln(788, "navmInstructions.nim");
+		nimln(788, "navmInstructions.nim");
 		TMP472 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP472 < -128 || TMP472 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP472);
@@ -2376,16 +2376,16 @@ N_NIMCALL(void, adcimm_94818)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP473;
-		nimln(742, "navmInstructions.nim");
+		nimln(790, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP447), uval, dis);
-		nimln(743, "navmInstructions.nim");
+		nimln(791, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(744, "navmInstructions.nim");
+		nimln(792, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 213));
-		nimln(745, "navmInstructions.nim");
+		nimln(793, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(746, "navmInstructions.nim");
-		nimln(746, "navmInstructions.nim");
+		nimln(794, "navmInstructions.nim");
+		nimln(794, "navmInstructions.nim");
 		TMP473 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP473 < -128 || TMP473 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP473);
@@ -2394,16 +2394,16 @@ N_NIMCALL(void, adcimm_94818)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 8):
 	{
 		NI TMP474;
-		nimln(748, "navmInstructions.nim");
+		nimln(796, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP449), uval, dis);
-		nimln(749, "navmInstructions.nim");
+		nimln(797, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(750, "navmInstructions.nim");
+		nimln(798, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 214));
-		nimln(751, "navmInstructions.nim");
+		nimln(799, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(752, "navmInstructions.nim");
-		nimln(752, "navmInstructions.nim");
+		nimln(800, "navmInstructions.nim");
+		nimln(800, "navmInstructions.nim");
 		TMP474 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP474 < -128 || TMP474 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP474);
@@ -2411,7 +2411,7 @@ N_NIMCALL(void, adcimm_94818)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(754, "navmInstructions.nim");
+		nimln(802, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -2422,30 +2422,30 @@ N_NIMCALL(void, adcimm_94818)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 N_NIMCALL(void, sub_94931)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	NI TMP475;
 	nimfr("sub", "navmInstructions.nim")
-	nimln(757, "navmInstructions.nim");
-	nimln(757, "navmInstructions.nim");
+	nimln(805, "navmInstructions.nim");
+	nimln(805, "navmInstructions.nim");
 	TMP475 = subInt((*ob).Vd, ((NI8) 2));
 	if (TMP475 < -128 || TMP475 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP475);
-	nimln(758, "navmInstructions.nim");
+	nimln(806, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(760, "navmInstructions.nim");
+		nimln(808, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP477;
-		nimln(762, "navmInstructions.nim");
+		nimln(810, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP476), dis);
-		nimln(763, "navmInstructions.nim");
+		nimln(811, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19497), NIM_FALSE);
-		nimln(764, "navmInstructions.nim");
+		nimln(812, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 192));
-		nimln(765, "navmInstructions.nim");
-		nimln(765, "navmInstructions.nim");
+		nimln(813, "navmInstructions.nim");
+		nimln(813, "navmInstructions.nim");
 		TMP477 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP477 < -128 || TMP477 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP477);
@@ -2454,14 +2454,14 @@ N_NIMCALL(void, sub_94931)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP479;
-		nimln(767, "navmInstructions.nim");
+		nimln(815, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP478), dis);
-		nimln(768, "navmInstructions.nim");
+		nimln(816, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19753), NIM_FALSE);
-		nimln(769, "navmInstructions.nim");
+		nimln(817, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 200));
-		nimln(770, "navmInstructions.nim");
-		nimln(770, "navmInstructions.nim");
+		nimln(818, "navmInstructions.nim");
+		nimln(818, "navmInstructions.nim");
 		TMP479 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP479 < -128 || TMP479 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP479);
@@ -2470,14 +2470,14 @@ N_NIMCALL(void, sub_94931)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP481;
-		nimln(772, "navmInstructions.nim");
+		nimln(820, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP480), dis);
-		nimln(773, "navmInstructions.nim");
+		nimln(821, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19753), NIM_FALSE);
-		nimln(774, "navmInstructions.nim");
+		nimln(822, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 209));
-		nimln(775, "navmInstructions.nim");
-		nimln(775, "navmInstructions.nim");
+		nimln(823, "navmInstructions.nim");
+		nimln(823, "navmInstructions.nim");
 		TMP481 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP481 < -128 || TMP481 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP481);
@@ -2486,14 +2486,14 @@ N_NIMCALL(void, sub_94931)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP483;
-		nimln(777, "navmInstructions.nim");
+		nimln(825, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP482), dis);
-		nimln(778, "navmInstructions.nim");
+		nimln(826, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19753), NIM_FALSE);
-		nimln(779, "navmInstructions.nim");
+		nimln(827, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 218));
-		nimln(780, "navmInstructions.nim");
-		nimln(780, "navmInstructions.nim");
+		nimln(828, "navmInstructions.nim");
+		nimln(828, "navmInstructions.nim");
 		TMP483 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP483 < -128 || TMP483 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP483);
@@ -2502,14 +2502,14 @@ N_NIMCALL(void, sub_94931)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP485;
-		nimln(782, "navmInstructions.nim");
+		nimln(830, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP484), dis);
-		nimln(783, "navmInstructions.nim");
+		nimln(831, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19753), NIM_FALSE);
-		nimln(784, "navmInstructions.nim");
+		nimln(832, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 227));
-		nimln(785, "navmInstructions.nim");
-		nimln(785, "navmInstructions.nim");
+		nimln(833, "navmInstructions.nim");
+		nimln(833, "navmInstructions.nim");
 		TMP485 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP485 < -128 || TMP485 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP485);
@@ -2518,14 +2518,14 @@ N_NIMCALL(void, sub_94931)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP487;
-		nimln(787, "navmInstructions.nim");
+		nimln(835, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP486), dis);
-		nimln(788, "navmInstructions.nim");
+		nimln(836, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19753), NIM_FALSE);
-		nimln(789, "navmInstructions.nim");
+		nimln(837, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 236));
-		nimln(790, "navmInstructions.nim");
-		nimln(790, "navmInstructions.nim");
+		nimln(838, "navmInstructions.nim");
+		nimln(838, "navmInstructions.nim");
 		TMP487 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP487 < -128 || TMP487 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP487);
@@ -2534,14 +2534,14 @@ N_NIMCALL(void, sub_94931)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP489;
-		nimln(792, "navmInstructions.nim");
+		nimln(840, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP488), dis);
-		nimln(793, "navmInstructions.nim");
+		nimln(841, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19753), NIM_FALSE);
-		nimln(794, "navmInstructions.nim");
+		nimln(842, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 245));
-		nimln(795, "navmInstructions.nim");
-		nimln(795, "navmInstructions.nim");
+		nimln(843, "navmInstructions.nim");
+		nimln(843, "navmInstructions.nim");
 		TMP489 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP489 < -128 || TMP489 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP489);
@@ -2549,7 +2549,7 @@ N_NIMCALL(void, sub_94931)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(797, "navmInstructions.nim");
+		nimln(845, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -2557,36 +2557,36 @@ N_NIMCALL(void, sub_94931)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	popFrame();
 }
 
-N_NIMCALL(void, subimm_94966)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
+N_NIMCALL(void, subimm_94966)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	NU32 uval;
 	NI TMP490;
 	nimfr("subImm", "navmInstructions.nim")
-	nimln(800, "navmInstructions.nim");
+	nimln(848, "navmInstructions.nim");
 	uval = ((NU32) (val));
-	nimln(801, "navmInstructions.nim");
-	nimln(801, "navmInstructions.nim");
+	nimln(849, "navmInstructions.nim");
+	nimln(849, "navmInstructions.nim");
 	TMP490 = subInt((*ob).Vd, ((NI8) 1));
 	if (TMP490 < -128 || TMP490 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP490);
-	nimln(803, "navmInstructions.nim");
+	nimln(851, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(805, "navmInstructions.nim");
+		nimln(853, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP492;
-		nimln(807, "navmInstructions.nim");
+		nimln(855, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP491), uval, dis);
-		nimln(808, "navmInstructions.nim");
+		nimln(856, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18477), NIM_FALSE);
-		nimln(809, "navmInstructions.nim");
+		nimln(857, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(810, "navmInstructions.nim");
-		nimln(810, "navmInstructions.nim");
+		nimln(858, "navmInstructions.nim");
+		nimln(858, "navmInstructions.nim");
 		TMP492 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP492 < -128 || TMP492 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP492);
@@ -2595,16 +2595,16 @@ N_NIMCALL(void, subimm_94966)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP494;
-		nimln(812, "navmInstructions.nim");
+		nimln(860, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP493), uval, dis);
-		nimln(813, "navmInstructions.nim");
+		nimln(861, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(814, "navmInstructions.nim");
+		nimln(862, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 232));
-		nimln(815, "navmInstructions.nim");
+		nimln(863, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(816, "navmInstructions.nim");
-		nimln(816, "navmInstructions.nim");
+		nimln(864, "navmInstructions.nim");
+		nimln(864, "navmInstructions.nim");
 		TMP494 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP494 < -128 || TMP494 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP494);
@@ -2613,16 +2613,16 @@ N_NIMCALL(void, subimm_94966)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP496;
-		nimln(818, "navmInstructions.nim");
+		nimln(866, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP495), uval, dis);
-		nimln(819, "navmInstructions.nim");
+		nimln(867, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(820, "navmInstructions.nim");
+		nimln(868, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 233));
-		nimln(821, "navmInstructions.nim");
+		nimln(869, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(822, "navmInstructions.nim");
-		nimln(822, "navmInstructions.nim");
+		nimln(870, "navmInstructions.nim");
+		nimln(870, "navmInstructions.nim");
 		TMP496 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP496 < -128 || TMP496 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP496);
@@ -2631,16 +2631,16 @@ N_NIMCALL(void, subimm_94966)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP498;
-		nimln(824, "navmInstructions.nim");
+		nimln(872, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP497), uval, dis);
-		nimln(825, "navmInstructions.nim");
+		nimln(873, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(826, "navmInstructions.nim");
+		nimln(874, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 234));
-		nimln(827, "navmInstructions.nim");
+		nimln(875, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(828, "navmInstructions.nim");
-		nimln(828, "navmInstructions.nim");
+		nimln(876, "navmInstructions.nim");
+		nimln(876, "navmInstructions.nim");
 		TMP498 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP498 < -128 || TMP498 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP498);
@@ -2649,16 +2649,16 @@ N_NIMCALL(void, subimm_94966)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP500;
-		nimln(830, "navmInstructions.nim");
+		nimln(878, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP499), uval, dis);
-		nimln(831, "navmInstructions.nim");
+		nimln(879, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(832, "navmInstructions.nim");
+		nimln(880, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 235));
-		nimln(833, "navmInstructions.nim");
+		nimln(881, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(834, "navmInstructions.nim");
-		nimln(834, "navmInstructions.nim");
+		nimln(882, "navmInstructions.nim");
+		nimln(882, "navmInstructions.nim");
 		TMP500 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP500 < -128 || TMP500 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP500);
@@ -2667,16 +2667,16 @@ N_NIMCALL(void, subimm_94966)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP502;
-		nimln(836, "navmInstructions.nim");
+		nimln(884, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP501), uval, dis);
-		nimln(837, "navmInstructions.nim");
+		nimln(885, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(838, "navmInstructions.nim");
+		nimln(886, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 236));
-		nimln(839, "navmInstructions.nim");
+		nimln(887, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(840, "navmInstructions.nim");
-		nimln(840, "navmInstructions.nim");
+		nimln(888, "navmInstructions.nim");
+		nimln(888, "navmInstructions.nim");
 		TMP502 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP502 < -128 || TMP502 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP502);
@@ -2685,16 +2685,16 @@ N_NIMCALL(void, subimm_94966)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP504;
-		nimln(842, "navmInstructions.nim");
+		nimln(890, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP503), uval, dis);
-		nimln(843, "navmInstructions.nim");
+		nimln(891, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(844, "navmInstructions.nim");
+		nimln(892, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 237));
-		nimln(845, "navmInstructions.nim");
+		nimln(893, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(846, "navmInstructions.nim");
-		nimln(846, "navmInstructions.nim");
+		nimln(894, "navmInstructions.nim");
+		nimln(894, "navmInstructions.nim");
 		TMP504 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP504 < -128 || TMP504 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP504);
@@ -2703,16 +2703,16 @@ N_NIMCALL(void, subimm_94966)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 8):
 	{
 		NI TMP506;
-		nimln(848, "navmInstructions.nim");
+		nimln(896, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP505), uval, dis);
-		nimln(849, "navmInstructions.nim");
+		nimln(897, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(850, "navmInstructions.nim");
+		nimln(898, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 238));
-		nimln(851, "navmInstructions.nim");
+		nimln(899, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(852, "navmInstructions.nim");
-		nimln(852, "navmInstructions.nim");
+		nimln(900, "navmInstructions.nim");
+		nimln(900, "navmInstructions.nim");
 		TMP506 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP506 < -128 || TMP506 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP506);
@@ -2720,7 +2720,7 @@ N_NIMCALL(void, subimm_94966)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(854, "navmInstructions.nim");
+		nimln(902, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -2731,30 +2731,30 @@ N_NIMCALL(void, subimm_94966)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 N_NIMCALL(void, sbc_95079)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	NI TMP507;
 	nimfr("sbc", "navmInstructions.nim")
-	nimln(857, "navmInstructions.nim");
-	nimln(857, "navmInstructions.nim");
+	nimln(905, "navmInstructions.nim");
+	nimln(905, "navmInstructions.nim");
 	TMP507 = subInt((*ob).Vd, ((NI8) 2));
 	if (TMP507 < -128 || TMP507 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP507);
-	nimln(858, "navmInstructions.nim");
+	nimln(906, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(860, "navmInstructions.nim");
+		nimln(908, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP509;
-		nimln(862, "navmInstructions.nim");
+		nimln(910, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP508), dis);
-		nimln(863, "navmInstructions.nim");
+		nimln(911, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19481), NIM_FALSE);
-		nimln(864, "navmInstructions.nim");
+		nimln(912, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 192));
-		nimln(865, "navmInstructions.nim");
-		nimln(865, "navmInstructions.nim");
+		nimln(913, "navmInstructions.nim");
+		nimln(913, "navmInstructions.nim");
 		TMP509 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP509 < -128 || TMP509 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP509);
@@ -2763,14 +2763,14 @@ N_NIMCALL(void, sbc_95079)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP511;
-		nimln(867, "navmInstructions.nim");
+		nimln(915, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP510), dis);
-		nimln(868, "navmInstructions.nim");
+		nimln(916, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19737), NIM_FALSE);
-		nimln(869, "navmInstructions.nim");
+		nimln(917, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 200));
-		nimln(870, "navmInstructions.nim");
-		nimln(870, "navmInstructions.nim");
+		nimln(918, "navmInstructions.nim");
+		nimln(918, "navmInstructions.nim");
 		TMP511 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP511 < -128 || TMP511 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP511);
@@ -2779,14 +2779,14 @@ N_NIMCALL(void, sbc_95079)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP513;
-		nimln(872, "navmInstructions.nim");
+		nimln(920, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP512), dis);
-		nimln(873, "navmInstructions.nim");
+		nimln(921, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19737), NIM_FALSE);
-		nimln(874, "navmInstructions.nim");
+		nimln(922, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 209));
-		nimln(875, "navmInstructions.nim");
-		nimln(875, "navmInstructions.nim");
+		nimln(923, "navmInstructions.nim");
+		nimln(923, "navmInstructions.nim");
 		TMP513 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP513 < -128 || TMP513 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP513);
@@ -2795,14 +2795,14 @@ N_NIMCALL(void, sbc_95079)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP515;
-		nimln(877, "navmInstructions.nim");
+		nimln(925, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP514), dis);
-		nimln(878, "navmInstructions.nim");
+		nimln(926, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19737), NIM_FALSE);
-		nimln(879, "navmInstructions.nim");
+		nimln(927, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 218));
-		nimln(880, "navmInstructions.nim");
-		nimln(880, "navmInstructions.nim");
+		nimln(928, "navmInstructions.nim");
+		nimln(928, "navmInstructions.nim");
 		TMP515 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP515 < -128 || TMP515 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP515);
@@ -2811,14 +2811,14 @@ N_NIMCALL(void, sbc_95079)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP517;
-		nimln(882, "navmInstructions.nim");
+		nimln(930, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP516), dis);
-		nimln(883, "navmInstructions.nim");
+		nimln(931, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19737), NIM_FALSE);
-		nimln(884, "navmInstructions.nim");
+		nimln(932, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 227));
-		nimln(885, "navmInstructions.nim");
-		nimln(885, "navmInstructions.nim");
+		nimln(933, "navmInstructions.nim");
+		nimln(933, "navmInstructions.nim");
 		TMP517 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP517 < -128 || TMP517 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP517);
@@ -2827,14 +2827,14 @@ N_NIMCALL(void, sbc_95079)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP519;
-		nimln(887, "navmInstructions.nim");
+		nimln(935, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP518), dis);
-		nimln(888, "navmInstructions.nim");
+		nimln(936, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19737), NIM_FALSE);
-		nimln(889, "navmInstructions.nim");
+		nimln(937, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 236));
-		nimln(890, "navmInstructions.nim");
-		nimln(890, "navmInstructions.nim");
+		nimln(938, "navmInstructions.nim");
+		nimln(938, "navmInstructions.nim");
 		TMP519 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP519 < -128 || TMP519 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP519);
@@ -2843,14 +2843,14 @@ N_NIMCALL(void, sbc_95079)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP521;
-		nimln(892, "navmInstructions.nim");
+		nimln(940, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP520), dis);
-		nimln(893, "navmInstructions.nim");
+		nimln(941, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19737), NIM_FALSE);
-		nimln(894, "navmInstructions.nim");
+		nimln(942, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 245));
-		nimln(895, "navmInstructions.nim");
-		nimln(895, "navmInstructions.nim");
+		nimln(943, "navmInstructions.nim");
+		nimln(943, "navmInstructions.nim");
 		TMP521 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP521 < -128 || TMP521 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP521);
@@ -2858,7 +2858,7 @@ N_NIMCALL(void, sbc_95079)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(897, "navmInstructions.nim");
+		nimln(945, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -2866,36 +2866,36 @@ N_NIMCALL(void, sbc_95079)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	popFrame();
 }
 
-N_NIMCALL(void, sbcimm_95114)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
+N_NIMCALL(void, sbcimm_95114)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	NU32 uval;
 	NI TMP522;
 	nimfr("sbcImm", "navmInstructions.nim")
-	nimln(900, "navmInstructions.nim");
+	nimln(948, "navmInstructions.nim");
 	uval = ((NU32) (val));
-	nimln(901, "navmInstructions.nim");
-	nimln(901, "navmInstructions.nim");
+	nimln(949, "navmInstructions.nim");
+	nimln(949, "navmInstructions.nim");
 	TMP522 = subInt((*ob).Vd, ((NI8) 1));
 	if (TMP522 < -128 || TMP522 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP522);
-	nimln(903, "navmInstructions.nim");
+	nimln(951, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(905, "navmInstructions.nim");
+		nimln(953, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP524;
-		nimln(907, "navmInstructions.nim");
+		nimln(955, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP523), uval, dis);
-		nimln(908, "navmInstructions.nim");
+		nimln(956, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18461), NIM_FALSE);
-		nimln(909, "navmInstructions.nim");
+		nimln(957, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(910, "navmInstructions.nim");
-		nimln(910, "navmInstructions.nim");
+		nimln(958, "navmInstructions.nim");
+		nimln(958, "navmInstructions.nim");
 		TMP524 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP524 < -128 || TMP524 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP524);
@@ -2904,16 +2904,16 @@ N_NIMCALL(void, sbcimm_95114)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP526;
-		nimln(912, "navmInstructions.nim");
+		nimln(960, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP525), uval, dis);
-		nimln(913, "navmInstructions.nim");
+		nimln(961, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(914, "navmInstructions.nim");
+		nimln(962, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 216));
-		nimln(915, "navmInstructions.nim");
+		nimln(963, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(916, "navmInstructions.nim");
-		nimln(916, "navmInstructions.nim");
+		nimln(964, "navmInstructions.nim");
+		nimln(964, "navmInstructions.nim");
 		TMP526 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP526 < -128 || TMP526 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP526);
@@ -2922,16 +2922,16 @@ N_NIMCALL(void, sbcimm_95114)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP528;
-		nimln(918, "navmInstructions.nim");
+		nimln(966, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP527), uval, dis);
-		nimln(919, "navmInstructions.nim");
+		nimln(967, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(920, "navmInstructions.nim");
+		nimln(968, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 217));
-		nimln(921, "navmInstructions.nim");
+		nimln(969, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(922, "navmInstructions.nim");
-		nimln(922, "navmInstructions.nim");
+		nimln(970, "navmInstructions.nim");
+		nimln(970, "navmInstructions.nim");
 		TMP528 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP528 < -128 || TMP528 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP528);
@@ -2940,16 +2940,16 @@ N_NIMCALL(void, sbcimm_95114)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP530;
-		nimln(924, "navmInstructions.nim");
+		nimln(972, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP529), uval, dis);
-		nimln(925, "navmInstructions.nim");
+		nimln(973, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(926, "navmInstructions.nim");
+		nimln(974, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 218));
-		nimln(927, "navmInstructions.nim");
+		nimln(975, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(928, "navmInstructions.nim");
-		nimln(928, "navmInstructions.nim");
+		nimln(976, "navmInstructions.nim");
+		nimln(976, "navmInstructions.nim");
 		TMP530 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP530 < -128 || TMP530 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP530);
@@ -2958,16 +2958,16 @@ N_NIMCALL(void, sbcimm_95114)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP532;
-		nimln(930, "navmInstructions.nim");
+		nimln(978, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP531), uval, dis);
-		nimln(931, "navmInstructions.nim");
+		nimln(979, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(932, "navmInstructions.nim");
+		nimln(980, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 219));
-		nimln(933, "navmInstructions.nim");
+		nimln(981, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(934, "navmInstructions.nim");
-		nimln(934, "navmInstructions.nim");
+		nimln(982, "navmInstructions.nim");
+		nimln(982, "navmInstructions.nim");
 		TMP532 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP532 < -128 || TMP532 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP532);
@@ -2976,16 +2976,16 @@ N_NIMCALL(void, sbcimm_95114)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP534;
-		nimln(936, "navmInstructions.nim");
+		nimln(984, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP533), uval, dis);
-		nimln(937, "navmInstructions.nim");
+		nimln(985, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(938, "navmInstructions.nim");
+		nimln(986, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 220));
-		nimln(939, "navmInstructions.nim");
+		nimln(987, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(940, "navmInstructions.nim");
-		nimln(940, "navmInstructions.nim");
+		nimln(988, "navmInstructions.nim");
+		nimln(988, "navmInstructions.nim");
 		TMP534 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP534 < -128 || TMP534 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP534);
@@ -2994,16 +2994,16 @@ N_NIMCALL(void, sbcimm_95114)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP536;
-		nimln(942, "navmInstructions.nim");
+		nimln(990, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP535), uval, dis);
-		nimln(943, "navmInstructions.nim");
+		nimln(991, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(944, "navmInstructions.nim");
+		nimln(992, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 221));
-		nimln(945, "navmInstructions.nim");
+		nimln(993, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(946, "navmInstructions.nim");
-		nimln(946, "navmInstructions.nim");
+		nimln(994, "navmInstructions.nim");
+		nimln(994, "navmInstructions.nim");
 		TMP536 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP536 < -128 || TMP536 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP536);
@@ -3012,16 +3012,16 @@ N_NIMCALL(void, sbcimm_95114)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	case ((NI8) 8):
 	{
 		NI TMP538;
-		nimln(948, "navmInstructions.nim");
+		nimln(996, "navmInstructions.nim");
 		disasmimm_94661(ob, ((NimStringDesc*) &TMP537), uval, dis);
-		nimln(949, "navmInstructions.nim");
+		nimln(997, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(950, "navmInstructions.nim");
+		nimln(998, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 222));
-		nimln(951, "navmInstructions.nim");
+		nimln(999, "navmInstructions.nim");
 		compile4_92308(ob, uval, NIM_FALSE);
-		nimln(952, "navmInstructions.nim");
-		nimln(952, "navmInstructions.nim");
+		nimln(1000, "navmInstructions.nim");
+		nimln(1000, "navmInstructions.nim");
 		TMP538 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP538 < -128 || TMP538 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP538);
@@ -3029,7 +3029,7 @@ N_NIMCALL(void, sbcimm_95114)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(954, "navmInstructions.nim");
+		nimln(1002, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -3040,30 +3040,30 @@ N_NIMCALL(void, sbcimm_95114)(tnavmbackend91004* ob, NI32 val, NIM_BOOL dis) {
 N_NIMCALL(void, slb_95227)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	NI TMP539;
 	nimfr("slb", "navmInstructions.nim")
-	nimln(957, "navmInstructions.nim");
-	nimln(957, "navmInstructions.nim");
+	nimln(1005, "navmInstructions.nim");
+	nimln(1005, "navmInstructions.nim");
 	TMP539 = subInt((*ob).Vd, ((NI8) 2));
 	if (TMP539 < -128 || TMP539 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP539);
-	nimln(958, "navmInstructions.nim");
+	nimln(1006, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(960, "navmInstructions.nim");
+		nimln(1008, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP541;
-		nimln(962, "navmInstructions.nim");
+		nimln(1010, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP540), dis);
-		nimln(963, "navmInstructions.nim");
+		nimln(1011, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1149813064), NIM_FALSE);
-		nimln(964, "navmInstructions.nim");
+		nimln(1012, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 54240), NIM_FALSE);
-		nimln(965, "navmInstructions.nim");
-		nimln(965, "navmInstructions.nim");
+		nimln(1013, "navmInstructions.nim");
+		nimln(1013, "navmInstructions.nim");
 		TMP541 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP541 < -128 || TMP541 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP541);
@@ -3072,14 +3072,14 @@ N_NIMCALL(void, slb_95227)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP543;
-		nimln(967, "navmInstructions.nim");
+		nimln(1015, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP542), dis);
-		nimln(968, "navmInstructions.nim");
+		nimln(1016, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1149815113), NIM_FALSE);
-		nimln(969, "navmInstructions.nim");
+		nimln(1017, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 54240), NIM_FALSE);
-		nimln(970, "navmInstructions.nim");
-		nimln(970, "navmInstructions.nim");
+		nimln(1018, "navmInstructions.nim");
+		nimln(1018, "navmInstructions.nim");
 		TMP543 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP543 < -128 || TMP543 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP543);
@@ -3088,14 +3088,14 @@ N_NIMCALL(void, slb_95227)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP545;
-		nimln(972, "navmInstructions.nim");
+		nimln(1020, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP544), dis);
-		nimln(973, "navmInstructions.nim");
+		nimln(1021, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1149817161), NIM_FALSE);
-		nimln(974, "navmInstructions.nim");
+		nimln(1022, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 54241), NIM_FALSE);
-		nimln(975, "navmInstructions.nim");
-		nimln(975, "navmInstructions.nim");
+		nimln(1023, "navmInstructions.nim");
+		nimln(1023, "navmInstructions.nim");
 		TMP545 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP545 < -128 || TMP545 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP545);
@@ -3104,14 +3104,14 @@ N_NIMCALL(void, slb_95227)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP547;
-		nimln(977, "navmInstructions.nim");
+		nimln(1025, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP546), dis);
-		nimln(978, "navmInstructions.nim");
+		nimln(1026, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1149819209), NIM_FALSE);
-		nimln(979, "navmInstructions.nim");
+		nimln(1027, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 54242), NIM_FALSE);
-		nimln(980, "navmInstructions.nim");
-		nimln(980, "navmInstructions.nim");
+		nimln(1028, "navmInstructions.nim");
+		nimln(1028, "navmInstructions.nim");
 		TMP547 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP547 < -128 || TMP547 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP547);
@@ -3120,14 +3120,14 @@ N_NIMCALL(void, slb_95227)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP549;
-		nimln(982, "navmInstructions.nim");
+		nimln(1030, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP548), dis);
-		nimln(983, "navmInstructions.nim");
+		nimln(1031, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1149821257), NIM_FALSE);
-		nimln(984, "navmInstructions.nim");
+		nimln(1032, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 54243), NIM_FALSE);
-		nimln(985, "navmInstructions.nim");
-		nimln(985, "navmInstructions.nim");
+		nimln(1033, "navmInstructions.nim");
+		nimln(1033, "navmInstructions.nim");
 		TMP549 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP549 < -128 || TMP549 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP549);
@@ -3136,14 +3136,14 @@ N_NIMCALL(void, slb_95227)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP551;
-		nimln(987, "navmInstructions.nim");
+		nimln(1035, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP550), dis);
-		nimln(988, "navmInstructions.nim");
+		nimln(1036, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1149823305), NIM_FALSE);
-		nimln(989, "navmInstructions.nim");
+		nimln(1037, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 54244), NIM_FALSE);
-		nimln(990, "navmInstructions.nim");
-		nimln(990, "navmInstructions.nim");
+		nimln(1038, "navmInstructions.nim");
+		nimln(1038, "navmInstructions.nim");
 		TMP551 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP551 < -128 || TMP551 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP551);
@@ -3152,14 +3152,14 @@ N_NIMCALL(void, slb_95227)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP553;
-		nimln(992, "navmInstructions.nim");
+		nimln(1040, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP552), dis);
-		nimln(993, "navmInstructions.nim");
+		nimln(1041, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1149825353), NIM_FALSE);
-		nimln(994, "navmInstructions.nim");
+		nimln(1042, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 54245), NIM_FALSE);
-		nimln(995, "navmInstructions.nim");
-		nimln(995, "navmInstructions.nim");
+		nimln(1043, "navmInstructions.nim");
+		nimln(1043, "navmInstructions.nim");
 		TMP553 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP553 < -128 || TMP553 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP553);
@@ -3167,7 +3167,7 @@ N_NIMCALL(void, slb_95227)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(997, "navmInstructions.nim");
+		nimln(1045, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -3175,38 +3175,38 @@ N_NIMCALL(void, slb_95227)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	popFrame();
 }
 
-N_NIMCALL(void, slbimm_95262)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
+N_NIMCALL(void, slbimm_95262)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	NU8 uval;
 	NI TMP554;
 	nimfr("slbImm", "navmInstructions.nim")
-	nimln(1000, "navmInstructions.nim");
+	nimln(1048, "navmInstructions.nim");
 	uval = ((NU8) (val));
-	nimln(1001, "navmInstructions.nim");
-	nimln(1001, "navmInstructions.nim");
+	nimln(1049, "navmInstructions.nim");
+	nimln(1049, "navmInstructions.nim");
 	TMP554 = subInt((*ob).Vd, ((NI8) 1));
 	if (TMP554 < -128 || TMP554 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP554);
-	nimln(1003, "navmInstructions.nim");
+	nimln(1051, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1005, "navmInstructions.nim");
+		nimln(1053, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP556;
-		nimln(1007, "navmInstructions.nim");
+		nimln(1055, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP555), uval, dis);
-		nimln(1008, "navmInstructions.nim");
+		nimln(1056, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18625), NIM_FALSE);
-		nimln(1009, "navmInstructions.nim");
+		nimln(1057, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 224));
-		nimln(1010, "navmInstructions.nim");
+		nimln(1058, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1011, "navmInstructions.nim");
-		nimln(1011, "navmInstructions.nim");
+		nimln(1059, "navmInstructions.nim");
+		nimln(1059, "navmInstructions.nim");
 		TMP556 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP556 < -128 || TMP556 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP556);
@@ -3215,16 +3215,16 @@ N_NIMCALL(void, slbimm_95262)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP558;
-		nimln(1013, "navmInstructions.nim");
+		nimln(1061, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP557), uval, dis);
-		nimln(1014, "navmInstructions.nim");
+		nimln(1062, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18881), NIM_FALSE);
-		nimln(1015, "navmInstructions.nim");
+		nimln(1063, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 224));
-		nimln(1016, "navmInstructions.nim");
+		nimln(1064, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1017, "navmInstructions.nim");
-		nimln(1017, "navmInstructions.nim");
+		nimln(1065, "navmInstructions.nim");
+		nimln(1065, "navmInstructions.nim");
 		TMP558 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP558 < -128 || TMP558 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP558);
@@ -3233,16 +3233,16 @@ N_NIMCALL(void, slbimm_95262)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP560;
-		nimln(1019, "navmInstructions.nim");
+		nimln(1067, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP559), uval, dis);
-		nimln(1020, "navmInstructions.nim");
+		nimln(1068, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18881), NIM_FALSE);
-		nimln(1021, "navmInstructions.nim");
+		nimln(1069, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 225));
-		nimln(1022, "navmInstructions.nim");
+		nimln(1070, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1023, "navmInstructions.nim");
-		nimln(1023, "navmInstructions.nim");
+		nimln(1071, "navmInstructions.nim");
+		nimln(1071, "navmInstructions.nim");
 		TMP560 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP560 < -128 || TMP560 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP560);
@@ -3251,16 +3251,16 @@ N_NIMCALL(void, slbimm_95262)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP562;
-		nimln(1025, "navmInstructions.nim");
+		nimln(1073, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP561), uval, dis);
-		nimln(1026, "navmInstructions.nim");
+		nimln(1074, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18881), NIM_FALSE);
-		nimln(1027, "navmInstructions.nim");
+		nimln(1075, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 226));
-		nimln(1028, "navmInstructions.nim");
+		nimln(1076, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1029, "navmInstructions.nim");
-		nimln(1029, "navmInstructions.nim");
+		nimln(1077, "navmInstructions.nim");
+		nimln(1077, "navmInstructions.nim");
 		TMP562 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP562 < -128 || TMP562 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP562);
@@ -3269,16 +3269,16 @@ N_NIMCALL(void, slbimm_95262)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP564;
-		nimln(1031, "navmInstructions.nim");
+		nimln(1079, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP563), uval, dis);
-		nimln(1032, "navmInstructions.nim");
+		nimln(1080, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18881), NIM_FALSE);
-		nimln(1033, "navmInstructions.nim");
+		nimln(1081, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 227));
-		nimln(1034, "navmInstructions.nim");
+		nimln(1082, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1035, "navmInstructions.nim");
-		nimln(1035, "navmInstructions.nim");
+		nimln(1083, "navmInstructions.nim");
+		nimln(1083, "navmInstructions.nim");
 		TMP564 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP564 < -128 || TMP564 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP564);
@@ -3287,16 +3287,16 @@ N_NIMCALL(void, slbimm_95262)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP566;
-		nimln(1037, "navmInstructions.nim");
+		nimln(1085, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP565), uval, dis);
-		nimln(1038, "navmInstructions.nim");
+		nimln(1086, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18881), NIM_FALSE);
-		nimln(1039, "navmInstructions.nim");
+		nimln(1087, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 228));
-		nimln(1040, "navmInstructions.nim");
+		nimln(1088, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1041, "navmInstructions.nim");
-		nimln(1041, "navmInstructions.nim");
+		nimln(1089, "navmInstructions.nim");
+		nimln(1089, "navmInstructions.nim");
 		TMP566 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP566 < -128 || TMP566 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP566);
@@ -3305,16 +3305,16 @@ N_NIMCALL(void, slbimm_95262)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP568;
-		nimln(1043, "navmInstructions.nim");
+		nimln(1091, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP567), uval, dis);
-		nimln(1044, "navmInstructions.nim");
+		nimln(1092, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18881), NIM_FALSE);
-		nimln(1045, "navmInstructions.nim");
+		nimln(1093, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 229));
-		nimln(1046, "navmInstructions.nim");
+		nimln(1094, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1047, "navmInstructions.nim");
-		nimln(1047, "navmInstructions.nim");
+		nimln(1095, "navmInstructions.nim");
+		nimln(1095, "navmInstructions.nim");
 		TMP568 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP568 < -128 || TMP568 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP568);
@@ -3323,16 +3323,16 @@ N_NIMCALL(void, slbimm_95262)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 8):
 	{
 		NI TMP570;
-		nimln(1049, "navmInstructions.nim");
+		nimln(1097, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP569), uval, dis);
-		nimln(1050, "navmInstructions.nim");
+		nimln(1098, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18881), NIM_FALSE);
-		nimln(1051, "navmInstructions.nim");
+		nimln(1099, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 230));
-		nimln(1052, "navmInstructions.nim");
+		nimln(1100, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1053, "navmInstructions.nim");
-		nimln(1053, "navmInstructions.nim");
+		nimln(1101, "navmInstructions.nim");
+		nimln(1101, "navmInstructions.nim");
 		TMP570 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP570 < -128 || TMP570 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP570);
@@ -3340,7 +3340,7 @@ N_NIMCALL(void, slbimm_95262)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(1055, "navmInstructions.nim");
+		nimln(1103, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -3351,30 +3351,30 @@ N_NIMCALL(void, slbimm_95262)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 N_NIMCALL(void, srb_95394)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	NI TMP571;
 	nimfr("srb", "navmInstructions.nim")
-	nimln(1058, "navmInstructions.nim");
-	nimln(1058, "navmInstructions.nim");
+	nimln(1106, "navmInstructions.nim");
+	nimln(1106, "navmInstructions.nim");
 	TMP571 = subInt((*ob).Vd, ((NI8) 2));
 	if (TMP571 < -128 || TMP571 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP571);
-	nimln(1059, "navmInstructions.nim");
+	nimln(1107, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1061, "navmInstructions.nim");
+		nimln(1109, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP573;
-		nimln(1063, "navmInstructions.nim");
+		nimln(1111, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP572), dis);
-		nimln(1064, "navmInstructions.nim");
+		nimln(1112, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1149813064), NIM_FALSE);
-		nimln(1065, "navmInstructions.nim");
+		nimln(1113, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 54248), NIM_FALSE);
-		nimln(1066, "navmInstructions.nim");
-		nimln(1066, "navmInstructions.nim");
+		nimln(1114, "navmInstructions.nim");
+		nimln(1114, "navmInstructions.nim");
 		TMP573 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP573 < -128 || TMP573 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP573);
@@ -3383,14 +3383,14 @@ N_NIMCALL(void, srb_95394)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP575;
-		nimln(1068, "navmInstructions.nim");
+		nimln(1116, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP574), dis);
-		nimln(1069, "navmInstructions.nim");
+		nimln(1117, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1149815113), NIM_FALSE);
-		nimln(1070, "navmInstructions.nim");
+		nimln(1118, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 54248), NIM_FALSE);
-		nimln(1071, "navmInstructions.nim");
-		nimln(1071, "navmInstructions.nim");
+		nimln(1119, "navmInstructions.nim");
+		nimln(1119, "navmInstructions.nim");
 		TMP575 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP575 < -128 || TMP575 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP575);
@@ -3399,14 +3399,14 @@ N_NIMCALL(void, srb_95394)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP577;
-		nimln(1073, "navmInstructions.nim");
+		nimln(1121, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP576), dis);
-		nimln(1074, "navmInstructions.nim");
+		nimln(1122, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1149817161), NIM_FALSE);
-		nimln(1075, "navmInstructions.nim");
+		nimln(1123, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 54249), NIM_FALSE);
-		nimln(1076, "navmInstructions.nim");
-		nimln(1076, "navmInstructions.nim");
+		nimln(1124, "navmInstructions.nim");
+		nimln(1124, "navmInstructions.nim");
 		TMP577 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP577 < -128 || TMP577 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP577);
@@ -3415,14 +3415,14 @@ N_NIMCALL(void, srb_95394)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP579;
-		nimln(1078, "navmInstructions.nim");
+		nimln(1126, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP578), dis);
-		nimln(1079, "navmInstructions.nim");
+		nimln(1127, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1149819209), NIM_FALSE);
-		nimln(1080, "navmInstructions.nim");
+		nimln(1128, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 54250), NIM_FALSE);
-		nimln(1081, "navmInstructions.nim");
-		nimln(1081, "navmInstructions.nim");
+		nimln(1129, "navmInstructions.nim");
+		nimln(1129, "navmInstructions.nim");
 		TMP579 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP579 < -128 || TMP579 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP579);
@@ -3431,14 +3431,14 @@ N_NIMCALL(void, srb_95394)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP581;
-		nimln(1083, "navmInstructions.nim");
+		nimln(1131, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP580), dis);
-		nimln(1084, "navmInstructions.nim");
+		nimln(1132, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1149821257), NIM_FALSE);
-		nimln(1085, "navmInstructions.nim");
+		nimln(1133, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 54251), NIM_FALSE);
-		nimln(1086, "navmInstructions.nim");
-		nimln(1086, "navmInstructions.nim");
+		nimln(1134, "navmInstructions.nim");
+		nimln(1134, "navmInstructions.nim");
 		TMP581 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP581 < -128 || TMP581 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP581);
@@ -3447,14 +3447,14 @@ N_NIMCALL(void, srb_95394)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP583;
-		nimln(1088, "navmInstructions.nim");
+		nimln(1136, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP582), dis);
-		nimln(1089, "navmInstructions.nim");
+		nimln(1137, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1149823305), NIM_FALSE);
-		nimln(1090, "navmInstructions.nim");
+		nimln(1138, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 54252), NIM_FALSE);
-		nimln(1091, "navmInstructions.nim");
-		nimln(1091, "navmInstructions.nim");
+		nimln(1139, "navmInstructions.nim");
+		nimln(1139, "navmInstructions.nim");
 		TMP583 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP583 < -128 || TMP583 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP583);
@@ -3463,14 +3463,14 @@ N_NIMCALL(void, srb_95394)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP585;
-		nimln(1093, "navmInstructions.nim");
+		nimln(1141, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP584), dis);
-		nimln(1094, "navmInstructions.nim");
+		nimln(1142, "navmInstructions.nim");
 		compile4_92308(ob, ((NU32) 1149825353), NIM_FALSE);
-		nimln(1095, "navmInstructions.nim");
+		nimln(1143, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 54253), NIM_FALSE);
-		nimln(1096, "navmInstructions.nim");
-		nimln(1096, "navmInstructions.nim");
+		nimln(1144, "navmInstructions.nim");
+		nimln(1144, "navmInstructions.nim");
 		TMP585 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP585 < -128 || TMP585 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP585);
@@ -3478,7 +3478,7 @@ N_NIMCALL(void, srb_95394)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(1098, "navmInstructions.nim");
+		nimln(1146, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -3486,38 +3486,38 @@ N_NIMCALL(void, srb_95394)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	popFrame();
 }
 
-N_NIMCALL(void, srbimm_95429)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
+N_NIMCALL(void, srbimm_95429)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	NU8 uval;
 	NI TMP586;
 	nimfr("srbImm", "navmInstructions.nim")
-	nimln(1101, "navmInstructions.nim");
+	nimln(1149, "navmInstructions.nim");
 	uval = ((NU8) (val));
-	nimln(1102, "navmInstructions.nim");
-	nimln(1102, "navmInstructions.nim");
+	nimln(1150, "navmInstructions.nim");
+	nimln(1150, "navmInstructions.nim");
 	TMP586 = subInt((*ob).Vd, ((NI8) 1));
 	if (TMP586 < -128 || TMP586 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP586);
-	nimln(1104, "navmInstructions.nim");
+	nimln(1152, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1106, "navmInstructions.nim");
+		nimln(1154, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP588;
-		nimln(1108, "navmInstructions.nim");
+		nimln(1156, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP587), uval, dis);
-		nimln(1109, "navmInstructions.nim");
+		nimln(1157, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18625), NIM_FALSE);
-		nimln(1110, "navmInstructions.nim");
+		nimln(1158, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 232));
-		nimln(1111, "navmInstructions.nim");
+		nimln(1159, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1112, "navmInstructions.nim");
-		nimln(1112, "navmInstructions.nim");
+		nimln(1160, "navmInstructions.nim");
+		nimln(1160, "navmInstructions.nim");
 		TMP588 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP588 < -128 || TMP588 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP588);
@@ -3526,16 +3526,16 @@ N_NIMCALL(void, srbimm_95429)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP590;
-		nimln(1114, "navmInstructions.nim");
+		nimln(1162, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP589), uval, dis);
-		nimln(1115, "navmInstructions.nim");
+		nimln(1163, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18881), NIM_FALSE);
-		nimln(1116, "navmInstructions.nim");
+		nimln(1164, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 232));
-		nimln(1117, "navmInstructions.nim");
+		nimln(1165, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1118, "navmInstructions.nim");
-		nimln(1118, "navmInstructions.nim");
+		nimln(1166, "navmInstructions.nim");
+		nimln(1166, "navmInstructions.nim");
 		TMP590 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP590 < -128 || TMP590 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP590);
@@ -3544,16 +3544,16 @@ N_NIMCALL(void, srbimm_95429)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP592;
-		nimln(1120, "navmInstructions.nim");
+		nimln(1168, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP591), uval, dis);
-		nimln(1121, "navmInstructions.nim");
+		nimln(1169, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18881), NIM_FALSE);
-		nimln(1122, "navmInstructions.nim");
+		nimln(1170, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 233));
-		nimln(1123, "navmInstructions.nim");
+		nimln(1171, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1124, "navmInstructions.nim");
-		nimln(1124, "navmInstructions.nim");
+		nimln(1172, "navmInstructions.nim");
+		nimln(1172, "navmInstructions.nim");
 		TMP592 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP592 < -128 || TMP592 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP592);
@@ -3562,16 +3562,16 @@ N_NIMCALL(void, srbimm_95429)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP594;
-		nimln(1126, "navmInstructions.nim");
+		nimln(1174, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP593), uval, dis);
-		nimln(1127, "navmInstructions.nim");
+		nimln(1175, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18881), NIM_FALSE);
-		nimln(1128, "navmInstructions.nim");
+		nimln(1176, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 234));
-		nimln(1129, "navmInstructions.nim");
+		nimln(1177, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1130, "navmInstructions.nim");
-		nimln(1130, "navmInstructions.nim");
+		nimln(1178, "navmInstructions.nim");
+		nimln(1178, "navmInstructions.nim");
 		TMP594 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP594 < -128 || TMP594 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP594);
@@ -3580,16 +3580,16 @@ N_NIMCALL(void, srbimm_95429)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP596;
-		nimln(1132, "navmInstructions.nim");
+		nimln(1180, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP595), uval, dis);
-		nimln(1133, "navmInstructions.nim");
+		nimln(1181, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18881), NIM_FALSE);
-		nimln(1134, "navmInstructions.nim");
+		nimln(1182, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 235));
-		nimln(1135, "navmInstructions.nim");
+		nimln(1183, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1136, "navmInstructions.nim");
-		nimln(1136, "navmInstructions.nim");
+		nimln(1184, "navmInstructions.nim");
+		nimln(1184, "navmInstructions.nim");
 		TMP596 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP596 < -128 || TMP596 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP596);
@@ -3598,16 +3598,16 @@ N_NIMCALL(void, srbimm_95429)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP598;
-		nimln(1138, "navmInstructions.nim");
+		nimln(1186, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP597), uval, dis);
-		nimln(1139, "navmInstructions.nim");
+		nimln(1187, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18881), NIM_FALSE);
-		nimln(1140, "navmInstructions.nim");
+		nimln(1188, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 236));
-		nimln(1141, "navmInstructions.nim");
+		nimln(1189, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1142, "navmInstructions.nim");
-		nimln(1142, "navmInstructions.nim");
+		nimln(1190, "navmInstructions.nim");
+		nimln(1190, "navmInstructions.nim");
 		TMP598 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP598 < -128 || TMP598 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP598);
@@ -3616,16 +3616,16 @@ N_NIMCALL(void, srbimm_95429)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP600;
-		nimln(1144, "navmInstructions.nim");
+		nimln(1192, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP599), uval, dis);
-		nimln(1145, "navmInstructions.nim");
+		nimln(1193, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18881), NIM_FALSE);
-		nimln(1146, "navmInstructions.nim");
+		nimln(1194, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 237));
-		nimln(1147, "navmInstructions.nim");
+		nimln(1195, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1148, "navmInstructions.nim");
-		nimln(1148, "navmInstructions.nim");
+		nimln(1196, "navmInstructions.nim");
+		nimln(1196, "navmInstructions.nim");
 		TMP600 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP600 < -128 || TMP600 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP600);
@@ -3634,16 +3634,16 @@ N_NIMCALL(void, srbimm_95429)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 8):
 	{
 		NI TMP602;
-		nimln(1150, "navmInstructions.nim");
+		nimln(1198, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP601), uval, dis);
-		nimln(1151, "navmInstructions.nim");
+		nimln(1199, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18881), NIM_FALSE);
-		nimln(1152, "navmInstructions.nim");
+		nimln(1200, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 238));
-		nimln(1153, "navmInstructions.nim");
+		nimln(1201, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1154, "navmInstructions.nim");
-		nimln(1154, "navmInstructions.nim");
+		nimln(1202, "navmInstructions.nim");
+		nimln(1202, "navmInstructions.nim");
 		TMP602 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP602 < -128 || TMP602 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP602);
@@ -3651,7 +3651,7 @@ N_NIMCALL(void, srbimm_95429)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(1156, "navmInstructions.nim");
+		nimln(1204, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -3662,30 +3662,30 @@ N_NIMCALL(void, srbimm_95429)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 N_NIMCALL(void, anb_95544)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	NI TMP603;
 	nimfr("anb", "navmInstructions.nim")
-	nimln(1159, "navmInstructions.nim");
-	nimln(1159, "navmInstructions.nim");
+	nimln(1207, "navmInstructions.nim");
+	nimln(1207, "navmInstructions.nim");
 	TMP603 = subInt((*ob).Vd, ((NI8) 2));
 	if (TMP603 < -128 || TMP603 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP603);
-	nimln(1160, "navmInstructions.nim");
+	nimln(1208, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1162, "navmInstructions.nim");
+		nimln(1210, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP605;
-		nimln(1164, "navmInstructions.nim");
+		nimln(1212, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP604), dis);
-		nimln(1165, "navmInstructions.nim");
+		nimln(1213, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19489), NIM_FALSE);
-		nimln(1166, "navmInstructions.nim");
+		nimln(1214, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 192));
-		nimln(1167, "navmInstructions.nim");
-		nimln(1167, "navmInstructions.nim");
+		nimln(1215, "navmInstructions.nim");
+		nimln(1215, "navmInstructions.nim");
 		TMP605 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP605 < -128 || TMP605 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP605);
@@ -3694,14 +3694,14 @@ N_NIMCALL(void, anb_95544)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP607;
-		nimln(1169, "navmInstructions.nim");
+		nimln(1217, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP606), dis);
-		nimln(1170, "navmInstructions.nim");
+		nimln(1218, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19745), NIM_FALSE);
-		nimln(1171, "navmInstructions.nim");
+		nimln(1219, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 200));
-		nimln(1172, "navmInstructions.nim");
-		nimln(1172, "navmInstructions.nim");
+		nimln(1220, "navmInstructions.nim");
+		nimln(1220, "navmInstructions.nim");
 		TMP607 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP607 < -128 || TMP607 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP607);
@@ -3710,14 +3710,14 @@ N_NIMCALL(void, anb_95544)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP609;
-		nimln(1174, "navmInstructions.nim");
+		nimln(1222, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP608), dis);
-		nimln(1175, "navmInstructions.nim");
+		nimln(1223, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19745), NIM_FALSE);
-		nimln(1176, "navmInstructions.nim");
+		nimln(1224, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 209));
-		nimln(1177, "navmInstructions.nim");
-		nimln(1177, "navmInstructions.nim");
+		nimln(1225, "navmInstructions.nim");
+		nimln(1225, "navmInstructions.nim");
 		TMP609 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP609 < -128 || TMP609 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP609);
@@ -3726,14 +3726,14 @@ N_NIMCALL(void, anb_95544)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP611;
-		nimln(1179, "navmInstructions.nim");
+		nimln(1227, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP610), dis);
-		nimln(1180, "navmInstructions.nim");
+		nimln(1228, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19737), NIM_FALSE);
-		nimln(1181, "navmInstructions.nim");
+		nimln(1229, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 218));
-		nimln(1182, "navmInstructions.nim");
-		nimln(1182, "navmInstructions.nim");
+		nimln(1230, "navmInstructions.nim");
+		nimln(1230, "navmInstructions.nim");
 		TMP611 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP611 < -128 || TMP611 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP611);
@@ -3742,14 +3742,14 @@ N_NIMCALL(void, anb_95544)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP613;
-		nimln(1184, "navmInstructions.nim");
+		nimln(1232, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP612), dis);
-		nimln(1185, "navmInstructions.nim");
+		nimln(1233, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19745), NIM_FALSE);
-		nimln(1186, "navmInstructions.nim");
+		nimln(1234, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 227));
-		nimln(1187, "navmInstructions.nim");
-		nimln(1187, "navmInstructions.nim");
+		nimln(1235, "navmInstructions.nim");
+		nimln(1235, "navmInstructions.nim");
 		TMP613 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP613 < -128 || TMP613 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP613);
@@ -3758,14 +3758,14 @@ N_NIMCALL(void, anb_95544)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP615;
-		nimln(1189, "navmInstructions.nim");
+		nimln(1237, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP614), dis);
-		nimln(1190, "navmInstructions.nim");
+		nimln(1238, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19745), NIM_FALSE);
-		nimln(1191, "navmInstructions.nim");
+		nimln(1239, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 236));
-		nimln(1192, "navmInstructions.nim");
-		nimln(1192, "navmInstructions.nim");
+		nimln(1240, "navmInstructions.nim");
+		nimln(1240, "navmInstructions.nim");
 		TMP615 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP615 < -128 || TMP615 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP615);
@@ -3774,14 +3774,14 @@ N_NIMCALL(void, anb_95544)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP617;
-		nimln(1194, "navmInstructions.nim");
+		nimln(1242, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP616), dis);
-		nimln(1195, "navmInstructions.nim");
+		nimln(1243, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19745), NIM_FALSE);
-		nimln(1196, "navmInstructions.nim");
+		nimln(1244, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 245));
-		nimln(1197, "navmInstructions.nim");
-		nimln(1197, "navmInstructions.nim");
+		nimln(1245, "navmInstructions.nim");
+		nimln(1245, "navmInstructions.nim");
 		TMP617 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP617 < -128 || TMP617 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP617);
@@ -3789,7 +3789,7 @@ N_NIMCALL(void, anb_95544)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(1199, "navmInstructions.nim");
+		nimln(1247, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -3797,36 +3797,36 @@ N_NIMCALL(void, anb_95544)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	popFrame();
 }
 
-N_NIMCALL(void, anbimm_95579)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
+N_NIMCALL(void, anbimm_95579)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	NU8 uval;
 	NI TMP618;
 	nimfr("anbImm", "navmInstructions.nim")
-	nimln(1202, "navmInstructions.nim");
+	nimln(1250, "navmInstructions.nim");
 	uval = ((NU8) (val));
-	nimln(1203, "navmInstructions.nim");
-	nimln(1203, "navmInstructions.nim");
+	nimln(1251, "navmInstructions.nim");
+	nimln(1251, "navmInstructions.nim");
 	TMP618 = subInt((*ob).Vd, ((NI8) 1));
 	if (TMP618 < -128 || TMP618 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP618);
-	nimln(1205, "navmInstructions.nim");
+	nimln(1253, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1207, "navmInstructions.nim");
+		nimln(1255, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP620;
-		nimln(1209, "navmInstructions.nim");
+		nimln(1257, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP619), uval, dis);
-		nimln(1210, "navmInstructions.nim");
+		nimln(1258, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18469), NIM_FALSE);
-		nimln(1211, "navmInstructions.nim");
+		nimln(1259, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1212, "navmInstructions.nim");
-		nimln(1212, "navmInstructions.nim");
+		nimln(1260, "navmInstructions.nim");
+		nimln(1260, "navmInstructions.nim");
 		TMP620 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP620 < -128 || TMP620 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP620);
@@ -3835,16 +3835,16 @@ N_NIMCALL(void, anbimm_95579)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP622;
-		nimln(1214, "navmInstructions.nim");
+		nimln(1262, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP621), uval, dis);
-		nimln(1215, "navmInstructions.nim");
+		nimln(1263, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1216, "navmInstructions.nim");
+		nimln(1264, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 224));
-		nimln(1217, "navmInstructions.nim");
+		nimln(1265, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1218, "navmInstructions.nim");
-		nimln(1218, "navmInstructions.nim");
+		nimln(1266, "navmInstructions.nim");
+		nimln(1266, "navmInstructions.nim");
 		TMP622 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP622 < -128 || TMP622 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP622);
@@ -3853,16 +3853,16 @@ N_NIMCALL(void, anbimm_95579)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP624;
-		nimln(1220, "navmInstructions.nim");
+		nimln(1268, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP623), uval, dis);
-		nimln(1221, "navmInstructions.nim");
+		nimln(1269, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1222, "navmInstructions.nim");
+		nimln(1270, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 225));
-		nimln(1223, "navmInstructions.nim");
+		nimln(1271, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1224, "navmInstructions.nim");
-		nimln(1224, "navmInstructions.nim");
+		nimln(1272, "navmInstructions.nim");
+		nimln(1272, "navmInstructions.nim");
 		TMP624 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP624 < -128 || TMP624 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP624);
@@ -3871,16 +3871,16 @@ N_NIMCALL(void, anbimm_95579)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP626;
-		nimln(1226, "navmInstructions.nim");
+		nimln(1274, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP625), uval, dis);
-		nimln(1227, "navmInstructions.nim");
+		nimln(1275, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1228, "navmInstructions.nim");
+		nimln(1276, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 226));
-		nimln(1229, "navmInstructions.nim");
+		nimln(1277, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1230, "navmInstructions.nim");
-		nimln(1230, "navmInstructions.nim");
+		nimln(1278, "navmInstructions.nim");
+		nimln(1278, "navmInstructions.nim");
 		TMP626 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP626 < -128 || TMP626 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP626);
@@ -3889,16 +3889,16 @@ N_NIMCALL(void, anbimm_95579)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP628;
-		nimln(1232, "navmInstructions.nim");
+		nimln(1280, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP627), uval, dis);
-		nimln(1233, "navmInstructions.nim");
+		nimln(1281, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1234, "navmInstructions.nim");
+		nimln(1282, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 227));
-		nimln(1235, "navmInstructions.nim");
+		nimln(1283, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1236, "navmInstructions.nim");
-		nimln(1236, "navmInstructions.nim");
+		nimln(1284, "navmInstructions.nim");
+		nimln(1284, "navmInstructions.nim");
 		TMP628 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP628 < -128 || TMP628 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP628);
@@ -3907,16 +3907,16 @@ N_NIMCALL(void, anbimm_95579)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP630;
-		nimln(1238, "navmInstructions.nim");
+		nimln(1286, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP629), uval, dis);
-		nimln(1239, "navmInstructions.nim");
+		nimln(1287, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1240, "navmInstructions.nim");
+		nimln(1288, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 228));
-		nimln(1241, "navmInstructions.nim");
+		nimln(1289, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1242, "navmInstructions.nim");
-		nimln(1242, "navmInstructions.nim");
+		nimln(1290, "navmInstructions.nim");
+		nimln(1290, "navmInstructions.nim");
 		TMP630 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP630 < -128 || TMP630 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP630);
@@ -3925,16 +3925,16 @@ N_NIMCALL(void, anbimm_95579)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP632;
-		nimln(1244, "navmInstructions.nim");
+		nimln(1292, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP631), uval, dis);
-		nimln(1245, "navmInstructions.nim");
+		nimln(1293, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1246, "navmInstructions.nim");
+		nimln(1294, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 229));
-		nimln(1247, "navmInstructions.nim");
+		nimln(1295, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1248, "navmInstructions.nim");
-		nimln(1248, "navmInstructions.nim");
+		nimln(1296, "navmInstructions.nim");
+		nimln(1296, "navmInstructions.nim");
 		TMP632 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP632 < -128 || TMP632 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP632);
@@ -3943,16 +3943,16 @@ N_NIMCALL(void, anbimm_95579)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 8):
 	{
 		NI TMP634;
-		nimln(1250, "navmInstructions.nim");
+		nimln(1298, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP633), uval, dis);
-		nimln(1251, "navmInstructions.nim");
+		nimln(1299, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1252, "navmInstructions.nim");
+		nimln(1300, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 230));
-		nimln(1253, "navmInstructions.nim");
+		nimln(1301, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1254, "navmInstructions.nim");
-		nimln(1254, "navmInstructions.nim");
+		nimln(1302, "navmInstructions.nim");
+		nimln(1302, "navmInstructions.nim");
 		TMP634 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP634 < -128 || TMP634 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP634);
@@ -3960,7 +3960,7 @@ N_NIMCALL(void, anbimm_95579)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(1256, "navmInstructions.nim");
+		nimln(1304, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -3971,30 +3971,30 @@ N_NIMCALL(void, anbimm_95579)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 N_NIMCALL(void, gor_95692)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	NI TMP635;
 	nimfr("gor", "navmInstructions.nim")
-	nimln(1259, "navmInstructions.nim");
-	nimln(1259, "navmInstructions.nim");
+	nimln(1307, "navmInstructions.nim");
+	nimln(1307, "navmInstructions.nim");
 	TMP635 = subInt((*ob).Vd, ((NI8) 2));
 	if (TMP635 < -128 || TMP635 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP635);
-	nimln(1260, "navmInstructions.nim");
+	nimln(1308, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1262, "navmInstructions.nim");
+		nimln(1310, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP637;
-		nimln(1264, "navmInstructions.nim");
+		nimln(1312, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP636), dis);
-		nimln(1265, "navmInstructions.nim");
+		nimln(1313, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19465), NIM_FALSE);
-		nimln(1266, "navmInstructions.nim");
+		nimln(1314, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 192));
-		nimln(1267, "navmInstructions.nim");
-		nimln(1267, "navmInstructions.nim");
+		nimln(1315, "navmInstructions.nim");
+		nimln(1315, "navmInstructions.nim");
 		TMP637 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP637 < -128 || TMP637 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP637);
@@ -4003,14 +4003,14 @@ N_NIMCALL(void, gor_95692)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP639;
-		nimln(1269, "navmInstructions.nim");
+		nimln(1317, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP638), dis);
-		nimln(1270, "navmInstructions.nim");
+		nimln(1318, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19721), NIM_FALSE);
-		nimln(1271, "navmInstructions.nim");
+		nimln(1319, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 200));
-		nimln(1272, "navmInstructions.nim");
-		nimln(1272, "navmInstructions.nim");
+		nimln(1320, "navmInstructions.nim");
+		nimln(1320, "navmInstructions.nim");
 		TMP639 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP639 < -128 || TMP639 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP639);
@@ -4019,14 +4019,14 @@ N_NIMCALL(void, gor_95692)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP641;
-		nimln(1274, "navmInstructions.nim");
+		nimln(1322, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP640), dis);
-		nimln(1275, "navmInstructions.nim");
+		nimln(1323, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19721), NIM_FALSE);
-		nimln(1276, "navmInstructions.nim");
+		nimln(1324, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 209));
-		nimln(1277, "navmInstructions.nim");
-		nimln(1277, "navmInstructions.nim");
+		nimln(1325, "navmInstructions.nim");
+		nimln(1325, "navmInstructions.nim");
 		TMP641 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP641 < -128 || TMP641 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP641);
@@ -4035,14 +4035,14 @@ N_NIMCALL(void, gor_95692)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP643;
-		nimln(1279, "navmInstructions.nim");
+		nimln(1327, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP642), dis);
-		nimln(1280, "navmInstructions.nim");
+		nimln(1328, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19721), NIM_FALSE);
-		nimln(1281, "navmInstructions.nim");
+		nimln(1329, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 218));
-		nimln(1282, "navmInstructions.nim");
-		nimln(1282, "navmInstructions.nim");
+		nimln(1330, "navmInstructions.nim");
+		nimln(1330, "navmInstructions.nim");
 		TMP643 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP643 < -128 || TMP643 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP643);
@@ -4051,14 +4051,14 @@ N_NIMCALL(void, gor_95692)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP645;
-		nimln(1284, "navmInstructions.nim");
+		nimln(1332, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP644), dis);
-		nimln(1285, "navmInstructions.nim");
+		nimln(1333, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19721), NIM_FALSE);
-		nimln(1286, "navmInstructions.nim");
+		nimln(1334, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 227));
-		nimln(1287, "navmInstructions.nim");
-		nimln(1287, "navmInstructions.nim");
+		nimln(1335, "navmInstructions.nim");
+		nimln(1335, "navmInstructions.nim");
 		TMP645 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP645 < -128 || TMP645 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP645);
@@ -4067,14 +4067,14 @@ N_NIMCALL(void, gor_95692)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP647;
-		nimln(1289, "navmInstructions.nim");
+		nimln(1337, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP646), dis);
-		nimln(1290, "navmInstructions.nim");
+		nimln(1338, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19721), NIM_FALSE);
-		nimln(1291, "navmInstructions.nim");
+		nimln(1339, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 236));
-		nimln(1292, "navmInstructions.nim");
-		nimln(1292, "navmInstructions.nim");
+		nimln(1340, "navmInstructions.nim");
+		nimln(1340, "navmInstructions.nim");
 		TMP647 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP647 < -128 || TMP647 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP647);
@@ -4083,14 +4083,14 @@ N_NIMCALL(void, gor_95692)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP649;
-		nimln(1294, "navmInstructions.nim");
+		nimln(1342, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP648), dis);
-		nimln(1295, "navmInstructions.nim");
+		nimln(1343, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19721), NIM_FALSE);
-		nimln(1296, "navmInstructions.nim");
+		nimln(1344, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 245));
-		nimln(1297, "navmInstructions.nim");
-		nimln(1297, "navmInstructions.nim");
+		nimln(1345, "navmInstructions.nim");
+		nimln(1345, "navmInstructions.nim");
 		TMP649 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP649 < -128 || TMP649 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP649);
@@ -4098,7 +4098,7 @@ N_NIMCALL(void, gor_95692)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(1299, "navmInstructions.nim");
+		nimln(1347, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -4106,36 +4106,36 @@ N_NIMCALL(void, gor_95692)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	popFrame();
 }
 
-N_NIMCALL(void, gorimm_95727)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
+N_NIMCALL(void, gorimm_95727)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	NU8 uval;
 	NI TMP650;
 	nimfr("gorImm", "navmInstructions.nim")
-	nimln(1302, "navmInstructions.nim");
+	nimln(1350, "navmInstructions.nim");
 	uval = ((NU8) (val));
-	nimln(1303, "navmInstructions.nim");
-	nimln(1303, "navmInstructions.nim");
+	nimln(1351, "navmInstructions.nim");
+	nimln(1351, "navmInstructions.nim");
 	TMP650 = subInt((*ob).Vd, ((NI8) 1));
 	if (TMP650 < -128 || TMP650 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP650);
-	nimln(1305, "navmInstructions.nim");
+	nimln(1353, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1307, "navmInstructions.nim");
+		nimln(1355, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP652;
-		nimln(1309, "navmInstructions.nim");
+		nimln(1357, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP651), uval, dis);
-		nimln(1310, "navmInstructions.nim");
+		nimln(1358, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18445), NIM_FALSE);
-		nimln(1311, "navmInstructions.nim");
+		nimln(1359, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1312, "navmInstructions.nim");
-		nimln(1312, "navmInstructions.nim");
+		nimln(1360, "navmInstructions.nim");
+		nimln(1360, "navmInstructions.nim");
 		TMP652 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP652 < -128 || TMP652 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP652);
@@ -4144,16 +4144,16 @@ N_NIMCALL(void, gorimm_95727)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP654;
-		nimln(1314, "navmInstructions.nim");
+		nimln(1362, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP653), uval, dis);
-		nimln(1315, "navmInstructions.nim");
+		nimln(1363, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1316, "navmInstructions.nim");
+		nimln(1364, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 200));
-		nimln(1317, "navmInstructions.nim");
+		nimln(1365, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1318, "navmInstructions.nim");
-		nimln(1318, "navmInstructions.nim");
+		nimln(1366, "navmInstructions.nim");
+		nimln(1366, "navmInstructions.nim");
 		TMP654 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP654 < -128 || TMP654 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP654);
@@ -4162,16 +4162,16 @@ N_NIMCALL(void, gorimm_95727)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP656;
-		nimln(1320, "navmInstructions.nim");
+		nimln(1368, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP655), uval, dis);
-		nimln(1321, "navmInstructions.nim");
+		nimln(1369, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1322, "navmInstructions.nim");
+		nimln(1370, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 201));
-		nimln(1323, "navmInstructions.nim");
+		nimln(1371, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1324, "navmInstructions.nim");
-		nimln(1324, "navmInstructions.nim");
+		nimln(1372, "navmInstructions.nim");
+		nimln(1372, "navmInstructions.nim");
 		TMP656 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP656 < -128 || TMP656 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP656);
@@ -4180,16 +4180,16 @@ N_NIMCALL(void, gorimm_95727)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP658;
-		nimln(1326, "navmInstructions.nim");
+		nimln(1374, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP657), uval, dis);
-		nimln(1327, "navmInstructions.nim");
+		nimln(1375, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1328, "navmInstructions.nim");
+		nimln(1376, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 202));
-		nimln(1329, "navmInstructions.nim");
+		nimln(1377, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1330, "navmInstructions.nim");
-		nimln(1330, "navmInstructions.nim");
+		nimln(1378, "navmInstructions.nim");
+		nimln(1378, "navmInstructions.nim");
 		TMP658 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP658 < -128 || TMP658 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP658);
@@ -4198,16 +4198,16 @@ N_NIMCALL(void, gorimm_95727)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP660;
-		nimln(1332, "navmInstructions.nim");
+		nimln(1380, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP659), uval, dis);
-		nimln(1333, "navmInstructions.nim");
+		nimln(1381, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1334, "navmInstructions.nim");
+		nimln(1382, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 203));
-		nimln(1335, "navmInstructions.nim");
+		nimln(1383, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1336, "navmInstructions.nim");
-		nimln(1336, "navmInstructions.nim");
+		nimln(1384, "navmInstructions.nim");
+		nimln(1384, "navmInstructions.nim");
 		TMP660 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP660 < -128 || TMP660 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP660);
@@ -4216,16 +4216,16 @@ N_NIMCALL(void, gorimm_95727)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP662;
-		nimln(1338, "navmInstructions.nim");
+		nimln(1386, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP661), uval, dis);
-		nimln(1339, "navmInstructions.nim");
+		nimln(1387, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1340, "navmInstructions.nim");
+		nimln(1388, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 204));
-		nimln(1341, "navmInstructions.nim");
+		nimln(1389, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1342, "navmInstructions.nim");
-		nimln(1342, "navmInstructions.nim");
+		nimln(1390, "navmInstructions.nim");
+		nimln(1390, "navmInstructions.nim");
 		TMP662 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP662 < -128 || TMP662 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP662);
@@ -4234,16 +4234,16 @@ N_NIMCALL(void, gorimm_95727)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP664;
-		nimln(1344, "navmInstructions.nim");
+		nimln(1392, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP663), uval, dis);
-		nimln(1345, "navmInstructions.nim");
+		nimln(1393, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1346, "navmInstructions.nim");
+		nimln(1394, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 205));
-		nimln(1347, "navmInstructions.nim");
+		nimln(1395, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1348, "navmInstructions.nim");
-		nimln(1348, "navmInstructions.nim");
+		nimln(1396, "navmInstructions.nim");
+		nimln(1396, "navmInstructions.nim");
 		TMP664 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP664 < -128 || TMP664 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP664);
@@ -4252,16 +4252,16 @@ N_NIMCALL(void, gorimm_95727)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 8):
 	{
 		NI TMP666;
-		nimln(1350, "navmInstructions.nim");
+		nimln(1398, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP665), uval, dis);
-		nimln(1351, "navmInstructions.nim");
+		nimln(1399, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1352, "navmInstructions.nim");
+		nimln(1400, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 206));
-		nimln(1353, "navmInstructions.nim");
+		nimln(1401, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1354, "navmInstructions.nim");
-		nimln(1354, "navmInstructions.nim");
+		nimln(1402, "navmInstructions.nim");
+		nimln(1402, "navmInstructions.nim");
 		TMP666 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP666 < -128 || TMP666 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP666);
@@ -4269,7 +4269,7 @@ N_NIMCALL(void, gorimm_95727)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(1356, "navmInstructions.nim");
+		nimln(1404, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -4280,30 +4280,30 @@ N_NIMCALL(void, gorimm_95727)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 N_NIMCALL(void, xob_95840)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	NI TMP667;
 	nimfr("xob", "navmInstructions.nim")
-	nimln(1359, "navmInstructions.nim");
-	nimln(1359, "navmInstructions.nim");
+	nimln(1407, "navmInstructions.nim");
+	nimln(1407, "navmInstructions.nim");
 	TMP667 = subInt((*ob).Vd, ((NI8) 2));
 	if (TMP667 < -128 || TMP667 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP667);
-	nimln(1360, "navmInstructions.nim");
+	nimln(1408, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1362, "navmInstructions.nim");
+		nimln(1410, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP669;
-		nimln(1364, "navmInstructions.nim");
+		nimln(1412, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP668), dis);
-		nimln(1365, "navmInstructions.nim");
+		nimln(1413, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19505), NIM_FALSE);
-		nimln(1366, "navmInstructions.nim");
+		nimln(1414, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 192));
-		nimln(1367, "navmInstructions.nim");
-		nimln(1367, "navmInstructions.nim");
+		nimln(1415, "navmInstructions.nim");
+		nimln(1415, "navmInstructions.nim");
 		TMP669 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP669 < -128 || TMP669 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP669);
@@ -4312,14 +4312,14 @@ N_NIMCALL(void, xob_95840)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP671;
-		nimln(1369, "navmInstructions.nim");
+		nimln(1417, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP670), dis);
-		nimln(1370, "navmInstructions.nim");
+		nimln(1418, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19761), NIM_FALSE);
-		nimln(1371, "navmInstructions.nim");
+		nimln(1419, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 200));
-		nimln(1372, "navmInstructions.nim");
-		nimln(1372, "navmInstructions.nim");
+		nimln(1420, "navmInstructions.nim");
+		nimln(1420, "navmInstructions.nim");
 		TMP671 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP671 < -128 || TMP671 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP671);
@@ -4328,14 +4328,14 @@ N_NIMCALL(void, xob_95840)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP673;
-		nimln(1374, "navmInstructions.nim");
+		nimln(1422, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP672), dis);
-		nimln(1375, "navmInstructions.nim");
+		nimln(1423, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19761), NIM_FALSE);
-		nimln(1376, "navmInstructions.nim");
+		nimln(1424, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 209));
-		nimln(1377, "navmInstructions.nim");
-		nimln(1377, "navmInstructions.nim");
+		nimln(1425, "navmInstructions.nim");
+		nimln(1425, "navmInstructions.nim");
 		TMP673 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP673 < -128 || TMP673 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP673);
@@ -4344,14 +4344,14 @@ N_NIMCALL(void, xob_95840)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP675;
-		nimln(1379, "navmInstructions.nim");
+		nimln(1427, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP674), dis);
-		nimln(1380, "navmInstructions.nim");
+		nimln(1428, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19761), NIM_FALSE);
-		nimln(1381, "navmInstructions.nim");
+		nimln(1429, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 218));
-		nimln(1382, "navmInstructions.nim");
-		nimln(1382, "navmInstructions.nim");
+		nimln(1430, "navmInstructions.nim");
+		nimln(1430, "navmInstructions.nim");
 		TMP675 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP675 < -128 || TMP675 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP675);
@@ -4360,14 +4360,14 @@ N_NIMCALL(void, xob_95840)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP677;
-		nimln(1384, "navmInstructions.nim");
+		nimln(1432, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP676), dis);
-		nimln(1385, "navmInstructions.nim");
+		nimln(1433, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19761), NIM_FALSE);
-		nimln(1386, "navmInstructions.nim");
+		nimln(1434, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 227));
-		nimln(1387, "navmInstructions.nim");
-		nimln(1387, "navmInstructions.nim");
+		nimln(1435, "navmInstructions.nim");
+		nimln(1435, "navmInstructions.nim");
 		TMP677 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP677 < -128 || TMP677 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP677);
@@ -4376,14 +4376,14 @@ N_NIMCALL(void, xob_95840)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP679;
-		nimln(1389, "navmInstructions.nim");
+		nimln(1437, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP678), dis);
-		nimln(1390, "navmInstructions.nim");
+		nimln(1438, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19761), NIM_FALSE);
-		nimln(1391, "navmInstructions.nim");
+		nimln(1439, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 236));
-		nimln(1392, "navmInstructions.nim");
-		nimln(1392, "navmInstructions.nim");
+		nimln(1440, "navmInstructions.nim");
+		nimln(1440, "navmInstructions.nim");
 		TMP679 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP679 < -128 || TMP679 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP679);
@@ -4392,14 +4392,14 @@ N_NIMCALL(void, xob_95840)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP681;
-		nimln(1394, "navmInstructions.nim");
+		nimln(1442, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP680), dis);
-		nimln(1395, "navmInstructions.nim");
+		nimln(1443, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19761), NIM_FALSE);
-		nimln(1396, "navmInstructions.nim");
+		nimln(1444, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 245));
-		nimln(1397, "navmInstructions.nim");
-		nimln(1397, "navmInstructions.nim");
+		nimln(1445, "navmInstructions.nim");
+		nimln(1445, "navmInstructions.nim");
 		TMP681 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP681 < -128 || TMP681 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP681);
@@ -4407,7 +4407,7 @@ N_NIMCALL(void, xob_95840)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(1399, "navmInstructions.nim");
+		nimln(1447, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -4415,36 +4415,36 @@ N_NIMCALL(void, xob_95840)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	popFrame();
 }
 
-N_NIMCALL(void, xobimm_95875)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
+N_NIMCALL(void, xobimm_95875)(tnavmbackend91004* ob, NI64 val, NIM_BOOL dis) {
 	NU8 uval;
 	NI TMP682;
 	nimfr("xobImm", "navmInstructions.nim")
-	nimln(1402, "navmInstructions.nim");
+	nimln(1450, "navmInstructions.nim");
 	uval = ((NU8) (val));
-	nimln(1403, "navmInstructions.nim");
-	nimln(1403, "navmInstructions.nim");
+	nimln(1451, "navmInstructions.nim");
+	nimln(1451, "navmInstructions.nim");
 	TMP682 = subInt((*ob).Vd, ((NI8) 2));
 	if (TMP682 < -128 || TMP682 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP682);
-	nimln(1405, "navmInstructions.nim");
+	nimln(1453, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1407, "navmInstructions.nim");
+		nimln(1455, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP684;
-		nimln(1409, "navmInstructions.nim");
+		nimln(1457, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP683), uval, dis);
-		nimln(1410, "navmInstructions.nim");
+		nimln(1458, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18485), NIM_FALSE);
-		nimln(1411, "navmInstructions.nim");
+		nimln(1459, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1412, "navmInstructions.nim");
-		nimln(1412, "navmInstructions.nim");
+		nimln(1460, "navmInstructions.nim");
+		nimln(1460, "navmInstructions.nim");
 		TMP684 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP684 < -128 || TMP684 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP684);
@@ -4453,16 +4453,16 @@ N_NIMCALL(void, xobimm_95875)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP686;
-		nimln(1414, "navmInstructions.nim");
+		nimln(1462, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP685), uval, dis);
-		nimln(1415, "navmInstructions.nim");
+		nimln(1463, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1416, "navmInstructions.nim");
+		nimln(1464, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 240));
-		nimln(1417, "navmInstructions.nim");
+		nimln(1465, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1418, "navmInstructions.nim");
-		nimln(1418, "navmInstructions.nim");
+		nimln(1466, "navmInstructions.nim");
+		nimln(1466, "navmInstructions.nim");
 		TMP686 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP686 < -128 || TMP686 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP686);
@@ -4471,16 +4471,16 @@ N_NIMCALL(void, xobimm_95875)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP688;
-		nimln(1420, "navmInstructions.nim");
+		nimln(1468, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP687), uval, dis);
-		nimln(1421, "navmInstructions.nim");
+		nimln(1469, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1422, "navmInstructions.nim");
+		nimln(1470, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 241));
-		nimln(1423, "navmInstructions.nim");
+		nimln(1471, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1424, "navmInstructions.nim");
-		nimln(1424, "navmInstructions.nim");
+		nimln(1472, "navmInstructions.nim");
+		nimln(1472, "navmInstructions.nim");
 		TMP688 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP688 < -128 || TMP688 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP688);
@@ -4489,16 +4489,16 @@ N_NIMCALL(void, xobimm_95875)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP690;
-		nimln(1426, "navmInstructions.nim");
+		nimln(1474, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP689), uval, dis);
-		nimln(1427, "navmInstructions.nim");
+		nimln(1475, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1428, "navmInstructions.nim");
+		nimln(1476, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 242));
-		nimln(1429, "navmInstructions.nim");
+		nimln(1477, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1430, "navmInstructions.nim");
-		nimln(1430, "navmInstructions.nim");
+		nimln(1478, "navmInstructions.nim");
+		nimln(1478, "navmInstructions.nim");
 		TMP690 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP690 < -128 || TMP690 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP690);
@@ -4507,16 +4507,16 @@ N_NIMCALL(void, xobimm_95875)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP692;
-		nimln(1432, "navmInstructions.nim");
+		nimln(1480, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP691), uval, dis);
-		nimln(1433, "navmInstructions.nim");
+		nimln(1481, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1434, "navmInstructions.nim");
+		nimln(1482, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 243));
-		nimln(1435, "navmInstructions.nim");
+		nimln(1483, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1436, "navmInstructions.nim");
-		nimln(1436, "navmInstructions.nim");
+		nimln(1484, "navmInstructions.nim");
+		nimln(1484, "navmInstructions.nim");
 		TMP692 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP692 < -128 || TMP692 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP692);
@@ -4525,16 +4525,16 @@ N_NIMCALL(void, xobimm_95875)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP694;
-		nimln(1438, "navmInstructions.nim");
+		nimln(1486, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP693), uval, dis);
-		nimln(1439, "navmInstructions.nim");
+		nimln(1487, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1440, "navmInstructions.nim");
+		nimln(1488, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 244));
-		nimln(1441, "navmInstructions.nim");
+		nimln(1489, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1442, "navmInstructions.nim");
-		nimln(1442, "navmInstructions.nim");
+		nimln(1490, "navmInstructions.nim");
+		nimln(1490, "navmInstructions.nim");
 		TMP694 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP694 < -128 || TMP694 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP694);
@@ -4543,16 +4543,16 @@ N_NIMCALL(void, xobimm_95875)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP696;
-		nimln(1444, "navmInstructions.nim");
+		nimln(1492, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP695), uval, dis);
-		nimln(1445, "navmInstructions.nim");
+		nimln(1493, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1446, "navmInstructions.nim");
+		nimln(1494, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 245));
-		nimln(1447, "navmInstructions.nim");
+		nimln(1495, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1448, "navmInstructions.nim");
-		nimln(1448, "navmInstructions.nim");
+		nimln(1496, "navmInstructions.nim");
+		nimln(1496, "navmInstructions.nim");
 		TMP696 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP696 < -128 || TMP696 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP696);
@@ -4561,16 +4561,16 @@ N_NIMCALL(void, xobimm_95875)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	case ((NI8) 8):
 	{
 		NI TMP698;
-		nimln(1450, "navmInstructions.nim");
+		nimln(1498, "navmInstructions.nim");
 		disasmimm_95270(ob, ((NimStringDesc*) &TMP697), uval, dis);
-		nimln(1451, "navmInstructions.nim");
+		nimln(1499, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18817), NIM_FALSE);
-		nimln(1452, "navmInstructions.nim");
+		nimln(1500, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 246));
-		nimln(1453, "navmInstructions.nim");
+		nimln(1501, "navmInstructions.nim");
 		compile_91628(ob, uval);
-		nimln(1454, "navmInstructions.nim");
-		nimln(1454, "navmInstructions.nim");
+		nimln(1502, "navmInstructions.nim");
+		nimln(1502, "navmInstructions.nim");
 		TMP698 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP698 < -128 || TMP698 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP698);
@@ -4578,7 +4578,7 @@ N_NIMCALL(void, xobimm_95875)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(1456, "navmInstructions.nim");
+		nimln(1504, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -4588,25 +4588,25 @@ N_NIMCALL(void, xobimm_95875)(tnavmbackend91004* ob, NI8 val, NIM_BOOL dis) {
 
 N_NIMCALL(void, dup_95988)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("dup", "navmInstructions.nim")
-	nimln(1459, "navmInstructions.nim");
+	nimln(1507, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1461, "navmInstructions.nim");
+		nimln(1509, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP700;
-		nimln(1463, "navmInstructions.nim");
+		nimln(1511, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP699), dis);
-		nimln(1464, "navmInstructions.nim");
+		nimln(1512, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18825), NIM_FALSE);
-		nimln(1465, "navmInstructions.nim");
+		nimln(1513, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 192));
-		nimln(1466, "navmInstructions.nim");
-		nimln(1466, "navmInstructions.nim");
+		nimln(1514, "navmInstructions.nim");
+		nimln(1514, "navmInstructions.nim");
 		TMP700 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP700 < -128 || TMP700 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP700);
@@ -4615,14 +4615,14 @@ N_NIMCALL(void, dup_95988)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP702;
-		nimln(1468, "navmInstructions.nim");
+		nimln(1516, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP701), dis);
-		nimln(1469, "navmInstructions.nim");
+		nimln(1517, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19849), NIM_FALSE);
-		nimln(1470, "navmInstructions.nim");
+		nimln(1518, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 193));
-		nimln(1471, "navmInstructions.nim");
-		nimln(1471, "navmInstructions.nim");
+		nimln(1519, "navmInstructions.nim");
+		nimln(1519, "navmInstructions.nim");
 		TMP702 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP702 < -128 || TMP702 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP702);
@@ -4631,14 +4631,14 @@ N_NIMCALL(void, dup_95988)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP704;
-		nimln(1473, "navmInstructions.nim");
+		nimln(1521, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP703), dis);
-		nimln(1474, "navmInstructions.nim");
+		nimln(1522, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19849), NIM_FALSE);
-		nimln(1475, "navmInstructions.nim");
+		nimln(1523, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 202));
-		nimln(1476, "navmInstructions.nim");
-		nimln(1476, "navmInstructions.nim");
+		nimln(1524, "navmInstructions.nim");
+		nimln(1524, "navmInstructions.nim");
 		TMP704 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP704 < -128 || TMP704 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP704);
@@ -4647,14 +4647,14 @@ N_NIMCALL(void, dup_95988)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP706;
-		nimln(1478, "navmInstructions.nim");
+		nimln(1526, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP705), dis);
-		nimln(1479, "navmInstructions.nim");
+		nimln(1527, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19849), NIM_FALSE);
-		nimln(1480, "navmInstructions.nim");
+		nimln(1528, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 211));
-		nimln(1481, "navmInstructions.nim");
-		nimln(1481, "navmInstructions.nim");
+		nimln(1529, "navmInstructions.nim");
+		nimln(1529, "navmInstructions.nim");
 		TMP706 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP706 < -128 || TMP706 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP706);
@@ -4663,14 +4663,14 @@ N_NIMCALL(void, dup_95988)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP708;
-		nimln(1483, "navmInstructions.nim");
+		nimln(1531, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP707), dis);
-		nimln(1484, "navmInstructions.nim");
+		nimln(1532, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19849), NIM_FALSE);
-		nimln(1485, "navmInstructions.nim");
+		nimln(1533, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 220));
-		nimln(1486, "navmInstructions.nim");
-		nimln(1486, "navmInstructions.nim");
+		nimln(1534, "navmInstructions.nim");
+		nimln(1534, "navmInstructions.nim");
 		TMP708 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP708 < -128 || TMP708 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP708);
@@ -4679,14 +4679,14 @@ N_NIMCALL(void, dup_95988)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP710;
-		nimln(1488, "navmInstructions.nim");
+		nimln(1536, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP709), dis);
-		nimln(1489, "navmInstructions.nim");
+		nimln(1537, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19849), NIM_FALSE);
-		nimln(1490, "navmInstructions.nim");
+		nimln(1538, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 229));
-		nimln(1491, "navmInstructions.nim");
-		nimln(1491, "navmInstructions.nim");
+		nimln(1539, "navmInstructions.nim");
+		nimln(1539, "navmInstructions.nim");
 		TMP710 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP710 < -128 || TMP710 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP710);
@@ -4695,14 +4695,14 @@ N_NIMCALL(void, dup_95988)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 7):
 	{
 		NI TMP712;
-		nimln(1493, "navmInstructions.nim");
+		nimln(1541, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP711), dis);
-		nimln(1494, "navmInstructions.nim");
+		nimln(1542, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19849), NIM_FALSE);
-		nimln(1495, "navmInstructions.nim");
+		nimln(1543, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 238));
-		nimln(1496, "navmInstructions.nim");
-		nimln(1496, "navmInstructions.nim");
+		nimln(1544, "navmInstructions.nim");
+		nimln(1544, "navmInstructions.nim");
 		TMP712 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP712 < -128 || TMP712 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP712);
@@ -4710,7 +4710,7 @@ N_NIMCALL(void, dup_95988)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(1498, "navmInstructions.nim");
+		nimln(1546, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -4721,8 +4721,8 @@ N_NIMCALL(void, dup_95988)(tnavmbackend91004* ob, NIM_BOOL dis) {
 N_NIMCALL(void, drp_96023)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	NI TMP713;
 	nimfr("drp", "navmInstructions.nim")
-	nimln(1501, "navmInstructions.nim");
-	nimln(1501, "navmInstructions.nim");
+	nimln(1549, "navmInstructions.nim");
+	nimln(1549, "navmInstructions.nim");
 	TMP713 = subInt((*ob).Vd, ((NI8) 1));
 	if (TMP713 < -128 || TMP713 > 127) raiseOverflow();
 	(*ob).Vd = (NI8)(TMP713);
@@ -4731,85 +4731,85 @@ N_NIMCALL(void, drp_96023)(tnavmbackend91004* ob, NIM_BOOL dis) {
 
 N_NIMCALL(void, swp_96030)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("swp", "navmInstructions.nim")
-	nimln(1504, "navmInstructions.nim");
+	nimln(1552, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1506, "navmInstructions.nim");
+		nimln(1554, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
-		nimln(1508, "navmInstructions.nim");
+		nimln(1556, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP714), dis);
-		nimln(1509, "navmInstructions.nim");
+		nimln(1557, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18832), NIM_FALSE);
 	}
 	break;
 	case ((NI8) 2):
 	{
-		nimln(1511, "navmInstructions.nim");
+		nimln(1559, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP715), dis);
-		nimln(1512, "navmInstructions.nim");
+		nimln(1560, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19847), NIM_FALSE);
-		nimln(1513, "navmInstructions.nim");
+		nimln(1561, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 200));
 	}
 	break;
 	case ((NI8) 3):
 	{
-		nimln(1515, "navmInstructions.nim");
+		nimln(1563, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP716), dis);
-		nimln(1516, "navmInstructions.nim");
+		nimln(1564, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19847), NIM_FALSE);
-		nimln(1517, "navmInstructions.nim");
+		nimln(1565, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 209));
 	}
 	break;
 	case ((NI8) 4):
 	{
-		nimln(1519, "navmInstructions.nim");
+		nimln(1567, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP717), dis);
-		nimln(1520, "navmInstructions.nim");
+		nimln(1568, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19847), NIM_FALSE);
-		nimln(1521, "navmInstructions.nim");
+		nimln(1569, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 218));
 	}
 	break;
 	case ((NI8) 5):
 	{
-		nimln(1523, "navmInstructions.nim");
+		nimln(1571, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP718), dis);
-		nimln(1524, "navmInstructions.nim");
+		nimln(1572, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19847), NIM_FALSE);
-		nimln(1525, "navmInstructions.nim");
+		nimln(1573, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 227));
 	}
 	break;
 	case ((NI8) 6):
 	{
-		nimln(1527, "navmInstructions.nim");
+		nimln(1575, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP719), dis);
-		nimln(1528, "navmInstructions.nim");
+		nimln(1576, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19847), NIM_FALSE);
-		nimln(1529, "navmInstructions.nim");
+		nimln(1577, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 236));
 	}
 	break;
 	case ((NI8) 7):
 	{
-		nimln(1531, "navmInstructions.nim");
+		nimln(1579, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP720), dis);
-		nimln(1532, "navmInstructions.nim");
+		nimln(1580, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19847), NIM_FALSE);
-		nimln(1533, "navmInstructions.nim");
+		nimln(1581, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 229));
 	}
 	break;
 	default:
 	{
-		nimln(1535, "navmInstructions.nim");
+		nimln(1583, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -4819,25 +4819,25 @@ N_NIMCALL(void, swp_96030)(tnavmbackend91004* ob, NIM_BOOL dis) {
 
 N_NIMCALL(void, ovr_96063)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("ovr", "navmInstructions.nim")
-	nimln(1538, "navmInstructions.nim");
+	nimln(1586, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1540, "navmInstructions.nim");
+		nimln(1588, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
 		NI TMP722;
-		nimln(1542, "navmInstructions.nim");
+		nimln(1590, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP721), dis);
-		nimln(1543, "navmInstructions.nim");
+		nimln(1591, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18825), NIM_FALSE);
-		nimln(1544, "navmInstructions.nim");
+		nimln(1592, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 193));
-		nimln(1545, "navmInstructions.nim");
-		nimln(1545, "navmInstructions.nim");
+		nimln(1593, "navmInstructions.nim");
+		nimln(1593, "navmInstructions.nim");
 		TMP722 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP722 < -128 || TMP722 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP722);
@@ -4846,14 +4846,14 @@ N_NIMCALL(void, ovr_96063)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 2):
 	{
 		NI TMP724;
-		nimln(1547, "navmInstructions.nim");
+		nimln(1595, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP723), dis);
-		nimln(1548, "navmInstructions.nim");
+		nimln(1596, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19849), NIM_FALSE);
-		nimln(1549, "navmInstructions.nim");
+		nimln(1597, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 194));
-		nimln(1550, "navmInstructions.nim");
-		nimln(1550, "navmInstructions.nim");
+		nimln(1598, "navmInstructions.nim");
+		nimln(1598, "navmInstructions.nim");
 		TMP724 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP724 < -128 || TMP724 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP724);
@@ -4862,14 +4862,14 @@ N_NIMCALL(void, ovr_96063)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 3):
 	{
 		NI TMP726;
-		nimln(1552, "navmInstructions.nim");
+		nimln(1600, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP725), dis);
-		nimln(1553, "navmInstructions.nim");
+		nimln(1601, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19849), NIM_FALSE);
-		nimln(1554, "navmInstructions.nim");
+		nimln(1602, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 203));
-		nimln(1555, "navmInstructions.nim");
-		nimln(1555, "navmInstructions.nim");
+		nimln(1603, "navmInstructions.nim");
+		nimln(1603, "navmInstructions.nim");
 		TMP726 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP726 < -128 || TMP726 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP726);
@@ -4878,14 +4878,14 @@ N_NIMCALL(void, ovr_96063)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 4):
 	{
 		NI TMP728;
-		nimln(1557, "navmInstructions.nim");
+		nimln(1605, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP727), dis);
-		nimln(1558, "navmInstructions.nim");
+		nimln(1606, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19849), NIM_FALSE);
-		nimln(1559, "navmInstructions.nim");
+		nimln(1607, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 212));
-		nimln(1560, "navmInstructions.nim");
-		nimln(1560, "navmInstructions.nim");
+		nimln(1608, "navmInstructions.nim");
+		nimln(1608, "navmInstructions.nim");
 		TMP728 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP728 < -128 || TMP728 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP728);
@@ -4894,14 +4894,14 @@ N_NIMCALL(void, ovr_96063)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 5):
 	{
 		NI TMP730;
-		nimln(1562, "navmInstructions.nim");
+		nimln(1610, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP729), dis);
-		nimln(1563, "navmInstructions.nim");
+		nimln(1611, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19849), NIM_FALSE);
-		nimln(1564, "navmInstructions.nim");
+		nimln(1612, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 221));
-		nimln(1565, "navmInstructions.nim");
-		nimln(1565, "navmInstructions.nim");
+		nimln(1613, "navmInstructions.nim");
+		nimln(1613, "navmInstructions.nim");
 		TMP730 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP730 < -128 || TMP730 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP730);
@@ -4910,14 +4910,14 @@ N_NIMCALL(void, ovr_96063)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 6):
 	{
 		NI TMP732;
-		nimln(1567, "navmInstructions.nim");
+		nimln(1615, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP731), dis);
-		nimln(1568, "navmInstructions.nim");
+		nimln(1616, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19849), NIM_FALSE);
-		nimln(1569, "navmInstructions.nim");
+		nimln(1617, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 230));
-		nimln(1570, "navmInstructions.nim");
-		nimln(1570, "navmInstructions.nim");
+		nimln(1618, "navmInstructions.nim");
+		nimln(1618, "navmInstructions.nim");
 		TMP732 = addInt((*ob).Vd, ((NI8) 1));
 		if (TMP732 < -128 || TMP732 > 127) raiseOverflow();
 		(*ob).Vd = (NI8)(TMP732);
@@ -4925,7 +4925,7 @@ N_NIMCALL(void, ovr_96063)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	break;
 	default:
 	{
-		nimln(1572, "navmInstructions.nim");
+		nimln(1620, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -4935,75 +4935,75 @@ N_NIMCALL(void, ovr_96063)(tnavmbackend91004* ob, NIM_BOOL dis) {
 
 N_NIMCALL(void, rot_96094)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("rot", "navmInstructions.nim")
-	nimln(1575, "navmInstructions.nim");
+	nimln(1623, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1577, "navmInstructions.nim");
+		nimln(1625, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
-		nimln(1579, "navmInstructions.nim");
+		nimln(1627, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP733), dis);
-		nimln(1580, "navmInstructions.nim");
+		nimln(1628, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 18833), NIM_FALSE);
 	}
 	break;
 	case ((NI8) 2):
 	{
-		nimln(1582, "navmInstructions.nim");
+		nimln(1630, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP734), dis);
-		nimln(1583, "navmInstructions.nim");
+		nimln(1631, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19847), NIM_FALSE);
-		nimln(1584, "navmInstructions.nim");
+		nimln(1632, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 208));
 	}
 	break;
 	case ((NI8) 3):
 	{
-		nimln(1586, "navmInstructions.nim");
+		nimln(1634, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP735), dis);
-		nimln(1587, "navmInstructions.nim");
+		nimln(1635, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19847), NIM_FALSE);
-		nimln(1588, "navmInstructions.nim");
+		nimln(1636, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 217));
 	}
 	break;
 	case ((NI8) 4):
 	{
-		nimln(1590, "navmInstructions.nim");
+		nimln(1638, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP736), dis);
-		nimln(1591, "navmInstructions.nim");
+		nimln(1639, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19847), NIM_FALSE);
-		nimln(1592, "navmInstructions.nim");
+		nimln(1640, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 226));
 	}
 	break;
 	case ((NI8) 5):
 	{
-		nimln(1594, "navmInstructions.nim");
+		nimln(1642, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP737), dis);
-		nimln(1595, "navmInstructions.nim");
+		nimln(1643, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19847), NIM_FALSE);
-		nimln(1596, "navmInstructions.nim");
+		nimln(1644, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 235));
 	}
 	break;
 	case ((NI8) 6):
 	{
-		nimln(1598, "navmInstructions.nim");
+		nimln(1646, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP738), dis);
-		nimln(1599, "navmInstructions.nim");
+		nimln(1647, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19847), NIM_FALSE);
-		nimln(1600, "navmInstructions.nim");
+		nimln(1648, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 244));
 	}
 	break;
 	default:
 	{
-		nimln(1602, "navmInstructions.nim");
+		nimln(1650, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -5013,95 +5013,95 @@ N_NIMCALL(void, rot_96094)(tnavmbackend91004* ob, NIM_BOOL dis) {
 
 N_NIMCALL(void, b_96123)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("b", "navmInstructions.nim")
-	nimln(1605, "navmInstructions.nim");
+	nimln(1653, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1607, "navmInstructions.nim");
+		nimln(1655, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
-		nimln(1609, "navmInstructions.nim");
+		nimln(1657, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP739), dis);
-		nimln(1610, "navmInstructions.nim");
+		nimln(1658, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65504), NIM_FALSE);
 	}
 	break;
 	case ((NI8) 2):
 	{
-		nimln(1612, "navmInstructions.nim");
+		nimln(1660, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP740), dis);
-		nimln(1613, "navmInstructions.nim");
+		nimln(1661, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1614, "navmInstructions.nim");
+		nimln(1662, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 224));
 	}
 	break;
 	case ((NI8) 3):
 	{
-		nimln(1616, "navmInstructions.nim");
+		nimln(1664, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP741), dis);
-		nimln(1617, "navmInstructions.nim");
+		nimln(1665, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1618, "navmInstructions.nim");
+		nimln(1666, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 225));
 	}
 	break;
 	case ((NI8) 4):
 	{
-		nimln(1620, "navmInstructions.nim");
+		nimln(1668, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP742), dis);
-		nimln(1621, "navmInstructions.nim");
+		nimln(1669, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1622, "navmInstructions.nim");
+		nimln(1670, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 226));
 	}
 	break;
 	case ((NI8) 5):
 	{
-		nimln(1624, "navmInstructions.nim");
+		nimln(1672, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP743), dis);
-		nimln(1625, "navmInstructions.nim");
+		nimln(1673, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1626, "navmInstructions.nim");
+		nimln(1674, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 227));
 	}
 	break;
 	case ((NI8) 6):
 	{
-		nimln(1628, "navmInstructions.nim");
+		nimln(1676, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP744), dis);
-		nimln(1629, "navmInstructions.nim");
+		nimln(1677, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1630, "navmInstructions.nim");
+		nimln(1678, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 228));
 	}
 	break;
 	case ((NI8) 7):
 	{
-		nimln(1632, "navmInstructions.nim");
+		nimln(1680, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP745), dis);
-		nimln(1633, "navmInstructions.nim");
+		nimln(1681, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1634, "navmInstructions.nim");
+		nimln(1682, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 229));
 	}
 	break;
 	case ((NI8) 8):
 	{
-		nimln(1636, "navmInstructions.nim");
+		nimln(1684, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP746), dis);
-		nimln(1637, "navmInstructions.nim");
+		nimln(1685, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1638, "navmInstructions.nim");
+		nimln(1686, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 230));
 	}
 	break;
 	default:
 	{
-		nimln(1640, "navmInstructions.nim");
+		nimln(1688, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -5111,113 +5111,113 @@ N_NIMCALL(void, b_96123)(tnavmbackend91004* ob, NIM_BOOL dis) {
 
 N_NIMCALL(void, beq_96160)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("beq", "navmInstructions.nim")
-	nimln(1643, "navmInstructions.nim");
+	nimln(1691, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1645, "navmInstructions.nim");
+		nimln(1693, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
-		nimln(1647, "navmInstructions.nim");
+		nimln(1695, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP747), dis);
-		nimln(1648, "navmInstructions.nim");
+		nimln(1696, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 29954), NIM_FALSE);
-		nimln(1649, "navmInstructions.nim");
+		nimln(1697, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65504), NIM_FALSE);
 	}
 	break;
 	case ((NI8) 2):
 	{
-		nimln(1651, "navmInstructions.nim");
+		nimln(1699, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP748), dis);
-		nimln(1652, "navmInstructions.nim");
+		nimln(1700, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 29955), NIM_FALSE);
-		nimln(1653, "navmInstructions.nim");
+		nimln(1701, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1654, "navmInstructions.nim");
+		nimln(1702, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 224));
-		nimln(1655, "navmInstructions.nim");
+		nimln(1703, "navmInstructions.nim");
 		(*ob).Vd = ((NI8) 3);
 	}
 	break;
 	case ((NI8) 3):
 	{
-		nimln(1657, "navmInstructions.nim");
+		nimln(1705, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP749), dis);
-		nimln(1658, "navmInstructions.nim");
+		nimln(1706, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 29955), NIM_FALSE);
-		nimln(1659, "navmInstructions.nim");
+		nimln(1707, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1660, "navmInstructions.nim");
+		nimln(1708, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 225));
 	}
 	break;
 	case ((NI8) 4):
 	{
-		nimln(1662, "navmInstructions.nim");
+		nimln(1710, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP750), dis);
-		nimln(1663, "navmInstructions.nim");
+		nimln(1711, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 29955), NIM_FALSE);
-		nimln(1664, "navmInstructions.nim");
+		nimln(1712, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1665, "navmInstructions.nim");
+		nimln(1713, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 226));
 	}
 	break;
 	case ((NI8) 5):
 	{
-		nimln(1667, "navmInstructions.nim");
+		nimln(1715, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP751), dis);
-		nimln(1668, "navmInstructions.nim");
+		nimln(1716, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 29955), NIM_FALSE);
-		nimln(1669, "navmInstructions.nim");
+		nimln(1717, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1670, "navmInstructions.nim");
+		nimln(1718, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 227));
 	}
 	break;
 	case ((NI8) 6):
 	{
-		nimln(1672, "navmInstructions.nim");
+		nimln(1720, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP752), dis);
-		nimln(1673, "navmInstructions.nim");
+		nimln(1721, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 29955), NIM_FALSE);
-		nimln(1674, "navmInstructions.nim");
+		nimln(1722, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1675, "navmInstructions.nim");
+		nimln(1723, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 228));
 	}
 	break;
 	case ((NI8) 7):
 	{
-		nimln(1677, "navmInstructions.nim");
+		nimln(1725, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP753), dis);
-		nimln(1678, "navmInstructions.nim");
+		nimln(1726, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 29955), NIM_FALSE);
-		nimln(1679, "navmInstructions.nim");
+		nimln(1727, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1680, "navmInstructions.nim");
+		nimln(1728, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 229));
 	}
 	break;
 	case ((NI8) 8):
 	{
-		nimln(1682, "navmInstructions.nim");
+		nimln(1730, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP754), dis);
-		nimln(1683, "navmInstructions.nim");
+		nimln(1731, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 29955), NIM_FALSE);
-		nimln(1684, "navmInstructions.nim");
+		nimln(1732, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1685, "navmInstructions.nim");
+		nimln(1733, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 230));
 	}
 	break;
 	default:
 	{
-		nimln(1687, "navmInstructions.nim");
+		nimln(1735, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -5227,111 +5227,111 @@ N_NIMCALL(void, beq_96160)(tnavmbackend91004* ob, NIM_BOOL dis) {
 
 N_NIMCALL(void, bgr_96213)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("bgr", "navmInstructions.nim")
-	nimln(1690, "navmInstructions.nim");
+	nimln(1738, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1692, "navmInstructions.nim");
+		nimln(1740, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
-		nimln(1694, "navmInstructions.nim");
+		nimln(1742, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP755), dis);
-		nimln(1695, "navmInstructions.nim");
+		nimln(1743, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32258), NIM_FALSE);
-		nimln(1696, "navmInstructions.nim");
+		nimln(1744, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65504), NIM_FALSE);
 	}
 	break;
 	case ((NI8) 2):
 	{
-		nimln(1698, "navmInstructions.nim");
+		nimln(1746, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP756), dis);
-		nimln(1699, "navmInstructions.nim");
+		nimln(1747, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32259), NIM_FALSE);
-		nimln(1700, "navmInstructions.nim");
+		nimln(1748, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1701, "navmInstructions.nim");
+		nimln(1749, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 224));
 	}
 	break;
 	case ((NI8) 3):
 	{
-		nimln(1703, "navmInstructions.nim");
+		nimln(1751, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP757), dis);
-		nimln(1704, "navmInstructions.nim");
+		nimln(1752, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32259), NIM_FALSE);
-		nimln(1705, "navmInstructions.nim");
+		nimln(1753, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1706, "navmInstructions.nim");
+		nimln(1754, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 225));
 	}
 	break;
 	case ((NI8) 4):
 	{
-		nimln(1708, "navmInstructions.nim");
+		nimln(1756, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP758), dis);
-		nimln(1709, "navmInstructions.nim");
+		nimln(1757, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32259), NIM_FALSE);
-		nimln(1710, "navmInstructions.nim");
+		nimln(1758, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1711, "navmInstructions.nim");
+		nimln(1759, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 226));
 	}
 	break;
 	case ((NI8) 5):
 	{
-		nimln(1713, "navmInstructions.nim");
+		nimln(1761, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP759), dis);
-		nimln(1714, "navmInstructions.nim");
+		nimln(1762, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32259), NIM_FALSE);
-		nimln(1715, "navmInstructions.nim");
+		nimln(1763, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1716, "navmInstructions.nim");
+		nimln(1764, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 227));
 	}
 	break;
 	case ((NI8) 6):
 	{
-		nimln(1718, "navmInstructions.nim");
+		nimln(1766, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP760), dis);
-		nimln(1719, "navmInstructions.nim");
+		nimln(1767, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32259), NIM_FALSE);
-		nimln(1720, "navmInstructions.nim");
+		nimln(1768, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1721, "navmInstructions.nim");
+		nimln(1769, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 228));
 	}
 	break;
 	case ((NI8) 7):
 	{
-		nimln(1723, "navmInstructions.nim");
+		nimln(1771, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP761), dis);
-		nimln(1724, "navmInstructions.nim");
+		nimln(1772, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32259), NIM_FALSE);
-		nimln(1725, "navmInstructions.nim");
+		nimln(1773, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1726, "navmInstructions.nim");
+		nimln(1774, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 229));
 	}
 	break;
 	case ((NI8) 8):
 	{
-		nimln(1728, "navmInstructions.nim");
+		nimln(1776, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP762), dis);
-		nimln(1729, "navmInstructions.nim");
+		nimln(1777, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32259), NIM_FALSE);
-		nimln(1730, "navmInstructions.nim");
+		nimln(1778, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1731, "navmInstructions.nim");
+		nimln(1779, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 230));
 	}
 	break;
 	default:
 	{
-		nimln(1733, "navmInstructions.nim");
+		nimln(1781, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -5341,127 +5341,6 @@ N_NIMCALL(void, bgr_96213)(tnavmbackend91004* ob, NIM_BOOL dis) {
 
 N_NIMCALL(void, ble_96266)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("ble", "navmInstructions.nim")
-	nimln(1736, "navmInstructions.nim");
-	switch ((*ob).Vd) {
-	case ((NI8) 0):
-	{
-		nimln(1738, "navmInstructions.nim");
-		errorufd_94099();
-	}
-	break;
-	case ((NI8) 1):
-	{
-		nimln(1740, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP763), dis);
-		nimln(1741, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 32002), NIM_FALSE);
-		nimln(1742, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 65504), NIM_FALSE);
-	}
-	break;
-	case ((NI8) 2):
-	{
-		nimln(1744, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP764), dis);
-		nimln(1745, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
-		nimln(1746, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1747, "navmInstructions.nim");
-		compile_91628(ob, ((NU8) 224));
-	}
-	break;
-	case ((NI8) 3):
-	{
-		nimln(1749, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP765), dis);
-		nimln(1750, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
-		nimln(1751, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1752, "navmInstructions.nim");
-		compile_91628(ob, ((NU8) 225));
-	}
-	break;
-	case ((NI8) 4):
-	{
-		nimln(1754, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP766), dis);
-		nimln(1755, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
-		nimln(1756, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1757, "navmInstructions.nim");
-		compile_91628(ob, ((NU8) 226));
-	}
-	break;
-	case ((NI8) 5):
-	{
-		nimln(1759, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP767), dis);
-		nimln(1760, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
-		nimln(1761, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1762, "navmInstructions.nim");
-		compile_91628(ob, ((NU8) 227));
-	}
-	break;
-	case ((NI8) 6):
-	{
-		nimln(1764, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP768), dis);
-		nimln(1765, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
-		nimln(1766, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1767, "navmInstructions.nim");
-		compile_91628(ob, ((NU8) 228));
-	}
-	break;
-	case ((NI8) 7):
-	{
-		nimln(1769, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP769), dis);
-		nimln(1770, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
-		nimln(1771, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1772, "navmInstructions.nim");
-		compile_91628(ob, ((NU8) 229));
-	}
-	break;
-	case ((NI8) 8):
-	{
-		nimln(1774, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP770), dis);
-		nimln(1775, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
-		nimln(1776, "navmInstructions.nim");
-		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1777, "navmInstructions.nim");
-		compile_91628(ob, ((NU8) 230));
-	}
-	break;
-	default:
-	{
-		nimln(1779, "navmInstructions.nim");
-		errorofd_94084();
-	}
-	break;
-	}
-	popFrame();
-}
-
-N_NIMCALL(void, bzr_96319)(tnavmbackend91004* ob, NIM_BOOL dis) {
-	nimfr("bzr", "navmInstructions.nim")
-	nimln(1781, "navmInstructions.nim");
-	beq_96160(ob, dis);
-	popFrame();
-}
-
-N_NIMCALL(void, bs_96326)(tnavmbackend91004* ob, NIM_BOOL dis) {
-	nimfr("bs", "navmInstructions.nim")
 	nimln(1784, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
@@ -5473,84 +5352,205 @@ N_NIMCALL(void, bs_96326)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	case ((NI8) 1):
 	{
 		nimln(1788, "navmInstructions.nim");
-		disasm_94144(ob, ((NimStringDesc*) &TMP771), dis);
+		disasm_94144(ob, ((NimStringDesc*) &TMP763), dis);
 		nimln(1789, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 32002), NIM_FALSE);
+		nimln(1790, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 65504), NIM_FALSE);
+	}
+	break;
+	case ((NI8) 2):
+	{
+		nimln(1792, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP764), dis);
+		nimln(1793, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
+		nimln(1794, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
+		nimln(1795, "navmInstructions.nim");
+		compile_91628(ob, ((NU8) 224));
+	}
+	break;
+	case ((NI8) 3):
+	{
+		nimln(1797, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP765), dis);
+		nimln(1798, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
+		nimln(1799, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
+		nimln(1800, "navmInstructions.nim");
+		compile_91628(ob, ((NU8) 225));
+	}
+	break;
+	case ((NI8) 4):
+	{
+		nimln(1802, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP766), dis);
+		nimln(1803, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
+		nimln(1804, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
+		nimln(1805, "navmInstructions.nim");
+		compile_91628(ob, ((NU8) 226));
+	}
+	break;
+	case ((NI8) 5):
+	{
+		nimln(1807, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP767), dis);
+		nimln(1808, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
+		nimln(1809, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
+		nimln(1810, "navmInstructions.nim");
+		compile_91628(ob, ((NU8) 227));
+	}
+	break;
+	case ((NI8) 6):
+	{
+		nimln(1812, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP768), dis);
+		nimln(1813, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
+		nimln(1814, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
+		nimln(1815, "navmInstructions.nim");
+		compile_91628(ob, ((NU8) 228));
+	}
+	break;
+	case ((NI8) 7):
+	{
+		nimln(1817, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP769), dis);
+		nimln(1818, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
+		nimln(1819, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
+		nimln(1820, "navmInstructions.nim");
+		compile_91628(ob, ((NU8) 229));
+	}
+	break;
+	case ((NI8) 8):
+	{
+		nimln(1822, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP770), dis);
+		nimln(1823, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
+		nimln(1824, "navmInstructions.nim");
+		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
+		nimln(1825, "navmInstructions.nim");
+		compile_91628(ob, ((NU8) 230));
+	}
+	break;
+	default:
+	{
+		nimln(1827, "navmInstructions.nim");
+		errorofd_94084();
+	}
+	break;
+	}
+	popFrame();
+}
+
+N_NIMCALL(void, bzr_96319)(tnavmbackend91004* ob, NIM_BOOL dis) {
+	nimfr("bzr", "navmInstructions.nim")
+	nimln(1829, "navmInstructions.nim");
+	beq_96160(ob, dis);
+	popFrame();
+}
+
+N_NIMCALL(void, bs_96326)(tnavmbackend91004* ob, NIM_BOOL dis) {
+	nimfr("bs", "navmInstructions.nim")
+	nimln(1832, "navmInstructions.nim");
+	switch ((*ob).Vd) {
+	case ((NI8) 0):
+	{
+		nimln(1834, "navmInstructions.nim");
+		errorufd_94099();
+	}
+	break;
+	case ((NI8) 1):
+	{
+		nimln(1836, "navmInstructions.nim");
+		disasm_94144(ob, ((NimStringDesc*) &TMP771), dis);
+		nimln(1837, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65488), NIM_FALSE);
 	}
 	break;
 	case ((NI8) 2):
 	{
-		nimln(1791, "navmInstructions.nim");
+		nimln(1839, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP772), dis);
-		nimln(1792, "navmInstructions.nim");
+		nimln(1840, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1793, "navmInstructions.nim");
+		nimln(1841, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 208));
 	}
 	break;
 	case ((NI8) 3):
 	{
-		nimln(1795, "navmInstructions.nim");
+		nimln(1843, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP773), dis);
-		nimln(1796, "navmInstructions.nim");
+		nimln(1844, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1797, "navmInstructions.nim");
+		nimln(1845, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 209));
 	}
 	break;
 	case ((NI8) 4):
 	{
-		nimln(1799, "navmInstructions.nim");
+		nimln(1847, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP774), dis);
-		nimln(1800, "navmInstructions.nim");
+		nimln(1848, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1801, "navmInstructions.nim");
+		nimln(1849, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 210));
 	}
 	break;
 	case ((NI8) 5):
 	{
-		nimln(1803, "navmInstructions.nim");
+		nimln(1851, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP775), dis);
-		nimln(1804, "navmInstructions.nim");
+		nimln(1852, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1805, "navmInstructions.nim");
+		nimln(1853, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 211));
 	}
 	break;
 	case ((NI8) 6):
 	{
-		nimln(1807, "navmInstructions.nim");
+		nimln(1855, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP776), dis);
-		nimln(1808, "navmInstructions.nim");
+		nimln(1856, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1809, "navmInstructions.nim");
+		nimln(1857, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 212));
 	}
 	break;
 	case ((NI8) 7):
 	{
-		nimln(1811, "navmInstructions.nim");
+		nimln(1859, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP777), dis);
-		nimln(1812, "navmInstructions.nim");
+		nimln(1860, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1813, "navmInstructions.nim");
+		nimln(1861, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 213));
 	}
 	break;
 	case ((NI8) 8):
 	{
-		nimln(1815, "navmInstructions.nim");
+		nimln(1863, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP778), dis);
-		nimln(1816, "navmInstructions.nim");
+		nimln(1864, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1817, "navmInstructions.nim");
+		nimln(1865, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 214));
 	}
 	break;
 	default:
 	{
-		nimln(1819, "navmInstructions.nim");
+		nimln(1867, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -5560,111 +5560,111 @@ N_NIMCALL(void, bs_96326)(tnavmbackend91004* ob, NIM_BOOL dis) {
 
 N_NIMCALL(void, bseq_96363)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("bseq", "navmInstructions.nim")
-	nimln(1822, "navmInstructions.nim");
+	nimln(1870, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1824, "navmInstructions.nim");
+		nimln(1872, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
-		nimln(1826, "navmInstructions.nim");
+		nimln(1874, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP779), dis);
-		nimln(1827, "navmInstructions.nim");
+		nimln(1875, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 29954), NIM_FALSE);
-		nimln(1828, "navmInstructions.nim");
+		nimln(1876, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65488), NIM_FALSE);
 	}
 	break;
 	case ((NI8) 2):
 	{
-		nimln(1830, "navmInstructions.nim");
+		nimln(1878, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP780), dis);
-		nimln(1831, "navmInstructions.nim");
+		nimln(1879, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 29955), NIM_FALSE);
-		nimln(1832, "navmInstructions.nim");
+		nimln(1880, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1833, "navmInstructions.nim");
+		nimln(1881, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 208));
 	}
 	break;
 	case ((NI8) 3):
 	{
-		nimln(1835, "navmInstructions.nim");
+		nimln(1883, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP781), dis);
-		nimln(1836, "navmInstructions.nim");
+		nimln(1884, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 29955), NIM_FALSE);
-		nimln(1837, "navmInstructions.nim");
+		nimln(1885, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1838, "navmInstructions.nim");
+		nimln(1886, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 209));
 	}
 	break;
 	case ((NI8) 4):
 	{
-		nimln(1840, "navmInstructions.nim");
+		nimln(1888, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP782), dis);
-		nimln(1841, "navmInstructions.nim");
+		nimln(1889, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 29955), NIM_FALSE);
-		nimln(1842, "navmInstructions.nim");
+		nimln(1890, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1843, "navmInstructions.nim");
+		nimln(1891, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 210));
 	}
 	break;
 	case ((NI8) 5):
 	{
-		nimln(1845, "navmInstructions.nim");
+		nimln(1893, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP783), dis);
-		nimln(1846, "navmInstructions.nim");
+		nimln(1894, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 29955), NIM_FALSE);
-		nimln(1847, "navmInstructions.nim");
+		nimln(1895, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1848, "navmInstructions.nim");
+		nimln(1896, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 211));
 	}
 	break;
 	case ((NI8) 6):
 	{
-		nimln(1850, "navmInstructions.nim");
+		nimln(1898, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP784), dis);
-		nimln(1851, "navmInstructions.nim");
+		nimln(1899, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 29955), NIM_FALSE);
-		nimln(1852, "navmInstructions.nim");
+		nimln(1900, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1853, "navmInstructions.nim");
+		nimln(1901, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 212));
 	}
 	break;
 	case ((NI8) 7):
 	{
-		nimln(1855, "navmInstructions.nim");
+		nimln(1903, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP785), dis);
-		nimln(1856, "navmInstructions.nim");
+		nimln(1904, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 29955), NIM_FALSE);
-		nimln(1857, "navmInstructions.nim");
+		nimln(1905, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1858, "navmInstructions.nim");
+		nimln(1906, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 213));
 	}
 	break;
 	case ((NI8) 8):
 	{
-		nimln(1860, "navmInstructions.nim");
+		nimln(1908, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP786), dis);
-		nimln(1861, "navmInstructions.nim");
+		nimln(1909, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 29955), NIM_FALSE);
-		nimln(1862, "navmInstructions.nim");
+		nimln(1910, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1863, "navmInstructions.nim");
+		nimln(1911, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 214));
 	}
 	break;
 	default:
 	{
-		nimln(1865, "navmInstructions.nim");
+		nimln(1913, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -5674,111 +5674,111 @@ N_NIMCALL(void, bseq_96363)(tnavmbackend91004* ob, NIM_BOOL dis) {
 
 N_NIMCALL(void, bsgr_96416)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("bsgr", "navmInstructions.nim")
-	nimln(1868, "navmInstructions.nim");
+	nimln(1916, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1870, "navmInstructions.nim");
+		nimln(1918, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
-		nimln(1872, "navmInstructions.nim");
+		nimln(1920, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP787), dis);
-		nimln(1873, "navmInstructions.nim");
+		nimln(1921, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32258), NIM_FALSE);
-		nimln(1874, "navmInstructions.nim");
+		nimln(1922, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65488), NIM_FALSE);
 	}
 	break;
 	case ((NI8) 2):
 	{
-		nimln(1876, "navmInstructions.nim");
+		nimln(1924, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP788), dis);
-		nimln(1877, "navmInstructions.nim");
+		nimln(1925, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32259), NIM_FALSE);
-		nimln(1878, "navmInstructions.nim");
+		nimln(1926, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1879, "navmInstructions.nim");
+		nimln(1927, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 208));
 	}
 	break;
 	case ((NI8) 3):
 	{
-		nimln(1881, "navmInstructions.nim");
+		nimln(1929, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP789), dis);
-		nimln(1882, "navmInstructions.nim");
+		nimln(1930, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32259), NIM_FALSE);
-		nimln(1883, "navmInstructions.nim");
+		nimln(1931, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1884, "navmInstructions.nim");
+		nimln(1932, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 209));
 	}
 	break;
 	case ((NI8) 4):
 	{
-		nimln(1886, "navmInstructions.nim");
+		nimln(1934, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP790), dis);
-		nimln(1887, "navmInstructions.nim");
+		nimln(1935, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32259), NIM_FALSE);
-		nimln(1888, "navmInstructions.nim");
+		nimln(1936, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1889, "navmInstructions.nim");
+		nimln(1937, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 210));
 	}
 	break;
 	case ((NI8) 5):
 	{
-		nimln(1891, "navmInstructions.nim");
+		nimln(1939, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP791), dis);
-		nimln(1892, "navmInstructions.nim");
+		nimln(1940, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32259), NIM_FALSE);
-		nimln(1893, "navmInstructions.nim");
+		nimln(1941, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1894, "navmInstructions.nim");
+		nimln(1942, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 211));
 	}
 	break;
 	case ((NI8) 6):
 	{
-		nimln(1896, "navmInstructions.nim");
+		nimln(1944, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP792), dis);
-		nimln(1897, "navmInstructions.nim");
+		nimln(1945, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32259), NIM_FALSE);
-		nimln(1898, "navmInstructions.nim");
+		nimln(1946, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1899, "navmInstructions.nim");
+		nimln(1947, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 212));
 	}
 	break;
 	case ((NI8) 7):
 	{
-		nimln(1901, "navmInstructions.nim");
+		nimln(1949, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP793), dis);
-		nimln(1902, "navmInstructions.nim");
+		nimln(1950, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32259), NIM_FALSE);
-		nimln(1903, "navmInstructions.nim");
+		nimln(1951, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1904, "navmInstructions.nim");
+		nimln(1952, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 213));
 	}
 	break;
 	case ((NI8) 8):
 	{
-		nimln(1906, "navmInstructions.nim");
+		nimln(1954, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP794), dis);
-		nimln(1907, "navmInstructions.nim");
+		nimln(1955, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32259), NIM_FALSE);
-		nimln(1908, "navmInstructions.nim");
+		nimln(1956, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1909, "navmInstructions.nim");
+		nimln(1957, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 214));
 	}
 	break;
 	default:
 	{
-		nimln(1911, "navmInstructions.nim");
+		nimln(1959, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -5788,111 +5788,111 @@ N_NIMCALL(void, bsgr_96416)(tnavmbackend91004* ob, NIM_BOOL dis) {
 
 N_NIMCALL(void, bsle_96469)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("bsle", "navmInstructions.nim")
-	nimln(1914, "navmInstructions.nim");
+	nimln(1962, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(1916, "navmInstructions.nim");
+		nimln(1964, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
-		nimln(1918, "navmInstructions.nim");
+		nimln(1966, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP787), dis);
-		nimln(1919, "navmInstructions.nim");
+		nimln(1967, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32002), NIM_FALSE);
-		nimln(1920, "navmInstructions.nim");
+		nimln(1968, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 65488), NIM_FALSE);
 	}
 	break;
 	case ((NI8) 2):
 	{
-		nimln(1922, "navmInstructions.nim");
+		nimln(1970, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP788), dis);
-		nimln(1923, "navmInstructions.nim");
+		nimln(1971, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
-		nimln(1924, "navmInstructions.nim");
+		nimln(1972, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1925, "navmInstructions.nim");
+		nimln(1973, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 208));
 	}
 	break;
 	case ((NI8) 3):
 	{
-		nimln(1927, "navmInstructions.nim");
+		nimln(1975, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP789), dis);
-		nimln(1928, "navmInstructions.nim");
+		nimln(1976, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
-		nimln(1929, "navmInstructions.nim");
+		nimln(1977, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1930, "navmInstructions.nim");
+		nimln(1978, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 209));
 	}
 	break;
 	case ((NI8) 4):
 	{
-		nimln(1932, "navmInstructions.nim");
+		nimln(1980, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP790), dis);
-		nimln(1933, "navmInstructions.nim");
+		nimln(1981, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
-		nimln(1934, "navmInstructions.nim");
+		nimln(1982, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1935, "navmInstructions.nim");
+		nimln(1983, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 210));
 	}
 	break;
 	case ((NI8) 5):
 	{
-		nimln(1937, "navmInstructions.nim");
+		nimln(1985, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP791), dis);
-		nimln(1938, "navmInstructions.nim");
+		nimln(1986, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
-		nimln(1939, "navmInstructions.nim");
+		nimln(1987, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1940, "navmInstructions.nim");
+		nimln(1988, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 211));
 	}
 	break;
 	case ((NI8) 6):
 	{
-		nimln(1942, "navmInstructions.nim");
+		nimln(1990, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP792), dis);
-		nimln(1943, "navmInstructions.nim");
+		nimln(1991, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
-		nimln(1944, "navmInstructions.nim");
+		nimln(1992, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1945, "navmInstructions.nim");
+		nimln(1993, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 212));
 	}
 	break;
 	case ((NI8) 7):
 	{
-		nimln(1947, "navmInstructions.nim");
+		nimln(1995, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP793), dis);
-		nimln(1948, "navmInstructions.nim");
+		nimln(1996, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
-		nimln(1949, "navmInstructions.nim");
+		nimln(1997, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1950, "navmInstructions.nim");
+		nimln(1998, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 213));
 	}
 	break;
 	case ((NI8) 8):
 	{
-		nimln(1952, "navmInstructions.nim");
+		nimln(2000, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP794), dis);
-		nimln(1953, "navmInstructions.nim");
+		nimln(2001, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 32003), NIM_FALSE);
-		nimln(1954, "navmInstructions.nim");
+		nimln(2002, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 16895), NIM_FALSE);
-		nimln(1955, "navmInstructions.nim");
+		nimln(2003, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 214));
 	}
 	break;
 	default:
 	{
-		nimln(1957, "navmInstructions.nim");
+		nimln(2005, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -5902,56 +5902,56 @@ N_NIMCALL(void, bsle_96469)(tnavmbackend91004* ob, NIM_BOOL dis) {
 
 N_NIMCALL(void, bszr_96522)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("bszr", "navmInstructions.nim")
-	nimln(1959, "navmInstructions.nim");
+	nimln(2007, "navmInstructions.nim");
 	bseq_96363(ob, dis);
 	popFrame();
 }
 
 N_NIMCALL(void, br_96529)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("br", "navmInstructions.nim")
-	nimln(1962, "navmInstructions.nim");
+	nimln(2010, "navmInstructions.nim");
 	disasm_94144(ob, ((NimStringDesc*) &TMP795), dis);
-	nimln(1963, "navmInstructions.nim");
+	nimln(2011, "navmInstructions.nim");
 	compile_91628(ob, ((NU8) 195));
 	popFrame();
 }
 
 N_NIMCALL(void, breq_96538)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("breq", "navmInstructions.nim")
-	nimln(1966, "navmInstructions.nim");
+	nimln(2014, "navmInstructions.nim");
 	disasm_94144(ob, ((NimStringDesc*) &TMP796), dis);
-	nimln(1967, "navmInstructions.nim");
+	nimln(2015, "navmInstructions.nim");
 	compile2_92028(ob, ((NU16) 29953), NIM_FALSE);
-	nimln(1968, "navmInstructions.nim");
+	nimln(2016, "navmInstructions.nim");
 	compile_91628(ob, ((NU8) 195));
 	popFrame();
 }
 
 N_NIMCALL(void, brgr_96549)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("brgr", "navmInstructions.nim")
-	nimln(1971, "navmInstructions.nim");
+	nimln(2019, "navmInstructions.nim");
 	disasm_94144(ob, ((NimStringDesc*) &TMP797), dis);
-	nimln(1972, "navmInstructions.nim");
+	nimln(2020, "navmInstructions.nim");
 	compile2_92028(ob, ((NU16) 32257), NIM_FALSE);
-	nimln(1973, "navmInstructions.nim");
+	nimln(2021, "navmInstructions.nim");
 	compile_91628(ob, ((NU8) 195));
 	popFrame();
 }
 
 N_NIMCALL(void, brle_96560)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("brle", "navmInstructions.nim")
-	nimln(1976, "navmInstructions.nim");
+	nimln(2024, "navmInstructions.nim");
 	disasm_94144(ob, ((NimStringDesc*) &TMP798), dis);
-	nimln(1977, "navmInstructions.nim");
+	nimln(2025, "navmInstructions.nim");
 	compile2_92028(ob, ((NU16) 32001), NIM_FALSE);
-	nimln(1978, "navmInstructions.nim");
+	nimln(2026, "navmInstructions.nim");
 	compile_91628(ob, ((NU8) 195));
 	popFrame();
 }
 
 N_NIMCALL(void, brzr_96571)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("brzr", "navmInstructions.nim")
-	nimln(1980, "navmInstructions.nim");
+	nimln(2028, "navmInstructions.nim");
 	breq_96538(ob, dis);
 	popFrame();
 }
@@ -5959,12 +5959,12 @@ N_NIMCALL(void, brzr_96571)(tnavmbackend91004* ob, NIM_BOOL dis) {
 N_NIMCALL(void, r_96578)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	TY94095 LOC1;
 	nimfr("r", "navmInstructions.nim")
-	nimln(1983, "navmInstructions.nim");
+	nimln(2031, "navmInstructions.nim");
 	memset((void*)LOC1, 0, sizeof(LOC1));
-	nimln(1983, "navmInstructions.nim");
+	nimln(2031, "navmInstructions.nim");
 	LOC1[0] = copyString(((NimStringDesc*) &TMP799));
 	writeln_91224(stderr, LOC1, 1);
-	nimln(1984, "navmInstructions.nim");
+	nimln(2032, "navmInstructions.nim");
 	exit(0);
 	popFrame();
 }
@@ -5972,12 +5972,12 @@ N_NIMCALL(void, r_96578)(tnavmbackend91004* ob, NIM_BOOL dis) {
 N_NIMCALL(void, req_96596)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	TY94095 LOC1;
 	nimfr("req", "navmInstructions.nim")
-	nimln(1987, "navmInstructions.nim");
+	nimln(2035, "navmInstructions.nim");
 	memset((void*)LOC1, 0, sizeof(LOC1));
-	nimln(1987, "navmInstructions.nim");
+	nimln(2035, "navmInstructions.nim");
 	LOC1[0] = copyString(((NimStringDesc*) &TMP800));
 	writeln_91224(stderr, LOC1, 1);
-	nimln(1988, "navmInstructions.nim");
+	nimln(2036, "navmInstructions.nim");
 	exit(0);
 	popFrame();
 }
@@ -5985,12 +5985,12 @@ N_NIMCALL(void, req_96596)(tnavmbackend91004* ob, NIM_BOOL dis) {
 N_NIMCALL(void, rgr_96614)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	TY94095 LOC1;
 	nimfr("rgr", "navmInstructions.nim")
-	nimln(1991, "navmInstructions.nim");
+	nimln(2039, "navmInstructions.nim");
 	memset((void*)LOC1, 0, sizeof(LOC1));
-	nimln(1991, "navmInstructions.nim");
+	nimln(2039, "navmInstructions.nim");
 	LOC1[0] = copyString(((NimStringDesc*) &TMP801));
 	writeln_91224(stderr, LOC1, 1);
-	nimln(1992, "navmInstructions.nim");
+	nimln(2040, "navmInstructions.nim");
 	exit(0);
 	popFrame();
 }
@@ -5998,12 +5998,12 @@ N_NIMCALL(void, rgr_96614)(tnavmbackend91004* ob, NIM_BOOL dis) {
 N_NIMCALL(void, rle_96632)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	TY94095 LOC1;
 	nimfr("rle", "navmInstructions.nim")
-	nimln(1995, "navmInstructions.nim");
+	nimln(2043, "navmInstructions.nim");
 	memset((void*)LOC1, 0, sizeof(LOC1));
-	nimln(1995, "navmInstructions.nim");
+	nimln(2043, "navmInstructions.nim");
 	LOC1[0] = copyString(((NimStringDesc*) &TMP802));
 	writeln_91224(stderr, LOC1, 1);
-	nimln(1996, "navmInstructions.nim");
+	nimln(2044, "navmInstructions.nim");
 	exit(0);
 	popFrame();
 }
@@ -6011,99 +6011,99 @@ N_NIMCALL(void, rle_96632)(tnavmbackend91004* ob, NIM_BOOL dis) {
 N_NIMCALL(void, rzr_96650)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	TY94095 LOC1;
 	nimfr("rzr", "navmInstructions.nim")
-	nimln(1999, "navmInstructions.nim");
+	nimln(2047, "navmInstructions.nim");
 	memset((void*)LOC1, 0, sizeof(LOC1));
-	nimln(1999, "navmInstructions.nim");
+	nimln(2047, "navmInstructions.nim");
 	LOC1[0] = copyString(((NimStringDesc*) &TMP803));
 	writeln_91224(stderr, LOC1, 1);
-	nimln(2000, "navmInstructions.nim");
+	nimln(2048, "navmInstructions.nim");
 	exit(0);
 	popFrame();
 }
 
 N_NIMCALL(void, eq_96668)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("eq", "navmInstructions.nim")
-	nimln(2003, "navmInstructions.nim");
+	nimln(2051, "navmInstructions.nim");
 	switch ((*ob).Vd) {
 	case ((NI8) 0):
 	{
-		nimln(2005, "navmInstructions.nim");
+		nimln(2053, "navmInstructions.nim");
 		errorufd_94099();
 	}
 	break;
 	case ((NI8) 1):
 	{
-		nimln(2007, "navmInstructions.nim");
+		nimln(2055, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP804), dis);
-		nimln(2008, "navmInstructions.nim");
+		nimln(2056, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19513), NIM_FALSE);
-		nimln(2009, "navmInstructions.nim");
+		nimln(2057, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 192));
 	}
 	break;
 	case ((NI8) 2):
 	{
-		nimln(2011, "navmInstructions.nim");
+		nimln(2059, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP805), dis);
-		nimln(2012, "navmInstructions.nim");
+		nimln(2060, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19769), NIM_FALSE);
-		nimln(2013, "navmInstructions.nim");
+		nimln(2061, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 200));
 	}
 	break;
 	case ((NI8) 3):
 	{
-		nimln(2015, "navmInstructions.nim");
+		nimln(2063, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP806), dis);
-		nimln(2016, "navmInstructions.nim");
+		nimln(2064, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19769), NIM_FALSE);
-		nimln(2017, "navmInstructions.nim");
+		nimln(2065, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 209));
 	}
 	break;
 	case ((NI8) 4):
 	{
-		nimln(2019, "navmInstructions.nim");
+		nimln(2067, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP807), dis);
-		nimln(2020, "navmInstructions.nim");
+		nimln(2068, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19769), NIM_FALSE);
-		nimln(2021, "navmInstructions.nim");
+		nimln(2069, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 218));
 	}
 	break;
 	case ((NI8) 5):
 	{
-		nimln(2023, "navmInstructions.nim");
+		nimln(2071, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP808), dis);
-		nimln(2024, "navmInstructions.nim");
+		nimln(2072, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19769), NIM_FALSE);
-		nimln(2025, "navmInstructions.nim");
+		nimln(2073, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 227));
 	}
 	break;
 	case ((NI8) 6):
 	{
-		nimln(2027, "navmInstructions.nim");
+		nimln(2075, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP809), dis);
-		nimln(2028, "navmInstructions.nim");
+		nimln(2076, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19769), NIM_FALSE);
-		nimln(2029, "navmInstructions.nim");
+		nimln(2077, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 236));
 	}
 	break;
 	case ((NI8) 7):
 	{
-		nimln(2031, "navmInstructions.nim");
+		nimln(2079, "navmInstructions.nim");
 		disasm_94144(ob, ((NimStringDesc*) &TMP810), dis);
-		nimln(2032, "navmInstructions.nim");
+		nimln(2080, "navmInstructions.nim");
 		compile2_92028(ob, ((NU16) 19769), NIM_FALSE);
-		nimln(2033, "navmInstructions.nim");
+		nimln(2081, "navmInstructions.nim");
 		compile_91628(ob, ((NU8) 245));
 	}
 	break;
 	default:
 	{
-		nimln(2035, "navmInstructions.nim");
+		nimln(2083, "navmInstructions.nim");
 		errorofd_94084();
 	}
 	break;
@@ -6113,21 +6113,21 @@ N_NIMCALL(void, eq_96668)(tnavmbackend91004* ob, NIM_BOOL dis) {
 
 N_NIMCALL(void, gr_96703)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("gr", "navmInstructions.nim")
-	nimln(2037, "navmInstructions.nim");
+	nimln(2085, "navmInstructions.nim");
 	eq_96668(ob, dis);
 	popFrame();
 }
 
 N_NIMCALL(void, le_96710)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("le", "navmInstructions.nim")
-	nimln(2038, "navmInstructions.nim");
+	nimln(2086, "navmInstructions.nim");
 	eq_96668(ob, dis);
 	popFrame();
 }
 
 N_NIMCALL(void, zr_96717)(tnavmbackend91004* ob, NIM_BOOL dis) {
 	nimfr("zr", "navmInstructions.nim")
-	nimln(2039, "navmInstructions.nim");
+	nimln(2087, "navmInstructions.nim");
 	eq_96668(ob, dis);
 	popFrame();
 }
@@ -6152,13 +6152,13 @@ static N_INLINE(void, writeln_91224)(FILE* f, NimStringDesc** x, NI xLen0) {
 		i_91240 += 1;
 	} LA1: ;
 	nimln(160, "sysio.nim");
-	write_8862(f, ((NimStringDesc*) &TMP851));
+	write_8862(f, ((NimStringDesc*) &TMP882));
 	popFrame();
 }
 
 N_NIMCALL(void, disasmimm_94205)(tnavmbackend91004* ob, NimStringDesc* text, NI64 val, NIM_BOOL dis) {
 	nimfr("disAsmImm", "navmInstructions.nim")
-	nimln(147, "navmInstructions.nim");
+	nimln(195, "navmInstructions.nim");
 	nimln(696, "system.nim");
 	nimln(696, "system.nim");
 	if (!!((dis == NIM_FALSE))) goto LA2;
@@ -6166,27 +6166,27 @@ N_NIMCALL(void, disasmimm_94205)(tnavmbackend91004* ob, NimStringDesc* text, NI6
 		NimStringDesc* s;
 		NI64 v;
 		TY94095 LOC5;
-		nimln(148, "navmInstructions.nim");
+		nimln(196, "navmInstructions.nim");
 		s = nsuToHex(((NI64) ((*ob).Ocodemem)), 8);
-		nimln(149, "navmInstructions.nim");
+		nimln(197, "navmInstructions.nim");
 		write_8862(stderr, ((NimStringDesc*) &TMP289));
-		nimln(150, "navmInstructions.nim");
+		nimln(198, "navmInstructions.nim");
 		write_8850(stderr, ((NI) ((*ob).Vd)));
-		nimln(151, "navmInstructions.nim");
+		nimln(199, "navmInstructions.nim");
 		write_8862(stderr, ((NimStringDesc*) &TMP290));
-		nimln(152, "navmInstructions.nim");
+		nimln(200, "navmInstructions.nim");
 		write_8862(stderr, s);
-		nimln(153, "navmInstructions.nim");
+		nimln(201, "navmInstructions.nim");
 		write_8862(stderr, ((NimStringDesc*) &TMP291));
-		nimln(154, "navmInstructions.nim");
+		nimln(202, "navmInstructions.nim");
 		write_8862(stderr, text);
-		nimln(156, "navmInstructions.nim");
+		nimln(204, "navmInstructions.nim");
 		v = ((NI64) (val));
-		nimln(157, "navmInstructions.nim");
+		nimln(205, "navmInstructions.nim");
 		s = nsuToHex(v, 8);
-		nimln(158, "navmInstructions.nim");
+		nimln(206, "navmInstructions.nim");
 		memset((void*)LOC5, 0, sizeof(LOC5));
-		nimln(158, "navmInstructions.nim");
+		nimln(206, "navmInstructions.nim");
 		LOC5[0] = copyString(s);
 		writeln_91224(stderr, LOC5, 1);
 	}
@@ -6196,7 +6196,7 @@ N_NIMCALL(void, disasmimm_94205)(tnavmbackend91004* ob, NimStringDesc* text, NI6
 
 N_NIMCALL(void, disasmimm_94661)(tnavmbackend91004* ob, NimStringDesc* text, NU32 val, NIM_BOOL dis) {
 	nimfr("disAsmImm", "navmInstructions.nim")
-	nimln(147, "navmInstructions.nim");
+	nimln(195, "navmInstructions.nim");
 	nimln(696, "system.nim");
 	nimln(696, "system.nim");
 	if (!!((dis == NIM_FALSE))) goto LA2;
@@ -6204,27 +6204,27 @@ N_NIMCALL(void, disasmimm_94661)(tnavmbackend91004* ob, NimStringDesc* text, NU3
 		NimStringDesc* s;
 		NI64 v;
 		TY94095 LOC5;
-		nimln(148, "navmInstructions.nim");
+		nimln(196, "navmInstructions.nim");
 		s = nsuToHex(((NI64) ((*ob).Ocodemem)), 8);
-		nimln(149, "navmInstructions.nim");
+		nimln(197, "navmInstructions.nim");
 		write_8862(stderr, ((NimStringDesc*) &TMP289));
-		nimln(150, "navmInstructions.nim");
+		nimln(198, "navmInstructions.nim");
 		write_8850(stderr, ((NI) ((*ob).Vd)));
-		nimln(151, "navmInstructions.nim");
+		nimln(199, "navmInstructions.nim");
 		write_8862(stderr, ((NimStringDesc*) &TMP290));
-		nimln(152, "navmInstructions.nim");
+		nimln(200, "navmInstructions.nim");
 		write_8862(stderr, s);
-		nimln(153, "navmInstructions.nim");
+		nimln(201, "navmInstructions.nim");
 		write_8862(stderr, ((NimStringDesc*) &TMP291));
-		nimln(154, "navmInstructions.nim");
+		nimln(202, "navmInstructions.nim");
 		write_8862(stderr, text);
-		nimln(156, "navmInstructions.nim");
+		nimln(204, "navmInstructions.nim");
 		v = ((NI64) (val));
-		nimln(157, "navmInstructions.nim");
+		nimln(205, "navmInstructions.nim");
 		s = nsuToHex(v, 4);
-		nimln(158, "navmInstructions.nim");
+		nimln(206, "navmInstructions.nim");
 		memset((void*)LOC5, 0, sizeof(LOC5));
-		nimln(158, "navmInstructions.nim");
+		nimln(206, "navmInstructions.nim");
 		LOC5[0] = copyString(s);
 		writeln_91224(stderr, LOC5, 1);
 	}
@@ -6234,7 +6234,7 @@ N_NIMCALL(void, disasmimm_94661)(tnavmbackend91004* ob, NimStringDesc* text, NU3
 
 N_NIMCALL(void, disasmimm_95270)(tnavmbackend91004* ob, NimStringDesc* text, NU8 val, NIM_BOOL dis) {
 	nimfr("disAsmImm", "navmInstructions.nim")
-	nimln(147, "navmInstructions.nim");
+	nimln(195, "navmInstructions.nim");
 	nimln(696, "system.nim");
 	nimln(696, "system.nim");
 	if (!!((dis == NIM_FALSE))) goto LA2;
@@ -6242,27 +6242,27 @@ N_NIMCALL(void, disasmimm_95270)(tnavmbackend91004* ob, NimStringDesc* text, NU8
 		NimStringDesc* s;
 		NI64 v;
 		TY94095 LOC5;
-		nimln(148, "navmInstructions.nim");
+		nimln(196, "navmInstructions.nim");
 		s = nsuToHex(((NI64) ((*ob).Ocodemem)), 8);
-		nimln(149, "navmInstructions.nim");
+		nimln(197, "navmInstructions.nim");
 		write_8862(stderr, ((NimStringDesc*) &TMP289));
-		nimln(150, "navmInstructions.nim");
+		nimln(198, "navmInstructions.nim");
 		write_8850(stderr, ((NI) ((*ob).Vd)));
-		nimln(151, "navmInstructions.nim");
+		nimln(199, "navmInstructions.nim");
 		write_8862(stderr, ((NimStringDesc*) &TMP290));
-		nimln(152, "navmInstructions.nim");
+		nimln(200, "navmInstructions.nim");
 		write_8862(stderr, s);
-		nimln(153, "navmInstructions.nim");
+		nimln(201, "navmInstructions.nim");
 		write_8862(stderr, ((NimStringDesc*) &TMP291));
-		nimln(154, "navmInstructions.nim");
+		nimln(202, "navmInstructions.nim");
 		write_8862(stderr, text);
-		nimln(156, "navmInstructions.nim");
+		nimln(204, "navmInstructions.nim");
 		v = ((NI64) (val));
-		nimln(157, "navmInstructions.nim");
+		nimln(205, "navmInstructions.nim");
 		s = nsuToHex(v, 1);
-		nimln(158, "navmInstructions.nim");
+		nimln(206, "navmInstructions.nim");
 		memset((void*)LOC5, 0, sizeof(LOC5));
-		nimln(158, "navmInstructions.nim");
+		nimln(206, "navmInstructions.nim");
 		LOC5[0] = copyString(s);
 		writeln_91224(stderr, LOC5, 1);
 	}

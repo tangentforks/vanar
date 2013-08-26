@@ -163,17 +163,13 @@ import navmBackend, navmInstructions, unsigned, strUtils
 #  proc compBundleDRM
 #    (ob: var tNavmFrontend)
 #      compiles a single opcode-bundle with DRM optimization. The result is
-#      efficient native-code for most out-of-order architectures except in-
-#      order designs (such as Intel ATOM). These CPU class will need a simple
-#      additional optimization: Static exchanging of instructions slots
-#      (alias instruction-sheduling) which an application can apply without
-#      problems at demand so there is no need for a special interface routine
-#      (please note, that optimization is only easy applicable because the
-#      AVM ISA specify a process-effect free, bundled encoding. You will get
-#      in trouble with this for all JIT compiler I know of because there IL
-#      definations either do not serialize state assignments [all register
-#      based designs] or uses folded SSA forms which both are more or less
-#      insufficient for instruction shuffling) 
+#      somewhat efficient native-code for most out-of-order architectures
+#      except in-order designs (such as Intel ATOM)
+#
+#  proc compBundleIT
+#    (ob: var tNavmFrontend)
+#       compiles a single opcode-bundle with IT optimization. This results in
+#       efficient code for most out-of-order designs.
 # -----------------------------------------------------------------------------
 
 type
@@ -330,7 +326,7 @@ proc addIns* (ob: var tNavmFrontend,bundle: var tNavmUCell,ins: eNavmIn) =
       bundle = bundle + cast [tNavmUCell](bgSlot)
   except EAssertionFailed:
     errorAssert ()
-  
+
 proc pokeBundle* (ob: var tNavmFrontend,bundle: tNavmUCell) =
   assert (ob.fInit != false)
 
@@ -377,24 +373,14 @@ proc compBundleDRM* (ob: var tNavmFrontend) =
     vBndl: tNavmUCell = cast[tNavmUCell](ob.sVmMem[ob.oVmMem])
     vInsA: int8 = 0
     vInsB: int8 = 0
-    i:     int  = 1
 
   assert (ob.fInit != false)
 
   try:
     ob.oVmMem = ob.oVmMem + 1
 
-    when sizeof (tNavmUCell) > 4:
-      const num = 12
-    elif sizeof (tNavmUCell) > 2:
-      const num = 6
-    elif sizeof (tNavmUCell) < 3:
-      const num = 3
-    else:
-      error ("[compBundleDRM] tNavmUCell.size != 2,4,8")
-
     block compile:
-      while i <= num:
+      while vBndl != 0:
         vInsA = cast[int8](vBndl and 0x1F)
         vInsB = cast[int8]((vBndl shr 5) and 0x1F)
         vBndl = vBndl shr 5
@@ -402,7 +388,6 @@ proc compBundleDRM* (ob: var tNavmFrontend) =
         case vInsA
           of ord (eNavmIn.li):
                ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
-               ob.oVmMem = ob.oVmMem + 1
           of ord (eNavmIn.br):
                ob.br (ob.fDisAsm)
                break compile
@@ -410,26 +395,18 @@ proc compBundleDRM* (ob: var tNavmFrontend) =
                ob.eq (ob.fDisAsm)
                if cfNavmCompUnified != false and vInsB > ord (eNavmIn.r):
                   vBndl = vBndl shr 5
-                  i = i + 1
           of ord (eNavmIn.gr):
                ob.gr (ob.fDisAsm)
                if cfNavmCompUnified != false and vInsB > ord (eNavmIn.r):
                   vBndl = vBndl shr 5
-                  i = i + 1
           of ord (eNavmIn.le):
                ob.le (ob.fDisAsm)
                if cfNavmCompUnified != false and vInsB > ord (eNavmIn.r):
                   vBndl = vBndl shr 5
-                  i = i + 1
           of ord (eNavmIn.zr):
                ob.zr (ob.fDisAsm)
                if (cfNavmCompUnified != false) and vInsB > ord (eNavmIn.r):
                   vBndl = vBndl shr 5
-                  i = i + 1
-          of ord (eNavmIn.sys): error ("[compBundleDRM] sys")
-          of ord (eNavmIn.b):   error ("[compBundleDRM] b")
-          of ord (eNavmIn.bs):  error ("[compBundleDRM] bs")
-          of ord (eNavmIn.pck): error ("[compBundleDRM] pck")
           of ord (eNavmIn.lx):  ob.lx  (ob.fDisAsm)
           of ord (eNavmIn.ld):  ob.ld  (ob.fDisAsm)
           of ord (eNavmIn.st):  ob.st  (ob.fDisAsm)
@@ -451,10 +428,319 @@ proc compBundleDRM* (ob: var tNavmFrontend) =
           of ord (eNavmIn.ovr): ob.ovr (ob.fDisAsm)
           of ord (eNavmIn.rot): ob.rot (ob.fDisAsm)
           of ord (eNavmIn.r):   ob.r   (ob.fDisAsm)
-          of ord (eNavmIn.drp): i = i
+          of ord (eNavmIn.drp): vBndl = vBndl
+          of ord (eNavmIn.sys): error ("[compBundleDRM] sys")
+          of ord (eNavmIn.b):   error ("[compBundleDRM] b")
+          of ord (eNavmIn.bs):  error ("[compBundleDRM] bs")
+          of ord (eNavmIn.pck): error ("[compBundleDRM] pck")
           else: error ("[compBundleDRM] unexpected error")
   except EAssertionFailed:
     errorAssert ()
+
+proc compBundleIT* (ob: var tNavmFrontend) =
+  proc inRange (val: tNavmSCell,r: int): bool =
+    var nVal: tNavmSCell = val shr (r * 8)
+    if  nVal > 0: result = false else: result = true
+
+  var
+    vBndl: tNavmUCell = cast[tNavmUCell](ob.sVmMem[ob.oVmMem])
+    vInsA: int8  = 0
+    vInsB: int8  = 0
+    vOpcA: int16 = 0
+
+  assert (ob.fInit != false)
+
+  try:
+    ob.oVmMem = ob.oVmMem + 1
+    block compile:
+      while vBndl != 0:
+        vInsA = cast[int8](vBndl and 0x1F)
+        vInsB = cast[int8]((vBndl shr 5) and 0x1F)
+        vOpcA = cast[int16](vBndl and 0x3FF)
+
+        case vOpcA
+          of ord (eNavmOp.liLX):
+             if cfNavmImmInstLX != FALSE:
+                if inRange (ob.sVmMem[ob.oVmMem],cfNavmImmInstLenLX) != false:
+                   ob.lxImm (tNavmUCell (ob.sVmMem[ob.oVmMem]),ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+                else:
+                   ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.lx (ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+          of ord (eNavmOp.liLD):
+             if cfNavmImmInstLD != FALSE:
+                if inRange (ob.sVmMem[ob.oVmMem],cfNavmImmInstLenLD) != false:
+                   ob.ldImm (tNavmUCell (ob.sVmMem[ob.oVmMem]),ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+                else:
+                   ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.ld (ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+          of ord (eNavmOp.liST):
+             if cfNavmImmInstST != FALSE:
+                if inRange (ob.sVmMem[ob.oVmMem],cfNavmImmInstLenST) != false:
+                   ob.stImm (tNavmUCell (ob.sVmMem[ob.oVmMem]),ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+                else:
+                   ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.st (ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+          of ord (eNavmOp.liLXI):
+             if cfNavmImmInstLXI != FALSE:
+                if inRange (ob.sVmMem[ob.oVmMem],cfNavmImmInstLenLXI) != false:
+                   ob.lxiImm (tNavmUCell (ob.sVmMem[ob.oVmMem]),ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+                else:
+                   ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.lxi (ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+          of ord (eNavmOp.liLXD):
+             if cfNavmImmInstLXD != FALSE:
+                if inRange (ob.sVmMem[ob.oVmMem],cfNavmImmInstLenLXD) != false:
+                   ob.lxdImm (tNavmUCell (ob.sVmMem[ob.oVmMem]),ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+                else:
+                   ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.lxd (ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+          of ord (eNavmOp.liSXI):
+             if cfNavmImmInstSXI != FALSE:
+                if inRange (ob.sVmMem[ob.oVmMem],cfNavmImmInstLenSXI) != false:
+                   ob.sxiImm (tNavmUCell (ob.sVmMem[ob.oVmMem]),ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+                else:
+                   ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.sxi (ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+          of ord (eNavmOp.liSXD):
+             if cfNavmImmInstSXD != FALSE:
+                if inRange (ob.sVmMem[ob.oVmMem],cfNavmImmInstLenSXD) != false:
+                   ob.sxdImm (tNavmUCell (ob.sVmMem[ob.oVmMem]),ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+                else:
+                   ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.lxd (ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+          of ord (eNavmOp.liADD):
+             if cfNavmImmInstADD != FALSE:
+                if inRange (ob.sVmMem[ob.oVmMem],cfNavmImmInstLenADD) != false:
+                   ob.addImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+                else:
+                   ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.add (ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+          of ord (eNavmOp.liADC):
+             if cfNavmImmInstADC != FALSE:
+                if inRange (ob.sVmMem[ob.oVmMem],cfNavmImmInstLenADC) != false:
+                   ob.adcImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+                else:
+                   ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.adc (ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+          of ord (eNavmOp.liSUB):
+             if cfNavmImmInstSUB != FALSE:
+                if inRange (ob.sVmMem[ob.oVmMem],cfNavmImmInstLenSUB) != false:
+                   ob.subImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+                else:
+                   ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.sub (ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+          of ord (eNavmOp.liSBC):
+             if cfNavmImmInstSBC != FALSE:
+                if inRange (ob.sVmMem[ob.oVmMem],cfNavmImmInstLenSBC) != false:
+                   ob.sbcImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+                else:
+                   ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.sbc (ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+          of ord (eNavmOp.liSLB):
+             if cfNavmImmInstSLB != FALSE:
+                if inRange (ob.sVmMem[ob.oVmMem],cfNavmImmInstLenSLB) != false:
+                   ob.slbImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+                else:
+                   ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.slb (ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+          of ord (eNavmOp.liSRB):
+             if cfNavmImmInstSRB != FALSE:
+                if inRange (ob.sVmMem[ob.oVmMem],cfNavmImmInstLenSRB) != false:
+                   ob.srbImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+                else:
+                   ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.srb (ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+          of ord (eNavmOp.liANB):
+             if cfNavmImmInstANB != FALSE:
+                if inRange (ob.sVmMem[ob.oVmMem],cfNavmImmInstLenANB) != false:
+                   ob.anbImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+                else:
+                   ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.anb (ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+          of ord (eNavmOp.liGOR):
+             if cfNavmImmInstGOR != FALSE:
+                if inRange (ob.sVmMem[ob.oVmMem],cfNavmImmInstLenGOR) != false:
+                   ob.gorImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+                else:
+                   ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.gor (ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+          of ord (eNavmOp.liXOB):
+             if cfNavmImmInstXOB != FALSE:
+                if inRange (ob.sVmMem[ob.oVmMem],cfNavmImmInstLenXOB) != false:
+                   ob.xobImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+                else:
+                   ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                   ob.xob (ob.fDisAsm)
+                   ob.oVmMem = ob.oVmMem + 1
+                   vBndl = vBndl shr 10
+          else:
+            case vInsA
+              of ord (eNavmIn.li):
+                    ob.liImm (ob.sVmMem[ob.oVmMem],ob.fDisAsm)
+                    ob.oVmMem = ob.oVmMem + 1
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.br):
+                    ob.br (ob.fDisAsm)
+                    break compile
+              of ord (eNavmIn.eq):
+                    ob.eq (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+                    if cfNavmCompUnified != false and vInsB > ord (eNavmIn.r):
+                       vBndl = vBndl shr 5
+              of ord (eNavmIn.gr):
+                    ob.gr (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+                    if cfNavmCompUnified != false and vInsB > ord (eNavmIn.r):
+                       vBndl = vBndl shr 5
+              of ord (eNavmIn.le):
+                    ob.le (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+                    if cfNavmCompUnified != false and vInsB > ord (eNavmIn.r):
+                       vBndl = vBndl shr 5
+              of ord (eNavmIn.zr):
+                    ob.zr (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+                    if (cfNavmCompUnified != false) and vInsB > ord (eNavmIn.r):
+                       vBndl = vBndl shr 5
+              of ord (eNavmIn.lx):
+                    ob.lx (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.ld):
+                    ob.ld (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.st):
+                    ob.st (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.lxi):
+                    ob.lxi (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.sxi):
+                    ob.sxi (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.lxd):
+                    ob.lxd (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.sxd):
+                    ob.sxd (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.add):
+                    ob.add (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.adc):
+                    ob.adc (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.sub):
+                    ob.sub (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.sbc):
+                    ob.sbc (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.slb):
+                    ob.slb (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.srb):
+                    ob.srb (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.anb):
+                    ob.anb (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.gor):
+                    ob.gor (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.xob):
+                    ob.xob (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.dup):
+                    ob.dup (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.swp):
+                    ob.swp (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.ovr):
+                    ob.ovr (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.rot):
+                    ob.rot (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.r):
+                    ob.r (ob.fDisAsm)
+                    vBndl = vBndl shr 5
+              of ord (eNavmIn.drp):
+                    vBndl = vBndl
+              of ord (eNavmIn.sys):
+                    error ("[compBundleDRM] sys")
+              of ord (eNavmIn.b):
+                    error ("[compBundleDRM] b")
+              of ord (eNavmIn.bs):
+                    error ("[compBundleDRM] bs")
+              of ord (eNavmIn.pck):
+                    error ("[compBundleDRM] pck")
+              else: error ("[compBundleDRM] unexpected error")
+  except EAssertionFailed:
+    errorAssert ()
+
 
 
 when isMainModule:
@@ -486,6 +772,6 @@ when isMainModule:
 
   echo ("first instruction: ",bundle and 0x1F)
 
-  test.CompBundleDRM ()
+  test.CompBundleIT ()
 
   test.release ()

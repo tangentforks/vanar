@@ -60,28 +60,28 @@ N_NOINLINE(void, shmBufferInit)(void) {
 }
 
 N_NOINLINE(void, shmBufferDatInit)(void) {
-static TNimNode* TMP838[3];
+static TNimNode* TMP869[3];
 static TNimNode TMP245[4];
 NTI91012.size = sizeof(tshmbuffer91012);
 NTI91012.kind = 17;
 NTI91012.base = (&NTI1009);
 NTI91012.flags = 3;
-TMP838[0] = &TMP245[1];
+TMP869[0] = &TMP245[1];
 TMP245[1].kind = 1;
 TMP245[1].offset = offsetof(tshmbuffer91012, Pbuffer);
 TMP245[1].typ = (&NTI91018);
 TMP245[1].name = "pBuffer";
-TMP838[1] = &TMP245[2];
+TMP869[1] = &TMP245[2];
 TMP245[2].kind = 1;
 TMP245[2].offset = offsetof(tshmbuffer91012, Cbuffer);
 TMP245[2].typ = (&NTI105);
 TMP245[2].name = "cBuffer";
-TMP838[2] = &TMP245[3];
+TMP869[2] = &TMP245[3];
 TMP245[3].kind = 1;
 TMP245[3].offset = offsetof(tshmbuffer91012, Finit);
 TMP245[3].typ = (&NTI132);
 TMP245[3].name = "fInit";
-TMP245[0].len = 3; TMP245[0].kind = 2; TMP245[0].sons = &TMP838[0];
+TMP245[0].len = 3; TMP245[0].kind = 2; TMP245[0].sons = &TMP869[0];
 NTI91012.node = &TMP245[0];
 }
 

@@ -132,36 +132,36 @@ const
 # instructions which are not avariable in there immediate-direct representation
 
 const
-  cfNavmImmInstLenLI  = 8
-  cfNavmImmInstLenLX  = 0
-  cfNavmImmInstLenLD  = 0
-  cfNavmImmInstLenST  = 0
-  cfNavmImmInstLenLXI = 0
-  cfNavmImmInstLenSXI = 0
-  cfNavmImmInstLenLXD = 0
-  cfNavmImmInstLenSXD = 0
-  cfNavmImmInstLenADD = 4 
-  cfNavmImmInstLenADC = 4    
-  cfNavmImmInstLenSUB = 4    
-  cfNavmImmInstLenSBC = 4   
-  cfNavmImmInstLenSLB = 1    
-  cfNavmImmInstLenSRB = 1    
-  cfNavmImmInstLenANB = 4    
-  cfNavmImmInstLenGOR = 4   
-  cfNavmImmInstLenXOB = 4    
-  cfNavmImmInstLenDUP = 0    
-  cfNavmImmInstLenDRP = 0     
-  cfNavmImmInstLenSWP = 0    
-  cfNavmImmInstLenOVR = 0     
-  cfNavmImmInstLenROT = 0   
-  cfNavmImmInstLenB   = 0    
-  cfNavmImmInstLenBS  = 0    
-  cfNavmImmInstLenBR  = 0    
-  cfNavmImmInstLenR   = 0     
-  cfNavmImmInstLenEQ  = 0     
-  cfNavmImmInstLenGR  = 0     
-  cfNavmImmInstLenLE  = 0    
-  cfNavmImmInstLenZR  = 0     
+  cfNavmImmInstLenLI*  = 8
+  cfNavmImmInstLenLX*  = 0
+  cfNavmImmInstLenLD*  = 0
+  cfNavmImmInstLenST*  = 0
+  cfNavmImmInstLenLXI* = 0
+  cfNavmImmInstLenSXI* = 0
+  cfNavmImmInstLenLXD* = 0
+  cfNavmImmInstLenSXD* = 0
+  cfNavmImmInstLenADD* = 4 
+  cfNavmImmInstLenADC* = 4    
+  cfNavmImmInstLenSUB* = 4    
+  cfNavmImmInstLenSBC* = 4   
+  cfNavmImmInstLenSLB* = 1    
+  cfNavmImmInstLenSRB* = 1    
+  cfNavmImmInstLenANB* = 4    
+  cfNavmImmInstLenGOR* = 4   
+  cfNavmImmInstLenXOB* = 4    
+  cfNavmImmInstLenDUP* = 0    
+  cfNavmImmInstLenDRP* = 0     
+  cfNavmImmInstLenSWP* = 0    
+  cfNavmImmInstLenOVR* = 0     
+  cfNavmImmInstLenROT* = 0   
+  cfNavmImmInstLenB*   = 0    
+  cfNavmImmInstLenBS*  = 0    
+  cfNavmImmInstLenBR*  = 0    
+  cfNavmImmInstLenR*   = 0     
+  cfNavmImmInstLenEQ*  = 0     
+  cfNavmImmInstLenGR*  = 0     
+  cfNavmImmInstLenLE*  = 0    
+  cfNavmImmInstLenZR*  = 0     
 
 # some internal help routines
 
@@ -314,7 +314,7 @@ proc lx* (ob: var tNavmBackend,dis: bool) =
     else:
        errorOFD ()
 
-proc lxImm (ob: var tNavmBackend,val: uint64,dis: bool) = errorIMM ()
+proc lxImm* (ob: var tNavmBackend,val: uint64,dis: bool) = errorIMM ()
 
 proc ld* (ob: var tNavmBackend,dis: bool) =
   ob.vD = ob.vD - 1
@@ -362,7 +362,7 @@ proc ld* (ob: var tNavmBackend,dis: bool) =
     else:
        errorOFD ()
 
-proc ldImm (ob: var tNavmBackend,val: uint64,dis: bool) = errorIMM ()
+proc ldImm* (ob: var tNavmBackend,val: uint64,dis: bool) = errorIMM ()
 
 proc st* (ob: var tNavmBackend,dis: bool) =
   ob.vD = ob.vD - 2
@@ -405,7 +405,7 @@ proc st* (ob: var tNavmBackend,dis: bool) =
     else:
        errorOFD ()
 
-proc stImm (ob: var tNavmBackend,val: uint64,dis: bool) = errorIMM ()
+proc stImm* (ob: var tNavmBackend,val: uint64,dis: bool) = errorIMM ()
 
 proc lxi* (ob: var tNavmBackend,dis: bool) =
   case ob.vD
@@ -453,7 +453,7 @@ proc lxi* (ob: var tNavmBackend,dis: bool) =
     else:
        errorOFD ()
 
-proc lxiImm (ob: var tNavmBackend,val: uint64,dis: bool) = errorIMM ()
+proc lxiImm* (ob: var tNavmBackend,val: uint64,dis: bool) = errorIMM ()
 
 proc lxd* (ob: var tNavmBackend,dis: bool) =
   case ob.vD
@@ -501,7 +501,7 @@ proc lxd* (ob: var tNavmBackend,dis: bool) =
     else:
        errorOFD ()
 
-proc lxdImm (ob: var tNavmBackend,val: uint64,dis: bool) = errorIMM ()
+proc lxdImm* (ob: var tNavmBackend,val: uint64,dis: bool) = errorIMM ()
 
 proc sxi* (ob: var tNavmBackend,dis: bool) =
   case ob.vD
@@ -550,7 +550,7 @@ proc sxi* (ob: var tNavmBackend,dis: bool) =
     else:
        errorOFD ()
 
-proc sxiImm (ob: var tNavmBackend,val: uint64,dis: bool) = errorIMM ()
+proc sxiImm* (ob: var tNavmBackend,val: uint64,dis: bool) = errorIMM ()
 
 proc sxd* (ob: var tNavmBackend,dis: bool) =
   case ob.vD
@@ -599,7 +599,7 @@ proc sxd* (ob: var tNavmBackend,dis: bool) =
     else:
        errorOFD ()
 
-proc sxdImm (ob: var tNavmBackend,val: uint64,dis: bool) = errorIMM ()
+proc sxdImm* (ob: var tNavmBackend,val: uint64,dis: bool) = errorIMM ()
 
 proc add* (ob: var tNavmBackend,dis: bool) =
   ob.vD = ob.vD - 2
@@ -644,7 +644,7 @@ proc add* (ob: var tNavmBackend,dis: bool) =
     else:
        errorOFD ()
 
-proc addImm (ob: var tNavmBackend,val: int32,dis: bool) =
+proc addImm* (ob: var tNavmBackend,val: int64,dis: bool) =
   var uVal: uint32 = cast[uint32](val)
   ob.vD = ob.vD - 1
 
@@ -744,7 +744,7 @@ proc adc* (ob: var tNavmBackend,dis: bool) =
     else:
        errorOFD ()
 
-proc adcImm (ob: var tNavmBackend,val: int32,dis: bool) =
+proc adcImm* (ob: var tNavmBackend,val: int64,dis: bool) =
   var uVal: uint32 = cast[uint32](val)
   ob.vD = ob.Vd - 1
 
@@ -844,7 +844,7 @@ proc sub* (ob: var tNavmBackend,dis: bool) =
     else:
        errorOFD ()
 
-proc subImm (ob: var tNavmBackend,val: int32,dis: bool) =
+proc subImm* (ob: var tNavmBackend,val: int64,dis: bool) =
   var uVal: uint32 = cast[uint32](val)
   ob.vD = ob.vD - 1
 
@@ -944,7 +944,7 @@ proc sbc* (ob: var tNavmBackend,dis: bool) =
     else:
        errorOFD ()
 
-proc sbcImm (ob: var tNavmBackend,val: int32,dis: bool) =
+proc sbcImm* (ob: var tNavmBackend,val: int64,dis: bool) =
   var uVal: uint32 = cast[uint32](val)
   ob.vD = ob.vD - 1
 
@@ -1044,7 +1044,7 @@ proc slb* (ob: var tNavmBackend,dis: bool) =
     else:
        errorOFD ()
 
-proc slbImm (ob: var tNavmBackend,val: int8,dis: bool) =
+proc slbImm* (ob: var tNavmBackend,val: int64,dis: bool) =
   var uVal: uint8 = cast[uint8](val)
   ob.vD = ob.vD - 1
 
@@ -1145,7 +1145,7 @@ proc srb* (ob: var tNavmBackend,dis: bool) =
     else:
        errorOFD ()
 
-proc srbImm (ob: var tNavmBackend,val: int8,dis: bool) =
+proc srbImm* (ob: var tNavmBackend,val: int64,dis: bool) =
   var uVal: uint8 = cast[uint8](val)
   ob.vD = ob.vD - 1
 
@@ -1246,7 +1246,7 @@ proc anb* (ob: var tNavmBackend,dis: bool) =
     else:
        errorOFD ()
 
-proc anbImm (ob: var tNavmBackend,val: int8,dis: bool) =
+proc anbImm* (ob: var tNavmBackend,val: int64,dis: bool) =
   var uVal: uint8 = cast[uint8](val)
   ob.vD = ob.vD - 1
 
@@ -1346,7 +1346,7 @@ proc gor* (ob: var tNavmBackend,dis: bool) =
     else:
        errorOFD ()
 
-proc gorImm (ob: var tNavmBackend,val: int8,dis: bool) =
+proc gorImm* (ob: var tNavmBackend,val: int64,dis: bool) =
   var uVal: uint8 = cast[uint8](val)
   ob.vD = ob.vD - 1
 
@@ -1446,7 +1446,7 @@ proc xob* (ob: var tNavmBackend,dis: bool) =
     else:
        errorOFD ()
 
-proc xobImm (ob: var tNavmBackend,val: int8,dis: bool) =
+proc xobImm* (ob: var tNavmBackend,val: int64,dis: bool) =
   var uVal: uint8 = cast[uint8](val)
   ob.vD = ob.vD - 2
 
@@ -2096,6 +2096,10 @@ when isMainModule:
   
   test.liImm (0x101,true)
   echo ("oCodeMem: ",test.oCodeMem)
+
+  echo ("variadic record test:")
+
+  
 
   test.release ()
 
