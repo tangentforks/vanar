@@ -119,7 +119,7 @@ void compDisAsm (pNavmBackend h, char *m)
    instructions differs largely between CPU architectures, the following
    constants define for which instructions immediate-direct versions exist.
    Please note in addition that these constants are CPU dependent of course
-   must exist for all 16 base instructions!
+   and must exist for all 16 base instructions!
    ------------------------------------------------------------------------- */
 
 const bool cfNavmBackendImmLI  = false;
@@ -141,7 +141,7 @@ const bool cfNavmBackendImmROL = false;
 
 /* -------------------------------------------------------------------------
    INFO: These constants define the word lenght of all avariable
-   immediate-direct procedures in bytes.
+   immediate-direct procedures in bits.
    ------------------------------------------------------------------------- */
 
 const uWord cfNavmBackendImmLiLen  = 64;
@@ -1006,8 +1006,23 @@ void navmBackendCompSWP (pNavmBackend h)
 void navmBackendCompROT (pNavmBackend h)
   {}
 
-void  navmBackendExecute (pNavmBackend h, uWord ofs)
+/* -------------------------------------------------------------------------
+   INFO: The following functions representing all 24 macro-instructions,
+   all must be defined.
+   ------------------------------------------------------------------------- */
+
+void navmBackendCompBR (pNavmBackend h)
+  {compCode (h, 0xC3);}
+
+/* -------------------------------------------------------------------------
+   INFO: The platform-independent execution routines create a call frame
+   for executing priour compiled traces. There exist versions for monadic,
+   dyadic and triadic functions.
+   ------------------------------------------------------------------------- */
+
+sWord navmBackendExecuteMonadic (pNavmBackend h, uWord ofs, sWord s1)
   {navmBackendTempAdr = h->pMem + ofs;
+   navmBackendS1 = s1;
 
    asm volatile (".byte 0xCC");
 
@@ -1022,8 +1037,11 @@ void  navmBackendExecute (pNavmBackend h, uWord ofs)
    asm volatile ("push %r14");
    asm volatile ("push %r15");
 
-   asm volatile ("mov  navmBackendTempAdr, %rax");
-   asm volatile ("call *%rax");
+   asm volatile ("mov  navmBackendS1, %rax");
+
+   asm volatile ("mov  navmBackendTempAdr, %r15");
+   asm volatile ("call *%r15");
+   asm volatile ("mov  %rax, navmBackendS1");
 
    asm volatile ("pop  %r15");
    asm volatile ("pop  %r14");
@@ -1034,4 +1052,83 @@ void  navmBackendExecute (pNavmBackend h, uWord ofs)
    asm volatile ("pop  %r9");
    asm volatile ("pop  %r8");
    asm volatile ("pop  %rdx");
-   asm volatile ("pop  %rcx");}
+   asm volatile ("pop  %rcx");
+
+   return navmBackendS1;}
+
+sWord navmBackendExecuteDyadic (pNavmBackend h, uWord ofs, sWord s1, sWord s2)
+  {navmBackendTempAdr = h->pMem + ofs;
+   navmBackendS1 = s1;
+   navmBackendS2 = s2;
+
+   asm volatile (".byte 0xCC");
+
+   asm volatile ("push %rcx");
+   asm volatile ("push %rdx");
+   asm volatile ("push %r8");
+   asm volatile ("push %r9");
+   asm volatile ("push %r10");
+   asm volatile ("push %r11");
+   asm volatile ("push %r12");
+   asm volatile ("push %r13");
+   asm volatile ("push %r14");
+   asm volatile ("push %r15");
+
+   asm volatile ("mov  navmBackendS1, %rax");
+   asm volatile ("mov  navmBackendS2, %rcx");
+   asm volatile ("mov  navmBackendTempAdr, %r15");
+   asm volatile ("call *%r15");
+   asm volatile ("mov  %rax, navmBackendS1");
+
+   asm volatile ("pop  %r15");
+   asm volatile ("pop  %r14");
+   asm volatile ("pop  %r13");
+   asm volatile ("pop  %r12");
+   asm volatile ("pop  %r11");
+   asm volatile ("pop  %r10");
+   asm volatile ("pop  %r9");
+   asm volatile ("pop  %r8");
+   asm volatile ("pop  %rdx");
+   asm volatile ("pop  %rcx");
+
+   return navmBackendS1;}
+
+sWord navmBackendExecuteTriadic
+  (pNavmBackend h, uWord ofs, sWord s1, sWord s2, sWord s3)
+  {navmBackendTempAdr = h->pMem + ofs;
+   navmBackendS1 = s1;
+   navmBackendS2 = s2;
+   navmBackendS3 = s3;
+
+   asm volatile (".byte 0xCC");
+
+   asm volatile ("push %rcx");
+   asm volatile ("push %rdx");
+   asm volatile ("push %r8");
+   asm volatile ("push %r9");
+   asm volatile ("push %r10");
+   asm volatile ("push %r11");
+   asm volatile ("push %r12");
+   asm volatile ("push %r13");
+   asm volatile ("push %r14");
+   asm volatile ("push %r15");
+
+   asm volatile ("mov  navmBackendS1, %rax");
+   asm volatile ("mov  navmBackendS2, %rcx");
+   asm volatile ("mov  navmBackendS3, %rdx");
+   asm volatile ("mov  navmBackendTempAdr, %r15");
+   asm volatile ("call *%r15");
+   asm volatile ("mov  %rax, navmBackendS1");
+
+   asm volatile ("pop  %r15");
+   asm volatile ("pop  %r14");
+   asm volatile ("pop  %r13");
+   asm volatile ("pop  %r12");
+   asm volatile ("pop  %r11");
+   asm volatile ("pop  %r10");
+   asm volatile ("pop  %r9");
+   asm volatile ("pop  %r8");
+   asm volatile ("pop  %rdx");
+   asm volatile ("pop  %rcx");
+
+   return navmBackendS1;}

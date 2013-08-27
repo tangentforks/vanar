@@ -1,0 +1,28 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 7E02                        jng e1
+     6 00000002 FFE0                        jmp rax
+     7                                  
+     8 00000004 7E03                    e1: jng e2
+     9 00000006 41FFE0                      jmp r8
+    10                                  
+    11 00000009 7E03                    e2: jng e3
+    12 0000000B 41FFE1                      jmp r9
+    13                                  
+    14 0000000E 7E03                    e3: jng e4
+    15 00000010 41FFE2                      jmp r10
+    16                                  
+    17 00000013 7E03                    e4: jng e5
+    18 00000015 41FFE3                      jmp r11
+    19                                  
+    20 00000018 7E03                    e5: jng e6
+    21 0000001A 41FFE4                      jmp r12
+    22                                  
+    23 0000001D 7E03                    e6: jng e7
+    24 0000001F 41FFE5                      jmp r13
+    25                                  
+    26 00000022 7E03                    e7: jng e8
+    27 00000024 41FFE6                      jmp r14
+    28                                  e8:

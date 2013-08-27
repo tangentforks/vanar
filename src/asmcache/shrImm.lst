@@ -1,0 +1,12 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 48C1E8FF                shr rax, 0xFF
+     6 00000004 49C1E8FF                shr r8,  0xFF
+     7 00000008 49C1E9FF                shr r9,  0xFF
+     8 0000000C 49C1EAFF                shr r10, 0xFF
+     9 00000010 49C1EBFF                shr r11, 0xFF
+    10 00000014 49C1ECFF                shr r12, 0xFF
+    11 00000018 49C1EDFF                shr r13, 0xFF
+    12 0000001C 49C1EEFF                shr r14, 0xFF

@@ -1,0 +1,11 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 4C19C0                  sbb rax, r8
+     6 00000003 4D19C8                  sbb r8,  r9
+     7 00000006 4D19D1                  sbb r9,  r10
+     8 00000009 4D19DA                  sbb r10, r11
+     9 0000000C 4D19E3                  sbb r11, r12
+    10 0000000F 4D19EC                  sbb r12, r13
+    11 00000012 4D19F5                  sbb r13, r14

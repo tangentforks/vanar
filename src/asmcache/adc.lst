@@ -1,0 +1,11 @@
+     1                                  section .text
+     2                                  global _start
+     3                                  
+     4                                  _start:
+     5 00000000 4C11C0                  adc rax, r8
+     6 00000003 4D11C8                  adc r8,  r9
+     7 00000006 4D11D1                  adc r9,  r10
+     8 00000009 4D11DA                  adc r10, r11
+     9 0000000C 4D11E3                  adc r11, r12
+    10 0000000F 4D11EC                  adc r12, r13
+    11 00000012 4D11F5                  adc r13, r14
